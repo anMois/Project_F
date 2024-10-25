@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class TestPlayerControll : MonoBehaviour
 {
-    [SerializeField] Transform cameraTrans;
+    [SerializeField] Transform camTrans;
     [SerializeField] Rigidbody rigid;
     [SerializeField] float speed;
+    [SerializeField] float rotateSpeed;
+
+    [SerializeField] float mouseX;
+    [SerializeField] float mouseY;
 
     private void Start()
     {
-        cameraTrans = Camera.main.transform;
+        camTrans = Camera.main.transform;
     }
 
     private void Update()
     {
         MoveTest();
+        MouseRotate();
     }
 
     private void MoveTest()
@@ -26,5 +31,16 @@ public class TestPlayerControll : MonoBehaviour
         Vector3 dir = new Vector3(x, 0, z);
 
         rigid.velocity = dir.normalized * speed;
+    }
+
+    private void MouseRotate()
+    {
+        mouseX = Input.GetAxis("Mouse X");
+        mouseY = Input.GetAxis("Mouse Y");
+
+        transform.Rotate(Vector3.up, rotateSpeed * mouseX * Time.deltaTime);
+        camTrans.Rotate(Vector3.right, rotateSpeed * -mouseY * Time.deltaTime);
+
+
     }
 }
