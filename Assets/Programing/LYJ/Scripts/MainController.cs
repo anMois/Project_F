@@ -42,4 +42,13 @@ public class MainController : MonoBehaviour
             bookCanvas.SetActive(false);
         }
     }
+
+    public void Exit_Button()
+    {
+        //유니티 에디터에서는 Application.Quit();를 사용할 수 없음 테스트 용도로 아래 코드 사용
+        UnityEditor.EditorApplication.isPlaying = false;
+        
+        //빌드해서 사용할 때는 아래 코드를 사용
+        //Application.Quit();    
+    }
 }
