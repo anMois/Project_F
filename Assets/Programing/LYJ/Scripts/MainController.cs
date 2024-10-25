@@ -7,6 +7,7 @@ public class MainController : MonoBehaviour
 {
     private GameObject mainCanvas;
     private GameObject bookCanvas;
+    private GameObject explanationCanvas;
 
     private void Start()
     {
@@ -20,12 +21,12 @@ public class MainController : MonoBehaviour
         }
     }
 
-    public void Change_Stage1_Scene()
+    public void ChangeStage1Scene()
     {
         SceneManager.LoadScene("Stage1");
     }
 
-    public void Click_Book_Button()
+    public void ClickBookButton()
     {
         if (mainCanvas != null && bookCanvas != null)
         {
@@ -34,7 +35,7 @@ public class MainController : MonoBehaviour
         }
     }
 
-    public void Book_Exit_Button()
+    public void BookExitButton()
     {
         if (mainCanvas != null && bookCanvas != null)
         {
@@ -43,7 +44,7 @@ public class MainController : MonoBehaviour
         }
     }
 
-    public void Exit_Button()
+    public void ExitButton()
     {
         //유니티 에디터에서는 Application.Quit();를 사용할 수 없음 테스트 용도로 아래 코드 사용
         UnityEditor.EditorApplication.isPlaying = false;
