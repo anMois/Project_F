@@ -7,32 +7,18 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
     public ItemData itemData;
-    [SerializeField] TextMeshProUGUI itemNameText;
-    [SerializeField] TextMeshProUGUI descriptionText;
-    [SerializeField] Image itemImage;
-
-    private GameObject explanationCanvas;
+    private MainController mainController;
 
     private void Start()
     {
-        explanationCanvas = GameObject.Find("Explanation Canvas");
-
-        if  (explanationCanvas != null )
-        {
-            explanationCanvas.SetActive(false);
-        }
-
+        mainController = FindObjectOfType<MainController>();
     }
 
     public void OnButtonClick()
     {
-        if (explanationCanvas != null)
+        if (mainController != null)
         {
-            explanationCanvas.SetActive(true);
+            mainController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
         }
-
-        itemNameText.text = itemData.itemName;
-        descriptionText.text = itemData.description;
-        itemImage.sprite = itemData.itemImage;
     }
 }
