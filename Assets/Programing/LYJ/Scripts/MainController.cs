@@ -33,4 +33,13 @@ public class MainController : MonoBehaviour
             bookCanvas.SetActive(true);
         }
     }
+
+    public void Book_Exit_Button()
+    {
+        if (mainCanvas != null && bookCanvas != null)
+        {
+            mainCanvas.SetActive(true);
+            bookCanvas.SetActive(false);
+        }
+    }
 }
