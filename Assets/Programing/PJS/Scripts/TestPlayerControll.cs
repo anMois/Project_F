@@ -30,7 +30,8 @@ public class TestPlayerControll : MonoBehaviour
 
         Vector3 dir = new Vector3(x, 0, z);
 
-        rigid.velocity = dir.normalized * speed;
+        //rigid.velocity = dir.normalized * speed;
+        //transform.Translate(Vector3.forward * );
     }
 
     private void MouseRotate()
