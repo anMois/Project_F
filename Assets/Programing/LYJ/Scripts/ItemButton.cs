@@ -8,10 +8,17 @@ public class ItemButton : MonoBehaviour
 {
     public ItemData itemData;
     private MainController mainController;
+    private Button button;
 
     private void Start()
     {
         mainController = FindObjectOfType<MainController>();
+        button = GetComponent<Button>();
+
+        if (button != null)
+        {
+            button.onClick.AddListener(OnButtonClick);
+        }
     }
 
     public void OnButtonClick()
