@@ -6,6 +6,7 @@ public class InGameController : MonoBehaviour
 {
     private GameObject menuCanvas;
     private GameObject manualCanvas;
+    private GameObject gameoverCanvas;
 
     private Button returnGameButton;
     private Button manualButton;
@@ -13,10 +14,14 @@ public class InGameController : MonoBehaviour
     private Button leaveGameButton;
     private Button manualExitButton;
 
+    private Button restartButton;
+    private Button exitButton;
+
     private void Start()
     {
         menuCanvas = GameObject.Find("In Game Menu Canvas");
         manualCanvas = GameObject.Find("In Game Manual Canvas");
+        gameoverCanvas = GameObject.Find("Game Over Canvas");
 
         returnGameButton = GameObject.Find("Return Game Button").GetComponent<Button>();
         manualButton = GameObject.Find("Manual Button").GetComponent<Button>();
@@ -24,8 +29,12 @@ public class InGameController : MonoBehaviour
         leaveGameButton = GameObject.Find("Leave Game Button").GetComponent<Button>();
         manualExitButton = GameObject.Find("Manual Exit Button").GetComponent<Button>();
 
+        restartButton = GameObject.Find("Restart Button").GetComponent<Button>();
+        exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
+
         menuCanvas.SetActive(false);
         manualCanvas.SetActive(false);
+        gameoverCanvas.SetActive(false);
 
         InitializeButtons();
     }
@@ -37,6 +46,9 @@ public class InGameController : MonoBehaviour
         if (giveUpButton) giveUpButton.onClick.AddListener(ClickGiveUpButton);
         if (leaveGameButton) leaveGameButton.onClick.AddListener(ClickLeaveGame);
         if (manualExitButton) manualExitButton.onClick.AddListener(ManualExitButton);
+
+        if (restartButton) restartButton.onClick.AddListener(ClickRestartButton);
+        if (exitButton) exitButton.onClick.AddListener(ClickExitButton);
     }
 
     private void Update()
@@ -79,6 +91,7 @@ public class InGameController : MonoBehaviour
 
     public void ClickGiveUpButton()
     {
+        //메인 로비 이동
         SceneManager.LoadScene("GameStart");
     }
 
@@ -89,5 +102,16 @@ public class InGameController : MonoBehaviour
 
         //빌드해서 사용할 때는 아래 코드를 사용
         //Application.Quit();  
+    }
+
+    public void ClickRestartButton()
+    {
+        SceneManager.LoadScene("Stage1");
+    }
+
+    public void ClickExitButton()
+    {
+        //메인 로비 이동
+        SceneManager.LoadScene("GameStart");
     }
 }
