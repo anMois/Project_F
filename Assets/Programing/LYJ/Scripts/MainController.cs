@@ -29,7 +29,7 @@ public class MainController : MonoBehaviour
 
     private void Update()
     {
-        if (explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
+        if (explanationCanvas != null && explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
         {
             Explanation();
         }
