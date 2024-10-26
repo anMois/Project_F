@@ -663,18 +663,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6625926391028956085, guid: 825e0e43e9f73834abf6e516b5d4fd95, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625926391028956085, guid: 825e0e43e9f73834abf6e516b5d4fd95, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1381178275}
-    - target: {fileID: 6625926391309038664, guid: 825e0e43e9f73834abf6e516b5d4fd95, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.000001412809
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 825e0e43e9f73834abf6e516b5d4fd95, type: 3}
 --- !u!1001 &4499079640595834735
@@ -684,22 +672,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4499079640311161368, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4499079640311161368, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1381178275}
-    - target: {fileID: 4499079640428009574, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4499079640428009574, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1381178275}
     - target: {fileID: 4499079641562436322, guid: a745d702904c1054ea705ce75b472286, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -788,21 +760,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: In Game Menu Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4499079641823716335, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4499079641823716335, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1381178275}
-    - target: {fileID: 4499079641903762915, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4499079641903762915, guid: a745d702904c1054ea705ce75b472286, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1381178275}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a745d702904c1054ea705ce75b472286, type: 3}
