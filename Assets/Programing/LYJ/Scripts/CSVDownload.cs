@@ -8,8 +8,8 @@ public class CSVDownload : MonoBehaviour
 {
     const string urlPath = "https://docs.google.com/spreadsheets/d/1DdyytW9508YQYY1_63fVf_bZNvDM7thHC7nBM7M4X6M/export?format=csv";
 
-    public MainController mainController; //MainController 참조 추가
-    public GameObject[] buttons; //버튼 배열 추가
+    public MainController mainController;
+    public GameObject[] buttons;
 
     private void Awake()
     {
@@ -25,14 +25,9 @@ public class CSVDownload : MonoBehaviour
         if (request.result == UnityWebRequest.Result.Success)
         {
             string receiveText = request.downloadHandler.text;
-            List<ItemData> itemDataList = ParseCSV(receiveText); //CSV 데이터 파싱
+            List<ItemData> itemDataList = ParseCSV(receiveText);
 
-            //MainController로 아이템 데이터 전달
             SetItemData(itemDataList);
-        }
-        else
-        {
-            Debug.LogError("Failed to download CSV: " + request.error);
         }
     }
 
