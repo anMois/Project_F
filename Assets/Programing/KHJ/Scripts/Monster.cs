@@ -130,8 +130,9 @@ public class Monster : MonoBehaviour, IDamageable
         public override void StateUpdate()
         {
             // Trace
-            // Move to traceRange
+            // Move to traceRange with gazing target
             Vector3 direction = (monster.target.position - monster.transform.position).normalized;
+            monster.transform.LookAt(monster.target);
             monster.rb.velocity = monster.moveSpeed * direction;
 
             // Transition
@@ -156,7 +157,8 @@ public class Monster : MonoBehaviour, IDamageable
         public override void StateUpdate()
         {
             // Guard
-            // Move horizontally
+            // Move horizontally with gazing target
+            monster.transform.LookAt(monster.target);
             Guard();
 
             // Transition
