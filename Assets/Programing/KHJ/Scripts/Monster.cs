@@ -190,14 +190,9 @@ public class Monster : MonoBehaviour, IDamageable
         {
             while (true)
             {
-                Attack();
+                monster.Attack();
                 yield return new WaitForSeconds(monster.attackCoolDown);
             }
-        }
-
-        protected void Attack()
-        {
-            Debug.Log($"{monster.name} Attack!");
         }
     }
 

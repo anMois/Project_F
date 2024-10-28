@@ -20,8 +20,12 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        bool valid = (layerMask & collision.gameObject.layer) == collision.gameObject.layer;
+        if (!valid)
+            return;
 
+        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        Debug.Log($"Collision with {collision.gameObject.name}");
         if (damageable != null)
         {
             damageable.TakeHit(dmg);
@@ -43,6 +47,7 @@ public class Projectile : MonoBehaviour
         layerMask &= ~friendlyLayer;
 
         // Fire
+        gameObject.SetActive(true);
         Vector3 direction = (transform.position - target.position).normalized;
         rb.velocity = direction * speed;
 
