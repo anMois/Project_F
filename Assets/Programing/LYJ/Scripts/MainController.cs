@@ -1,7 +1,8 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainController : MonoBehaviour
 {
@@ -30,7 +31,7 @@ public class MainController : MonoBehaviour
         bookExitButton = GameObject.Find("Book Exit Button").GetComponent<Button>();
         manualExitButton = GameObject.Find("Manual Exit Button").GetComponent<Button>();
         exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
-        
+
         InitializeCanvases();
         InitializeButtons();
     }

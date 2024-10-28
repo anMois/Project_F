@@ -23,9 +23,17 @@ public class ItemButton : MonoBehaviour
 
     public void OnButtonClick()
     {
-        if (mainController != null)
+        if (mainController != null && itemData != null)
         {
             mainController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+        }
+
+        if (mainController != null)
+        {
+            if (itemData != null)
+            {
+                mainController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+            }
         }
     }
 }

@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Item_", menuName = "Item")]
-public class ItemData : ScriptableObject
+[System.Serializable]
+public class ItemData
 {
     public string itemName;
     public string description;
     public Sprite itemImage;
+    public float price;
 }
