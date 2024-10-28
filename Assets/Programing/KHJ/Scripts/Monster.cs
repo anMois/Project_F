@@ -33,6 +33,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected int maxHp;
     [SerializeField] protected int curHp;
     [SerializeField] protected float moveSpeed;
+    [SerializeField] protected int attackDamage;
     [SerializeField] protected float attackCoolDown;
     [SerializeField] protected int dropRate;
 

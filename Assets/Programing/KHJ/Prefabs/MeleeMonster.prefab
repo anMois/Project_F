@@ -106,10 +106,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8232658080284998503}
-  - component: {fileID: 8657006412678809751}
+  - component: {fileID: -7143792899361735823}
   - component: {fileID: -3266356521308528276}
   m_Layer: 7
-  m_Name: Monster
+  m_Name: MeleeMonster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,7 +131,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8657006412678809751
+--- !u!114 &-7143792899361735823
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8232658080284998504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9c67f03d8952c4f85b3e4e663800bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 31ef18bff39b0f34bb188878a0260e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   curState: 0
@@ -149,12 +149,13 @@ MonoBehaviour:
   visualRange: 10
   traceRange: 8
   guardRange: 6
-  attackMaxRange: 4
-  attackRange: 2
+  attackMaxRange: 2
+  attackRange: 1
   monsterID: 0
   maxHp: 10
   curHp: 0
-  moveSpeed: 8
+  moveSpeed: 3
+  attackDamage: 5
   attackCoolDown: 3
   dropRate: 0
 --- !u!54 &-3266356521308528276
