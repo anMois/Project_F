@@ -7,15 +7,23 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] Transform player;
 
     [SerializeField] float moveSpeed;
+    [SerializeField] float runSpeed;
+    [SerializeField] float dashSpeed;
     [SerializeField] float yAngle;
     [SerializeField] float mouserotateSpeed;
     [SerializeField] Animator animator;
+
+
+    [SerializeField] float hp;
 
     private static int idleHash = Animator.StringToHash("Idle03");
     private static int walkForwardHash = Animator.StringToHash("BattleWalkForward");
     private static int walkBackHash = Animator.StringToHash("BattleWalkBack");
     private static int walkRightHash = Animator.StringToHash("BattleWalkRight");
     private static int walkLeftHash = Animator.StringToHash("BattleWalkLeft");
+    private static int runForwardHash = Animator.StringToHash("BattleRunForward");
+    private static int DieHash = Animator.StringToHash("Die");
+
 
     public int curAniHash { get; private set; }
 
@@ -32,6 +40,8 @@ public class PlayerMover : MonoBehaviour
         Move();
         PlayerCamera();
         AnimaitorPlay();
+        Space();
+        Dash();
     }
 
     private void Move()
@@ -45,6 +55,17 @@ public class PlayerMover : MonoBehaviour
 
         transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
         transform.Rotate(moveDir.normalized * moveSpeed * Time.deltaTime);
+
+        if(Input.GetKey(KeyCode.LeftControl))
+        {
+            transform.Translate(moveDir.normalized * runSpeed * Time.deltaTime);
+            transform.Rotate(moveDir.normalized * runSpeed * Time.deltaTime);
+        }
+
+        if(hp == 0)             
+        {
+            moveSpeed = 0;
+        }
     }
 
     private void PlayerCamera()
@@ -54,6 +75,45 @@ public class PlayerMover : MonoBehaviour
         player.transform.rotation = Quaternion.Euler(0, yAngle, 0);
     }
 
+    private void Space()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (hp > 0)
+            {
+                hp--;
+            }
+            if(hp <= 0)
+            {
+                hp = 0;
+            }
+        }
+    }
+
+    private void Dash()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                transform.Translate(Vector3.forward * dashSpeed);
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                transform.Translate(Vector3.back * dashSpeed);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                transform.Translate(Vector3.left * dashSpeed);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                transform.Translate(Vector3.right * dashSpeed);
+            }
+        }
+    }
+
+
     #region 애니메이션
     private void AnimaitorPlay()
     {
@@ -61,30 +121,47 @@ public class PlayerMover : MonoBehaviour
 
         if (Input.GetKey(KeyCode.W))
         {
-            animator.CrossFade(walkForwardHash, 0.2f);
             checkAniHash = walkForwardHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            animator.CrossFade(walkBackHash, 0.2f);
             checkAniHash = walkBackHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            animator.CrossFade(walkLeftHash, 0.2f);
             checkAniHash = walkLeftHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            animator.CrossFade(walkRightHash, 0.2f);
             checkAniHash = walkRightHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
         }
-        //else if (Input.GetKey(KeyCode.ct)
         else
         {
-            animator.CrossFade(idleHash, 0.2f);
             checkAniHash = idleHash;
         }
+
+        if (hp <= 0)
+        {
+            checkAniHash = DieHash;
+        }
+
+
 
         if (curAniHash != checkAniHash)
         {
