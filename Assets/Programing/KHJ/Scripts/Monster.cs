@@ -10,10 +10,10 @@ public class Monster : MonoBehaviour, IDamageable
         Idle, Trace, Guard, Dead, SIZE
     }
     [SerializeField] State curState;
-    private BaseState[] states = new BaseState[(int)State.SIZE];
+    protected BaseState[] states = new BaseState[(int)State.SIZE];
 
     [Header("Enemy")]
-    [SerializeField] GameObject target;
+    [SerializeField] protected Transform target;
 
     [Header("Range")]
     [Tooltip("Visual Range: cyan\n" +
@@ -21,28 +21,24 @@ public class Monster : MonoBehaviour, IDamageable
         "Guard Range: yellow\n" +
         "Attack Max Range: magenta\n" +
         "Attack Range: red")]
-    [SerializeField] bool visualization;
-    [SerializeField] float visualRange;
-    [SerializeField] float traceRange;
-    [SerializeField] float guardRange;
-    [SerializeField] float attackMaxRange;
-    [SerializeField] float attackRange;
+    [SerializeField] protected bool visualization;
+    [SerializeField] protected float visualRange;
+    [SerializeField] protected float traceRange;
+    [SerializeField] protected float guardRange;
+    [SerializeField] protected float attackMaxRange;
+    [SerializeField] protected float attackRange;
 
     [Header("Attributes")]
-    [SerializeField] int monsterID;
-    [SerializeField] int maxHp;
-    [SerializeField] int curHp;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float attackCoolDown;
-    [SerializeField] int dropRate;
+    [SerializeField] protected int monsterID;
+    [SerializeField] protected int maxHp;
+    [SerializeField] protected int curHp;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float attackCoolDown;
+    [SerializeField] protected int dropRate;
 
-    //[Header("Projectile")]
-    //[SerializeField] GameObject projectilePrefab;
-    //[SerializeField] float projectileSpeed;
+    protected Rigidbody rb;
 
-    private Rigidbody rb;
-
-    private void Awake()
+    protected void Awake()
     {
         states[(int)State.Idle] = new IdleState(this);
         states[(int)State.Trace] = new TraceState(this);
@@ -50,9 +46,9 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)State.Dead] = new DeadState(this);
     }
 
-    private void Start()
+    protected void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         rb = GetComponent<Rigidbody>();
 
@@ -62,12 +58,12 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)curState].StateEnter();
     }
 
-    private void OnDestroy()
+    protected void OnDestroy()
     {
         states[(int)curState].StateExit();
     }
 
-    private void Update()
+    protected void Update()
     {
         states[(int)curState].StateUpdate();
     }
@@ -88,13 +84,13 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    public virtual void Attack()
+    protected virtual void Attack()
     {
         throw new NotImplementedException();
     }
 
     #region MonsterState
-    private class MonsterState : BaseState
+    protected class MonsterState : BaseState
     {
         public Monster monster;
         public MonsterState(Monster monster) => this.monster = monster;
@@ -108,7 +104,7 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    private class IdleState : MonsterState
+    protected class IdleState : MonsterState
     {
         public IdleState(Monster monster) : base(monster) { }
 
@@ -118,7 +114,7 @@ public class Monster : MonoBehaviour, IDamageable
             // Keep position
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if(distance <= monster.visualRange)
             {
@@ -127,7 +123,7 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    private class TraceState : MonsterState
+    protected class TraceState : MonsterState
     {
         public TraceState(Monster monster) : base(monster) { }
 
@@ -135,11 +131,11 @@ public class Monster : MonoBehaviour, IDamageable
         {
             // Trace
             // Move to traceRange
-            Vector3 direction = (monster.target.transform.position - monster.transform.position).normalized;
+            Vector3 direction = (monster.target.position - monster.transform.position).normalized;
             monster.rb.velocity = monster.moveSpeed * direction;
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if (distance <= monster.traceRange)
             {
@@ -148,7 +144,7 @@ public class Monster : MonoBehaviour, IDamageable
         }
     }
 
-    private class GuardState : MonsterState
+    protected class GuardState : MonsterState
     {
         public GuardState(Monster monster) : base(monster) { }
 
@@ -164,7 +160,7 @@ public class Monster : MonoBehaviour, IDamageable
             Guard();
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if (distance > monster.attackMaxRange)
             {
@@ -181,10 +177,10 @@ public class Monster : MonoBehaviour, IDamageable
             }
         }
 
-        private void Guard()
+        protected void Guard()
         {
             float angle = monster.moveSpeed * 0.1f;
-            monster.transform.RotateAround(monster.target.transform.position, monster.target.transform.up, angle);
+            monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
         }
 
         Coroutine attackCoroutine;
@@ -197,13 +193,13 @@ public class Monster : MonoBehaviour, IDamageable
             }
         }
 
-        private void Attack()
+        protected void Attack()
         {
             Debug.Log($"{monster.name} Attack!");
         }
     }
 
-    private class DeadState : MonsterState
+    protected class DeadState : MonsterState
     {
         public DeadState(Monster monster) : base(monster) { }
 
@@ -213,14 +209,14 @@ public class Monster : MonoBehaviour, IDamageable
             Die();
         }
 
-        private void Die()
+        protected void Die()
         {
             Destroy(monster.gameObject);
         }
     }
     #endregion
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         if (visualization == false)
             return;

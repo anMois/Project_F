@@ -154,7 +154,7 @@ MonoBehaviour:
   monsterID: 0
   maxHp: 10
   curHp: 0
-  moveSpeed: 5
+  moveSpeed: 8
   attackCoolDown: 3
   dropRate: 0
 --- !u!54 &-3266356521308528276
