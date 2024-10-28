@@ -10,6 +10,12 @@ public class MainController : MonoBehaviour
     private GameObject explanationCanvas;
     private GameObject manualCanvas;
 
+    private Button newGameButton;
+    private Button itemBookButton;
+    private Button manualButton;
+    private Button bookExitButton;
+    private Button manualExitButton;
+    private Button exitButton;
 
     private void Start()
     {
@@ -18,18 +24,38 @@ public class MainController : MonoBehaviour
         explanationCanvas = GameObject.Find("Explanation Canvas");
         manualCanvas = GameObject.Find("Manual Canvas");
 
-        if (mainCanvas != null && bookCanvas != null && explanationCanvas != null && manualCanvas != null)
-        {
-            mainCanvas.SetActive(true);
-            bookCanvas.SetActive(false);
-            explanationCanvas.SetActive(false);
-            manualCanvas.SetActive(false);
-        }
+        newGameButton = GameObject.Find("New Game Button").GetComponent<Button>();
+        itemBookButton = GameObject.Find("Item Book Button").GetComponent<Button>();
+        manualButton = GameObject.Find("Manual Button").GetComponent<Button>();
+        bookExitButton = GameObject.Find("Book Exit Button").GetComponent<Button>();
+        manualExitButton = GameObject.Find("Manual Exit Button").GetComponent<Button>();
+        exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
+        
+        InitializeCanvases();
+        InitializeButtons();
+    }
+
+    private void InitializeCanvases()
+    {
+        mainCanvas.SetActive(true);
+        bookCanvas.SetActive(false);
+        explanationCanvas.SetActive(false);
+        manualCanvas.SetActive(false);
+    }
+
+    private void InitializeButtons()
+    {
+        if (newGameButton) newGameButton.onClick.AddListener(ChangeStage1Scene);
+        if (itemBookButton) itemBookButton.onClick.AddListener(ClickBookButton);
+        if (manualButton) manualButton.onClick.AddListener(ClickManualButton);
+        if (bookExitButton) bookExitButton.onClick.AddListener(BookExitButton);
+        if (manualExitButton) manualExitButton.onClick.AddListener(ManualExitButton);
+        if (exitButton) exitButton.onClick.AddListener(ExitButton);
     }
 
     private void Update()
     {
-        if (explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
+        if (explanationCanvas != null && explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
         {
             Explanation();
         }
@@ -60,26 +86,28 @@ public class MainController : MonoBehaviour
 
     public void ClickBookButton()
     {
-        mainCanvas.SetActive(false);
-        bookCanvas.SetActive(true);
+        CurrentCanvasState(mainCanvas, bookCanvas);
     }
 
     public void BookExitButton()
     {
-        mainCanvas.SetActive(true);
-        bookCanvas.SetActive(false);
+        CurrentCanvasState(bookCanvas, mainCanvas);
     }
 
     public void ClickManualButton()
     {
-        mainCanvas.SetActive(false);
-        manualCanvas.SetActive(true);
+        CurrentCanvasState(mainCanvas, manualCanvas);
     }
 
     public void ManualExitButton()
     {
-        mainCanvas.SetActive(true);
-        manualCanvas.SetActive(false);
+        CurrentCanvasState(manualCanvas, mainCanvas);
+    }
+
+    private void CurrentCanvasState(GameObject toHide, GameObject toShow)
+    {
+        toHide.SetActive(false);
+        toShow.SetActive(true);
     }
 
     public void ExitButton()
