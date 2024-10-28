@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8232658079125045994}
   - component: {fileID: 8232658079125045995}
   - component: {fileID: 8232658079125045996}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8232658080284998503}
   - component: {fileID: 8657006412678809751}
   - component: {fileID: -3266356521308528276}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}

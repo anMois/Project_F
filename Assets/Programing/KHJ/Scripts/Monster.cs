@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
     public enum State
     {
@@ -85,6 +86,11 @@ public class Monster : MonoBehaviour
         {
             ChangeState(State.Dead);
         }
+    }
+
+    public virtual void Attack()
+    {
+        throw new NotImplementedException();
     }
 
     #region MonsterState
