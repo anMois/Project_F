@@ -68,6 +68,12 @@ public class CSVDownload : MonoBehaviour
             {
                 if (buttonObject.name == itemData.itemName)
                 {
+                    StoreItemButton storeItemButton = buttonObject.GetComponent<StoreItemButton>();
+                    if (storeItemButton != null)
+                    {
+                        storeItemButton.itemData = itemData;
+                    }
+
                     ItemButton itemButton = buttonObject.GetComponent<ItemButton>();
                     if (itemButton != null)
                     {
