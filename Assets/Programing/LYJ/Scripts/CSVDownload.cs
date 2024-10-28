@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using System.IO;
+using UnityEngine.UI;
 
 public class CSVDownload : MonoBehaviour
 {
@@ -62,25 +64,73 @@ public class CSVDownload : MonoBehaviour
 
     private void SetItemData(List<ItemData> itemDataList)
     {
-        foreach (ItemData itemData in itemDataList)
-        {
-            foreach (GameObject buttonObject in buttons)
-            {
-                if (buttonObject.name == itemData.itemName)
-                {
-                    StoreItemButton storeItemButton = buttonObject.GetComponent<StoreItemButton>();
-                    if (storeItemButton != null)
-                    {
-                        storeItemButton.itemData = itemData;
-                    }
+        HashSet<int> usedIndices = new HashSet<int>();
 
-                    ItemButton itemButton = buttonObject.GetComponent<ItemButton>();
-                    if (itemButton != null)
-                    {
-                        itemButton.itemData = itemData;
-                    }
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (i >= itemDataList.Count)
+                break;
+
+            ItemData itemData = itemDataList[i];
+
+            ItemButton itemButton = buttons[i].GetComponent<ItemButton>();
+            if (itemButton != null)
+            {
+                itemButton.itemData = itemData;
+            }
+        }
+
+        foreach (GameObject buttonObject in buttons)
+        {
+            if (usedIndices.Count >= itemDataList.Count)
+                break;
+
+            int randomIndex;
+
+            do
+            {
+                randomIndex = Random.Range(0, itemDataList.Count);
+            } while (usedIndices.Contains(randomIndex));
+
+            usedIndices.Add(randomIndex);
+
+            ItemData itemData = itemDataList[randomIndex];
+
+            StoreItemButton storeItemButton = buttonObject.GetComponent<StoreItemButton>();
+            if (storeItemButton != null)
+            {
+                storeItemButton.itemData = itemData;
+            }
+
+            GameObject itemPanel = GameObject.Find($"Store Canvas/Random Store Item/ItemPanel{usedIndices.Count}");
+            if (itemPanel == null)
+            {
+                continue; //사용하는 이유는 앞에 itemButton에서는 itemPanel을 사용하지 않음
+            }
+
+            Button itemNameButton = itemPanel.transform.Find("Item Name Button")?.GetComponent<Button>();
+            if (itemNameButton != null)
+            {
+                TextMeshProUGUI itemNameText = itemNameButton.GetComponentInChildren<TextMeshProUGUI>();
+                if (itemNameText != null)
+                {
+                    itemNameText.text = itemData.itemName;
                 }
+            }
+
+            Image itemImageComponent = itemPanel.transform.Find("Item Image")?.GetComponent<Image>();
+            if (itemImageComponent != null)
+            {
+                itemImageComponent.sprite = itemData.itemImage;
+            }
+
+            TextMeshProUGUI itemGold = itemPanel.transform.Find("Gold")?.GetComponent<TextMeshProUGUI>();
+            if (itemGold != null)
+            {
+                itemGold.text = itemData.price.ToString();
             }
         }
     }
+
+
 }

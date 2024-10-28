@@ -7,7 +7,7 @@ public class StoreItemButton : MonoBehaviour
 {
     public ItemData itemData;
     private StoreController storeController;
-    [SerializeField] Button button;
+    private Button button;
 
     private void Start()
     {
