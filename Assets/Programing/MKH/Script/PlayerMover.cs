@@ -15,7 +15,7 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rigid;
     [SerializeField] float hp;
-    [SerializeField] int maxJump;
+    [SerializeField] public int maxJump;
     [SerializeField] bool isGround = false;
     int jumpCount;
 
