@@ -8,13 +8,17 @@ public class PlayerMover : MonoBehaviour
 
     [SerializeField] float moveSpeed;
     [SerializeField] float runSpeed;
+    [SerializeField] float jumpPower;
     [SerializeField] float dashSpeed;
     [SerializeField] float yAngle;
     [SerializeField] float mouserotateSpeed;
     [SerializeField] Animator animator;
-
-
+    [SerializeField] Rigidbody rigid;
     [SerializeField] float hp;
+    [SerializeField] int maxJump;
+    [SerializeField] bool isGround = false;
+    int jumpCount;
+
 
     private static int idleHash = Animator.StringToHash("Idle03");
     private static int walkForwardHash = Animator.StringToHash("BattleWalkForward");
@@ -22,7 +26,9 @@ public class PlayerMover : MonoBehaviour
     private static int walkRightHash = Animator.StringToHash("BattleWalkRight");
     private static int walkLeftHash = Animator.StringToHash("BattleWalkLeft");
     private static int runForwardHash = Animator.StringToHash("BattleRunForward");
-    private static int DieHash = Animator.StringToHash("Die");
+    private static int dieHash = Animator.StringToHash("Die");
+    private static int jumpUpHash = Animator.StringToHash("JumpUP");
+    private static int jumpDownHash = Animator.StringToHash("JumpDown");
 
 
     public int curAniHash { get; private set; }
@@ -31,7 +37,9 @@ public class PlayerMover : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         player = GetComponent<Transform>();
+        rigid = GetComponent<Rigidbody>();
 
+        jumpCount = maxJump;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -40,7 +48,7 @@ public class PlayerMover : MonoBehaviour
         Move();
         PlayerCamera();
         AnimaitorPlay();
-        Space();
+        Jump();
         Dash();
     }
 
@@ -75,20 +83,32 @@ public class PlayerMover : MonoBehaviour
         player.transform.rotation = Quaternion.Euler(0, yAngle, 0);
     }
 
-    private void Space()
+    private void Jump()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+      
+        if(Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
         {
-            if (hp > 0)
-            {
-                hp--;
-            }
-            if(hp <= 0)
-            {
-                hp = 0;
-            }
+            rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
+            jumpCount--;
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.transform.tag != null)
+        {
+            isGround = true;
+            jumpCount = maxJump;
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.tag != null)
+        {
+            isGround = false;
+        }
+    }
+
 
     private void Dash()
     {
@@ -156,9 +176,18 @@ public class PlayerMover : MonoBehaviour
             checkAniHash = idleHash;
         }
 
+        if (rigid.velocity.y > 0.01f)
+        {
+            checkAniHash = jumpUpHash;
+        }
+        else if (rigid.velocity.y < -0.01f)
+        {
+            checkAniHash = jumpDownHash;
+        }
+
         if (hp <= 0)
         {
-            checkAniHash = DieHash;
+            checkAniHash = dieHash;
         }
 
 
