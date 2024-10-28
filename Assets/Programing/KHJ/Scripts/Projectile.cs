@@ -18,16 +18,24 @@ public class Projectile : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        bool valid = (layerMask & (1 << collision.gameObject.layer)) != 0;
+        bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         if (!valid)
             return;
 
-        IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
+        Transform otherParent = other.gameObject.transform.parent;
+        if (otherParent == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        IDamageable damageable = otherParent.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageable.TakeHit(dmg);
+            Destroy(gameObject);
         }
         else
         {
@@ -47,8 +55,9 @@ public class Projectile : MonoBehaviour
 
         // Fire
         gameObject.SetActive(true);
-        Vector3 direction = (transform.position - target.position).normalized;
-        rb.velocity = direction * speed;
+        Vector3 direction = (target.position - transform.position).normalized;
+        //rb.velocity = direction * speed;
+        rb.AddForce(direction * speed, ForceMode.Impulse);
 
         Destroy(gameObject, lifeTime);
     }

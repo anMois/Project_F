@@ -44,11 +44,6 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)State.Trace] = new TraceState(this);
         states[(int)State.Guard] = new GuardState(this);
         states[(int)State.Dead] = new DeadState(this);
-    }
-
-    protected void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
 
         rb = GetComponent<Rigidbody>();
 
@@ -56,6 +51,11 @@ public class Monster : MonoBehaviour, IDamageable
 
         curState = State.Idle;
         states[(int)curState].StateEnter();
+    }
+
+    protected void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     protected void OnDestroy()
@@ -181,17 +181,19 @@ public class Monster : MonoBehaviour, IDamageable
 
         protected void Guard()
         {
-            float angle = monster.moveSpeed * 0.1f;
+            float angle = monster.moveSpeed * 0.01f;
             monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
         }
 
         Coroutine attackCoroutine;
         IEnumerator AttackRoutine()
         {
+            WaitForSeconds attackDelay = new WaitForSeconds(monster.attackCoolDown);
+
             while (true)
             {
+                yield return attackDelay;
                 monster.Attack();
-                yield return new WaitForSeconds(monster.attackCoolDown);
             }
         }
     }

@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1909492937956585497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.138}
+  m_LocalPosition: {x: 0, y: 0, z: 1.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -80,16 +80,17 @@ MonoBehaviour:
   curState: 0
   target: {fileID: 0}
   visualization: 1
-  visualRange: 10
-  traceRange: 8
-  guardRange: 6
-  attackMaxRange: 4
-  attackRange: 2
+  visualRange: 20
+  traceRange: 16
+  guardRange: 12
+  attackMaxRange: 10
+  attackRange: 8
   monsterID: 0
   maxHp: 5
   curHp: 0
   moveSpeed: 5
-  attackCoolDown: 3
+  isAttackCoolTime: 0
+  attackCoolDown: 1
   dropRate: 0
   projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
   muzzlePoint: {fileID: 602844269511198107}

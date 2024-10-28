@@ -19,6 +19,6 @@ public class RangedMonster : Monster
     protected override void Attack()
     {
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, muzzlePoint.rotation);
-        newProjectile.Launch(friendlyLayer, target.transform);
+        newProjectile.Launch(friendlyLayer, target.transform.GetChild(0));
     }
 }
