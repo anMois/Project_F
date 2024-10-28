@@ -9,6 +9,7 @@ public class StoreController : MonoBehaviour
 {
     private GameObject storeCanvas;
     private GameObject explanationCanvas;
+    private Button storeExitButton;
 
     private void Start()
     {
@@ -16,6 +17,13 @@ public class StoreController : MonoBehaviour
         explanationCanvas = GameObject.Find("Explanation Canvas");
         storeCanvas.SetActive(true);   
         explanationCanvas.SetActive(false);
+
+        storeExitButton = GameObject.Find("Store Exit Button").GetComponent<Button>();
+
+        if (storeExitButton != null)
+        {
+            storeExitButton.onClick.AddListener(StoreExitButtonClick);
+        }
     }
 
     private void Update()
@@ -37,5 +45,10 @@ public class StoreController : MonoBehaviour
         itemNameText.text = itemName;
         descriptionText.text = description;
         itemImageComponent.sprite = itemImage;
+    }
+
+    public void StoreExitButtonClick()
+    {
+        storeCanvas.SetActive(false);
     }
 }

@@ -7,8 +7,10 @@ public class StoreItemButton : MonoBehaviour
 {
     public ItemData itemData;
     private StoreController storeController;
-    [SerializeField] Button button;
-    [SerializeField] Button itemBuyButton;
+    private Button button;
+    private Button itemBuyButton;
+    private Button potionButton;
+    private Button grenadeButton;
 
     private bool isPurchased = false;
 
@@ -16,7 +18,9 @@ public class StoreItemButton : MonoBehaviour
     {
         storeController = FindObjectOfType<StoreController>();
         button = GetComponent<Button>();
-        itemBuyButton = transform.Find("Item Buy Button").GetComponent<Button>();
+        itemBuyButton = transform.Find("Item Buy Button")?.GetComponent<Button>();
+        potionButton = GameObject.Find("Potion Buy Button").GetComponent<Button>();
+        grenadeButton = GameObject.Find("Grenade Buy Button").GetComponent<Button>();
 
         if (button != null)
         {
@@ -27,11 +31,23 @@ public class StoreItemButton : MonoBehaviour
         {
             itemBuyButton.onClick.AddListener(ItemBuyButtonClick);
         }
+
+        if (potionButton != null)
+        {
+            potionButton.onClick.RemoveAllListeners();
+            potionButton.onClick.AddListener(() => PotionGrenadeBuyButtonClick(potionButton));
+        }
+
+        if (grenadeButton != null)
+        {
+            grenadeButton.onClick.RemoveAllListeners();
+            grenadeButton.onClick.AddListener(() => PotionGrenadeBuyButtonClick(grenadeButton));
+        }
     }
 
     public void OnButtonClick()
     {
-        if (storeController != null && itemData != null)
+        if (storeController != null && itemBuyButton != null && itemData != null)
         {
             storeController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
         }
@@ -39,10 +55,10 @@ public class StoreItemButton : MonoBehaviour
 
     public void ItemBuyButtonClick()
     {
-        if (isPurchased) // 이미 구매한 경우
+        if (isPurchased)
         {
             Debug.Log($"{itemData.itemName}은 이미 구매되었습니다.");
-            return; // 구매하지 않도록 조기 리턴
+            return;
         }
 
         bool success = GameManager.Instance.PurchaseItem(itemData.price);
@@ -62,10 +78,23 @@ public class StoreItemButton : MonoBehaviour
 
     private void UpdateButtonState()
     {
-        ColorBlock colors = itemBuyButton.colors;
-        colors.normalColor = Color.gray;
-        colors.disabledColor = Color.gray;
-        itemBuyButton.colors = colors;
         itemBuyButton.interactable = false;
+    }
+
+    public void PotionGrenadeBuyButtonClick(Button clickedButton)
+    {
+        clickedButton.interactable = false;
+
+        if (GameManager.Instance.PotionGrenadeItem(1000))
+        {
+            Debug.Log($"구매 완료");
+            Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+        }
+        else
+        {
+            Debug.Log("돈이 부족하여 구매할 수 없습니다.");
+            Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+            clickedButton.interactable = true;
+        }
     }
 }

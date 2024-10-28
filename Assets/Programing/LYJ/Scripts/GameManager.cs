@@ -39,6 +39,21 @@ public class GameManager : MonoBehaviour
         return false;
     }
 
+    public bool PotionGrenadeItem(float price)
+    {
+        if (curPrice >= price)
+        {
+            curPrice -= price;
+            UpdatePriceText();
+            return true;
+        }
+        else
+        {
+            Debug.Log("돈이 부족하여 구매할 수 없습니다.");
+            return false;
+        }
+    }
+
     private void UpdatePriceText()
     {
         if (priceText != null)
