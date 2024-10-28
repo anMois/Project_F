@@ -8,12 +8,10 @@ public class CSVDownload : MonoBehaviour
 {
     const string urlPath = "https://docs.google.com/spreadsheets/d/1DdyytW9508YQYY1_63fVf_bZNvDM7thHC7nBM7M4X6M/export?format=csv";
 
-    public MainController mainController;
     public GameObject[] buttons;
 
     private void Awake()
     {
-        mainController = GetComponent<MainController>();
         StartCoroutine(DownloadRoutine());
     }
 
