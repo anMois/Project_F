@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 11876222}
   - component: {fileID: 11876221}
   m_Layer: 5
-  m_Name: Gold Image
+  m_Name: Item Buy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,15 +226,15 @@ RectTransform:
   m_GameObject: {fileID: 11876219}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39895, y: 0.39895, z: 0.39895}
+  m_LocalScale: {x: 0.11257641, y: 0.4121502, z: 0.52038085}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1392259006}
-  m_RootOrder: 2
+  m_Father: {fileID: 2069614915}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -520, y: 4}
+  m_AnchoredPosition: {x: -15.237915, y: -64.567955}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11876221
@@ -561,7 +561,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 768131977}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -637,7 +637,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1392259006}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -933,7 +933,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2100644308}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1300,7 +1300,7 @@ GameObject:
   - component: {fileID: 472356504}
   - component: {fileID: 472356503}
   m_Layer: 5
-  m_Name: Gold Image
+  m_Name: Item Buy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1315,15 +1315,15 @@ RectTransform:
   m_GameObject: {fileID: 472356501}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39895, y: 0.39895, z: 0.39895}
+  m_LocalScale: {x: 0.11257641, y: 0.4121502, z: 0.52038085}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1636908332}
-  m_RootOrder: 2
+  m_Father: {fileID: 1101174965}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -520, y: 2.5000305}
+  m_AnchoredPosition: {x: -15.237915, y: -66.11755}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472356503
@@ -1604,7 +1604,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -227, y: 110}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 267.75, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659252857
 MonoBehaviour:
@@ -2079,7 +2079,6 @@ RectTransform:
   m_Children:
   - {fileID: 1765940608}
   - {fileID: 1966321352}
-  - {fileID: 1688477011}
   - {fileID: 1403588942}
   - {fileID: 49330115}
   m_Father: {fileID: 1226158697}
@@ -2379,6 +2378,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 448501661}
+  - {fileID: 472356502}
   m_Father: {fileID: 1636908332}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2404,6 +2404,8 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+  button: {fileID: 0}
+  itemBuyButton: {fileID: 0}
 --- !u!114 &1101174967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,7 +2501,7 @@ GameObject:
   - component: {fileID: 1138429105}
   - component: {fileID: 1138429104}
   m_Layer: 5
-  m_Name: Gold Image
+  m_Name: Item Buy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2514,15 +2516,15 @@ RectTransform:
   m_GameObject: {fileID: 1138429102}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39895, y: 0.39895, z: 0.39895}
+  m_LocalScale: {x: 0.11257641, y: 0.4121502, z: 0.52038085}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2100644308}
-  m_RootOrder: 2
+  m_Father: {fileID: 1720752084}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -517.3, y: 4}
+  m_AnchoredPosition: {x: -14.475952, y: -64.567955}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138429104
@@ -2638,7 +2640,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1636908332}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2803,7 +2805,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2100644308}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3013,7 +3015,6 @@ RectTransform:
   m_Children:
   - {fileID: 2069614915}
   - {fileID: 1469685104}
-  - {fileID: 11876220}
   - {fileID: 1660492537}
   - {fileID: 239140928}
   m_Father: {fileID: 1226158697}
@@ -3055,7 +3056,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 768131977}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3320,6 +3321,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600628698}
+  - component: {fileID: 1600628699}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3344,6 +3346,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600628699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600628697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b574ef425be7454db73eea15ac039a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curPrice: 10000
+  priceText: {fileID: 733955825}
 --- !u!1 &1629026790
 GameObject:
   m_ObjectHideFlags: 0
@@ -3450,7 +3466,6 @@ RectTransform:
   m_Children:
   - {fileID: 1101174965}
   - {fileID: 2006503963}
-  - {fileID: 472356502}
   - {fileID: 1702352546}
   - {fileID: 1172641121}
   m_Father: {fileID: 1226158697}
@@ -3492,7 +3507,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1392259006}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3609,7 +3624,7 @@ GameObject:
   - component: {fileID: 1688477013}
   - component: {fileID: 1688477012}
   m_Layer: 5
-  m_Name: Gold Image
+  m_Name: Item Buy Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3624,15 +3639,15 @@ RectTransform:
   m_GameObject: {fileID: 1688477010}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.39895, y: 0.39895, z: 0.39895}
+  m_LocalScale: {x: 0.11257641, y: 0.4121502, z: 0.52038085}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 768131977}
-  m_RootOrder: 2
+  m_Father: {fileID: 1765940608}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -517.2999, y: 4.0000305}
+  m_AnchoredPosition: {x: -14.475952, y: -64.567924}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1688477012
@@ -3748,7 +3763,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1636908332}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3885,6 +3900,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 984272833}
+  - {fileID: 1138429103}
   m_Father: {fileID: 2100644308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3910,6 +3926,8 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+  button: {fileID: 0}
+  itemBuyButton: {fileID: 0}
 --- !u!114 &1720752086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,6 +4254,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1920620805}
+  - {fileID: 1688477011}
   m_Father: {fileID: 768131977}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4261,6 +4280,8 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+  button: {fileID: 0}
+  itemBuyButton: {fileID: 0}
 --- !u!114 &1765940610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4998,6 +5019,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1373581148}
+  - {fileID: 11876220}
   m_Father: {fileID: 1392259006}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5023,6 +5045,8 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+  button: {fileID: 0}
+  itemBuyButton: {fileID: 0}
 --- !u!114 &2069614917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,7 +5332,6 @@ RectTransform:
   m_Children:
   - {fileID: 1720752084}
   - {fileID: 734726556}
-  - {fileID: 1138429103}
   - {fileID: 384385536}
   - {fileID: 1353198338}
   m_Father: {fileID: 1226158697}
