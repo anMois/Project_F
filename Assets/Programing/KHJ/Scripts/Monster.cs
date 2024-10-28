@@ -79,7 +79,7 @@ public class Monster : MonoBehaviour, IDamageable
     public void TakeHit(int dmg)
     {
         curHp -= dmg;
-        if(curHp < 0)
+        if(curHp <= 0)
         {
             ChangeState(State.Dead);
         }
