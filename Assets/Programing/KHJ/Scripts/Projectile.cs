@@ -20,12 +20,11 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        bool valid = (layerMask & collision.gameObject.layer) == collision.gameObject.layer;
+        bool valid = (layerMask & (1 << collision.gameObject.layer)) != 0;
         if (!valid)
             return;
 
         IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
-        Debug.Log($"Collision with {collision.gameObject.name}");
         if (damageable != null)
         {
             damageable.TakeHit(dmg);
