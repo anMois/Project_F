@@ -20,6 +20,9 @@ public class CoroutineHelper : MonoBehaviour
 
     public new static void StopCoroutine(Coroutine coroutine)
     {
-        monoInstance.StopCoroutine(coroutine);
+        if (monoInstance != null)
+        {
+            monoInstance.StopCoroutine(coroutine);
+        }
     }
 }

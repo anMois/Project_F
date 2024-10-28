@@ -1,18 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
     public enum State
     {
         Idle, Trace, Guard, Dead, SIZE
     }
     [SerializeField] State curState;
-    private BaseState[] states = new BaseState[(int)State.SIZE];
+    protected BaseState[] states = new BaseState[(int)State.SIZE];
 
     [Header("Enemy")]
-    [SerializeField] GameObject target;
+    [SerializeField] protected Transform target;
 
     [Header("Range")]
     [Tooltip("Visual Range: cyan\n" +
@@ -20,38 +21,30 @@ public class Monster : MonoBehaviour
         "Guard Range: yellow\n" +
         "Attack Max Range: magenta\n" +
         "Attack Range: red")]
-    [SerializeField] bool visualization;
-    [SerializeField] float visualRange;
-    [SerializeField] float traceRange;
-    [SerializeField] float guardRange;
-    [SerializeField] float attackMaxRange;
-    [SerializeField] float attackRange;
+    [SerializeField] protected bool visualization;
+    [SerializeField] protected float visualRange;
+    [SerializeField] protected float traceRange;
+    [SerializeField] protected float guardRange;
+    [SerializeField] protected float attackMaxRange;
+    [SerializeField] protected float attackRange;
 
     [Header("Attributes")]
-    [SerializeField] int monsterID;
-    [SerializeField] int maxHp;
-    [SerializeField] int curHp;
-    [SerializeField] float moveSpeed;
-    [SerializeField] float attackCoolDown;
-    [SerializeField] int dropRate;
+    [SerializeField] protected int monsterID;
+    [SerializeField] protected int maxHp;
+    [SerializeField] protected int curHp;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected int attackDamage;
+    [SerializeField] protected float attackCoolDown;
+    [SerializeField] protected int dropRate;
 
-    //[Header("Projectile")]
-    //[SerializeField] GameObject projectilePrefab;
-    //[SerializeField] float projectileSpeed;
+    protected Rigidbody rb;
 
-    private Rigidbody rb;
-
-    private void Awake()
+    protected void Awake()
     {
         states[(int)State.Idle] = new IdleState(this);
         states[(int)State.Trace] = new TraceState(this);
         states[(int)State.Guard] = new GuardState(this);
         states[(int)State.Dead] = new DeadState(this);
-    }
-
-    private void Start()
-    {
-        target = GameObject.FindGameObjectWithTag("Player");
 
         rb = GetComponent<Rigidbody>();
 
@@ -61,12 +54,17 @@ public class Monster : MonoBehaviour
         states[(int)curState].StateEnter();
     }
 
-    private void OnDestroy()
+    protected void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    protected void OnDestroy()
     {
         states[(int)curState].StateExit();
     }
 
-    private void Update()
+    protected void Update()
     {
         states[(int)curState].StateUpdate();
     }
@@ -81,14 +79,19 @@ public class Monster : MonoBehaviour
     public void TakeHit(int dmg)
     {
         curHp -= dmg;
-        if(curHp < 0)
+        if(curHp <= 0)
         {
             ChangeState(State.Dead);
         }
     }
 
+    protected virtual void Attack()
+    {
+        throw new NotImplementedException();
+    }
+
     #region MonsterState
-    private class MonsterState : BaseState
+    protected class MonsterState : BaseState
     {
         public Monster monster;
         public MonsterState(Monster monster) => this.monster = monster;
@@ -102,7 +105,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private class IdleState : MonsterState
+    protected class IdleState : MonsterState
     {
         public IdleState(Monster monster) : base(monster) { }
 
@@ -112,7 +115,7 @@ public class Monster : MonoBehaviour
             // Keep position
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if(distance <= monster.visualRange)
             {
@@ -121,19 +124,20 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private class TraceState : MonsterState
+    protected class TraceState : MonsterState
     {
         public TraceState(Monster monster) : base(monster) { }
 
         public override void StateUpdate()
         {
             // Trace
-            // Move to traceRange
-            Vector3 direction = (monster.target.transform.position - monster.transform.position).normalized;
+            // Move to traceRange with gazing target
+            Vector3 direction = (monster.target.position - monster.transform.position).normalized;
+            monster.transform.LookAt(monster.target);
             monster.rb.velocity = monster.moveSpeed * direction;
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if (distance <= monster.traceRange)
             {
@@ -142,7 +146,7 @@ public class Monster : MonoBehaviour
         }
     }
 
-    private class GuardState : MonsterState
+    protected class GuardState : MonsterState
     {
         public GuardState(Monster monster) : base(monster) { }
 
@@ -154,11 +158,12 @@ public class Monster : MonoBehaviour
         public override void StateUpdate()
         {
             // Guard
-            // Move horizontally
+            // Move horizontally with gazing target
+            monster.transform.LookAt(monster.target);
             Guard();
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.transform.position);
+            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
             if (distance > monster.attackMaxRange)
             {
@@ -175,29 +180,26 @@ public class Monster : MonoBehaviour
             }
         }
 
-        private void Guard()
+        protected void Guard()
         {
-            float angle = monster.moveSpeed * 0.1f;
-            monster.transform.RotateAround(monster.target.transform.position, monster.target.transform.up, angle);
+            float angle = monster.moveSpeed * 0.01f;
+            monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
         }
 
         Coroutine attackCoroutine;
         IEnumerator AttackRoutine()
         {
+            WaitForSeconds attackDelay = new WaitForSeconds(monster.attackCoolDown);
+
             while (true)
             {
-                Attack();
-                yield return new WaitForSeconds(monster.attackCoolDown);
+                yield return attackDelay;
+                monster.Attack();
             }
-        }
-
-        private void Attack()
-        {
-            Debug.Log($"{monster.name} Attack!");
         }
     }
 
-    private class DeadState : MonsterState
+    protected class DeadState : MonsterState
     {
         public DeadState(Monster monster) : base(monster) { }
 
@@ -207,14 +209,14 @@ public class Monster : MonoBehaviour
             Die();
         }
 
-        private void Die()
+        protected void Die()
         {
             Destroy(monster.gameObject);
         }
     }
     #endregion
 
-    private void OnDrawGizmosSelected()
+    protected void OnDrawGizmosSelected()
     {
         if (visualization == false)
             return;
