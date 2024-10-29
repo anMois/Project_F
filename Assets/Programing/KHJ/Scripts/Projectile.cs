@@ -24,14 +24,7 @@ public class Projectile : MonoBehaviour
         if (!valid)
             return;
 
-        Transform otherParent = other.gameObject.transform.parent;
-        if (otherParent == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        IDamageable damageable = otherParent.GetComponent<IDamageable>();
+        IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
             damageable.TakeHit(dmg);

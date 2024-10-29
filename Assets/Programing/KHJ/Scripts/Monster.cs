@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IDamageable
 {
+    public UnityAction OnAlarm;
+
     public enum State
     {
         Idle, Trace, Guard, Dead, SIZE
@@ -72,8 +75,17 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)curState].StateEnter();
     }
 
+    public void Trace()
+    {
+        states[(int)curState].StateExit();
+        curState = State.Trace;
+        states[(int)curState].StateEnter();
+    }
+
     public void TakeHit(int dmg)
     {
+        OnAlarm?.Invoke();
+
         curHp -= dmg;
         if(curHp <= 0)
         {
