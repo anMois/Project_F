@@ -34,6 +34,12 @@ public class StoreController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 설명창에서 아이템 정보를 출력
+    /// </summary>
+    /// <param name="itemName"></param>
+    /// <param name="description"></param>
+    /// <param name="itemImage"></param>
     public void ShowExplanation(string itemName, string description, Sprite itemImage)
     {
         explanationCanvas.SetActive(true);
@@ -47,6 +53,9 @@ public class StoreController : MonoBehaviour
         itemImageComponent.sprite = itemImage;
     }
 
+    /// <summary>
+    /// 상점 Exit 버튼 클릭시
+    /// </summary>
     public void StoreExitButtonClick()
     {
         storeCanvas.SetActive(false);

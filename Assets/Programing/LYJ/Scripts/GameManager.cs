@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
         UpdatePriceText();
     }
 
+    /// <summary>
+    /// 아이템 구매 (돈 차감) - CSV로 받아온 아이템만 가능
+    /// </summary>
+    /// <param name="itemPrice"></param>
+    /// <returns></returns>
     public bool PurchaseItem(float itemPrice)
     {
         if (curPrice >= itemPrice)
@@ -38,7 +43,11 @@ public class GameManager : MonoBehaviour
         }
         return false;
     }
-
+    /// <summary>
+    /// 아이템 구매 - 포션, 수류탄 전용
+    /// </summary>
+    /// <param name="price"></param>
+    /// <returns></returns>
     public bool PotionGrenadeItem(float price)
     {
         if (curPrice >= price)

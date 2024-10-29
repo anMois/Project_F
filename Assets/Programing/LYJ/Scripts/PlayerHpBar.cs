@@ -4,6 +4,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//플레이어와 상호작용 해야 함
+//공격 맞으면 HP 감소
+//게임매니저로 코드 이동해야 함
 public class PlayerHpBar : MonoBehaviour
 {
     [SerializeField] Image hpBar;

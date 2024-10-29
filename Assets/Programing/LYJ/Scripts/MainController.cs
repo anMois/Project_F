@@ -62,6 +62,12 @@ public class MainController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 설명창에서 아이템 정보를 출력함
+    /// </summary>
+    /// <param name="itemName"></param>
+    /// <param name="description"></param>
+    /// <param name="itemImage"></param>
     public void ShowExplanation(string itemName, string description, Sprite itemImage)
     {
         explanationCanvas.SetActive(true);
@@ -75,42 +81,64 @@ public class MainController : MonoBehaviour
         itemImageComponent.sprite = itemImage;
     }
 
+    /// <summary>
+    /// 설명창 닫기
+    /// </summary>
     public void Explanation()
     {
         explanationCanvas.SetActive(false);
     }
 
+    /// <summary>
+    /// 씬전환 - 스테이지1
+    /// </summary>
     public void ChangeStage1Scene()
     {
         SceneManager.LoadScene("Stage1");
     }
 
+    /// <summary>
+    /// 도감 버튼 클릭시
+    /// </summary>
     public void ClickBookButton()
     {
         CurrentCanvasState(mainCanvas, bookCanvas);
     }
 
+    /// <summary>
+    /// 도감 Exit 버튼 클릭시
+    /// </summary>
     public void BookExitButton()
     {
         CurrentCanvasState(bookCanvas, mainCanvas);
     }
 
+    /// <summary>
+    /// Manual 버튼 클릭시
+    /// </summary>
     public void ClickManualButton()
     {
         CurrentCanvasState(mainCanvas, manualCanvas);
     }
 
+    /// <summary>
+    /// Manual Exit 버튼 클릭시
+    /// </summary>
     public void ManualExitButton()
     {
         CurrentCanvasState(manualCanvas, mainCanvas);
     }
 
+    //현재 캔버스의 상황 (비활성화? 활성화?)를 편하게 보기 위함
     private void CurrentCanvasState(GameObject toHide, GameObject toShow)
     {
         toHide.SetActive(false);
         toShow.SetActive(true);
     }
 
+    /// <summary>
+    /// Exit 버튼 클릭시
+    /// </summary>
     public void ExitButton()
     {
         //유니티 에디터에서는 Application.Quit();를 사용할 수 없음 테스트 용도로 아래 코드 사용
