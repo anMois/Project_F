@@ -10,6 +10,7 @@ public class Test_Player : MonoBehaviour, IDamageable
     [SerializeField] Transform aim;
     [SerializeField] int maxHp;
     [SerializeField] int curHp;
+    [SerializeField] int attackDmg;
 
     private int friendlyLayer;
 
@@ -39,6 +40,6 @@ public class Test_Player : MonoBehaviour, IDamageable
     private void Attack()
     {
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, muzzlePoint.rotation);
-        newProjectile.Launch(friendlyLayer, aim.transform);
+        newProjectile.Launch(friendlyLayer, aim.transform, attackDmg);
     }
 }
