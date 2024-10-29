@@ -10,20 +10,14 @@ public class StoreController : MonoBehaviour
     private GameObject storeCanvas;
     private GameObject explanationCanvas;
     private Button storeExitButton;
+    private bool isStoreInitialized = false; // 상점 초기화 여부
 
     private void Start()
     {
         storeCanvas = GameObject.Find("Store Canvas");
         explanationCanvas = GameObject.Find("Explanation Canvas");
-        storeCanvas.SetActive(true);   
+        storeCanvas.SetActive(false);
         explanationCanvas.SetActive(false);
-
-        storeExitButton = GameObject.Find("Store Exit Button").GetComponent<Button>();
-
-        if (storeExitButton != null)
-        {
-            storeExitButton.onClick.AddListener(StoreExitButtonClick);
-        }
     }
 
     private void Update()
@@ -37,9 +31,6 @@ public class StoreController : MonoBehaviour
     /// <summary>
     /// 설명창에서 아이템 정보를 출력
     /// </summary>
-    /// <param name="itemName"></param>
-    /// <param name="description"></param>
-    /// <param name="itemImage"></param>
     public void ShowExplanation(string itemName, string description, Sprite itemImage)
     {
         explanationCanvas.SetActive(true);
@@ -59,5 +50,34 @@ public class StoreController : MonoBehaviour
     public void StoreExitButtonClick()
     {
         storeCanvas.SetActive(false);
+    }
+
+    /// <summary>
+    /// 상점 Canvas 활성화
+    /// </summary>
+    public void ShowStoreCanvas()
+    {
+        storeCanvas.SetActive(true);
+
+        //한 번만 CSV 다운로드 시작
+        if (!isStoreInitialized)
+        {
+            CSVDownload csvDownload = FindObjectOfType<CSVDownload>();
+            if (csvDownload != null)
+            {
+                StartCoroutine(csvDownload.DownloadRoutine());
+            }
+            isStoreInitialized = true;
+        }
+
+        if (storeExitButton == null && storeCanvas.activeSelf)
+        {
+            storeExitButton = GameObject.Find("Store Exit Button")?.GetComponent<Button>();
+
+            if (storeExitButton != null)
+            {
+                storeExitButton.onClick.AddListener(StoreExitButtonClick);
+            }
+        }
     }
 }

@@ -12,12 +12,15 @@ public class CSVDownload : MonoBehaviour
 
     public GameObject[] buttons;
 
+    public List<ItemData> itemDataList { get; private set; }
+
     private void Awake()
     {
+        itemDataList = new List<ItemData>();
         StartCoroutine(DownloadRoutine());
     }
 
-    IEnumerator DownloadRoutine()
+    public IEnumerator DownloadRoutine()
     {
         UnityWebRequest request = UnityWebRequest.Get(urlPath);
         yield return request.SendWebRequest();
@@ -66,7 +69,7 @@ public class CSVDownload : MonoBehaviour
         return itemDataList;
     }
 
-    private void SetItemData(List<ItemData> itemDataList)
+    public void SetItemData(List<ItemData> itemDataList)
     {
         HashSet<int> usedIndices = new HashSet<int>(); //이미 사용된 인덱스를 기록할 HashSet 생성
 
