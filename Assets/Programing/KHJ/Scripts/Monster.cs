@@ -21,8 +21,8 @@ public class Monster : MonoBehaviour, IDamageable
         "Attack Max Range: red")]
     [SerializeField] protected bool visualization;
     [SerializeField] protected float visualRange;
-    [SerializeField] protected float guardRange;
     [SerializeField] protected float attackMaxRange;
+    [SerializeField] protected float guardRange;
 
     [Header("Attributes")]
     [SerializeField] protected int monsterID;
