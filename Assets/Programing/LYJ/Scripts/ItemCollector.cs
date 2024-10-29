@@ -26,6 +26,7 @@ public class ItemCollector : MonoBehaviour
         UpdateUI();
     }
 
+    //아이템 Tag를 찾아 먹으면 아이템은 사라지고 개수는 증가함
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.CompareTag("Potion"))

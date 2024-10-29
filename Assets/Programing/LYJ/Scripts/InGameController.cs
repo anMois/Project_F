@@ -72,29 +72,44 @@ public class InGameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Return Game 버튼 클릭시
+    /// </summary>
     public void ClickReturnGameButton()
     {
         menuCanvas.SetActive(false);
     }
 
+    /// <summary>
+    /// Manual 버튼 클릭시
+    /// </summary>
     public void ClickManualButton()
     {
         menuCanvas.SetActive(false);
         manualCanvas.SetActive(true);
     }
 
+    /// <summary>
+    /// Manual Exit 버튼 클릭시
+    /// </summary>
     public void ManualExitButton()
     {
         menuCanvas.SetActive(true);
         manualCanvas.SetActive(false);
     }
 
+    /// <summary>
+    /// Give up 버튼 클릭시
+    /// </summary>
     public void ClickGiveUpButton()
     {
         //메인 로비 이동
         SceneManager.LoadScene("GameStart");
     }
 
+    /// <summary>
+    /// Leave Game 버튼 클릭시
+    /// </summary>
     public void ClickLeaveGame()
     {
         //유니티 에디터에서는 Application.Quit();를 사용할 수 없음 테스트 용도로 아래 코드 사용
@@ -104,11 +119,17 @@ public class InGameController : MonoBehaviour
         //Application.Quit();  
     }
 
+    /// <summary>
+    /// Restart 버튼 클릭시
+    /// </summary>
     public void ClickRestartButton()
     {
         SceneManager.LoadScene("Stage1");
     }
 
+    /// <summary>
+    /// Exit 버튼 클릭시
+    /// </summary>
     public void ClickExitButton()
     {
         //메인 로비 이동

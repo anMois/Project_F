@@ -12,7 +12,7 @@ public class StoreItemButton : MonoBehaviour
     private Button potionButton;
     private Button grenadeButton;
 
-    private bool isPurchased = false;
+    private bool isPurchased = false; //구매가 되었는지 확인
 
     private void Start()
     {
@@ -34,17 +34,20 @@ public class StoreItemButton : MonoBehaviour
 
         if (potionButton != null)
         {
-            potionButton.onClick.RemoveAllListeners();
+            potionButton.onClick.RemoveAllListeners(); //버튼 리스너 중복 방지 (여러번 호출되는 오류 해결)
             potionButton.onClick.AddListener(() => PotionGrenadeBuyButtonClick(potionButton));
         }
 
         if (grenadeButton != null)
         {
-            grenadeButton.onClick.RemoveAllListeners();
+            grenadeButton.onClick.RemoveAllListeners(); //버튼 리스너 중복 방지 (여러번 호출되는 오류 해결)
             grenadeButton.onClick.AddListener(() => PotionGrenadeBuyButtonClick(grenadeButton));
         }
     }
 
+    /// <summary>
+    /// StoreItemButton.cs 를 가지고 있는 버튼 클릭시
+    /// </summary>
     public void OnButtonClick()
     {
         if (storeController != null && itemBuyButton != null && itemData != null)
@@ -53,6 +56,9 @@ public class StoreItemButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 아이템 구매 버튼 클릭시 - 포션 수류탄 X
+    /// </summary>
     public void ItemBuyButtonClick()
     {
         if (isPurchased)
@@ -78,9 +84,13 @@ public class StoreItemButton : MonoBehaviour
 
     private void UpdateButtonState()
     {
-        itemBuyButton.interactable = false;
+        itemBuyButton.interactable = false; //버튼 비활성화
     }
 
+    /// <summary>
+    /// 포션, 수류탄 구매 버튼 클릭시
+    /// </summary>
+    /// <param name="clickedButton"></param>
     public void PotionGrenadeBuyButtonClick(Button clickedButton)
     {
         clickedButton.interactable = false;
