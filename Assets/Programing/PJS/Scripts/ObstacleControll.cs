@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleControll : MonoBehaviour
 {
+    [Header("배치할 장애물 리스트")]
     [SerializeField] List<GameObject> obstacles;
 
     private void Start()
@@ -13,13 +14,7 @@ public class ObstacleControll : MonoBehaviour
 
     private void CreateObs()
     {
-        GameObject obj = RandomObs();
-        Instantiate(obj, obj.transform.position, Quaternion.identity);
-    }
-
-    private GameObject RandomObs()
-    {
         int num = Random.Range(0, obstacles.Count);
-        return obstacles[num];
+        Instantiate(obstacles[num], obstacles[num].transform.position, Quaternion.identity);
     }
 }
