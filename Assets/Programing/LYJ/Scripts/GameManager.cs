@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] Image hpBar;
     [SerializeField] TextMeshProUGUI hpText;
-    [SerializeField] float currentHealth;
-    [SerializeField] float maxHealth = 100f;
+    [SerializeField] public float currentHealth;
+    [SerializeField] public float maxHealth = 100f;
 
     private void Awake()
     {
@@ -37,8 +37,8 @@ public class GameManager : MonoBehaviour
 
     private void InitializeHealth()
     {
-        currentHealth = maxHealth; // 체력 초기화
-        UpdateHealthUI(); // UI 업데이트
+        currentHealth = maxHealth;
+        UpdateHealthUI();
     }
 
     /// <summary>
@@ -112,5 +112,17 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("플레이어가 사망했습니다.");
         }
+    }
+
+    /// <summary>
+    /// 체력을 회복하는 메서드
+    /// </summary>
+    /// <param name="percentage">회복할 비율 (0~1) 0.7 = 70% </param>
+    public void Heal(float percentage)
+    {
+        currentHealth = maxHealth * percentage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+        Debug.Log($"체력이 {percentage * 100}%로 회복되었습니다.");
     }
 }

@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 238229587}
   - component: {fileID: 238229586}
   - component: {fileID: 238229585}
+  - component: {fileID: 238229589}
   m_Layer: 0
   m_Name: Bonfire
   m_TagString: Untagged
@@ -417,6 +418,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238229583}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &238229589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238229583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075a080f48d42654fabc7b878c27797b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &490612507 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4628195545107339898, guid: 7667976971c15d944b4a0b929ec7d605, type: 3}
@@ -622,7 +635,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player HP Text
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4628195544469793436, guid: 7667976971c15d944b4a0b929ec7d605, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7667976971c15d944b4a0b929ec7d605, type: 3}
 --- !u!1 &566684829
 GameObject:
