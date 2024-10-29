@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,23 +15,32 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
             Destroy(gameObject);
         }
-    }
 
-    private void Start()
-    {
         foreach (Transform child in transform)
         {
             if (child.gameObject.CompareTag("UICanvas"))
             {
                 uiCanvases[child.name] = child.gameObject;
-                child.gameObject.SetActive(false); //모든 UI 비활성화
+                child.gameObject.SetActive(false); // 모든 UI 비활성화
             }
         }
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        HideUI("Main Canvas");
+        HideUI("In Game Menu Canvas");
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     /// <summary>

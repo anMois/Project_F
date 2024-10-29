@@ -7,12 +7,12 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
     public ItemData itemData;
-    private MainController mainController;
+    private GameController gameController;
     private Button button;
 
     private void Start()
     {
-        mainController = FindObjectOfType<MainController>();
+        gameController = FindObjectOfType<GameController>();
         button = GetComponent<Button>();
 
         if (button != null)
@@ -27,9 +27,9 @@ public class ItemButton : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
-        if (mainController != null && itemData != null)
+        if (gameController != null && itemData != null)
         {
-            mainController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+            gameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
         }
     }
 }
