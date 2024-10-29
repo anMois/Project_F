@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,42 +7,22 @@ using TMPro;
 
 public class MainController : MonoBehaviour
 {
-    private GameObject mainCanvas;
-    private GameObject bookCanvas;
-    private GameObject explanationCanvas;
-    private GameObject manualCanvas;
+    [SerializeField] Button newGameButton;
+    [SerializeField] Button itemBookButton;
+    [SerializeField] Button manualButton;
+    [SerializeField] Button bookExitButton;
+    [SerializeField] Button manualExitButton;
+    [SerializeField] Button exitButton;
 
-    private Button newGameButton;
-    private Button itemBookButton;
-    private Button manualButton;
-    private Button bookExitButton;
-    private Button manualExitButton;
-    private Button exitButton;
+    [SerializeField] TextMeshProUGUI itemNameText;
+    [SerializeField] TextMeshProUGUI descriptionText;
+    [SerializeField] Image itemImageComponent;
 
     private void Start()
     {
-        mainCanvas = GameObject.Find("Main Canvas");
-        bookCanvas = GameObject.Find("Book Canvas");
-        explanationCanvas = GameObject.Find("Explanation Canvas");
-        manualCanvas = GameObject.Find("Manual Canvas");
-
-        newGameButton = GameObject.Find("New Game Button").GetComponent<Button>();
-        itemBookButton = GameObject.Find("Item Book Button").GetComponent<Button>();
-        manualButton = GameObject.Find("Manual Button").GetComponent<Button>();
-        bookExitButton = GameObject.Find("Book Exit Button").GetComponent<Button>();
-        manualExitButton = GameObject.Find("Manual Exit Button").GetComponent<Button>();
-        exitButton = GameObject.Find("Exit Button").GetComponent<Button>();
-
-        InitializeCanvases();
         InitializeButtons();
-    }
 
-    private void InitializeCanvases()
-    {
-        mainCanvas.SetActive(true);
-        bookCanvas.SetActive(false);
-        explanationCanvas.SetActive(false);
-        manualCanvas.SetActive(false);
+        UIManager.Instance.ShowUI("Main Canvas");
     }
 
     private void InitializeButtons()
@@ -56,7 +37,7 @@ public class MainController : MonoBehaviour
 
     private void Update()
     {
-        if (explanationCanvas != null && explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
+        if (UIManager.Instance.IsUIActive("Main Explanation Canvas") && Input.GetMouseButtonDown(0))
         {
             Explanation();
         }
@@ -65,17 +46,11 @@ public class MainController : MonoBehaviour
     /// <summary>
     /// 설명창에서 아이템 정보를 출력함
     /// </summary>
-    /// <param name="itemName"></param>
-    /// <param name="description"></param>
-    /// <param name="itemImage"></param>
     public void ShowExplanation(string itemName, string description, Sprite itemImage)
     {
-        explanationCanvas.SetActive(true);
+        UIManager.Instance.ShowUI("Main Explanation Canvas");
 
-        TextMeshProUGUI itemNameText = explanationCanvas.transform.Find("Item Name").GetComponent<TextMeshProUGUI>();
-        TextMeshProUGUI descriptionText = explanationCanvas.transform.Find("Description").GetComponent<TextMeshProUGUI>();
-        Image itemImageComponent = explanationCanvas.transform.Find("Description Image").GetComponent<Image>();
-
+        // 아이템 정보 업데이트
         itemNameText.text = itemName;
         descriptionText.text = description;
         itemImageComponent.sprite = itemImage;
@@ -86,11 +61,11 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void Explanation()
     {
-        explanationCanvas.SetActive(false);
+        UIManager.Instance.HideUI("Main Explanation Canvas");
     }
 
     /// <summary>
-    /// 씬전환 - 스테이지1
+    /// 씬 전환 - 인게임
     /// </summary>
     public void ChangeStage1Scene()
     {
@@ -102,7 +77,8 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void ClickBookButton()
     {
-        CurrentCanvasState(mainCanvas, bookCanvas);
+        UIManager.Instance.HideUI("Main Canvas");
+        UIManager.Instance.ShowUI("Book Canvas");
     }
 
     /// <summary>
@@ -110,7 +86,8 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void BookExitButton()
     {
-        CurrentCanvasState(bookCanvas, mainCanvas);
+        UIManager.Instance.HideUI("Book Canvas");
+        UIManager.Instance.ShowUI("Main Canvas");
     }
 
     /// <summary>
@@ -118,7 +95,8 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void ClickManualButton()
     {
-        CurrentCanvasState(mainCanvas, manualCanvas);
+        UIManager.Instance.HideUI("Main Canvas");
+        UIManager.Instance.ShowUI("Manual Canvas");
     }
 
     /// <summary>
@@ -126,14 +104,8 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void ManualExitButton()
     {
-        CurrentCanvasState(manualCanvas, mainCanvas);
-    }
-
-    //현재 캔버스의 상황 (비활성화? 활성화?)를 편하게 보기 위함
-    private void CurrentCanvasState(GameObject toHide, GameObject toShow)
-    {
-        toHide.SetActive(false);
-        toShow.SetActive(true);
+        UIManager.Instance.HideUI("Manual Canvas");
+        UIManager.Instance.ShowUI("Main Canvas");
     }
 
     /// <summary>
@@ -141,10 +113,10 @@ public class MainController : MonoBehaviour
     /// </summary>
     public void ExitButton()
     {
-        //유니티 에디터에서는 Application.Quit();를 사용할 수 없음 테스트 용도로 아래 코드 사용
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-
-        //빌드해서 사용할 때는 아래 코드를 사용
-        //Application.Quit();    
+#else
+        Application.Quit();
+#endif
     }
 }
