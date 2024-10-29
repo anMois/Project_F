@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public float curPrice = 10000f;
     [SerializeField] TextMeshProUGUI priceText;
+
+    [SerializeField] Image hpBar;
+    [SerializeField] TextMeshProUGUI hpText;
+    [SerializeField] float currentHealth;
+    [SerializeField] float maxHealth = 100f;
 
     private void Awake()
     {
@@ -25,7 +31,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        InitializeHealth();
         UpdatePriceText();
+    }
+
+    private void InitializeHealth()
+    {
+        currentHealth = maxHealth; // 체력 초기화
+        UpdateHealthUI(); // UI 업데이트
     }
 
     /// <summary>
@@ -68,6 +81,36 @@ public class GameManager : MonoBehaviour
         if (priceText != null)
         {
             priceText.text = $"Possession Gold: {curPrice} G";
+        }
+    }
+
+    private void Update()
+    {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+    }
+
+    private void UpdateHealthUI()
+    {
+        float healthRatio = currentHealth / maxHealth;
+        if (hpBar != null)
+        {
+            hpBar.fillAmount = healthRatio;
+        }
+
+        if (hpText != null)
+        {
+            hpText.text = $"{(int)currentHealth} / {maxHealth}";
+        }
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+        UpdateHealthUI();
+        if (currentHealth <= 0)
+        {
+            Debug.Log("플레이어가 사망했습니다.");
         }
     }
 }
