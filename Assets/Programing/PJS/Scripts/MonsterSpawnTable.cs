@@ -7,17 +7,20 @@ public class MonsterSpawnTable : MonoBehaviour
 {
     //몬스터 테이블
     const string monsterData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=0&format=csv";
-    
+
     //몬스터 배치 테이블
     const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=1240725374&format=csv";
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();
     private List<int> monsterKey = new List<int>();
-    
+    private List<string> monsterList = new List<string>();
+
+    [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] Transform monsterParent;
-    [SerializeField] List<GameObject> monsterPrefabs;
+    [Header("생성되는 몬스터")]
+    [ SerializeField] List<GameObject> monsterPrefabs;
+    [Header("생성되는 몬스터의 위치")]
     [SerializeField] List<Transform> monsterPoints;
-    [SerializeField] List<string> monsterList;
 
     private void Awake()
     {
@@ -49,7 +52,10 @@ public class MonsterSpawnTable : MonoBehaviour
             string[] datas = line[i].Split(',');
             int.TryParse(datas[0], out int id);
             Debug.Log(datas[1]);
-            //datas[1] = datas[1].Remove(datas[1].IndexOf('\r'));
+            if (i != line.Length - 1)
+            {
+                datas[1] = datas[1].Remove(datas[1].IndexOf('\r'));
+            }
             GameObject obj = FindGameObject(datas[1]);
 
             monster.Add(id, obj);
@@ -79,12 +85,12 @@ public class MonsterSpawnTable : MonoBehaviour
     private void ParserToMosterSpawnData(string data)
     {
         string[] line = data.Split('\n');
-        for(int i = 1;i < line.Length; i++)
+        for (int i = 1; i < line.Length; i++)
         {
             monsterList.Add(line[i]);
         }
 
-        for(int i = 0;i < monsterList.Count;i++)
+        for (int i = 0; i < monsterList.Count; i++)
         {
             Debug.Log(monsterList[i]);
         }
@@ -98,14 +104,14 @@ public class MonsterSpawnTable : MonoBehaviour
         Debug.Log(num);
         string[] point = monsterList[num].Split(',');
 
-        for(int i = 0; i < point.Length; i++)
+        for (int i = 0; i < point.Length; i++)
         {
             int.TryParse(point[i], out int id);
             for (int j = 0; j < monsterKey.Count; j++)
             {
                 if (monsterKey[j] == id)
                 {
-                    Instantiate(monster[id], monsterPoints[i].position, Quaternion.identity);
+                    Instantiate(monster[id], monsterPoints[i].position, monsterPoints[i].rotation);
                     Debug.Log($"오브젝트 생성 {id}");
                 }
                 else
