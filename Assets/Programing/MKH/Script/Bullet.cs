@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    PlayerAttack obj;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float speed;
 
-    float speed = 3.0f;
-
-    private void Update()
+    public void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
-
-
 }
