@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IDamageable
 {
+    public UnityAction OnAlarm;
+
     public enum State
     {
         Idle, Trace, Guard, Dead, SIZE
@@ -17,16 +20,12 @@ public class Monster : MonoBehaviour, IDamageable
 
     [Header("Range")]
     [Tooltip("Visual Range: cyan\n" +
-        "Trace Range: green\n" +
         "Guard Range: yellow\n" +
-        "Attack Max Range: magenta\n" +
-        "Attack Range: red")]
+        "Attack Max Range: red")]
     [SerializeField] protected bool visualization;
     [SerializeField] protected float visualRange;
-    [SerializeField] protected float traceRange;
-    [SerializeField] protected float guardRange;
     [SerializeField] protected float attackMaxRange;
-    [SerializeField] protected float attackRange;
+    [SerializeField] protected float guardRange;
 
     [Header("Attributes")]
     [SerializeField] protected int monsterID;
@@ -76,8 +75,17 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)curState].StateEnter();
     }
 
+    public void Trace()
+    {
+        states[(int)curState].StateExit();
+        curState = State.Trace;
+        states[(int)curState].StateEnter();
+    }
+
     public void TakeHit(int dmg)
     {
+        OnAlarm?.Invoke();
+
         curHp -= dmg;
         if(curHp <= 0)
         {
@@ -139,7 +147,7 @@ public class Monster : MonoBehaviour, IDamageable
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
-            if (distance <= monster.traceRange)
+            if (distance <= monster.guardRange)
             {
                 monster.ChangeState(State.Guard);
             }
@@ -224,13 +232,9 @@ public class Monster : MonoBehaviour, IDamageable
         // Visualize detection range
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, visualRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, traceRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, guardRange);
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawWireSphere(transform.position, attackMaxRange);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackMaxRange);
     }
 }
