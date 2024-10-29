@@ -47,11 +47,6 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         InitializeButtons();
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
-        {
-            ShowInGameUI();
-        }
     }
 
 
@@ -97,6 +92,11 @@ public class GameController : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+        }
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            ShowInGameUI();
         }
     }
 

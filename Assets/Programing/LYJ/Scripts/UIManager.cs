@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     {
         HideUI("Main Canvas");
         HideUI("In Game Menu Canvas");
+        HideUI("Player HP Canvas");
+        HideUI("Player Item Canvas");
     }
 
     private void OnDestroy()
