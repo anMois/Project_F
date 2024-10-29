@@ -77,6 +77,9 @@ public class Monster : MonoBehaviour, IDamageable
 
     public void Trace()
     {
+        if (curState != State.Idle)
+            return;
+
         states[(int)curState].StateExit();
         curState = State.Trace;
         states[(int)curState].StateEnter();
