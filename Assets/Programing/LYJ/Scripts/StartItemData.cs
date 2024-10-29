@@ -9,6 +9,7 @@ public class StartItemData : ScriptableObject
     public string specialEffects;
     public string specialEffectsDescription;
     public Sprite itemImage;
+    public Sprite itemAttributesImage;
 
     public Sprite specialEffectsImage1;
     public Sprite specialEffectsImage2;

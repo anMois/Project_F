@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Item_1
   m_EditorClassIdentifier: 
   itemName: Item_1
-  specialEffects: specialEffects
+  specialEffects: 
   specialEffectsDescription: specialEffectsDescription
-  itemImage: {fileID: 21300000, guid: ed1f1845223111242818b9c11b077e02, type: 3}
+  itemImage: {fileID: 21300000, guid: d5024b71bdec48d4a9abbfd38f63567f, type: 3}
+  itemAttributesImage: {fileID: 21300000, guid: c681335a13c9ed342869f01c6c66cce7, type: 3}
   specialEffectsImage1: {fileID: 21300000, guid: ba198d8c694958b408ddf98799381a36, type: 3}
   specialEffectsImage2: {fileID: 0}
   specialEffectsImage3: {fileID: 0}

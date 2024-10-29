@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,9 +8,12 @@ public class StartItemButton : MonoBehaviour
     public StartItemData startItemData;
 
     [SerializeField] TextMeshProUGUI itemNameText;
+    [SerializeField] TextMeshProUGUI itemNameTextMain;
     [SerializeField] TextMeshProUGUI specialEffects;
     [SerializeField] TextMeshProUGUI specialEffectsDescription;
+    [SerializeField] Image itemImageMain;
     [SerializeField] Image itemImage;
+    [SerializeField] Image itemAttributesImage;
 
     [SerializeField] Image specialEffectsImage1;
     [SerializeField] Image specialEffectsImage2;
@@ -22,11 +26,12 @@ public class StartItemButton : MonoBehaviour
     [SerializeField] GameObject startItemCanvas;
     [SerializeField] GameObject startItemExplanationCanvas;
 
-    [SerializeField] Button button;
-
     [SerializeField] GameObject specialEffect1;
     [SerializeField] GameObject specialEffect2;
     [SerializeField] GameObject specialEffect3;
+
+    [SerializeField] Button button;
+    [SerializeField] Button itemNameButton;
 
     private void Start()
     {
@@ -41,6 +46,7 @@ public class StartItemButton : MonoBehaviour
         }
 
         button.onClick.AddListener(OnClickButton);
+        itemNameButton.onClick.AddListener(GameStartButton);
     }
 
     private void Update()
@@ -49,6 +55,9 @@ public class StartItemButton : MonoBehaviour
         {
             startItemExplanationCanvas.SetActive(false);
         }
+
+        itemNameTextMain.text = startItemData.itemName;
+        itemImageMain.sprite = startItemData.itemImage;
     }
 
     public void OnClickButton()
@@ -61,6 +70,7 @@ public class StartItemButton : MonoBehaviour
         specialEffects.text = startItemData.specialEffects;
         specialEffectsDescription.text = startItemData.specialEffectsDescription;
         itemImage.sprite = startItemData.itemImage;
+        itemAttributesImage.sprite = startItemData.itemAttributesImage;
         specialEffectsImage1.sprite = startItemData.specialEffectsImage1;
         specialEffectsFigure1.text = startItemData.specialEffectsFigure1;
 
@@ -85,5 +95,12 @@ public class StartItemButton : MonoBehaviour
         {
             specialEffect3.gameObject.SetActive(false);
         }
+    }
+
+    public void GameStartButton()
+    {
+        //선택한 유물이 인벤토리에 담기는 코드 작성
+        startItemCanvas.SetActive(false);
+        startItemExplanationCanvas.SetActive(false);
     }
 }
