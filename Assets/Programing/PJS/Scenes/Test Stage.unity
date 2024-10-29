@@ -3833,6 +3833,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f45dffaee48542f4ca9efd9c46accb76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterPrefabs:
+  - {fileID: 4208486621155178171, guid: 8578a122fabe84143b9a3ab82d8b4de1, type: 3}
+  monsterPoints:
+  - {fileID: 1778577719}
+  - {fileID: 1374333952}
+  - {fileID: 1018938705}
+  - {fileID: 33150633}
+  - {fileID: 2122885992}
+  monsterList: []
 --- !u!114 &1884536303
 MonoBehaviour:
   m_ObjectHideFlags: 0

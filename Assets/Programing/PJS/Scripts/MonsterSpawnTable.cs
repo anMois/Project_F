@@ -12,6 +12,12 @@ public class MonsterSpawnTable : MonoBehaviour
     const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=1240725374&format=csv";
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();
+    private List<int> monsterKey = new List<int>();
+    
+    [SerializeField] Transform monsterParent;
+    [SerializeField] List<GameObject> monsterPrefabs;
+    [SerializeField] List<Transform> monsterPoints;
+    [SerializeField] List<string> monsterList;
 
     private void Awake()
     {
@@ -24,27 +30,87 @@ public class MonsterSpawnTable : MonoBehaviour
         yield return requestMonsterData.SendWebRequest();
 
         string receiveText = requestMonsterData.downloadHandler.text;
-        ParserToDataTable(receiveText);
+        ParserToMonsterData(receiveText);
 
         UnityWebRequest requestMonsterSpawn = UnityWebRequest.Get(monsterSpawnData);
         yield return requestMonsterSpawn.SendWebRequest();
 
         string reciveText = requestMonsterSpawn.downloadHandler.text;
+        ParserToMosterSpawnData(reciveText);
         Debug.Log(reciveText);
     }
 
-    private void ParserToDataTable(string data)
+    private void ParserToMonsterData(string data)
     {
         string[] line = data.Split('\n');
         for (int i = 1; i < line.Length; i++)
         {
+            Debug.Log(line[i]);
             string[] datas = line[i].Split(',');
             int.TryParse(datas[0], out int id);
-            GameObject obj = new GameObject(datas[1]);
+            Debug.Log(datas[1]);
+            //datas[1] = datas[1].Remove(datas[1].IndexOf('\r'));
+            GameObject obj = FindGameObject(datas[1]);
 
             monster.Add(id, obj);
         }
 
-        Debug.Log("end");
+        foreach (KeyValuePair<int, GameObject> item in monster)
+        {
+            monsterKey.Add(item.Key);
+            Debug.Log($"{item.Key} / {item.Value}");
+        }
+    }
+
+    private GameObject FindGameObject(string name)
+    {
+        for (int i = 0; i < monsterPrefabs.Count; i++)
+        {
+            if (monsterPrefabs[i].name == name)
+            {
+                Debug.Log(monsterPrefabs[i]);
+                return monsterPrefabs[i];
+            }
+        }
+
+        return null;
+    }
+
+    private void ParserToMosterSpawnData(string data)
+    {
+        string[] line = data.Split('\n');
+        for(int i = 1;i < line.Length; i++)
+        {
+            monsterList.Add(line[i]);
+        }
+
+        for(int i = 0;i < monsterList.Count;i++)
+        {
+            Debug.Log(monsterList[i]);
+        }
+
+        MonsterSapwn();
+    }
+
+    private void MonsterSapwn()
+    {
+        int num = Random.Range(0, monsterList.Count - 1);
+        Debug.Log(num);
+        string[] point = monsterList[num].Split(',');
+
+        for(int i = 0; i < point.Length; i++)
+        {
+            int.TryParse(point[i], out int id);
+            for (int j = 0; j < monsterKey.Count; j++)
+            {
+                if (monsterKey[j] == id)
+                {
+                    Instantiate(monster[id], monsterPoints[i].position, Quaternion.identity);
+                    Debug.Log($"오브젝트 생성 {id}");
+                }
+                else
+                    Debug.Log("빈공간");
+            }
+        }
     }
 }
