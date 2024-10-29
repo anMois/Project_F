@@ -1,6 +1,7 @@
 using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartItemButton : MonoBehaviour
@@ -51,6 +52,11 @@ public class StartItemButton : MonoBehaviour
 
     private void Update()
     {
+        if (startItemCanvas != null)
+        {
+            Time.timeScale = startItemCanvas.activeSelf ? 0 : 1;
+        }
+
         if (startItemExplanationCanvas != null && startItemExplanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
         {
             startItemExplanationCanvas.SetActive(false);
@@ -102,5 +108,12 @@ public class StartItemButton : MonoBehaviour
         //선택한 유물이 인벤토리에 담기는 코드 작성
         startItemCanvas.SetActive(false);
         startItemExplanationCanvas.SetActive(false);
+
+        Debug.Log($"{startItemData.itemName}을 선택하셨습니다.");
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            GameController.Instance.ShowInGameUI();
+        }
     }
 }

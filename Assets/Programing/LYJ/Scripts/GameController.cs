@@ -93,11 +93,6 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
-        {
-            ShowInGameUI();
-        }
     }
 
     private void HideAllInGameUI()
@@ -111,7 +106,7 @@ public class GameController : MonoBehaviour
         UIManager.Instance.HideUI("Explanation Canvas");
     }
 
-    private void ShowInGameUI()
+    public void ShowInGameUI()
     {
         UIManager.Instance.ShowUI("Player HP Canvas");
         UIManager.Instance.ShowUI("Player Item Canvas");
