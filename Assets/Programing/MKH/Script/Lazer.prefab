@@ -92,7 +92,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6004601724102690753}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -143,6 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 196ea4e1bdc56f547b7566dc80dc0c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lazer: {fileID: 6466556032025269036}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 193
+  lifeTime: 5
   length: 0
   range: 0
+  dmg: 10
