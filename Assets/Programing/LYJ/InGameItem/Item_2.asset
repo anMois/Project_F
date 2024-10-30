@@ -19,4 +19,4 @@ MonoBehaviour:
   HP: 0
   RAN: 0
   SPD: 20
-  elemental: Ice
+  elemental: 1

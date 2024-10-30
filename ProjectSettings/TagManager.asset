@@ -7,10 +7,6 @@ TagManager:
   - Monster
   - Bullet
   - UICanvas
-  - Flame
-  - Ice
-  - Electricity
-  - Earth
   layers:
   - Default
   - TransparentFX

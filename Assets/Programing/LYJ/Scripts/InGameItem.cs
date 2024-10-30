@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum ElementalType
+{
+    Flame,
+    Ice,
+    Electricity,
+    Earth
+}
+
 [CreateAssetMenu(fileName = "Item_", menuName = "InGameItem")]
 public class InGameItem : ScriptableObject
 {
@@ -10,7 +18,7 @@ public class InGameItem : ScriptableObject
     public int HP;
     public int RAN;
     public int SPD;
-    public string elemental;
+    public ElementalType elemental;
 
     public void ApplyEffect(StatusWindowController statusWindow)
     {

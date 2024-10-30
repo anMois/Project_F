@@ -31,16 +31,16 @@ public class StatusWindowController : MonoBehaviour
 
             switch (item.elemental)
             {
-                case "Flame":
+                case ElementalType.Flame:
                     flameCount++;
                     break;
-                case "Ice":
+                case ElementalType.Ice:
                     iceCount++;
                     break;
-                case "Electricity":
+                case ElementalType.Electricity:
                     electricityCount++;
                     break;
-                case "Earth":
+                case ElementalType.Earth:
                     earthCount++;
                     break;
             }

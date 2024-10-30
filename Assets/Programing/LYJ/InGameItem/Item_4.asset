@@ -19,4 +19,4 @@ MonoBehaviour:
   HP: 20
   RAN: 0
   SPD: 10
-  elemental: Earth
+  elemental: 3
