@@ -30,6 +30,12 @@ public class ItemCollector : MonoBehaviour
 
     private void Update()
     {
+        if (UIManager.Instance.IsUIActive("In Game Menu Canvas") ||
+        UIManager.Instance.IsUIActive("In Game Manual Canvas"))
+        {
+            return; //다른 UI가 열려 있으면 인벤토리를 열지 않음
+        }
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (UIManager.Instance.IsUIActive("Status Window Canvas"))
