@@ -8,14 +8,27 @@ using UnityEngine.UI;
 
 public class CSVDownload : MonoBehaviour
 {
+    public static CSVDownload Instance { get; private set; }
+
     const string urlPath = "https://docs.google.com/spreadsheets/d/1DdyytW9508YQYY1_63fVf_bZNvDM7thHC7nBM7M4X6M/export?format=csv";
 
+    public GameObject[] mainButtons;
     public GameObject[] buttons;
 
     public List<ItemData> itemDataList { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         itemDataList = new List<ItemData>();
         StartCoroutine(DownloadRoutine());
     }
@@ -74,7 +87,7 @@ public class CSVDownload : MonoBehaviour
         HashSet<int> usedIndices = new HashSet<int>(); //이미 사용된 인덱스를 기록할 HashSet 생성
 
         //순서대로 버튼에 아이템 데이터 설정함 (랜덤 X)
-        for (int i = 0; i < buttons.Length; i++)
+        for (int i = 0; i < mainButtons.Length; i++)
         {
             if (i >= itemDataList.Count) //리스트에 아이템이 없으면 멈춤
                 break;
@@ -82,7 +95,7 @@ public class CSVDownload : MonoBehaviour
             ItemData itemData = itemDataList[i];
 
             //ItemButton 컴포넌트를 찾고 데이터를 설정함
-            ItemButton itemButton = buttons[i].GetComponent<ItemButton>();
+            ItemButton itemButton = mainButtons[i].GetComponent<ItemButton>();
             if (itemButton != null)
             {
                 itemButton.itemData = itemData;
