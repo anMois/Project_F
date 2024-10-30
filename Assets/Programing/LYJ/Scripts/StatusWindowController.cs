@@ -19,10 +19,18 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private Image displayImage;
     [SerializeField] private Sprite[] elementalImages;
 
+    [SerializeField] private List<Image> relicUIImages;
+    private List<Sprite> relicSprites = new List<Sprite>();
+
     private void Start()
     {
         UpdateUI();
         UpdateDisplayImage();
+
+        foreach (var relicUIImage in relicUIImages)
+        {
+            relicUIImage.gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -50,9 +58,36 @@ public class StatusWindowController : MonoBehaviour
                     break;
             }
 
+            AddRelicToInventory(item.itemImage);
+
             UpdateUI();
             UpdateDisplayImage();
             Destroy(other.gameObject);
+        }
+    }
+
+    private void AddRelicToInventory(Sprite itemSprite)
+    {
+        if (relicSprites.Count < 20)
+        {
+            relicSprites.Add(itemSprite);
+            UpdateRelicUI();
+        }
+    }
+
+    private void UpdateRelicUI()
+    {
+        for (int i = 0; i < relicUIImages.Count; i++)
+        {
+            if (i < relicSprites.Count)
+            {
+                relicUIImages[i].sprite = relicSprites[i];
+                relicUIImages[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                relicUIImages[i].gameObject.SetActive(false);
+            }
         }
     }
 
