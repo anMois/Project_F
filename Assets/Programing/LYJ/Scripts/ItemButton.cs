@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class ItemButton : MonoBehaviour
 {
+    [SerializeField] Image bookItemImage;
+    [SerializeField] TextMeshProUGUI bookItemName;
+
     public ItemData itemData;
     private GameController gameController;
     private Button button;
@@ -19,6 +22,12 @@ public class ItemButton : MonoBehaviour
         {
             button.onClick.AddListener(OnButtonClick);
         }
+    }
+
+    private void Update()
+    {
+        bookItemImage.sprite = itemData.itemImage;
+        bookItemName.text = itemData.itemName;
     }
 
     /// <summary>
