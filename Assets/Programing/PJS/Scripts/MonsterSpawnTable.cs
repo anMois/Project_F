@@ -15,6 +15,7 @@ public class MonsterSpawnTable : MonoBehaviour
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
     private List<string> monsterList = new List<string>();  // 몬스터의 배치 리스트
 
+    [SerializeField] StageManager stageManager;
     [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] MonsterManager monsterManager;
     [Header("생성되는 몬스터")]
@@ -41,7 +42,7 @@ public class MonsterSpawnTable : MonoBehaviour
 
         string reciveText = requestMonsterSpawn.downloadHandler.text;
         ParserToMosterSpawnData(reciveText);
-        Debug.Log(reciveText);
+        yield break;
     }
 
     private void ParserToMonsterData(string data)
@@ -120,6 +121,14 @@ public class MonsterSpawnTable : MonoBehaviour
                 else
                     Debug.Log("빈공간");
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (monsterManager.MonsterCount == 0)
+        {
+            MonsterSapwn();
         }
     }
 }
