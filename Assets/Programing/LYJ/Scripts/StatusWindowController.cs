@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StatusWindowController : MonoBehaviour
 {
@@ -15,9 +16,13 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private int electricityCount = 0;
     [SerializeField] private int earthCount = 0;
 
+    [SerializeField] private Image displayImage;
+    [SerializeField] private Sprite[] elementalImages;
+
     private void Start()
     {
         UpdateUI();
+        UpdateDisplayImage();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,7 +32,7 @@ public class StatusWindowController : MonoBehaviour
         if (itemReference != null)
         {
             InGameItem item = itemReference.item;
-            item.ApplyEffect(this); //스크립터블 오브젝트의 효과 적용
+            item.ApplyEffect(this);
 
             switch (item.elemental)
             {
@@ -46,13 +51,13 @@ public class StatusWindowController : MonoBehaviour
             }
 
             UpdateUI();
+            UpdateDisplayImage();
             Destroy(other.gameObject);
         }
     }
 
     public void ChangeStat(string statName, int value)
     {
-        // 스탯을 증가 또는 감소시킴
         switch (statName)
         {
             case "ATK":
@@ -82,5 +87,47 @@ public class StatusWindowController : MonoBehaviour
         iceCountText.text = $"{iceCount}";
         electricityCountText.text = $"{electricityCount}";
         earthCountText.text = $"{earthCount}";
+    }
+
+    private void UpdateDisplayImage()
+    {
+        int maxCount = Mathf.Max(flameCount, iceCount, electricityCount, earthCount);
+
+        if (maxCount == 0)
+        {
+            displayImage.gameObject.SetActive(false);
+            return;
+        }
+        else
+        {
+            displayImage.gameObject.SetActive(true);
+        }
+
+        ElementalType manyElement = ElementalType.Flame;
+
+        if (maxCount == flameCount)
+            manyElement = ElementalType.Flame;
+        else if (maxCount == iceCount)
+            manyElement = ElementalType.Ice;
+        else if (maxCount == electricityCount)
+            manyElement = ElementalType.Electricity;
+        else if (maxCount == earthCount)
+            manyElement = ElementalType.Earth;
+
+        switch (manyElement)
+        {
+            case ElementalType.Flame:
+                displayImage.sprite = elementalImages[0];
+                break;
+            case ElementalType.Ice:
+                displayImage.sprite = elementalImages[1];
+                break;
+            case ElementalType.Electricity:
+                displayImage.sprite = elementalImages[2];
+                break;
+            case ElementalType.Earth:
+                displayImage.sprite = elementalImages[3];
+                break;
+        }
     }
 }
