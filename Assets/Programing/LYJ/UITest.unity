@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 380882807}
   - component: {fileID: 380882806}
   - component: {fileID: 380882805}
+  - component: {fileID: 380882808}
   m_Layer: 0
   m_Name: Item3
   m_TagString: Electricity
@@ -219,6 +220,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380882803}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &380882808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380882803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885a2be392708b9409620fcb41d33288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: cc09052783e792940bd279c39d34997d, type: 2}
 --- !u!1 &459573710
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,6 +245,7 @@ GameObject:
   - component: {fileID: 459573714}
   - component: {fileID: 459573713}
   - component: {fileID: 459573712}
+  - component: {fileID: 459573715}
   m_Layer: 0
   m_Name: Item2
   m_TagString: Ice
@@ -316,6 +331,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459573710}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &459573715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459573710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885a2be392708b9409620fcb41d33288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 0d5b38fe3c69d2547bc2fd4617eda857, type: 2}
 --- !u!1 &489367482
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +356,7 @@ GameObject:
   - component: {fileID: 489367486}
   - component: {fileID: 489367485}
   - component: {fileID: 489367484}
+  - component: {fileID: 489367487}
   m_Layer: 0
   m_Name: Item4
   m_TagString: Earth
@@ -413,6 +442,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 489367482}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &489367487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489367482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885a2be392708b9409620fcb41d33288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: dc45cf4d9f8ea4d449b9c6afa441104e, type: 2}
 --- !u!1 &688600474
 GameObject:
   m_ObjectHideFlags: 0
@@ -425,6 +467,7 @@ GameObject:
   - component: {fileID: 688600478}
   - component: {fileID: 688600477}
   - component: {fileID: 688600476}
+  - component: {fileID: 688600479}
   m_Layer: 0
   m_Name: Item1
   m_TagString: Flame
@@ -510,6 +553,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 688600474}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &688600479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 688600474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 885a2be392708b9409620fcb41d33288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 750cc60f3a03ccf4fb539ef06b4877a7, type: 2}
 --- !u!1 &839806521
 GameObject:
   m_ObjectHideFlags: 0

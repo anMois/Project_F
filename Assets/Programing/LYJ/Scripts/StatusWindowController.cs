@@ -10,10 +10,10 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI electricityCountText;
     [SerializeField] private TextMeshProUGUI earthCountText;
 
-    [SerializeField] int flameCount = 0;
-    [SerializeField] int iceCount = 0;
-    [SerializeField] int electricityCount = 0;
-    [SerializeField] int earthCount = 0;
+    [SerializeField] private int flameCount = 0;
+    [SerializeField] private int iceCount = 0;
+    [SerializeField] private int electricityCount = 0;
+    [SerializeField] private int earthCount = 0;
 
     private void Start()
     {
@@ -22,29 +22,57 @@ public class StatusWindowController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Flame"))
+        InGameItemReference itemReference = other.GetComponent<InGameItemReference>();
+
+        if (itemReference != null)
         {
-            flameCount++;
+            InGameItem item = itemReference.item;
+            item.ApplyEffect(this); //스크립터블 오브젝트의 효과 적용
+
+            switch (item.elemental)
+            {
+                case "Flame":
+                    flameCount++;
+                    break;
+                case "Ice":
+                    iceCount++;
+                    break;
+                case "Electricity":
+                    electricityCount++;
+                    break;
+                case "Earth":
+                    earthCount++;
+                    break;
+            }
+
             UpdateUI();
             Destroy(other.gameObject);
         }
-        else if (other.CompareTag("Ice"))
+    }
+
+    public void ChangeStat(string statName, int value)
+    {
+        // 스탯을 증가 또는 감소시킴
+        switch (statName)
         {
-            iceCount++;
-            UpdateUI();
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Electricity"))
-        {
-            electricityCount++;
-            UpdateUI();
-            Destroy(other.gameObject);
-        }
-        else if (other.CompareTag("Earth"))
-        {
-            earthCount++;
-            UpdateUI();
-            Destroy(other.gameObject);
+            case "ATK":
+                Debug.Log($"ATK {value} 변화");
+                break;
+            case "ATS":
+                Debug.Log($"ATS {value} 변화");
+                break;
+            case "DEF":
+                Debug.Log($"DEF {value} 변화");
+                break;
+            case "HP":
+                Debug.Log($"HP {value} 변화");
+                break;
+            case "RAN":
+                Debug.Log($"RAN {value} 변화");
+                break;
+            case "SPD":
+                Debug.Log($"SPD {value} 변화");
+                break;
         }
     }
 
