@@ -15,8 +15,8 @@ MonoBehaviour:
   itemName: Item_2
   specialEffects: specialEffects
   specialEffectsDescription: specialEffectsDescription
-  itemImage: {fileID: 21300000, guid: e8c5d172cff800c4f8bd6bc2ea5d7484, type: 3}
-  itemAttributesImage: {fileID: 21300000, guid: 66fb43e18f795ff4ab52b9ffc96fa98d, type: 3}
+  itemImage: {fileID: 21300000, guid: 24f7c69aa2b3bf2409be143439dd0ba1, type: 3}
+  itemAttributesImage: {fileID: 21300000, guid: 147aee4ab0395294b924c26bb9730149, type: 3}
   specialEffectsImage1: {fileID: 21300000, guid: ba198d8c694958b408ddf98799381a36, type: 3}
   specialEffectsImage2: {fileID: 0}
   specialEffectsImage3: {fileID: 0}
