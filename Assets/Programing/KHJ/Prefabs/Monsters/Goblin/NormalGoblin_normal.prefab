@@ -1453,9 +1453,8 @@ MonoBehaviour:
   curState: 0
   target: {fileID: 0}
   visualization: 1
-  visualRange: 20
   attackMaxRange: 1
-  guardRange: 1
+  guardRange: 0.8
   monsterID: 2001
   maxHp: 30
   curHp: 0
