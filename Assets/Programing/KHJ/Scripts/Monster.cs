@@ -19,11 +19,9 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected Transform target;
 
     [Header("Range")]
-    [Tooltip("Visual Range: cyan\n" +
-        "Guard Range: yellow\n" +
+    [Tooltip("Guard Range: yellow\n" +
         "Attack Max Range: red")]
     [SerializeField] protected bool visualization;
-    [SerializeField] protected float visualRange;
     [SerializeField] protected float attackMaxRange;
     [SerializeField] protected float guardRange;
 
@@ -126,12 +124,7 @@ public class Monster : MonoBehaviour, IDamageable
             // Keep position
 
             // Transition
-            float distance = Vector3.Distance(monster.transform.position, monster.target.position);
-
-            if(distance <= monster.visualRange)
-            {
-                monster.ChangeState(State.Trace);
-            }
+            // Trace() method handles "Idle -> Trace" using event
         }
     }
 
@@ -233,8 +226,6 @@ public class Monster : MonoBehaviour, IDamageable
             return;
 
         // Visualize detection range
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, visualRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, guardRange);
         Gizmos.color = Color.red;

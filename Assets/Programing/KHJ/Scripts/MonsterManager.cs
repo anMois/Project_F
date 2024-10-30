@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    [Tooltip("Invoke OnAreaOut event when player moves to outside of start zone")]
+    [SerializeField] Test_StartZone startZone;
+
     [SerializeField] List<Monster> monsters = new List<Monster>(10);
 
     public void AddMonster(Monster newMonster)
     {
-        // New monster and other existing monsters subscribe each other
+        // Subscribes events
         foreach (Monster mon in monsters)
         {
             mon.OnAlarm += newMonster.Trace;
             newMonster.OnAlarm += mon.Trace;
         }
         newMonster.OnAlarm += newMonster.Trace;
+        startZone.OnAreaOut += newMonster.Trace;
 
         monsters.Add(newMonster);
     }
