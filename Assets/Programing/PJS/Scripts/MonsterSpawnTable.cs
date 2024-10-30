@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 public class MonsterSpawnTable : MonoBehaviour
 {
     //몬스터 테이블
-    const string monsterData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=0&format=csv";
+    const string monsterData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=0&format=csv";
 
     //몬스터 배치 테이블
-    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=1240725374&format=csv";
+    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=1049510758&format=csv";
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();    // 몬스터를 저장할 딕셔너리
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
