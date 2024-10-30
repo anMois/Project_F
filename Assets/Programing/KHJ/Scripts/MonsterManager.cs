@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     [Tooltip("Invoke OnAreaOut event when player moves to outside of start zone")]
-    [SerializeField] Test_StartZone startZone;
+    [SerializeField] StartZone startZone;
 
     [SerializeField] List<Monster> monsters = new List<Monster>(10);
 
