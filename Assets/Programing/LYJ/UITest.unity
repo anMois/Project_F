@@ -2262,6 +2262,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4117900264488095071, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -802.116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117900265027610622, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -948.116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117900265069622155, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -855
+      objectReference: {fileID: 0}
     - target: {fileID: 4117900265110608923, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
       propertyPath: m_Name
       value: Status Window Canvas
@@ -2349,6 +2361,18 @@ PrefabInstance:
     - target: {fileID: 4117900265110608927, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117900265293952257, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -800.116
+      objectReference: {fileID: 0}
+    - target: {fileID: 4117900265321856952, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -820.116
+      objectReference: {fileID: 0}
+    - target: {fileID: 5118529489381525960, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1317.0161
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
