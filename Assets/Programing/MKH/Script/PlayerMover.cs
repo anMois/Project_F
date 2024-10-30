@@ -6,7 +6,7 @@ public class PlayerMover : MonoBehaviour
 {
     [SerializeField] Transform player;
 
-    [SerializeField] float moveSpeed;
+    [SerializeField] public float moveSpeed;
     [SerializeField] float runSpeed;
     [SerializeField] float jumpPower;
     [SerializeField] float dashSpeed;
@@ -16,7 +16,8 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] Rigidbody rigid;
     [SerializeField] float hp;
     [SerializeField] public int maxJump;
-    [SerializeField] bool isGround = false;
+    [SerializeField] public bool isGround = false;
+    [SerializeField] bool isMove = false;
     int jumpCount;
 
 
@@ -29,6 +30,8 @@ public class PlayerMover : MonoBehaviour
     private static int dieHash = Animator.StringToHash("Die");
     private static int jumpUpHash = Animator.StringToHash("JumpUP");
     private static int jumpDownHash = Animator.StringToHash("JumpDown");
+    private static int StopHash = Animator.StringToHash("Stop");
+
 
 
     public int curAniHash { get; private set; }
@@ -41,6 +44,7 @@ public class PlayerMover : MonoBehaviour
 
         jumpCount = maxJump;
         Cursor.lockState = CursorLockMode.Locked;
+        isMove = true;
     }
 
     private void Update()
@@ -50,9 +54,18 @@ public class PlayerMover : MonoBehaviour
         AnimaitorPlay();
         Jump();
         Dash();
+
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            isMove = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isMove = true;
+        }
     }
 
-    private void Move()
+    public void Move()
     {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
@@ -61,8 +74,11 @@ public class PlayerMover : MonoBehaviour
         if (moveDir == Vector3.zero)
             return;
 
-        transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
-        transform.Rotate(moveDir.normalized * moveSpeed * Time.deltaTime);
+        if (isMove)
+        {
+            transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
+            transform.Rotate(moveDir.normalized * moveSpeed * Time.deltaTime);
+        }
 
         if(Input.GetKey(KeyCode.LeftControl))
         {
@@ -86,7 +102,7 @@ public class PlayerMover : MonoBehaviour
     private void Jump()
     {
       
-        if(Input.GetKeyDown(KeyCode.Space) && jumpCount > 0)
+        if(Input.GetKeyDown(KeyCode.Space) && jumpCount > 0 && isMove)
         {
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             jumpCount--;
@@ -112,7 +128,7 @@ public class PlayerMover : MonoBehaviour
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && isMove)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -139,50 +155,53 @@ public class PlayerMover : MonoBehaviour
     {
         int checkAniHash = 0;
 
-        if (Input.GetKey(KeyCode.W))
+        if (isMove)
         {
-            checkAniHash = walkForwardHash;
-            if (Input.GetKey(KeyCode.LeftControl))
+            if (Input.GetKey(KeyCode.W))
             {
-                checkAniHash = runForwardHash;
+                checkAniHash = walkForwardHash;
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    checkAniHash = runForwardHash;
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            checkAniHash = walkBackHash;
-            if (Input.GetKey(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.S))
             {
-                checkAniHash = runForwardHash;
+                checkAniHash = walkBackHash;
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    checkAniHash = runForwardHash;
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            checkAniHash = walkLeftHash;
-            if (Input.GetKey(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.A))
             {
-                checkAniHash = runForwardHash;
+                checkAniHash = walkLeftHash;
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    checkAniHash = runForwardHash;
+                }
             }
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            checkAniHash = walkRightHash;
-            if (Input.GetKey(KeyCode.LeftControl))
+            else if (Input.GetKey(KeyCode.D))
             {
-                checkAniHash = runForwardHash;
+                checkAniHash = walkRightHash;
+                if (Input.GetKey(KeyCode.LeftControl))
+                {
+                    checkAniHash = runForwardHash;
+                }
             }
-        }
-        else
-        {
-            checkAniHash = idleHash;
-        }
+            else
+            {
+                checkAniHash = idleHash;
+            }
 
-        if (rigid.velocity.y > 0.01f)
-        {
-            checkAniHash = jumpUpHash;
-        }
-        else if (rigid.velocity.y < -0.01f)
-        {
-            checkAniHash = jumpDownHash;
+            if (rigid.velocity.y > 0.01f)
+            {
+                checkAniHash = jumpUpHash;
+            }
+            else if (rigid.velocity.y < -0.01f)
+            {
+                checkAniHash = jumpDownHash;
+            }
         }
 
         if (hp <= 0)
@@ -190,12 +209,10 @@ public class PlayerMover : MonoBehaviour
             checkAniHash = dieHash;
         }
 
-
-
         if (curAniHash != checkAniHash)
         {
             curAniHash = checkAniHash;
-            animator.Play(curAniHash);
+            animator.Play(curAniHash, 0, 0f);
         }
     }
     #endregion

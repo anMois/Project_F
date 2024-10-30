@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,19 +9,26 @@ public class StoreController : MonoBehaviour
     private GameObject storeCanvas;
     private GameObject explanationCanvas;
     private Button storeExitButton;
-    private bool isStoreInitialized = false; // 상점 초기화 여부
+    private bool isStoreInitialized = false; //상점 초기화 여부
 
     private void Start()
     {
-        storeCanvas = GameObject.Find("Store Canvas");
-        explanationCanvas = GameObject.Find("Explanation Canvas");
+        storeCanvas = UIManager.Instance.GetUICanvas("Store Canvas");
+        explanationCanvas = UIManager.Instance.GetUICanvas("Explanation Canvas");
+
         storeCanvas.SetActive(false);
         explanationCanvas.SetActive(false);
+
+        storeExitButton = storeCanvas.transform.Find("Store Exit Button")?.GetComponent<Button>();
+        if (storeExitButton != null)
+        {
+            storeExitButton.onClick.AddListener(StoreExitButtonClick);
+        }
     }
 
     private void Update()
     {
-        if (explanationCanvas != null && explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
+        if (explanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
         {
             explanationCanvas.SetActive(false);
         }
@@ -68,16 +74,6 @@ public class StoreController : MonoBehaviour
                 StartCoroutine(csvDownload.DownloadRoutine());
             }
             isStoreInitialized = true;
-        }
-
-        if (storeExitButton == null && storeCanvas.activeSelf)
-        {
-            storeExitButton = GameObject.Find("Store Exit Button")?.GetComponent<Button>();
-
-            if (storeExitButton != null)
-            {
-                storeExitButton.onClick.AddListener(StoreExitButtonClick);
-            }
         }
     }
 }
