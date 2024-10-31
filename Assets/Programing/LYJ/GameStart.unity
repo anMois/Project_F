@@ -1205,7 +1205,6 @@ MonoBehaviour:
   - {fileID: 1648650093}
   - {fileID: 1648650092}
   - {fileID: 1648650091}
-  gameClearButtons: []
 --- !u!114 &318746094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4117900264973252141, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
@@ -1489,6 +1488,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Item Name Button
       objectReference: {fileID: 0}
+    - target: {fileID: 8558265485932868539, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265485932868539, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6086472556309017595, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265485932868539, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8558265486236722688, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_Name
       value: Stage Clear Canvas
@@ -1584,6 +1595,30 @@ PrefabInstance:
     - target: {fileID: 8558265486418742855, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_Name
       value: Item Name Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558265486719974588, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265486719974588, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6086472556309017595, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265486719974588, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558265486800025989, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265486800025989, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6086472556309017595, guid: 4969cd556554a7e4fabc34ba4e2f6d1a, type: 2}
+    - target: {fileID: 8558265486800025989, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8558265486944178745, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_Name

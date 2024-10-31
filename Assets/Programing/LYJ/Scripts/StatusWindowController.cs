@@ -101,7 +101,6 @@ public class StatusWindowController : MonoBehaviour
                 break;
         }
 
-        AddRelicToInventory(item.itemImage);
         UpdateUI();
         UpdateDisplayImage();
     }
@@ -124,55 +123,6 @@ public class StatusWindowController : MonoBehaviour
         hpText.text = $"{item.HP}";
         ranText.text = $"{item.RAN}";
         spdText.text = $"{item.SPD}";
-    }
-
-    private void AddRelicToInventory(Sprite itemSprite)
-    {
-        if (relicSprites.Count < 20)
-        {
-            relicSprites.Add(itemSprite);
-            UpdateRelicUI();
-        }
-    }
-
-    private void UpdateRelicUI()
-    {
-        for (int i = 0; i < relicUIImages.Count; i++)
-        {
-            if (i < relicSprites.Count && relicUIImages[i] != null)
-            {
-                relicUIImages[i].sprite = relicSprites[i];
-                relicUIImages[i].gameObject.SetActive(true);
-
-                int index = i;
-                Button button = relicUIImages[i].GetComponent<Button>();
-                if (button != null)
-                {
-                    button.onClick.RemoveAllListeners();
-                    button.onClick.AddListener(() => ShowRelicInfo(index));
-                }
-            }
-            else if (relicUIImages[i] != null)
-            {
-                relicUIImages[i].gameObject.SetActive(false);
-            }
-        }
-    }
-
-
-    private void ShowRelicInfo(int index)
-    {
-        UIManager.Instance.ShowUI("Status Window Explanation Canvas");
-
-        var itemData = CSVDownload.Instance.itemDataList[index];
-        if (itemData != null)
-        {
-            StatusWindowExplanationCanvas.Instance.SetExplanation(itemData);
-        }
-        else
-        {
-            Debug.LogError("아이템 데이터가 null입니다.");
-        }
     }
 
 
@@ -277,5 +227,19 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
+
+    public void AddItemToInventory(Sprite itemSprite)
+    {
+        foreach (var relicUIImage in relicUIImages)
+        {
+            if (!relicUIImage.gameObject.activeSelf)
+            {
+                relicUIImage.sprite = itemSprite;
+                relicUIImage.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
 
 }
