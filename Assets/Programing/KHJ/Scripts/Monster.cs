@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -77,6 +78,16 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)curState].StateEnter();
     }
 
+    public bool GazePlayer()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Ray vision = new Ray(transform.position, direction);
+
+        Physics.Raycast(vision, out RaycastHit hit, guardRange);
+
+        return hit.transform.CompareTag("Player");
+    }
+
     public void Trace()
     {
         if (curState != State.Idle)
@@ -149,8 +160,9 @@ public class Monster : MonoBehaviour, IDamageable
 
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
-            
-            if (distance <= monster.guardRange)
+
+            // In guard range and could see player
+            if (distance <= monster.guardRange && monster.GazePlayer())
             {
                 monster.agent.isStopped = true;
                 monster.ChangeState(State.Guard);
@@ -160,10 +172,13 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected class GuardState : MonsterState
     {
+        private int sign;
+
         public GuardState(Monster monster) : base(monster) { }
 
         public override void StateEnter()
         {
+            sign = (UnityEngine.Random.Range(0, 2) == 0) ? -1 : 1;
             attackCoroutine = CoroutineHelper.StartCoroutine(AttackRoutine());
         }
 
@@ -177,7 +192,7 @@ public class Monster : MonoBehaviour, IDamageable
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
-            if (distance > monster.attackMaxRange)
+            if (distance > monster.attackMaxRange || !monster.GazePlayer())
             {
                 monster.ChangeState(State.Trace);
             }
@@ -195,7 +210,7 @@ public class Monster : MonoBehaviour, IDamageable
         protected void Guard()
         {
             float angle = monster.guardSpeed * 0.01f;
-            monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
+            monster.transform.RotateAround(monster.target.position, monster.target.up, sign * angle);
         }
 
         Coroutine attackCoroutine;
