@@ -46,6 +46,4 @@ public class Player : MonoBehaviour, IDamageable
             playerMover.AnimaitorPlay();
         }
     }
-
-
 }

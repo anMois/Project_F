@@ -23,3 +23,10 @@ MonoBehaviour:
   specialEffectsFigure1: +100
   specialEffectsFigure2: 
   specialEffectsFigure3: 
+  elemental: 1
+  ATK: 55
+  ATS: 40
+  DEF: 30
+  HP: 70
+  RAN: 70
+  SPD: 20

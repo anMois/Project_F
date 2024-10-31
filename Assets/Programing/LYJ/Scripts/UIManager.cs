@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<string, GameObject> uiCanvases = new Dictionary<string, GameObject>();
 
+    public bool IsAnimationCompleted { get; private set; } = false;
+
     private void Awake()
     {
         if (Instance == null)
@@ -53,13 +55,25 @@ public class UIManager : MonoBehaviour
     {
         if (uiCanvases.ContainsKey(uiName))
         {
-            uiCanvases[uiName].SetActive(true);
+            GameObject canvas = uiCanvases[uiName];
+            canvas.SetActive(true);
+
+            //if (uiName == "Status Window Canvas")
+            //{
+            //    Animator animator = canvas.GetComponent<Animator>();
+            //    if (animator != null)
+            //    {
+            //        animator.SetTrigger("Show");
+            //        IsAnimationCompleted = false;
+            //    }
+            //}
         }
         else
         {
             Debug.Log($"{uiName} UI를 찾을 수 없습니다.");
         }
     }
+
 
     /// <summary>
     /// 특정 UI를 비활성화 시킬 때 사용

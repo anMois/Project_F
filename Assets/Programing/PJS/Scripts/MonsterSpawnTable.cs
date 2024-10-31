@@ -6,15 +6,16 @@ using UnityEngine.Networking;
 public class MonsterSpawnTable : MonoBehaviour
 {
     //몬스터 테이블
-    const string monsterData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=0&format=csv";
+    const string monsterData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=0&format=csv";
 
     //몬스터 배치 테이블
-    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=1240725374&format=csv";
+    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=1049510758&format=csv";
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();    // 몬스터를 저장할 딕셔너리
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
     private List<string> monsterList = new List<string>();  // 몬스터의 배치 리스트
 
+    [SerializeField] StageManager stageManager;
     [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] MonsterManager monsterManager;
     [Header("생성되는 몬스터")]
@@ -41,7 +42,7 @@ public class MonsterSpawnTable : MonoBehaviour
 
         string reciveText = requestMonsterSpawn.downloadHandler.text;
         ParserToMosterSpawnData(reciveText);
-        Debug.Log(reciveText);
+        yield break;
     }
 
     private void ParserToMonsterData(string data)
@@ -95,11 +96,12 @@ public class MonsterSpawnTable : MonoBehaviour
         {
             Debug.Log(monsterList[i]);
         }
-
-        MonsterSapwn();
     }
 
-    private void MonsterSapwn()
+    /// <summary>
+    /// 배치되어 있는 리스트 중 랜덤으로 하나를 골라 지정된 위치에 몬스터 스폰
+    /// </summary>
+    public void MonsterSapwn()
     {
         int num = Random.Range(0, monsterList.Count - 1);
         Debug.Log(num);
@@ -121,5 +123,6 @@ public class MonsterSpawnTable : MonoBehaviour
                     Debug.Log("빈공간");
             }
         }
+        stageManager.CurWave++;
     }
 }

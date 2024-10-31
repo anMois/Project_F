@@ -27,5 +27,10 @@ public class Test_MonsterSpawner : MonoBehaviour
             newMonster = Instantiate(monsterPrefabs[2], spawnPoint.position, Quaternion.identity).GetComponent<Monster>();
             monsterManager.AddMonster(newMonster);
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            newMonster = Instantiate(monsterPrefabs[3], spawnPoint.position, Quaternion.identity).GetComponent<Monster>();
+            monsterManager.AddMonster(newMonster);
+        }
     }
 }
