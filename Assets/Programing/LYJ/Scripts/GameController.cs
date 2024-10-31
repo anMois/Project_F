@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Button itemBookButton;
     [SerializeField] Button manualButton;
     [SerializeField] Button bookExitButton;
+    [SerializeField] Button bookChangeButton;
+    [SerializeField] Button book2ExitButton;
+    [SerializeField] Button bookPageReturnButton;
     [SerializeField] Button manualExitButton;
     [SerializeField] Button exitButton;
 
@@ -59,6 +62,9 @@ public class GameController : MonoBehaviour
         if (itemBookButton) itemBookButton.onClick.AddListener(ClickBookButton);
         if (manualButton) manualButton.onClick.AddListener(ClickManualButton);
         if (bookExitButton) bookExitButton.onClick.AddListener(BookExitButton);
+        if (bookChangeButton) bookChangeButton.onClick.AddListener(BookChangeButton);
+        if (book2ExitButton) book2ExitButton.onClick.AddListener(BookExitButton);
+        if (bookPageReturnButton) bookPageReturnButton.onClick.AddListener(BookPageReturnButton);
         if (manualExitButton) manualExitButton.onClick.AddListener(ManualExitButton);
         if (exitButton) exitButton.onClick.AddListener(ExitButton);
 
@@ -151,10 +157,23 @@ public class GameController : MonoBehaviour
         UIManager.Instance.ShowUI("Book Canvas");
     }
 
+    public void BookChangeButton()
+    {
+        UIManager.Instance.HideUI("Book Canvas");
+        UIManager.Instance.ShowUI("Book Canvas 2");
+    }
+
     public void BookExitButton()
     {
         UIManager.Instance.HideUI("Book Canvas");
+        UIManager.Instance.HideUI("Book Canvas 2");
         UIManager.Instance.ShowUI("Main Canvas");
+    }
+
+    public void BookPageReturnButton()
+    {
+        UIManager.Instance.HideUI("Book Canvas 2");
+        UIManager.Instance.ShowUI("Book Canvas");
     }
 
     public void ClickManualButton()
