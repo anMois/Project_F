@@ -334,6 +334,7 @@ GameObject:
   - component: {fileID: 3418092063543799307}
   - component: {fileID: 3418092063543799308}
   - component: {fileID: 3418092063543799309}
+  - component: {fileID: 2404695273896318960}
   m_Layer: 7
   m_Name: FlyingEye_normal
   m_TagString: Untagged
@@ -367,7 +368,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2382564013722392273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: eda0f6b98ac3c4884a4a765ce5cf664e, type: 3}
   m_Controller: {fileID: 9100000, guid: 3e8f856ea27104591b9b2391739834c6, type: 2}
   m_CullingMode: 1
@@ -594,7 +595,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &3418092063543799308
 CapsuleCollider:
@@ -631,11 +632,34 @@ MonoBehaviour:
   maxHp: 30
   curHp: 0
   moveSpeed: 6
+  guardSpeed: 0
   attackDamage: 10
   attackCoolDown: 4
   dropRate: 2
   projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
   muzzlePoint: {fileID: 3418092063502884500}
+--- !u!195 &2404695273896318960
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382564013722392273}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2382564013722392275
 GameObject:
   m_ObjectHideFlags: 0

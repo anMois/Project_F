@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 983795361252648132}
   - component: {fileID: 192832847241864360}
   - component: {fileID: 1384759599362258529}
+  - component: {fileID: 2284581246773576526}
   m_Layer: 7
   m_Name: GrayGollem_normal
   m_TagString: Untagged
@@ -47,7 +48,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 253511833134940362}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: d1b8eaad9702d43cd92499c36ae0f19a, type: 3}
   m_Controller: {fileID: 9100000, guid: 484c82eb178494f42b96519ca817dac1, type: 2}
   m_CullingMode: 1
@@ -513,7 +514,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &1384759599362258529
 MonoBehaviour:
@@ -536,9 +537,32 @@ MonoBehaviour:
   maxHp: 100
   curHp: 0
   moveSpeed: 8
+  guardSpeed: 0
   attackDamage: 30
   attackCoolDown: 2
   dropRate: 4
+--- !u!195 &2284581246773576526
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253511833134940362}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &253511833134940364
 GameObject:
   m_ObjectHideFlags: 0

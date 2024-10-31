@@ -2655,6 +2655,7 @@ GameObject:
   - component: {fileID: 521799635802031582}
   - component: {fileID: 993749372630603550}
   - component: {fileID: 4371427034670007712}
+  - component: {fileID: 7077635931406918108}
   m_Layer: 7
   m_Name: BlueSerpent_normal
   m_TagString: Untagged
@@ -2687,7 +2688,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4230854372846555045}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: f80ec895d41dc4c78961788f69ba22e3, type: 3}
   m_Controller: {fileID: 9100000, guid: 0c7e479c0cda54b8290c23268e777632, type: 2}
   m_CullingMode: 1
@@ -3052,7 +3053,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &993749372630603550
 CapsuleCollider:
@@ -3089,9 +3090,32 @@ MonoBehaviour:
   maxHp: 50
   curHp: 0
   moveSpeed: 8
+  guardSpeed: 0
   attackDamage: 10
   attackCoolDown: 2
   dropRate: 2
+--- !u!195 &7077635931406918108
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4230854372846555045}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &4230854372846555047
 GameObject:
   m_ObjectHideFlags: 0

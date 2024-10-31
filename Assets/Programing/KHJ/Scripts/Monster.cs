@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IDamageable
@@ -36,6 +37,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected int dropRate;
 
     protected Rigidbody rb;
+    protected NavMeshAgent agent;
 
     protected void Awake()
     {
@@ -45,6 +47,7 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)State.Dead] = new DeadState(this);
 
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
 
         curHp = maxHp;
 
@@ -133,19 +136,23 @@ public class Monster : MonoBehaviour, IDamageable
     {
         public TraceState(Monster monster) : base(monster) { }
 
+        public override void StateEnter()
+        {
+            monster.agent.isStopped = false;
+        }
+
         public override void StateUpdate()
         {
             // Trace
             // Move to traceRange with gazing target
-            Vector3 direction = (monster.target.position - monster.transform.position).normalized;
-            monster.transform.LookAt(monster.target);
-            monster.rb.velocity = monster.moveSpeed * direction;
+            monster.agent.destination = monster.target.position;
 
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
-
+            
             if (distance <= monster.guardRange)
             {
+                monster.agent.isStopped = true;
                 monster.ChangeState(State.Guard);
             }
         }
