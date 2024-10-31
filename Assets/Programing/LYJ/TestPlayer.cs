@@ -1,22 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TestPlayer : MonoBehaviour
 {
-    // Player 스크립트에 추가
     private void OnTriggerEnter(Collider other)
     {
         InGameItemReference itemReference = other.GetComponent<InGameItemReference>();
 
         if (itemReference != null)
         {
+            // 아이템을 수집
             StatusWindowController.Instance.CollectItem(itemReference.item);
+
+            // 오브젝트 삭제
             Destroy(other.gameObject);
 
-            UIManager.Instance.ShowUI("Stage Clear Canvas");
         }
     }
-
 }

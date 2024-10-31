@@ -17,6 +17,7 @@ public class InGameController : MonoBehaviour
     private Button oneStage;
     private Button twoStage;
     private Button threeStage;
+    private GameObject stageClearAniCanvas;
 
     [Header("Boss Canvas UI")]
     private GameObject bossStageCanvas;
@@ -30,12 +31,14 @@ public class InGameController : MonoBehaviour
         gameClearCanvas = UIManager.Instance.GetUICanvas("Stage Clear Canvas");
         nextStageCanvas = UIManager.Instance.GetUICanvas("Next Stage Canvas");
         bossStageCanvas = UIManager.Instance.GetUICanvas("Boss Stage Canvas");
+        stageClearAniCanvas = UIManager.Instance.GetUICanvas("Stage Clear Ani Canvas");
 
         storeCanvas.SetActive(false);
         explanationCanvas.SetActive(false);
         gameClearCanvas.SetActive(false);
         nextStageCanvas.SetActive(false);
         bossStageCanvas.SetActive(false);
+        stageClearAniCanvas.SetActive(false);
 
         storeExitButton = storeCanvas.transform.Find("Store Exit Button")?.GetComponent<Button>();
         continueButton = gameClearCanvas.transform.Find("Continue Button")?.GetComponent<Button>();
