@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class Monster : MonoBehaviour, IDamageable
@@ -30,11 +32,13 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected int maxHp;
     [SerializeField] protected int curHp;
     [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float guardSpeed;
     [SerializeField] protected int attackDamage;
     [SerializeField] protected float attackCoolDown;
     [SerializeField] protected int dropRate;
 
     protected Rigidbody rb;
+    protected NavMeshAgent agent;
 
     protected void Awake()
     {
@@ -44,6 +48,7 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)State.Dead] = new DeadState(this);
 
         rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
 
         curHp = maxHp;
 
@@ -71,6 +76,16 @@ public class Monster : MonoBehaviour, IDamageable
         states[(int)curState].StateExit();
         curState = state;
         states[(int)curState].StateEnter();
+    }
+
+    public bool GazePlayer()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Ray vision = new Ray(transform.position, direction);
+
+        Physics.Raycast(vision, out RaycastHit hit, guardRange);
+
+        return hit.transform.CompareTag("Player");
     }
 
     public void Trace()
@@ -132,19 +147,24 @@ public class Monster : MonoBehaviour, IDamageable
     {
         public TraceState(Monster monster) : base(monster) { }
 
+        public override void StateEnter()
+        {
+            monster.agent.isStopped = false;
+        }
+
         public override void StateUpdate()
         {
             // Trace
             // Move to traceRange with gazing target
-            Vector3 direction = (monster.target.position - monster.transform.position).normalized;
-            monster.transform.LookAt(monster.target);
-            monster.rb.velocity = monster.moveSpeed * direction;
+            monster.agent.destination = monster.target.position;
 
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
-            if (distance <= monster.guardRange)
+            // In guard range and could see player
+            if (distance <= monster.guardRange && monster.GazePlayer())
             {
+                monster.agent.isStopped = true;
                 monster.ChangeState(State.Guard);
             }
         }
@@ -152,10 +172,13 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected class GuardState : MonsterState
     {
+        private int sign;
+
         public GuardState(Monster monster) : base(monster) { }
 
         public override void StateEnter()
         {
+            sign = (UnityEngine.Random.Range(0, 2) == 0) ? -1 : 1;
             attackCoroutine = CoroutineHelper.StartCoroutine(AttackRoutine());
         }
 
@@ -169,7 +192,7 @@ public class Monster : MonoBehaviour, IDamageable
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
 
-            if (distance > monster.attackMaxRange)
+            if (distance > monster.attackMaxRange || !monster.GazePlayer())
             {
                 monster.ChangeState(State.Trace);
             }
@@ -186,8 +209,8 @@ public class Monster : MonoBehaviour, IDamageable
 
         protected void Guard()
         {
-            float angle = monster.moveSpeed * 0.01f;
-            monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
+            float angle = monster.guardSpeed * 0.01f;
+            monster.transform.RotateAround(monster.target.position, monster.target.up, sign * angle);
         }
 
         Coroutine attackCoroutine;

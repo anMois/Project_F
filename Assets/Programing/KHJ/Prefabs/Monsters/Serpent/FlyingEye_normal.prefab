@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225441}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225443}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225445}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225447}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2382564013722225449}
   - component: {fileID: 2382564013719280229}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Eyeball_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225451}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: EyeballBone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225453}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225455}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk54
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,8 @@ GameObject:
   - component: {fileID: 3418092063543799307}
   - component: {fileID: 3418092063543799308}
   - component: {fileID: 3418092063543799309}
-  m_Layer: 9
+  - component: {fileID: 2404695273896318960}
+  m_Layer: 7
   m_Name: FlyingEye_normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +368,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2382564013722392273}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: eda0f6b98ac3c4884a4a765ce5cf664e, type: 3}
   m_Controller: {fileID: 9100000, guid: 3e8f856ea27104591b9b2391739834c6, type: 2}
   m_CullingMode: 1
@@ -594,7 +595,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!136 &3418092063543799308
 CapsuleCollider:
@@ -631,11 +632,34 @@ MonoBehaviour:
   maxHp: 30
   curHp: 0
   moveSpeed: 6
+  guardSpeed: 6
   attackDamage: 10
   attackCoolDown: 4
   dropRate: 2
   projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
   muzzlePoint: {fileID: 3418092063502884500}
+--- !u!195 &2404695273896318960
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2382564013722392273}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2382564013722392275
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +670,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2382564013722225459}
   - component: {fileID: 2382564013719280231}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Tendrils_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -790,7 +814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225461}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: EyeballRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -822,7 +846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225463}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Flying_eye_LP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -855,7 +879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225469}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: TendrilsHub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225505}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +951,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225507}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +983,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225509}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +1015,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225511}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225513}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1055,7 +1079,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225515}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225517}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1119,7 +1143,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225519}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225521}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225523}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1215,7 +1239,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225525}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225527}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1279,7 +1303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225529}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk31
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225531}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk32
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1343,7 +1367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225533}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1375,7 +1399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225535}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1406,7 +1430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225409}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk35
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1438,7 +1462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225411}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk36
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1470,7 +1494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225413}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1502,7 +1526,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225415}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk34
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1533,7 +1557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225417}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1565,7 +1589,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225419}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,7 +1621,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225421}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1629,7 +1653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225423}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1660,7 +1684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225425}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk43
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1692,7 +1716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225427}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk44
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1724,7 +1748,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225429}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1756,7 +1780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225431}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk42
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1787,7 +1811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225433}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk47
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1819,7 +1843,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225435}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk48
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1851,7 +1875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225437}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk45
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1883,7 +1907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225439}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk46
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1914,7 +1938,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225473}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1945,7 +1969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225475}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +2001,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225477}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2009,7 +2033,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225479}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2041,7 +2065,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225481}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2072,7 +2096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225483}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2104,7 +2128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225485}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2136,7 +2160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225487}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2168,7 +2192,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225489}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2199,7 +2223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225491}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2231,7 +2255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225493}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2263,7 +2287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225495}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2295,7 +2319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225497}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2326,7 +2350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225499}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2358,7 +2382,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225501}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2390,7 +2414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2382564013722225503}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: CAT_tendrilsk14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2422,7 +2446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3418092063502884500}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Muzzle Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
