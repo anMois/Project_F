@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-using UnityEditor.PackageManager.UI;
+using static UnityEditor.Progress;
 
 public class GameController : MonoBehaviour
 {
@@ -86,7 +84,9 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!UIManager.Instance.IsUIActive("In Game Manual Canvas"))
+            if (!UIManager.Instance.IsUIActive("Main Canvas") && 
+                !UIManager.Instance.IsUIActive("In Game Manual Canvas") &&
+                !UIManager.Instance.IsUIActive("Start Item Canvas"))
             {
                 ToggleInGameMenu();
             }

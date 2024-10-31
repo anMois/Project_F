@@ -52,11 +52,6 @@ public class StartItemButton : MonoBehaviour
 
     private void Update()
     {
-        if (startItemCanvas != null)
-        {
-            Time.timeScale = startItemCanvas.activeSelf ? 0 : 1;
-        }
-
         if (startItemExplanationCanvas != null && startItemExplanationCanvas.activeSelf && Input.GetMouseButtonDown(0))
         {
             startItemExplanationCanvas.SetActive(false);
