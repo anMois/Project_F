@@ -9,7 +9,7 @@ public enum ElementalType
 }
 
 [CreateAssetMenu(fileName = "Item_", menuName = "InGameItem")]
-public class InGameItem : ScriptableObject
+public class InGameItemData : ScriptableObject
 {
     public Sprite itemImage;
     public int ATK;

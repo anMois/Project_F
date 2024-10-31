@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class InGameItemReference : MonoBehaviour
 {
-    public InGameItem item;
+    public InGameItemData item;
 }

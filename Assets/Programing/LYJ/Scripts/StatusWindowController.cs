@@ -74,7 +74,7 @@ public class StatusWindowController : MonoBehaviour
         ResetData();
     }
 
-    public void CollectItem(InGameItem item)
+    public void CollectItem(InGameItemData item)
     {
         item.ApplyEffect(this);
 

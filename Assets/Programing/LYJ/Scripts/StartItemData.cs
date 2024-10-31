@@ -18,4 +18,6 @@ public class StartItemData : ScriptableObject
     public string specialEffectsFigure1;
     public string specialEffectsFigure2;
     public string specialEffectsFigure3;
+
+
 }
