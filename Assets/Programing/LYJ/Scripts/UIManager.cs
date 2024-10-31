@@ -40,6 +40,11 @@ public class UIManager : MonoBehaviour
         HideUI("In Game Menu Canvas");
         HideUI("Player HP Canvas");
         HideUI("Player Item Canvas");
+
+        if (scene.name == "Stage1")
+        {
+            ShowUI("Start Item Canvas");
+        }
     }
 
     private void OnDestroy()
