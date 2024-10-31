@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StatusWindowController : MonoBehaviour
@@ -48,6 +49,29 @@ public class StatusWindowController : MonoBehaviour
         {
             relicUIImage.gameObject.SetActive(false);
         }
+    }
+
+    private void Update()
+    {
+        if (UIManager.Instance.IsUIActive("Status Window Explanation Canvas") && Input.GetMouseButtonDown(0))
+        {
+            UIManager.Instance.HideUI("Status Window Explanation Canvas");
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetData();
     }
 
     public void CollectItem(InGameItem item)
@@ -201,4 +225,24 @@ public class StatusWindowController : MonoBehaviour
                 break;
         }
     }
+
+    public void ResetData()
+    {
+        flameCount = 0;
+        iceCount = 0;
+        electricityCount = 0;
+        earthCount = 0;
+        relicSprites.Clear();
+        UpdateUI();
+        UpdateDisplayImage();
+
+        foreach (var relicUIImage in relicUIImages)
+        {
+            if (relicUIImage != null)
+            {
+                relicUIImage.gameObject.SetActive(false);
+            }
+        }
+    }
+
 }

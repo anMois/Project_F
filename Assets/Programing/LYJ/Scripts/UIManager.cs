@@ -58,15 +58,15 @@ public class UIManager : MonoBehaviour
             GameObject canvas = uiCanvases[uiName];
             canvas.SetActive(true);
 
-            if (uiName == "Status Window Canvas")
-            {
-                Animator animator = canvas.GetComponent<Animator>();
-                if (animator != null)
-                {
-                    animator.SetTrigger("Show");
-                    IsAnimationCompleted = false;
-                }
-            }
+            //if (uiName == "Status Window Canvas")
+            //{
+            //    Animator animator = canvas.GetComponent<Animator>();
+            //    if (animator != null)
+            //    {
+            //        animator.SetTrigger("Show");
+            //        IsAnimationCompleted = false;
+            //    }
+            //}
         }
         else
         {

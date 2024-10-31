@@ -48,14 +48,14 @@ public class ItemCollector : MonoBehaviour
             }
         }
 
-        //if (UIManager.Instance.IsUIActive("Status Window Canvas"))
-        //{
-        //    Time.timeScale = 0;
-        //}
-        //else
-        //{
-        //    Time.timeScale = 1;
-        //}
+        if (UIManager.Instance.IsUIActive("Status Window Canvas"))
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     //아이템 Tag를 찾아 먹으면 아이템은 사라지고 개수는 증가함
