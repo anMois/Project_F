@@ -179,28 +179,36 @@ public class StatusWindowController : MonoBehaviour
 
     public void ChangeStat(string statName, int value)
     {
+        string logMessage = $"{statName}: {value} 변화";
+
         switch (statName)
         {
             case "ATK":
-                Debug.Log($"ATK {value} 변화");
+                atkText.text = $"{int.Parse(atkText.text) + value}";
                 break;
             case "ATS":
-                Debug.Log($"ATS {value} 변화");
+                int currentAts = int.Parse(atsText.text);
+                int atsChange = Mathf.RoundToInt(currentAts * (value / 100f));
+                atsText.text = $"{currentAts + atsChange}";
                 break;
             case "DEF":
-                Debug.Log($"DEF {value} 변화");
+                defText.text = $"{int.Parse(defText.text) + value}";
                 break;
             case "HP":
-                Debug.Log($"HP {value} 변화");
+                hpText.text = $"{int.Parse(hpText.text) + value}";
                 break;
             case "RAN":
-                Debug.Log($"RAN {value} 변화");
+                ranText.text = $"{int.Parse(ranText.text) + value}";
                 break;
             case "SPD":
-                Debug.Log($"SPD {value} 변화");
+                int currentSpd = int.Parse(spdText.text);
+                int spdChange = Mathf.RoundToInt(currentSpd * (value / 100f));
+                spdText.text = $"{currentSpd + spdChange}";
                 break;
         }
+        Debug.Log(logMessage);
     }
+
 
     private void UpdateUI()
     {
