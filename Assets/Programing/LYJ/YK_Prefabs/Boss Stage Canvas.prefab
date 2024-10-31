@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3918445165757170752}
   - component: {fileID: 3918445165757170767}
   m_Layer: 5
-  m_Name: Option_UI_2
+  m_Name: Boss Stage Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

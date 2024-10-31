@@ -18,6 +18,10 @@ public class InGameController : MonoBehaviour
     private Button twoStage;
     private Button threeStage;
 
+    [Header("Boss Canvas UI")]
+    private GameObject bossStageCanvas;
+    private Button bossStageMoveButton;
+
 
     private void Start()
     {
@@ -25,17 +29,20 @@ public class InGameController : MonoBehaviour
         explanationCanvas = UIManager.Instance.GetUICanvas("Explanation Canvas");
         gameClearCanvas = UIManager.Instance.GetUICanvas("Stage Clear Canvas");
         nextStageCanvas = UIManager.Instance.GetUICanvas("Next Stage Canvas");
+        bossStageCanvas = UIManager.Instance.GetUICanvas("Boss Stage Canvas");
 
         storeCanvas.SetActive(false);
         explanationCanvas.SetActive(false);
         gameClearCanvas.SetActive(false);
         nextStageCanvas.SetActive(false);
+        bossStageCanvas.SetActive(false);
 
         storeExitButton = storeCanvas.transform.Find("Store Exit Button")?.GetComponent<Button>();
         continueButton = gameClearCanvas.transform.Find("Continue Button")?.GetComponent<Button>();
         oneStage = nextStageCanvas.transform.Find("Option1_Button")?.GetComponent<Button>();
         twoStage = nextStageCanvas.transform.Find("Option2_Button")?.GetComponent<Button>();
         threeStage = nextStageCanvas.transform.Find("Option3_Button")?.GetComponent<Button>();
+        bossStageMoveButton = bossStageCanvas.transform.Find("Boss Stage Move Button")?.GetComponent<Button>();
 
         if (storeExitButton != null)
         {
@@ -58,6 +65,11 @@ public class InGameController : MonoBehaviour
         if (threeStage != null)
         {
             threeStage.onClick.AddListener(() => StageMove(3));
+        }
+
+        if (bossStageMoveButton != null)
+        {
+            bossStageMoveButton.onClick.AddListener(() => StageMove(4));
         }
     }
 
@@ -123,7 +135,6 @@ public class InGameController : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
-                // 첫 번째 스테이지로 이동
                 Debug.Log("첫 번째 스테이지로 이동합니다.");
                 break;
             case 2:
@@ -131,6 +142,9 @@ public class InGameController : MonoBehaviour
                 break;
             case 3:
                 Debug.Log("세 번째 스테이지로 이동합니다.");
+                break;
+            case 4:
+                Debug.Log("보스 스테이지로 이동합니다.");
                 break;
         }
     }
