@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    public enum StageState { Battle, NonBattle }
+    [SerializeField] StageState curState;
     [SerializeField] int stageNum;
     [SerializeField] int curWave;
     [SerializeField] List<int> maxWave;
-    [SerializeField] List<string> monsterPlace;
     [SerializeField] MonsterManager monsterManager;
     [SerializeField] MonsterSpawnTable monsterTable;
 
     public int CurWave { get { return curWave; } set { curWave = value; } }
-    public List<string> MonsterPlace { get { return monsterPlace; } set { monsterPlace = value; } }
 
     private void Update()
     {
@@ -21,17 +21,20 @@ public class StageManager : MonoBehaviour
 
     IEnumerator MonsterSpawnRoutine()
     {
-        yield return new WaitForSeconds(3f);
-        if(monsterManager.MonsterCount == 0)
+        if(monsterManager.MonsterCount == 0 && curState == StageState.Battle)
         {
             if (curWave != maxWave[stageNum])
                 monsterTable.MonsterSapwn();
             else
             {
+                //클리어 여부 확인
                 stageNum++;
                 curWave = 0;
                 yield break;
             }
         }
+
+        curState = StageState.NonBattle;
+        yield break;
     }
 }

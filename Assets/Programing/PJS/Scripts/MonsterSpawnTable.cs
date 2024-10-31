@@ -89,10 +89,10 @@ public class MonsterSpawnTable : MonoBehaviour
         string[] line = data.Split('\n');
         for (int i = 1; i < line.Length; i++)
         {
-            stageManager.MonsterPlace.Add(line[i]);
+            monsterList.Add(line[i]);
         }
 
-        for (int i = 0; i < stageManager.MonsterPlace.Count; i++)
+        for (int i = 0; i < monsterList.Count; i++)
         {
             Debug.Log(monsterList[i]);
         }
@@ -103,9 +103,9 @@ public class MonsterSpawnTable : MonoBehaviour
     /// </summary>
     public void MonsterSapwn()
     {
-        int num = Random.Range(0, stageManager.MonsterPlace.Count - 1);
+        int num = Random.Range(0, monsterList.Count - 1);
         Debug.Log(num);
-        string[] point = stageManager.MonsterPlace[num].Split(',');
+        string[] point = monsterList[num].Split(',');
 
         for (int i = 0; i < point.Length; i++)
         {
