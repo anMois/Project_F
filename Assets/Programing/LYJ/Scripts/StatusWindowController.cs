@@ -24,6 +24,8 @@ public class StatusWindowController : MonoBehaviour
 
     private void Start()
     {
+        UIManager.Instance.HideUI("Status Window Explanation Canvas");
+
         UpdateUI();
         UpdateDisplayImage();
 
@@ -83,6 +85,10 @@ public class StatusWindowController : MonoBehaviour
             {
                 relicUIImages[i].sprite = relicSprites[i];
                 relicUIImages[i].gameObject.SetActive(true);
+
+                // 클릭 이벤트 추가
+                int index = i;
+                relicUIImages[i].GetComponent<Button>().onClick.AddListener(() => ShowRelicInfo(index));
             }
             else
             {
@@ -90,6 +96,15 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
+
+    private void ShowRelicInfo(int index)
+    {
+        UIManager.Instance.ShowUI("Status Window Explanation Canvas");
+
+        var itemData = CSVDownload.Instance.itemDataList[index];
+        StatusWindowExplanationCanvas.Instance.SetExplanation(itemData);
+    }
+
 
     public void ChangeStat(string statName, int value)
     {
