@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class StatusWindowController : MonoBehaviour
 {
+    public static StatusWindowController Instance { get; private set; }
+
     [SerializeField] private TextMeshProUGUI flameCountText;
     [SerializeField] private TextMeshProUGUI iceCountText;
     [SerializeField] private TextMeshProUGUI electricityCountText;
@@ -22,6 +24,19 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private List<Image> relicUIImages;
     private List<Sprite> relicSprites = new List<Sprite>();
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         UIManager.Instance.HideUI("Status Window Explanation Canvas");
@@ -35,38 +50,31 @@ public class StatusWindowController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void CollectItem(InGameItem item)
     {
-        InGameItemReference itemReference = other.GetComponent<InGameItemReference>();
+        item.ApplyEffect(this);
 
-        if (itemReference != null)
+        switch (item.elemental)
         {
-            InGameItem item = itemReference.item;
-            item.ApplyEffect(this);
-
-            switch (item.elemental)
-            {
-                case ElementalType.Flame:
-                    flameCount++;
-                    break;
-                case ElementalType.Ice:
-                    iceCount++;
-                    break;
-                case ElementalType.Electricity:
-                    electricityCount++;
-                    break;
-                case ElementalType.Earth:
-                    earthCount++;
-                    break;
-            }
-
-            AddRelicToInventory(item.itemImage);
-
-            UpdateUI();
-            UpdateDisplayImage();
-            Destroy(other.gameObject);
+            case ElementalType.Flame:
+                flameCount++;
+                break;
+            case ElementalType.Ice:
+                iceCount++;
+                break;
+            case ElementalType.Electricity:
+                electricityCount++;
+                break;
+            case ElementalType.Earth:
+                earthCount++;
+                break;
         }
+
+        AddRelicToInventory(item.itemImage);
+        UpdateUI();
+        UpdateDisplayImage();
     }
+
 
     private void AddRelicToInventory(Sprite itemSprite)
     {
@@ -81,21 +89,26 @@ public class StatusWindowController : MonoBehaviour
     {
         for (int i = 0; i < relicUIImages.Count; i++)
         {
-            if (i < relicSprites.Count)
+            if (i < relicSprites.Count && relicUIImages[i] != null)
             {
                 relicUIImages[i].sprite = relicSprites[i];
                 relicUIImages[i].gameObject.SetActive(true);
 
-                // 클릭 이벤트 추가
                 int index = i;
-                relicUIImages[i].GetComponent<Button>().onClick.AddListener(() => ShowRelicInfo(index));
+                Button button = relicUIImages[i].GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.RemoveAllListeners();
+                    button.onClick.AddListener(() => ShowRelicInfo(index));
+                }
             }
-            else
+            else if (relicUIImages[i] != null)
             {
                 relicUIImages[i].gameObject.SetActive(false);
             }
         }
     }
+
 
     private void ShowRelicInfo(int index)
     {

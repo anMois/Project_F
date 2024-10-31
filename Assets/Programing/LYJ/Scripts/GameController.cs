@@ -100,6 +100,11 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            ShowInGameUI();
+        }
     }
 
     public void ShowInGameUI()
@@ -125,7 +130,6 @@ public class GameController : MonoBehaviour
     {
         UIManager.Instance.ShowUI("Main Explanation Canvas");
 
-        // 아이템 정보 업데이트
         itemNameText.text = itemName;
         descriptionText.text = description;
         itemImageComponent.sprite = itemImage;
@@ -184,7 +188,6 @@ public class GameController : MonoBehaviour
 
     public void ClickGiveUpButton()
     {
-        // 메인 로비 이동
         SceneManager.LoadScene("GameStart");
     }
 
