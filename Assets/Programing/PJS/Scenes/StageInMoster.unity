@@ -421,6 +421,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3905786306797543292, guid: ddf16007a80461246b147cee7eab7c64, type: 3}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 1843838978}
+    - target: {fileID: 3905786306797543292, guid: ddf16007a80461246b147cee7eab7c64, type: 3}
       propertyPath: monsterManager
       value: 
       objectReference: {fileID: 248577688}
@@ -446,6 +450,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf16007a80461246b147cee7eab7c64, type: 3}
+--- !u!114 &581307360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3905786306797543292, guid: ddf16007a80461246b147cee7eab7c64, type: 3}
+  m_PrefabInstance: {fileID: 581307359}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f45dffaee48542f4ca9efd9c46accb76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860204611
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,3 +806,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a0f48029637e4bbb1450c4ab44539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageNum: 0
+  curWave: 0
+  maxWave: 010000000100000002000000020000000300000003000000
+  monsterPlace: []
+  monsterManager: {fileID: 248577688}
+  monsterTable: {fileID: 581307360}

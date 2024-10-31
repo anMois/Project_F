@@ -89,22 +89,23 @@ public class MonsterSpawnTable : MonoBehaviour
         string[] line = data.Split('\n');
         for (int i = 1; i < line.Length; i++)
         {
-            monsterList.Add(line[i]);
+            stageManager.MonsterPlace.Add(line[i]);
         }
 
-        for (int i = 0; i < monsterList.Count; i++)
+        for (int i = 0; i < stageManager.MonsterPlace.Count; i++)
         {
             Debug.Log(monsterList[i]);
         }
-
-        MonsterSapwn();
     }
 
-    private void MonsterSapwn()
+    /// <summary>
+    /// 배치되어 있는 리스트 중 랜덤으로 하나를 골라 지정된 위치에 몬스터 스폰
+    /// </summary>
+    public void MonsterSapwn()
     {
-        int num = Random.Range(0, monsterList.Count - 1);
+        int num = Random.Range(0, stageManager.MonsterPlace.Count - 1);
         Debug.Log(num);
-        string[] point = monsterList[num].Split(',');
+        string[] point = stageManager.MonsterPlace[num].Split(',');
 
         for (int i = 0; i < point.Length; i++)
         {
@@ -122,13 +123,6 @@ public class MonsterSpawnTable : MonoBehaviour
                     Debug.Log("빈공간");
             }
         }
-    }
-
-    private void Update()
-    {
-        if (monsterManager.MonsterCount == 0)
-        {
-            MonsterSapwn();
-        }
+        stageManager.CurWave++;
     }
 }
