@@ -1205,6 +1205,7 @@ MonoBehaviour:
   - {fileID: 1648650093}
   - {fileID: 1648650092}
   - {fileID: 1648650091}
+  gameClearButtons: []
 --- !u!114 &318746094 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4117900264973252141, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
@@ -1480,13 +1481,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712020986}
     m_Modifications:
+    - target: {fileID: 3023918666787775919, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558265485333879075, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_Name
+      value: Item Name Button
+      objectReference: {fileID: 0}
     - target: {fileID: 8558265486236722688, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_Name
       value: Stage Clear Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 8558265486236722688, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8558265486236722812, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_Pivot.x
@@ -1571,6 +1580,14 @@ PrefabInstance:
     - target: {fileID: 8558265486236722812, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558265486418742855, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_Name
+      value: Item Name Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8558265486944178745, guid: ea199bdc47dece544b76cd05552278e0, type: 3}
+      propertyPath: m_Name
+      value: Item Name Button
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea199bdc47dece544b76cd05552278e0, type: 3}

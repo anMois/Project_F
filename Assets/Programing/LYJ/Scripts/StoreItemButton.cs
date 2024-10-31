@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class StoreItemButton : MonoBehaviour
 {
     public ItemData itemData;
-    private StoreController storeController;
-    private Button button;
-    private Button itemBuyButton;
-    private Button potionButton;
-    private Button grenadeButton;
+    private InGameController inGameController;
+    [SerializeField] Button button; //이름 쓰여져 있는 (설명창 활성화)
+    [SerializeField] Button itemBuyButton;
+    [SerializeField] Button potionButton;
+    [SerializeField] Button grenadeButton;
 
     private bool isPurchased = false; //구매가 되었는지 확인
 
     private void Start()
     {
-        storeController = FindObjectOfType<StoreController>();
+        inGameController = FindObjectOfType<InGameController>();
         button = GetComponent<Button>();
         itemBuyButton = transform.Find("Item Buy Button")?.GetComponent<Button>();
         potionButton = GameObject.Find("Potion Buy Button").GetComponent<Button>();
@@ -46,13 +46,13 @@ public class StoreItemButton : MonoBehaviour
     }
 
     /// <summary>
-    /// StoreItemButton.cs 를 가지고 있는 버튼 클릭시
+    /// 현재 스크립트를 가지고 있는 버튼 클릭시
     /// </summary>
     public void OnButtonClick()
     {
-        if (storeController != null && itemBuyButton != null && itemData != null)
+        if (inGameController != null && itemBuyButton != null && itemData != null)
         {
-            storeController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+            inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
         }
     }
 

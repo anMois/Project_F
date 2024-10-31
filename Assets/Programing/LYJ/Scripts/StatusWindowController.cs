@@ -154,7 +154,6 @@ public class StatusWindowController : MonoBehaviour
             }
             else if (relicUIImages[i] != null)
             {
-                Debug.Log("비활성화되었습니다");
                 relicUIImages[i].gameObject.SetActive(false);
             }
         }

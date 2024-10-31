@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreController : MonoBehaviour
+public class InGameController : MonoBehaviour
 {
     [Header("StoreController")]
     private GameObject storeCanvas;
