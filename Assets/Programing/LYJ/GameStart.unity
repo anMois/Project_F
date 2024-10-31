@@ -3069,6 +3069,34 @@ PrefabInstance:
       propertyPath: m_TagString
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1532505913}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ApplyButtonEffects
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6450518962433470825, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6450518962433470831, guid: 581f7b1005c74954ebfa0f769c798d92, type: 3}
       propertyPath: m_TagString
       value: UICanvas

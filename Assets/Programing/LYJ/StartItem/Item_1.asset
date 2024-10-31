@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84dc1abb28a3d2469e752f7fdec6c27, type: 3}
   m_Name: Item_1
   m_EditorClassIdentifier: 
-  itemName: Item_1
-  specialEffects: 
+  itemName: "\uD750\uB984\uC758 \uAE68\uB2EC\uC74C"
+  specialEffects: "\uC120\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
   specialEffectsDescription: specialEffectsDescription
-  itemImage: {fileID: 21300000, guid: 21e447b28fbf9034b8cc0d670e30eb89, type: 3}
-  itemAttributesImage: {fileID: 21300000, guid: 506e7e2d66fa81e409c5c001bc7ce384, type: 3}
-  specialEffectsImage1: {fileID: 21300000, guid: ba198d8c694958b408ddf98799381a36, type: 3}
-  specialEffectsImage2: {fileID: 0}
-  specialEffectsImage3: {fileID: 0}
-  specialEffectsFigure1: +20
-  specialEffectsFigure2: 
-  specialEffectsFigure3: 
-  elemental: 0
-  ATK: 10
-  ATS: 30
-  DEF: 50
-  HP: 70
-  RAN: 50
-  SPD: 30
+  itemImage: {fileID: 21300000, guid: 2ba6948b9d527c841a0cdae00c5c3a9d, type: 3}
+  itemAttributesImage: {fileID: 21300000, guid: a9c35914066425349b5467af8edddafe, type: 3}
+  specialEffectsImage1: {fileID: 21300000, guid: ac1dd1e29c13d7b4b93ea5c46d20a922, type: 3}
+  specialEffectsImage2: {fileID: 21300000, guid: 64cc8fa180414ec47b9638c54b41da1d, type: 3}
+  specialEffectsImage3: {fileID: 21300000, guid: 0cd82ef3b3e01df49a572d6b2634fb69, type: 3}
+  specialEffectsFigure1: 100
+  specialEffectsFigure2: '- 20%'
+  specialEffectsFigure3: + 5
+  elemental: 1
+  ATK: 100
+  ATS: -20
+  DEF: 0
+  HP: 0
+  RAN: 5
+  SPD: 0

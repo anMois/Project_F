@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84dc1abb28a3d2469e752f7fdec6c27, type: 3}
   m_Name: Item_3
   m_EditorClassIdentifier: 
-  itemName: Item_3
-  specialEffects: 
+  itemName: "\uD3EC\uACA9\uC758 \uAE68\uB2EC\uC74C"
+  specialEffects: "\uB300\uD3EC\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
   specialEffectsDescription: specialEffectsDescription
-  itemImage: {fileID: 21300000, guid: 0ad05ecb1d0de60469ecc382f6bdc051, type: 3}
-  itemAttributesImage: {fileID: 21300000, guid: 46a75488fd503324a8d560ba838112aa, type: 3}
-  specialEffectsImage1: {fileID: 21300000, guid: ba198d8c694958b408ddf98799381a36, type: 3}
-  specialEffectsImage2: {fileID: 21300000, guid: db1788b616a74f64d967ba0def5fc538, type: 3}
+  itemImage: {fileID: 21300000, guid: 507b64447d80e6447b0cc02c5abc5b6a, type: 3}
+  itemAttributesImage: {fileID: 21300000, guid: 506e7e2d66fa81e409c5c001bc7ce384, type: 3}
+  specialEffectsImage1: {fileID: 0}
+  specialEffectsImage2: {fileID: 0}
   specialEffectsImage3: {fileID: 0}
-  specialEffectsFigure1: +100
-  specialEffectsFigure2: -20%
+  specialEffectsFigure1: 
+  specialEffectsFigure2: 
   specialEffectsFigure3: 
-  elemental: 2
-  ATK: 80
-  ATS: 60
-  DEF: 70
-  HP: 20
-  RAN: 70
-  SPD: 20
+  elemental: 0
+  ATK: 0
+  ATS: 0
+  DEF: 0
+  HP: 0
+  RAN: 0
+  SPD: 0
