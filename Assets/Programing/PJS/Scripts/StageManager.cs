@@ -12,6 +12,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] MonsterManager monsterManager;
     [SerializeField] MonsterSpawnTable monsterTable;
 
+    public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
 
     private void Update()
