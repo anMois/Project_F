@@ -8,6 +8,7 @@ public class MonsterManager : MonoBehaviour
     [SerializeField] StartZone startZone;
 
     [SerializeField] List<Monster> monsters = new List<Monster>(10);
+    public int MonsterCount { get { return monsters.Count; } }
 
     public void AddMonster(Monster newMonster)
     {
