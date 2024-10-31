@@ -19,5 +19,12 @@ public class StartItemData : ScriptableObject
     public string specialEffectsFigure2;
     public string specialEffectsFigure3;
 
+    public ElementalType elemental;
 
+    public int ATK;
+    public int ATS;
+    public int DEF;
+    public int HP;
+    public int RAN;
+    public int SPD;
 }

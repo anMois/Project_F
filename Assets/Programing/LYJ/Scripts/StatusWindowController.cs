@@ -14,6 +14,13 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI electricityCountText;
     [SerializeField] private TextMeshProUGUI earthCountText;
 
+    [SerializeField] private TextMeshProUGUI atkText;
+    [SerializeField] private TextMeshProUGUI atsText;
+    [SerializeField] private TextMeshProUGUI defText;
+    [SerializeField] private TextMeshProUGUI hpText;
+    [SerializeField] private TextMeshProUGUI ranText;
+    [SerializeField] private TextMeshProUGUI spdText;
+
     [SerializeField] private int flameCount = 0;
     [SerializeField] private int iceCount = 0;
     [SerializeField] private int electricityCount = 0;
@@ -99,6 +106,25 @@ public class StatusWindowController : MonoBehaviour
         UpdateDisplayImage();
     }
 
+    private void UpdateStatUI(InGameItemData item)
+    {
+        atkText.text = $"{item.ATK}";
+        atsText.text = $"{item.ATS}";
+        defText.text = $"{item.DEF}";
+        hpText.text = $"{item.HP}";
+        ranText.text = $"{item.RAN}";
+        spdText.text = $"{item.SPD}";
+    }
+
+    public void UpdateStartStatUI(StartItemData item)
+    {
+        atkText.text = $"{item.ATK}";
+        atsText.text = $"{item.ATS}";
+        defText.text = $"{item.DEF}";
+        hpText.text = $"{item.HP}";
+        ranText.text = $"{item.RAN}";
+        spdText.text = $"{item.SPD}";
+    }
 
     private void AddRelicToInventory(Sprite itemSprite)
     {

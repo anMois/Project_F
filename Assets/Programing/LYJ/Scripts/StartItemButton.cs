@@ -109,6 +109,8 @@ public class StartItemButton : MonoBehaviour
         startItemCanvas.SetActive(false);
         startItemExplanationCanvas.SetActive(false);
 
+        StatusWindowController.Instance.UpdateStartStatUI(startItemData);
+
         Debug.Log($"{startItemData.itemName}을 선택하셨습니다.");
 
         if (SceneManager.GetActiveScene().name == "Stage1")
