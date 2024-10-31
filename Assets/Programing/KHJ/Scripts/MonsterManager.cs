@@ -15,7 +15,7 @@ public class MonsterManager : MonoBehaviour
     public void AddMonster(Monster newMonster)
     {
         // Set initial state
-        if (stageManager.StageNum > 1 || stageManager.CurWave > 1)
+        if (stageManager.StageNum > 0 || stageManager.CurWave > 0)
         {
             newMonster.ChangeState(Monster.State.Trace);
         }

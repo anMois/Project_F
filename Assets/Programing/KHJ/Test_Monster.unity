@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aae8ba0a2a6871749a5e6fdce11bf1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageNum: 1
-  curWave: 1
+  stageNum: 0
+  curWave: 0
 --- !u!4 &53677770
 Transform:
   m_ObjectHideFlags: 0
@@ -835,7 +835,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startZone: {fileID: 371817151}
-  stageManager: {fileID: 53677769}
+  stageManager: {fileID: 0}
   monsters: []
 --- !u!4 &1689335787
 Transform:
