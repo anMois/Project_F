@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TestPlayer : MonoBehaviour
@@ -13,6 +14,8 @@ public class TestPlayer : MonoBehaviour
         {
             StatusWindowController.Instance.CollectItem(itemReference.item);
             Destroy(other.gameObject);
+
+            UIManager.Instance.ShowUI("Stage Clear Canvas");
         }
     }
 

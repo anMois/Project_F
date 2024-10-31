@@ -820,12 +820,12 @@ GameObject:
   - component: {fileID: 1788387596508163023}
   - component: {fileID: 1788387596508163022}
   m_Layer: 5
-  m_Name: Option_UI_1
+  m_Name: Next Stage Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1788387596508162993
 RectTransform:
   m_ObjectHideFlags: 0
