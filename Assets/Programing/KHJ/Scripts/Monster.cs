@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected int maxHp;
     [SerializeField] protected int curHp;
     [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float guardSpeed;
     [SerializeField] protected int attackDamage;
     [SerializeField] protected float attackCoolDown;
     [SerializeField] protected int dropRate;
@@ -186,7 +187,7 @@ public class Monster : MonoBehaviour, IDamageable
 
         protected void Guard()
         {
-            float angle = monster.moveSpeed * 0.01f;
+            float angle = monster.guardSpeed * 0.01f;
             monster.transform.RotateAround(monster.target.position, monster.target.up, angle);
         }
 
