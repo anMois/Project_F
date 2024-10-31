@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.PackageManager.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class GameController : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemNameText;
     [SerializeField] TextMeshProUGUI descriptionText;
     [SerializeField] Image itemImageComponent;
+
+    [Header("Status Window UI")]
+    [SerializeField] Button statusWindowCloseButton;
 
     private void Awake()
     {
@@ -68,6 +72,9 @@ public class GameController : MonoBehaviour
         if (inGameManualExitButton) inGameManualExitButton.onClick.AddListener(ClickInGameManualExitButton);
         if (restartButton) restartButton.onClick.AddListener(ClickRestartButton);
         if (inGameExitButton) inGameExitButton.onClick.AddListener(ClickExitButton);
+
+        // Status Window Button
+        if (statusWindowCloseButton) statusWindowCloseButton.onClick.AddListener(ClickStatusWindowCloseButton);
     }
 
     private void Update()
@@ -93,17 +100,11 @@ public class GameController : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-    }
 
-    private void HideAllInGameUI()
-    {
-        UIManager.Instance.HideUI("In Game Manual Canvas");
-        UIManager.Instance.HideUI("In Game Menu Canvas");
-        UIManager.Instance.HideUI("Player HP Canvas");
-        UIManager.Instance.HideUI("Player Item Canvas");
-        UIManager.Instance.HideUI("Game Over Canvas");
-        UIManager.Instance.HideUI("Store Canvas");
-        UIManager.Instance.HideUI("Explanation Canvas");
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            ShowInGameUI();
+        }
     }
 
     public void ShowInGameUI()
@@ -129,7 +130,6 @@ public class GameController : MonoBehaviour
     {
         UIManager.Instance.ShowUI("Main Explanation Canvas");
 
-        // 아이템 정보 업데이트
         itemNameText.text = itemName;
         descriptionText.text = description;
         itemImageComponent.sprite = itemImage;
@@ -188,7 +188,6 @@ public class GameController : MonoBehaviour
 
     public void ClickGiveUpButton()
     {
-        // 메인 로비 이동
         SceneManager.LoadScene("GameStart");
     }
 
@@ -218,5 +217,10 @@ public class GameController : MonoBehaviour
 #else
         Application.Quit();
 #endif
+    }
+
+    public void ClickStatusWindowCloseButton()
+    {
+        UIManager.Instance.HideUI("Status Window Canvas");
     }
 }
