@@ -29,6 +29,7 @@ public class StageManager : MonoBehaviour
             else
             {
                 stageNum++;
+                curWave = 0;
                 yield break;
             }
         }
