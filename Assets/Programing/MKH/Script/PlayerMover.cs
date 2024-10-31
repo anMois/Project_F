@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMover : MonoBehaviour
@@ -14,11 +12,15 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] float mouserotateSpeed;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rigid;
-    [SerializeField] float hp;
     [SerializeField] public int maxJump;
     [SerializeField] public bool isGround = false;
     [SerializeField] bool isMove = false;
-    int jumpCount;
+    [SerializeField] bool isJump = false;
+    public int jumpCount;
+    Vector3 moveDir;
+
+    Player players;
+    PlayerAttack attack;
 
 
     private static int idleHash = Animator.StringToHash("Idle03");
@@ -41,19 +43,65 @@ public class PlayerMover : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GetComponent<Transform>();
         rigid = GetComponent<Rigidbody>();
+        players = GetComponent<Player>();
 
         jumpCount = maxJump;
         Cursor.lockState = CursorLockMode.Locked;
         isMove = true;
+        isJump = false;
     }
 
     private void Update()
     {
-        Move();
-        PlayerCamera();
+        if (players.curHp > 0)
+        {
+            Move();
+            ViewRotate();
+            Dash();
+        }
         AnimaitorPlay();
-        Jump();
-        Dash();
+    }
+
+    private void FixedUpdate()
+    {
+        if (isMove)
+        {
+            Vector3 moveOffset = moveDir * (moveSpeed * Time.fixedDeltaTime);
+            Vector3 runOffset = moveDir * (runSpeed * Time.fixedDeltaTime);
+            rigid.MovePosition(rigid.position + moveOffset);
+
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                rigid.MovePosition(rigid.position + runOffset);
+            }
+        }
+
+        if (isJump && jumpCount >= 0)
+        {
+            rigid.AddForce(new Vector3(0f, jumpPower, 0f), ForceMode.VelocityChange);
+            isJump = false;
+        }
+    }
+
+    private void Move()
+    {
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+        if (isMove)
+        {
+            moveDir = transform.forward * z + transform.right * x;
+            moveDir.Normalize();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
+        {
+            isJump = true;
+            jumpCount--;
+            if (jumpCount < 0)
+            {
+                isJump = false;
+            }
+        }
 
         if (Input.GetKey(KeyCode.Mouse0))
         {
@@ -65,154 +113,142 @@ public class PlayerMover : MonoBehaviour
         }
     }
 
-    public void Move()
-    {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
-
-        Vector3 moveDir = new Vector3(x, 0, z);
-        if (moveDir == Vector3.zero)
-            return;
-
-        if (isMove)
-        {
-            transform.Translate(moveDir.normalized * moveSpeed * Time.deltaTime);
-            transform.Rotate(moveDir.normalized * moveSpeed * Time.deltaTime);
-        }
-
-        if(Input.GetKey(KeyCode.LeftControl))
-        {
-            transform.Translate(moveDir.normalized * runSpeed * Time.deltaTime);
-            transform.Rotate(moveDir.normalized * runSpeed * Time.deltaTime);
-        }
-
-        if(hp == 0)             
-        {
-            moveSpeed = 0;
-        }
-    }
-
-    private void PlayerCamera()
-    {
-        yAngle += Input.GetAxis("Mouse X") * mouserotateSpeed;
-
-        player.transform.rotation = Quaternion.Euler(0, yAngle, 0);
-    }
-
-    private void Jump()
-    {
-      
-        if(Input.GetKeyDown(KeyCode.Space) && jumpCount > 0 && isMove)
-        {
-            rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            jumpCount--;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.transform.tag != null)
-        {
-            isGround = true;
-            jumpCount = maxJump;
-        }
-    }
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag != null)
-        {
-            isGround = false;
-        }
-    }
-
-
     private void Dash()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && isMove)
         {
             if (Input.GetKey(KeyCode.W))
             {
-                transform.Translate(Vector3.forward * dashSpeed);
+                rigid.position = rigid.position + new Vector3(0f,  0f, dashSpeed);
             }
             else if (Input.GetKey(KeyCode.S))
             {
-                transform.Translate(Vector3.back * dashSpeed);
+                rigid.position = rigid.position + new Vector3(0f, 0f, -dashSpeed);
             }
             else if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(Vector3.left * dashSpeed);
+                rigid.position = rigid.position + new Vector3(-dashSpeed, 0f, 0f); ;
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(Vector3.right * dashSpeed);
+                rigid.position = rigid.position + new Vector3(dashSpeed, 0f, 0f);
             }
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Ground")
+        {
+            isGround = true;
+            jumpCount = maxJump;
+        }
+        
+        if (collision.transform.tag == "Monster")
+        {
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
+        }
+        
+    }
+        
+
+    private void OnCollisionExit(Collision collision)
+    {
+
+        if (collision.transform.tag == "Ground")
+        {
+            isGround = false;
+        }
+        
+        if (collision.transform.tag == "Monster")
+        {
+            rigid.velocity = Vector3.zero;
+            rigid.angularVelocity = Vector3.zero;
+        }
+        
+    }
+
+    private void ViewRotate()
+    {
+
+        yAngle += Input.GetAxis("Mouse X") * mouserotateSpeed;
+
+        player.transform.rotation = Quaternion.Euler(0, yAngle, 0);
+    }
+
+
+
+
+
 
 
     #region 애니메이션
-    private void AnimaitorPlay()
+    public void AnimaitorPlay()
     {
         int checkAniHash = 0;
 
-        if (isMove)
-        {
-            if (Input.GetKey(KeyCode.W))
-            {
-                checkAniHash = walkForwardHash;
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    checkAniHash = runForwardHash;
-                }
-            }
-            else if (Input.GetKey(KeyCode.S))
-            {
-                checkAniHash = walkBackHash;
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    checkAniHash = runForwardHash;
-                }
-            }
-            else if (Input.GetKey(KeyCode.A))
-            {
-                checkAniHash = walkLeftHash;
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    checkAniHash = runForwardHash;
-                }
-            }
-            else if (Input.GetKey(KeyCode.D))
-            {
-                checkAniHash = walkRightHash;
-                if (Input.GetKey(KeyCode.LeftControl))
-                {
-                    checkAniHash = runForwardHash;
-                }
-            }
-            else
-            {
-                checkAniHash = idleHash;
-            }
 
-            if (rigid.velocity.y > 0.01f)
+        if (Input.GetKey(KeyCode.W) && isMove)
+        {
+            checkAniHash = walkForwardHash;
+            if (Input.GetKey(KeyCode.LeftControl))
             {
-                checkAniHash = jumpUpHash;
-            }
-            else if (rigid.velocity.y < -0.01f)
-            {
-                checkAniHash = jumpDownHash;
+                checkAniHash = runForwardHash;
             }
         }
+        else if (Input.GetKey(KeyCode.S) && isMove)
+        {
+            checkAniHash = walkBackHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
+        }
+        else if (Input.GetKey(KeyCode.A) && isMove)
+        {
+            checkAniHash = walkLeftHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
+        }
+        else if (Input.GetKey(KeyCode.D) && isMove)
+        {
+            checkAniHash = walkRightHash;
+            if (Input.GetKey(KeyCode.LeftControl))
+            {
+                checkAniHash = runForwardHash;
+            }
+        }
+        else if (Input.GetKey(KeyCode.Mouse0))
+        {
+            attack.AnimatorPlay();
+        }
+        else
+        {
+            checkAniHash = idleHash;
+        }
 
-        if (hp <= 0)
+        if (rigid.velocity.y > 0.1f)
+        {
+            checkAniHash = jumpUpHash;
+        }
+        else if (rigid.velocity.y < -0.1f)
+        {
+            checkAniHash = jumpDownHash;
+        }
+
+
+        if (players.curHp <= 0)
         {
             checkAniHash = dieHash;
+            isMove = false;
         }
 
         if (curAniHash != checkAniHash)
         {
             curAniHash = checkAniHash;
-            animator.Play(curAniHash, 0, 0f);
+            animator.Play(curAniHash);
         }
     }
     #endregion
