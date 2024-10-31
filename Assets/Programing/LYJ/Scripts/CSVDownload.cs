@@ -84,6 +84,8 @@ public class CSVDownload : MonoBehaviour
 
     public void SetItemData(List<ItemData> itemDataList)
     {
+        this.itemDataList = itemDataList;
+
         HashSet<int> usedIndices = new HashSet<int>(); //이미 사용된 인덱스를 기록할 HashSet 생성
 
         //순서대로 버튼에 아이템 데이터 설정함 (랜덤 X)

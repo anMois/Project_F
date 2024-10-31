@@ -104,6 +104,7 @@ public class StatusWindowController : MonoBehaviour
             }
             else if (relicUIImages[i] != null)
             {
+                Debug.Log("비활성화되었습니다");
                 relicUIImages[i].gameObject.SetActive(false);
             }
         }
@@ -115,7 +116,14 @@ public class StatusWindowController : MonoBehaviour
         UIManager.Instance.ShowUI("Status Window Explanation Canvas");
 
         var itemData = CSVDownload.Instance.itemDataList[index];
-        StatusWindowExplanationCanvas.Instance.SetExplanation(itemData);
+        if (itemData != null)
+        {
+            StatusWindowExplanationCanvas.Instance.SetExplanation(itemData);
+        }
+        else
+        {
+            Debug.LogError("아이템 데이터가 null입니다.");
+        }
     }
 
 
