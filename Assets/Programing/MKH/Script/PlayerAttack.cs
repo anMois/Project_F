@@ -9,6 +9,9 @@ public class PlayerAttack : MonoBehaviour
     private GameObject curBullet;
     [SerializeField] Animator ani;
     [SerializeField] Transform target;
+    [SerializeField] Transform shellTarget;
+
+    Player player;
 
 
     private Coroutine delayAttackCoroutine;
@@ -18,9 +21,6 @@ public class PlayerAttack : MonoBehaviour
     private static int attackHash = Animator.StringToHash("Attack");
     public int curAniHash { get; private set; }
 
-    float timer;
-    int waitingTime;
-
     PlayerMover mover;
 
 
@@ -29,11 +29,12 @@ public class PlayerAttack : MonoBehaviour
         curBullet = bulletPrefab[0];
         ani = GetComponentInChildren<Animator>();
         mover = GetComponent<PlayerMover>();
+        player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (mover.isGround)
+        if (mover.isGround && player.curHp > 0)
         {
             AnimatorPlay();
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -66,18 +67,17 @@ public class PlayerAttack : MonoBehaviour
         delayAttackCoroutine = StartCoroutine(DelayAttack());
     }
 
-    private void AnimatorPlay()
+    public void AnimatorPlay()
     {
         int checkAniHash = 0;
-        if (curBullet == bulletPrefab[0] || curBullet == bulletPrefab[2])
+        if (curBullet == bulletPrefab[0])
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 checkAniHash = attackHash;
             }
         }
-
-        if (curBullet == bulletPrefab[1])
+        else if (curBullet == bulletPrefab[1])
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -86,6 +86,13 @@ public class PlayerAttack : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 checkAniHash = idleHash;
+            }
+        }
+        else if (curBullet == bulletPrefab[2])
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                checkAniHash = attackHash;
             }
         }
 
@@ -112,15 +119,11 @@ public class PlayerAttack : MonoBehaviour
             GameObject obj = Instantiate(curBullet, lazerPos.position, lazerPos.rotation);
             obj.transform.parent = transform;
             obj.GetComponent<Lazer>().Launch(6, target, 1);
-            if(Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                Destroy(obj);
-            }
         }
         else if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Shell>().Launch(6, target, 1);
+            obj.GetComponent<Shell>().Launch(6, shellTarget, 1);
         }
     }
 
