@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 3002893182334468831}
   m_Layer: 7
   m_Name: Range2
-  m_TagString: BossAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 1033910745107529312}
   m_Layer: 7
   m_Name: Range
-  m_TagString: BossAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 2664611629426049708}
   m_Layer: 7
   m_Name: Range
-  m_TagString: BossAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -718,7 +718,7 @@ GameObject:
   - component: {fileID: 1085303125667636190}
   m_Layer: 7
   m_Name: Range1
-  m_TagString: BossAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 237760108079360889}
   m_Layer: 7
   m_Name: Range
-  m_TagString: BossAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

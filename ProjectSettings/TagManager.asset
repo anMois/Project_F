@@ -7,7 +7,6 @@ TagManager:
   - Monster
   - Bullet
   - UICanvas
-  - BossAttack
   layers:
   - Default
   - TransparentFX
