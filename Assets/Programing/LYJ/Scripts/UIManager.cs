@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -40,8 +39,12 @@ public class UIManager : MonoBehaviour
         HideUI("In Game Menu Canvas");
         HideUI("Player HP Canvas");
         HideUI("Player Item Canvas");
-    }
 
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            ShowUI("Start Item Canvas");
+        } 
+    }
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -57,16 +60,6 @@ public class UIManager : MonoBehaviour
         {
             GameObject canvas = uiCanvases[uiName];
             canvas.SetActive(true);
-
-            //if (uiName == "Status Window Canvas")
-            //{
-            //    Animator animator = canvas.GetComponent<Animator>();
-            //    if (animator != null)
-            //    {
-            //        animator.SetTrigger("Show");
-            //        IsAnimationCompleted = false;
-            //    }
-            //}
         }
         else
         {

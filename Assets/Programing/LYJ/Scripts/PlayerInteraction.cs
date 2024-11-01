@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+//플레이어와 상호작용할 게임오브젝트에 붙여서 사용
 public class PlayerInteraction : MonoBehaviour
 {
     [SerializeField] float interactionDistance;

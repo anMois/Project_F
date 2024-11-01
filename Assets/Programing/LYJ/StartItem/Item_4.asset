@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e84dc1abb28a3d2469e752f7fdec6c27, type: 3}
   m_Name: Item_4
   m_EditorClassIdentifier: 
-  itemName: Item_4
-  specialEffects: specialEffects
+  itemName: "\uC0B0\uD0C4\uC758 \uAE68\uB2EC\uC74C"
+  specialEffects: "\uC0B0\uD0C4\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
   specialEffectsDescription: specialEffectsDescription
-  itemImage: {fileID: 21300000, guid: c4535f6481556994f83e26564ab7bf8f, type: 3}
-  itemAttributesImage: {fileID: 21300000, guid: b2280796a1d090249a93582f38ff364b, type: 3}
-  specialEffectsImage1: {fileID: 21300000, guid: ba198d8c694958b408ddf98799381a36, type: 3}
-  specialEffectsImage2: {fileID: 21300000, guid: db1788b616a74f64d967ba0def5fc538, type: 3}
-  specialEffectsImage3: {fileID: 21300000, guid: 54ee1ecdd4ea90b4d8d2495bbe61f1d4, type: 3}
-  specialEffectsFigure1: +100
-  specialEffectsFigure2: -20%
-  specialEffectsFigure3: -50
+  itemImage: {fileID: 21300000, guid: d6a4fe2d067fb1c47a0800a6e23abd37, type: 3}
+  itemAttributesImage: {fileID: 21300000, guid: 4322ae9b5f6dd724e8d785ffe8e5187a, type: 3}
+  specialEffectsImage1: {fileID: 0}
+  specialEffectsImage2: {fileID: 0}
+  specialEffectsImage3: {fileID: 0}
+  specialEffectsFigure1: 
+  specialEffectsFigure2: 
+  specialEffectsFigure3: 
   elemental: 3
-  ATK: 10
-  ATS: 70
-  DEF: 90
-  HP: 50
-  RAN: 10
-  SPD: 50
+  ATK: 0
+  ATS: 0
+  DEF: 0
+  HP: 0
+  RAN: 0
+  SPD: 0

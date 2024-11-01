@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour, IInteractable
 {
-    private StoreController storeController;
+    private InGameController storeController;
 
     private void Start()
     {
-        storeController = FindObjectOfType<StoreController>();
+        storeController = FindObjectOfType<InGameController>();
     }
 
     public void Interact()

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using TMPro;
-using UnityEditor.PackageManager.UI;
+using static UnityEditor.Progress;
 
 public class GameController : MonoBehaviour
 {
@@ -15,6 +13,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Button itemBookButton;
     [SerializeField] Button manualButton;
     [SerializeField] Button bookExitButton;
+    [SerializeField] Button bookChangeButton;
+    [SerializeField] Button book2ExitButton;
+    [SerializeField] Button bookPageReturnButton;
     [SerializeField] Button manualExitButton;
     [SerializeField] Button exitButton;
 
@@ -50,7 +51,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        InitializeButtons();
+        InitializeButtons(); //버튼 초기화
     }
 
 
@@ -61,6 +62,9 @@ public class GameController : MonoBehaviour
         if (itemBookButton) itemBookButton.onClick.AddListener(ClickBookButton);
         if (manualButton) manualButton.onClick.AddListener(ClickManualButton);
         if (bookExitButton) bookExitButton.onClick.AddListener(BookExitButton);
+        if (bookChangeButton) bookChangeButton.onClick.AddListener(BookChangeButton);
+        if (book2ExitButton) book2ExitButton.onClick.AddListener(BookExitButton);
+        if (bookPageReturnButton) bookPageReturnButton.onClick.AddListener(BookPageReturnButton);
         if (manualExitButton) manualExitButton.onClick.AddListener(ManualExitButton);
         if (exitButton) exitButton.onClick.AddListener(ExitButton);
 
@@ -86,7 +90,9 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!UIManager.Instance.IsUIActive("In Game Manual Canvas"))
+            if (!UIManager.Instance.IsUIActive("Main Canvas") && 
+                !UIManager.Instance.IsUIActive("In Game Manual Canvas") &&
+                !UIManager.Instance.IsUIActive("Start Item Canvas"))
             {
                 ToggleInGameMenu();
             }
@@ -135,63 +141,76 @@ public class GameController : MonoBehaviour
         itemImageComponent.sprite = itemImage;
     }
 
-    public void Explanation()
+    private void Explanation()
     {
         UIManager.Instance.HideUI("Main Explanation Canvas");
     }
 
-    public void ChangeStage1Scene()
+    private void ChangeStage1Scene()
     {
         SceneManager.LoadScene("Stage1");
     }
 
-    public void ClickBookButton()
+    private void ClickBookButton()
     {
         UIManager.Instance.HideUI("Main Canvas");
         UIManager.Instance.ShowUI("Book Canvas");
     }
 
-    public void BookExitButton()
+    private void BookChangeButton()
     {
         UIManager.Instance.HideUI("Book Canvas");
+        UIManager.Instance.ShowUI("Book Canvas 2");
+    }
+
+    private void BookExitButton()
+    {
+        UIManager.Instance.HideUI("Book Canvas");
+        UIManager.Instance.HideUI("Book Canvas 2");
         UIManager.Instance.ShowUI("Main Canvas");
     }
 
-    public void ClickManualButton()
+    private void BookPageReturnButton()
+    {
+        UIManager.Instance.HideUI("Book Canvas 2");
+        UIManager.Instance.ShowUI("Book Canvas");
+    }
+
+    private void ClickManualButton()
     {
         UIManager.Instance.HideUI("Main Canvas");
         UIManager.Instance.ShowUI("Manual Canvas");
     }
 
-    public void ClickInGameManualButton()
+    private void ClickInGameManualButton()
     {
         UIManager.Instance.HideUI("In Game Menu Canvas");
         UIManager.Instance.ShowUI("In Game Manual Canvas");
     }
 
-    public void ClickInGameManualExitButton()
+    private void ClickInGameManualExitButton()
     {
         UIManager.Instance.HideUI("In Game Manual Canvas");
         UIManager.Instance.ShowUI("In Game Menu Canvas");
     }
 
-    public void ManualExitButton()
+    private void ManualExitButton()
     {
         UIManager.Instance.HideUI("Manual Canvas");
         UIManager.Instance.ShowUI("Main Canvas");
     }
 
-    public void ClickReturnGameButton()
+    private void ClickReturnGameButton()
     {
         UIManager.Instance.HideUI("In Game Menu Canvas");
     }
 
-    public void ClickGiveUpButton()
+    private void ClickGiveUpButton()
     {
         SceneManager.LoadScene("GameStart");
     }
 
-    public void ClickLeaveGame()
+    private void ClickLeaveGame()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -200,17 +219,17 @@ public class GameController : MonoBehaviour
 #endif
     }
 
-    public void ClickRestartButton()
+    private void ClickRestartButton()
     {
         SceneManager.LoadScene("Stage1");
     }
 
-    public void ClickExitButton()
+    private void ClickExitButton()
     {
         SceneManager.LoadScene("GameStart");
     }
 
-    public void ExitButton()
+    private void ExitButton()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -219,7 +238,7 @@ public class GameController : MonoBehaviour
 #endif
     }
 
-    public void ClickStatusWindowCloseButton()
+    private void ClickStatusWindowCloseButton()
     {
         UIManager.Instance.HideUI("Status Window Canvas");
     }
