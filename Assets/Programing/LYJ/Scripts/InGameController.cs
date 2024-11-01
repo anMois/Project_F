@@ -133,7 +133,6 @@ public class InGameController : MonoBehaviour
     public void NextStageCanvasActive()
     {
         gameClearCanvas.SetActive(false);
-        nextStageCanvas.SetActive(true);
     }
 
     /// <summary>
