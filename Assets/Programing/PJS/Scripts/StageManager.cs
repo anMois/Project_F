@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum StageState { Battle, NonBattle }
+    public enum StageState { Battle, NonBattle, Clear }
     [SerializeField] StageState curState;
     [SerializeField] int stageNum;
 
@@ -14,6 +14,8 @@ public class StageManager : MonoBehaviour
     [SerializeField] MonsterManager monsterManager;
     [Header("몬스터 생성 오브젝트")]
     [SerializeField] MonsterSpawnTable monsterTable;
+    [SerializeField] GameObject clearBox;
+    [SerializeField] Transform createPoint;
 
     private int curWave;
 
@@ -44,11 +46,21 @@ public class StageManager : MonoBehaviour
                 else
                 {
                     //클리어 여부 확인
-                    curState = StageState.NonBattle;
+                    curState = StageState.Clear;
                     curWave = 0;
-                    yield break;
                 }
             }
+
+            if (curState == StageState.Clear)
+            {
+                Instantiate(clearBox, createPoint.position, Quaternion.identity);
+                yield break;
+            }
         }
+    }
+
+    private void Update()
+    {
+        
     }
 }

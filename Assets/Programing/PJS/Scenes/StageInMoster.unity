@@ -280,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8907724167135764569, guid: 5ec1da6c854825c4cb6e0f3646fca7f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -40
+      value: -39.5
       objectReference: {fileID: 0}
     - target: {fileID: 8907724167135764569, guid: 5ec1da6c854825c4cb6e0f3646fca7f3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -738,11 +738,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 802104006142403329, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 802104006142403329, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -38.5
+      value: -39.5
       objectReference: {fileID: 0}
     - target: {fileID: 802104006142403329, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_LocalRotation.w
@@ -778,6 +778,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
+--- !u!4 &1130925877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1130925877, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
+  m_PrefabInstance: {fileID: 1113634798}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1829653054 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 802104006142403328, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
@@ -808,9 +813,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
+      propertyPath: clearBox
+      value: 
+      objectReference: {fileID: 659958090201148201, guid: 2ea9aba3c8aff3f499cac2979860905c, type: 3}
+    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
       propertyPath: curState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
+      propertyPath: stageNum
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
+      propertyPath: createPoint
+      value: 
+      objectReference: {fileID: 1130925877}
     - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
       propertyPath: monsterTable
       value: 

@@ -14,6 +14,8 @@ public class MonsterSpawnTable : MonoBehaviour
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();    // 몬스터를 저장할 딕셔너리
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
     private List<string> monsterList = new List<string>();  // 몬스터의 배치 리스트
+    private bool[] monsterListActive;
+
 
     [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] MonsterManager monsterManager;
@@ -26,6 +28,7 @@ public class MonsterSpawnTable : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(GetDataRoutine());
+        
     }
 
     IEnumerator GetDataRoutine()
@@ -42,6 +45,7 @@ public class MonsterSpawnTable : MonoBehaviour
         string reciveText = requestMonsterSpawn.downloadHandler.text;
         ParserToMosterSpawnData(reciveText);
         Debug.Log(reciveText);
+        monsterListActive = new bool[monsterList.Count];
         yield break;
     }
 
@@ -103,7 +107,7 @@ public class MonsterSpawnTable : MonoBehaviour
     /// </summary>
     public void MonsterSapwn()
     {
-        int num = Random.Range(0, monsterList.Count);
+        int num = RandomNum();
         Debug.Log(num);
         string[] point = monsterList[num].Split(',');
 
@@ -119,11 +123,20 @@ public class MonsterSpawnTable : MonoBehaviour
                     monsterManager.AddMonster(newMonster);
                     Debug.Log($"오브젝트 생성 {id}");
                 }
-                else
-                {
-                    //Debug.Log("빈공간");
-                }
             }
         }
+    }
+
+    private int RandomNum()
+    {
+        int num = Random.Range(0, monsterList.Count);
+
+        if (monsterListActive[num] == false)
+        {
+            monsterListActive[num] = true;
+            return num;
+        }
+        else
+            return RandomNum();
     }
 }
