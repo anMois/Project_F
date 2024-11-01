@@ -436,7 +436,6 @@ GameObject:
   - component: {fileID: 7219439293618975900}
   - component: {fileID: 7219439293618975901}
   - component: {fileID: 7219439293618975902}
-  - component: {fileID: 7219439293618975898}
   m_Layer: 5
   m_Name: Player Item Canvas
   m_TagString: UICanvas
@@ -531,22 +530,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7219439293618975898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7219439293618975903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92430119d0ecfd541afec663222c3d06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionCountText: {fileID: 0}
-  grenadeCountText: {fileID: 0}
-  potionCount: 0
-  grenadeCount: 0
 --- !u!1 &7219439293725491366
 GameObject:
   m_ObjectHideFlags: 0
