@@ -6,7 +6,7 @@ public class BossAttack : MonoBehaviour
 {
     [SerializeField] List<BossAttackRange> ranges = new();
 
-    [SerializeField] int damage;
+    [SerializeField] protected int damage;
 
     protected void Start()
     {

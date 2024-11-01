@@ -113,12 +113,18 @@ public class BossDragon : MonoBehaviour, IDamageable
         // Pattern Attack
         if (++attackCount % PatternAttackPeriod == 0)
         {
+            //BossAttackType type = NextAttackType(BossAttackType.FlyPattern1, BossAttackType.FlyPattern2);
 
+            //// Attack
+            //StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
         // Attack
         else
         {
+            BossAttackType type = NextAttackType(BossAttackType.Fly1, BossAttackType.Fly2);
 
+            // Attack
+            StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
     }
 

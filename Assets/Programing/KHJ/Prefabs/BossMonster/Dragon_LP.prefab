@@ -267,6 +267,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0bca5babee9d14ab3e113cf8550e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &605942064996204003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8070251112780268465}
+  - component: {fileID: 2457557676235194416}
+  m_Layer: 7
+  m_Name: FlyAttack1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8070251112780268465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605942064996204003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6728968162360264211}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2457557676235194416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605942064996204003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488952887420aa9428119141a7122b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ranges: []
+  damage: 15
+  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  muzzlePoint: {fileID: 54025886530143381}
+  target: {fileID: 0}
 --- !u!1 &877362889799735347
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +420,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c0bca5babee9d14ab3e113cf8550e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1916077217933879470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6728968162360264211}
+  m_Layer: 7
+  m_Name: FlyAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6728968162360264211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916077217933879470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8070251112780268465}
+  - {fileID: 9183561285670042553}
+  m_Father: {fileID: 1575454248491237977}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2289392515021386589
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,6 +749,7 @@ Transform:
   m_Children:
   - {fileID: 2259288515449356077}
   - {fileID: 4612012026997648447}
+  - {fileID: 6728968162360264211}
   m_Father: {fileID: 9214023582376653121}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -716,6 +799,37 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3781953643311373904
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54025886530143381}
+  m_Layer: 7
+  m_Name: Muzzle Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &54025886530143381
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781953643311373904}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.47, y: 0.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9214023582376653147}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4289791570677481705
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1301,55 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ranges: []
   damage: 3
+--- !u!1 &6282537878052730284
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9183561285670042553}
+  - component: {fileID: 8859846804604656861}
+  m_Layer: 7
+  m_Name: FlyAttack1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9183561285670042553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282537878052730284}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6728968162360264211}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8859846804604656861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6282537878052730284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488952887420aa9428119141a7122b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ranges: []
+  damage: 15
+  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  muzzlePoint: {fileID: 54025886530143381}
+  target: {fileID: 0}
 --- !u!1 &6302137991638766862
 GameObject:
   m_ObjectHideFlags: 0
@@ -8276,7 +8439,9 @@ MonoBehaviour:
   - {fileID: 50907276490049008}
   - {fileID: 902251560392061624}
   - {fileID: 2210110902153870547}
-  attackRates: 280000005000000000000000640000003200000064000000
+  - {fileID: 2457557676235194416}
+  - {fileID: 8859846804604656861}
+  attackRates: 2800000050000000000000006400000032000000640000003200000064000000
   landAttackDelay: 2
   flyAttackDelay: 4
   attackCount: 0
@@ -9106,6 +9271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9214023582376653145}
+  - {fileID: 54025886530143381}
   m_Father: {fileID: 9214023582376653063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
