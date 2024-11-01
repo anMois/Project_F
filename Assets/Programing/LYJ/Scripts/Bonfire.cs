@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class Bonfire : MonoBehaviour, IInteractable
 {
-    private InGameController storeController;
-
-    private void Start()
-    {
-        storeController = FindObjectOfType<InGameController>();
-    }
-
     public void Interact()
     {
         if (GameManager.Instance.currentHealth < GameManager.Instance.maxHealth * 0.7f)
