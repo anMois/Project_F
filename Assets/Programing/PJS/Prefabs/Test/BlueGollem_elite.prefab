@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3163729170402841855
+--- !u!1 &659958090201148201
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5471094529606425070}
-  - component: {fileID: 4946071384104946992}
-  - component: {fileID: 5321071123690968130}
-  - component: {fileID: 8324181201311828159}
-  - component: {fileID: 4681473793010162249}
+  - component: {fileID: 4378811902874673266}
+  - component: {fileID: 423134436802161142}
+  - component: {fileID: 6692091862872385166}
+  - component: {fileID: 3305335564468234554}
   m_Layer: 0
-  m_Name: Obstacle
+  m_Name: BlueGollem_elite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5471094529606425070
+--- !u!4 &4378811902874673266
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163729170402841855}
+  m_GameObject: {fileID: 659958090201148201}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.75, z: 0}
-  m_LocalScale: {x: 2, y: 6, z: 2}
+  m_LocalPosition: {x: -16.44709, y: -3.377279, z: -46.63186}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4946071384104946992
+--- !u!33 &423134436802161142
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163729170402841855}
+  m_GameObject: {fileID: 659958090201148201}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5321071123690968130
+--- !u!23 &6692091862872385166
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163729170402841855}
+  m_GameObject: {fileID: 659958090201148201}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -85,41 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8324181201311828159
+--- !u!65 &3305335564468234554
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163729170402841855}
+  m_GameObject: {fileID: 659958090201148201}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4681473793010162249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3163729170402841855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de9c67f03d8952c4f85b3e4e663800bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  curState: 0
-  target: {fileID: 0}
-  visualization: 0
-  visualRange: 0
-  attackMaxRange: 0
-  guardRange: 0
-  monsterID: 0
-  maxHp: 0
-  curHp: 0
-  moveSpeed: 0
-  attackDamage: 0
-  attackCoolDown: 0
-  dropRate: 0
