@@ -13,7 +13,7 @@ public class StageManager : MonoBehaviour
     [Header("몬스터 매니저")]
     [SerializeField] MonsterManager monsterManager;
     [Header("몬스터 생성 오브젝트")]
-    [SerializeField] MonsterSpawnTable monsterTable;
+    [SerializeField] CreateStageMonster stageMonster;
     [SerializeField] GameObject clearBox;
     [SerializeField] Transform createPoint;
 
@@ -38,7 +38,7 @@ public class StageManager : MonoBehaviour
                 //웨이브 확인 후 웨이브 증가 및 몬스터 생성
                 if (curWave != maxWave[stageNum])
                 {
-                    monsterTable.MonsterSapwn();
+                    stageMonster.MonsterSpawn();
                     curWave++;
                 }
                 // 해당 스테이지의 모든 웨이브를 다 클리어 했을시

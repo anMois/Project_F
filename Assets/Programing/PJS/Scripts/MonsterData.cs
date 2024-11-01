@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class MonsterSpawnTable : MonoBehaviour
+public class MonsterData : MonoBehaviour
 {
     //몬스터 테이블
     const string monsterData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=0&format=csv";
@@ -16,19 +16,17 @@ public class MonsterSpawnTable : MonoBehaviour
     private List<string> monsterList = new List<string>();  // 몬스터의 배치 리스트
     private bool[] monsterListActive;
 
+    public Dictionary<int, GameObject> Monster { get { return monster; } }
+    public List<int> MonsterKey { get { return monsterKey; } }
+    public List<string> MonsterList { get { return monsterList; } }
+    public bool[] MonsterListActive { get { return monsterListActive; } }
 
-    [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
-    [SerializeField] MonsterManager monsterManager;
     [Header("생성되는 몬스터")]
     [SerializeField] List<GameObject> monsterPrefabs;
-    [Header("생성되는 몬스터의 위치")]
-    [SerializeField] List<Transform> monsterPoints;
-
 
     private void Awake()
     {
         StartCoroutine(GetDataRoutine());
-        
     }
 
     IEnumerator GetDataRoutine()
@@ -100,43 +98,5 @@ public class MonsterSpawnTable : MonoBehaviour
         {
             Debug.Log(monsterList[i]);
         }
-    }
-
-    /// <summary>
-    /// 배치되어 있는 리스트 중 랜덤으로 하나를 골라 지정된 위치에 몬스터 스폰
-    /// </summary>
-    public void MonsterSapwn()
-    {
-        int num = RandomNum();
-        Debug.Log(num);
-        string[] point = monsterList[num].Split(',');
-
-        for (int i = 0; i < point.Length; i++)
-        {
-            int.TryParse(point[i], out int id);
-            for (int j = 0; j < monsterKey.Count; j++)
-            {
-                if (monsterKey[j] == id)
-                {
-                    Monster newMonster = Instantiate(monster[id], monsterPoints[i].position, monsterPoints[i].rotation).GetComponent<Monster>();
-                    newMonster.transform.parent = monsterManager.transform;
-                    monsterManager.AddMonster(newMonster);
-                    Debug.Log($"오브젝트 생성 {id}");
-                }
-            }
-        }
-    }
-
-    private int RandomNum()
-    {
-        int num = Random.Range(0, monsterList.Count);
-
-        if (monsterListActive[num] == false)
-        {
-            monsterListActive[num] = true;
-            return num;
-        }
-        else
-            return RandomNum();
     }
 }
