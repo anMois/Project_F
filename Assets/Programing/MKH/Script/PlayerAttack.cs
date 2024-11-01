@@ -9,10 +9,11 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Animator ani;
     [SerializeField] Transform target;
     [SerializeField] Transform shellTarget;
-
-    Lazer lazer;
+    [SerializeField] GameObject lazer;
+    [SerializeField]int timer;
+    int time;
     Player player;
-    
+
 
     private Coroutine delayAttackCoroutine;
 
@@ -26,10 +27,13 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
+        time = timer;
         curBullet = bulletPrefab[0];
         ani = GetComponentInChildren<Animator>();
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
+
+        lazer.GetComponent<Lazer>().Damage("Monster", 1, time);
     }
 
     private void Update()
@@ -38,20 +42,12 @@ public class PlayerAttack : MonoBehaviour
         {
             AnimatorPlay();
 
-            if(Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Bullet();
                 Shell();
-
-                if (Input.GetKeyDown(KeyCode.Mouse0))
-                {
-                    Lazer();
-                }
-                if(Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    //Destroy(obj);
-                }
             }
+            Lazer();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -120,10 +116,21 @@ public class PlayerAttack : MonoBehaviour
     {
         if (curBullet == bulletPrefab[1])
         {
-            GameObject obj = Instantiate(curBullet, lazerPos.position, lazerPos.rotation);
+            if(Input.GetKey(KeyCode.Mouse0))
+            {
+                lazer.SetActive(true);
+                if(time <= 0)
+                {
+                    lazer.SetActive(false);
+                    TimeOffset();
+                }
+            }
+            else if(Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                lazer.SetActive(false);
+                TimeOffset();
+            }
 
-            obj.transform.parent = transform;
-            obj.GetComponent<Lazer>().Damage(6, 1);
         }
     }
 
@@ -137,5 +144,9 @@ public class PlayerAttack : MonoBehaviour
     }
 
 
+    private void TimeOffset()
+    {
+        time = timer;
+    }
 
 }

@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class DoT : MonoBehaviour
 {
-    [SerializeField] LayerMask layerMask;
     [SerializeField] int lifeTime;
-    [SerializeField] public int dmg;
-    [SerializeField] public int dmgs;
+    [SerializeField] int dmg;
+    [SerializeField] string name;
     Coroutine damageCoroutine;
 
     IDamageable damageable;
@@ -21,11 +20,10 @@ public class DoT : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // layermask 는 투사체에 부닺힐 레이어 
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag("Monster");
+        bool valid = other.CompareTag(name);
         if (!valid)
             return;
 
@@ -43,7 +41,7 @@ public class DoT : MonoBehaviour
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag("Monster");
+        bool valid = other.CompareTag(name);
         if (!valid)
             return;
 
@@ -56,39 +54,38 @@ public class DoT : MonoBehaviour
 
     private void StartDamage()      //피해 입히는 코루틴
     {
-        damageCoroutine = StartCoroutine(InflictdamageOverTime(dmg));
+        damageCoroutine = StartCoroutine(InflictdamageOverTime());
 
     }
 
     private void EndDamage()         // 피해 끝나는 코루틴
     {
-
         StopCoroutine(damageCoroutine);
     }
 
-    private IEnumerator InflictdamageOverTime(int damage)
+    private IEnumerator InflictdamageOverTime()
     {
         while (lifeTime > 0)
         {
-            Damage(layerMask, dmg);        // 피해 입히는 부분
-            damageable.TakeHit(dmg);
+            damageable.TakeHit(dmg);        // 피해 입히는 부분
             yield return new WaitForSeconds(1f);        // 대기시간
 
             lifeTime -= 1;
         }
-
+        yield return null;
     }
 
-    public void Damage(int friendlyLayer, int attackDamage)       // 실제로 피해 입히는 부분
-    {
-        rb.position = Vector3.zero;
-        layerMask &= ~friendlyLayer;
 
+    /// <summary>
+    /// Time to DoT to tag name
+    /// </summary>
+    /// <param name="name">Tag name of the attack target</param>
+    /// <param name="attackDamage">attackDamage</param>
+    /// <param name="time">duration of attack</param>
+    public void Damage(string name, int attackDamage, int time)       // 실제로 피해 입히는 부분
+    {
+        this.name = name;
         dmg = attackDamage;
-    }
-
-    private void FIre()
-    {
-
+        lifeTime = time;
     }
 }

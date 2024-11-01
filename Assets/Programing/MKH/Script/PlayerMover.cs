@@ -55,9 +55,9 @@ public partial class PlayerMover : MonoBehaviour
     {
         if (players.curHp > 0)
         {
+            Move();
             ViewRotate();
             Dash();
-            Jump();
         }
         AnimaitorPlay();
     }
@@ -88,41 +88,13 @@ public partial class PlayerMover : MonoBehaviour
 
     private void Move()
     {
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
         if (isMove)
         {
-            float x = Input.GetAxisRaw("Horizontal");
-            float z = Input.GetAxisRaw("Vertical");
-            if (isMove)
-            {
-                moveDir = transform.forward * z + transform.right * x;
-                moveDir.Normalize();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
-            {
-                isJump = true;
-                jumpCount--;
-                if (jumpCount < 0)
-                {
-                    isJump = false;
-                }
-            }
-
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                isMove = false;
-            }
-            else if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                isMove = true;
-            }
+            moveDir = transform.forward * z + transform.right * x;
         }
 
-
-    }
-
-    private void Jump()
-    {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
         {
             isJump = true;
@@ -131,14 +103,18 @@ public partial class PlayerMover : MonoBehaviour
             {
                 isJump = false;
             }
+        }
 
-            if (isJump && jumpCount >= 0)
-            {
-                rigid.AddForce(new Vector3(0f, jumpPower, 0f), ForceMode.VelocityChange);
-                isJump = false;
-            }
+        if (Input.GetKey(KeyCode.Mouse0))
+        {
+            isMove = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            isMove = true;
         }
     }
+
 
     private void Dash()
     {
@@ -212,10 +188,6 @@ public partial class PlayerMover : MonoBehaviour
 
 
 
-
-
-
-
     #region 애니메이션
     public void AnimaitorPlay()
     {
@@ -263,11 +235,11 @@ public partial class PlayerMover : MonoBehaviour
             checkAniHash = idleHash;
         }
 
-        if (rigid.velocity.y > 0.1f)
+        if (rigid.velocity.y > 2f)
         {
             checkAniHash = jumpUpHash;
         }
-        else if (rigid.velocity.y < -0.1f)
+        else if (rigid.velocity.y < -2f)
         {
             checkAniHash = jumpDownHash;
         }
