@@ -1,18 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform attackPos;
-    [SerializeField] public Transform lazerPos;
+    [SerializeField] Transform lazerPos;
     [SerializeField] GameObject[] bulletPrefab;
     private GameObject curBullet;
     [SerializeField] Animator ani;
     [SerializeField] Transform target;
     [SerializeField] Transform shellTarget;
 
+    Lazer lazer;
     Player player;
-
+    
 
     private Coroutine delayAttackCoroutine;
 
@@ -37,9 +37,20 @@ public class PlayerAttack : MonoBehaviour
         if (mover.isGround && player.curHp > 0)
         {
             AnimatorPlay();
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+
+            if(Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Fire();
+                Bullet();
+                Shell();
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Lazer();
+                }
+                if(Input.GetKeyUp(KeyCode.Mouse0))
+                {
+                    //Destroy(obj);
+                }
             }
         }
 
@@ -62,10 +73,6 @@ public class PlayerAttack : MonoBehaviour
         curBullet = bulletPrefab[index];
     }
 
-    private void Fire()
-    {
-        delayAttackCoroutine = StartCoroutine(DelayAttack());
-    }
 
     public void AnimatorPlay()
     {
@@ -83,10 +90,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 checkAniHash = lazerHash;
             }
-            else if (Input.GetKeyUp(KeyCode.Mouse0))
-            {
-                checkAniHash = idleHash;
-            }
         }
         else if (curBullet == bulletPrefab[2])
         {
@@ -103,24 +106,30 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    IEnumerator DelayAttack()
+    private void Bullet()
     {
-
-        yield return new WaitForSeconds(0.2f);
-
-
         if (curBullet == bulletPrefab[0])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
             obj.GetComponent<Bullet>().Launch(6, target, 1);
         }
-        else if (curBullet == bulletPrefab[1])
+
+    }
+
+    private void Lazer()
+    {
+        if (curBullet == bulletPrefab[1])
         {
             GameObject obj = Instantiate(curBullet, lazerPos.position, lazerPos.rotation);
+
             obj.transform.parent = transform;
-            obj.GetComponent<Lazer>().Launch(6, target, 1);
+            obj.GetComponent<Lazer>().Damage(6, 1);
         }
-        else if (curBullet == bulletPrefab[2])
+    }
+
+    private void Shell()
+    {
+        if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
             obj.GetComponent<Shell>().Launch(6, shellTarget, 1);
