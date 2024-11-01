@@ -2514,6 +2514,9 @@ GameObject:
   - component: {fileID: 8785426691337673572}
   - component: {fileID: 8785426691347373502}
   - component: {fileID: 4407667440657996824}
+  - component: {fileID: 4079456248491203088}
+  - component: {fileID: 6681512876267972441}
+  - component: {fileID: 4716629347571222274}
   m_Layer: 0
   m_Name: ShamanGoblin_normal
   m_TagString: Untagged
@@ -2575,6 +2578,63 @@ Animator:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4407667440657996824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785426691337906190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86cd6cbc0435a784883ebc8132da5a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curState: 0
+  target: {fileID: 0}
+  visualization: 1
+  attackMaxRange: 15
+  guardRange: 12
+  monsterID: 2004
+  maxHp: 30
+  curHp: 0
+  moveSpeed: 15
+  guardSpeed: 5
+  attackDamage: 30
+  attackCoolDown: 3
+  dropRate: 1
+  projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
+  muzzlePoint: {fileID: 4407667441405257665}
+--- !u!136 &4079456248491203088
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785426691337906190}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!54 &6681512876267972441
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785426691337906190}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!114 &4716629347571222274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

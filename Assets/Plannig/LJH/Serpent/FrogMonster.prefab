@@ -1783,7 +1783,7 @@ MonoBehaviour:
   maxHp: 40
   curHp: 0
   moveSpeed: 10
-  guardSpeed: 4
+  guardSpeed: 5
   attackDamage: 10
   attackCoolDown: 3
   dropRate: 2
