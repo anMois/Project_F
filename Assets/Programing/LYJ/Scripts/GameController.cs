@@ -104,13 +104,14 @@ public class GameController : MonoBehaviour
                 !UIManager.Instance.IsUIActive("Manual Canvas") &&
                 !UIManager.Instance.IsUIActive("Book Canvas") &&
                 !UIManager.Instance.IsUIActive("Book Canvas 2") &&
-                !UIManager.Instance.IsUIActive("Status Window Canvas"))
+                !UIManager.Instance.IsUIActive("Status Window Canvas") &&
+                !UIManager.Instance.IsUIActive("Game Over Canvas"))
             {
                 ToggleInGameMenu();
             }
         }
 
-        if (UIManager.Instance.IsUIActive("In Game Menu Canvas") || UIManager.Instance.IsUIActive("In Game Manual Canvas"))
+        if (UIManager.Instance.IsUIActive("In Game Menu Canvas") || UIManager.Instance.IsUIActive("In Game Manual Canvas") || UIManager.Instance.IsUIActive("Game Over Canvas"))
         {
             Time.timeScale = 0;
         }
@@ -246,7 +247,7 @@ public class GameController : MonoBehaviour
     private void ClickRestartButton()
     {
         //SceneManager.LoadScene("StageNext");
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("GameStart");
     }
 
     private void ClickExitButton()
