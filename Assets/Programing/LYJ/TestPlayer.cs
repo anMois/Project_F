@@ -12,19 +12,21 @@ public class TestPlayer : MonoBehaviour
 
             Destroy(other.gameObject);
 
-            StartCoroutine(ShowStageClearUI());
+            //StartCoroutine(ShowStageClearUI());
+
+            GameController.Instance.ShowGameClearCanvas();
 
         }
     }
 
-    private IEnumerator ShowStageClearUI()
-    {
-        UIManager.Instance.ShowUI("Stage Clear Ani Canvas");
+    //private IEnumerator ShowStageClearUI()
+    //{
+    //    UIManager.Instance.ShowUI("Stage Clear Ani Canvas");
 
-        yield return new WaitForSeconds(2f);
+    //    yield return new WaitForSeconds(2f);
 
-        UIManager.Instance.HideUI("Stage Clear Ani Canvas");
+    //    UIManager.Instance.HideUI("Stage Clear Ani Canvas");
 
-        UIManager.Instance.ShowUI("Stage Clear Canvas");
-    }
+    //    UIManager.Instance.ShowUI("Stage Clear Canvas");
+    //}
 }

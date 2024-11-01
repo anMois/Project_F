@@ -259,4 +259,20 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
+
+    public List<Sprite> GetActiveRelicImages()
+    {
+        List<Sprite> activeRelicImages = new List<Sprite>();
+
+        foreach (var relicUIImage in relicUIImages)
+        {
+            if (relicUIImage.gameObject.activeSelf)
+            {
+                activeRelicImages.Add(relicUIImage.sprite);
+            }
+        }
+
+        return activeRelicImages;
+    }
+
 }

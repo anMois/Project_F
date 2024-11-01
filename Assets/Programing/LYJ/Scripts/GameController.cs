@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,6 +36,10 @@ public class GameController : MonoBehaviour
 
     [Header("Status Window UI")]
     [SerializeField] Button statusWindowCloseButton;
+
+    [Header("Game Clear Canvas")]
+    [SerializeField] Button gameClearExitButton;
+    [SerializeField] Image[] gameClearItemImage;
 
     private void Awake()
     {
@@ -79,6 +84,9 @@ public class GameController : MonoBehaviour
 
         // Status Window Button
         if (statusWindowCloseButton) statusWindowCloseButton.onClick.AddListener(ClickStatusWindowCloseButton);
+
+        // Game Clear Button
+        if (gameClearExitButton) gameClearExitButton.onClick.AddListener(ClickGameClearExitButton);
     }
 
     private void Update()
@@ -259,4 +267,38 @@ public class GameController : MonoBehaviour
     {
         UIManager.Instance.HideUI("Status Window Canvas");
     }
+
+    public void ClickGameClearExitButton()
+    {
+        SceneManager.LoadScene("GameStart");
+    }
+
+    public void FillGameClearImages(List<Sprite> relicSprites)
+    {
+        for (int i = 0; i < gameClearItemImage.Length; i++)
+        {
+            if (i < relicSprites.Count)
+            {
+                gameClearItemImage[i].sprite = relicSprites[i];
+                gameClearItemImage[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                gameClearItemImage[i].gameObject.SetActive(false); // 이미지를 비활성화 해둠
+            }
+        }
+    }
+
+    //게임 클리어 부분에 사용
+    //GameController.Instance.ShowGameClearCanvas(); <- 이 코드로 사용하면 됨
+    public void ShowGameClearCanvas()
+    {
+        //StatusWindowController에서 활성화된 유물 이미지를 가져옴
+        List<Sprite> relicImages = StatusWindowController.Instance.GetActiveRelicImages();
+
+        FillGameClearImages(relicImages);
+
+        UIManager.Instance.ShowUI("Game Clear Canvas");
+    }
+
 }
