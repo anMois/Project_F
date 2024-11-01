@@ -822,6 +822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startZone: {fileID: 371817151}
+  stageManager: {fileID: 0}
   monsters: []
 --- !u!4 &1689335787
 Transform:
@@ -936,6 +937,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1932521092
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932521093}
+  m_Layer: 0
+  m_Name: Stage Grid Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1932521093
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932521092}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -13, y: 0, z: 32}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2030344295
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1006,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902251560392061624, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: stageOrigin
+      value: 
+      objectReference: {fileID: 1932521093}
+    - target: {fileID: 2210110902153870547, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: stageOrigin
+      value: 
+      objectReference: {fileID: 1932521093}
     - target: {fileID: 9214023582376653121, guid: 3608345598879de4292b35ec7a024626, type: 3}
       propertyPath: m_RootOrder
       value: 1
