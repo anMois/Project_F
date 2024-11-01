@@ -47,6 +47,7 @@ public class StoreItemButton : MonoBehaviour
         }
     }
 
+
     /// <summary>
     /// 현재 스크립트를 가지고 있는 버튼 클릭시 데이터를 가져옴
     /// </summary>
@@ -56,10 +57,11 @@ public class StoreItemButton : MonoBehaviour
         {
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
 
-            //StatusWindowController에 아이템 추가
+            // StatusWindowController에 아이템 추가
             if (statusWindowController != null)
             {
-                statusWindowController.AddItemToInventory(itemData.itemImage); //itemImage를 relicUIImages에 추가
+                // 아이템의 이미지, 이름, 설명을 함께 전달
+                statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
             }
         }
     }

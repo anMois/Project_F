@@ -36,6 +36,8 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private Image itemImage;
 
+    private Dictionary<Sprite, (string itemName, string itemDescription)> itemInfoDict = new Dictionary<Sprite, (string, string)>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -75,13 +77,6 @@ public class StatusWindowController : MonoBehaviour
     private void ShowExplanationCanvas()
     {
         UIManager.Instance.ShowUI("Status Window Explanation Canvas");
-    }
-
-    public void SetExplanation(ItemData itemData)
-    {
-        itemNameText.text = itemData.itemName;
-        itemDescriptionText.text = itemData.description;
-        itemImage.sprite = itemData.itemImage;
     }
 
     private void OnEnable()
@@ -212,16 +207,43 @@ public class StatusWindowController : MonoBehaviour
         }
     }
 
-    public void AddItemToInventory(Sprite itemSprite)
+    private Dictionary<Image, (string itemName, string itemDescription, Sprite itemSprite)> relicInfoDict
+     = new Dictionary<Image, (string, string, Sprite)>();
+
+    public void AddItemToInventory(Sprite itemSprite, string itemName, string itemDescription)
     {
+        if (!itemInfoDict.ContainsKey(itemSprite))
+        {
+            itemInfoDict[itemSprite] = (itemName, itemDescription);
+        }
+
         foreach (var relicUIImage in relicUIImages)
         {
             if (!relicUIImage.gameObject.activeSelf)
             {
                 relicUIImage.sprite = itemSprite;
                 relicUIImage.gameObject.SetActive(true);
+
+                //relicUIImage와 아이템 데이터를 함께 저장
+                relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite);
+
+                relicUIImage.GetComponent<Button>().onClick.RemoveAllListeners();
+                relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas(relicUIImage));
+
                 break;
             }
+        }
+    }
+
+    private void ShowExplanationCanvas(Image relicUIImage)
+    {
+        if (relicInfoDict.TryGetValue(relicUIImage, out var itemInfo))
+        {
+            itemNameText.text = itemInfo.itemName;
+            itemDescriptionText.text = itemInfo.itemDescription;
+            itemImage.sprite = itemInfo.itemSprite;
+
+            UIManager.Instance.ShowUI("Status Window Explanation Canvas");
         }
     }
 
