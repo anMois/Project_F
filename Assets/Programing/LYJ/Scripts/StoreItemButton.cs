@@ -46,7 +46,7 @@ public class StoreItemButton : MonoBehaviour
     }
 
     /// <summary>
-    /// 현재 스크립트를 가지고 있는 버튼 클릭시
+    /// 현재 스크립트를 가지고 있는 버튼 클릭시 데이터를 가져옴
     /// </summary>
     public void OnButtonClick()
     {
@@ -95,16 +95,37 @@ public class StoreItemButton : MonoBehaviour
     {
         clickedButton.interactable = false;
 
-        if (GameManager.Instance.PotionGrenadeItem(1000))
+        //버튼 클릭 시 포션과 수류탄 가격에 따라 구매 여부를 결정
+        if (clickedButton == potionButton)
         {
-            Debug.Log($"구매 완료");
-            Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+            if (GameManager.Instance.PotionGrenadeItem(1000))
+            {
+                GameManager.Instance.IncrementPotionCount();
+                Debug.Log($"포션 구매 완료");
+                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+            }
+            else
+            {
+                Debug.Log("돈이 부족하여 포션을 구매할 수 없습니다.");
+                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+                clickedButton.interactable = true;
+            }
         }
-        else
+        else if (clickedButton == grenadeButton)
         {
-            Debug.Log("돈이 부족하여 구매할 수 없습니다.");
-            Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
-            clickedButton.interactable = true;
+            if (GameManager.Instance.PotionGrenadeItem(1000))
+            {
+                GameManager.Instance.IncrementGrenadeCount();
+                Debug.Log($"수류탄 구매 완료");
+                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+            }
+            else
+            {
+                Debug.Log("돈이 부족하여 수류탄을 구매할 수 없습니다.");
+                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+                clickedButton.interactable = true;
+            }
         }
     }
+
 }

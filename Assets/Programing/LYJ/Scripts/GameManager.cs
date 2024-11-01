@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,12 +17,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float currentHealth;
     [SerializeField] public float maxHealth = 100f;
 
+    [SerializeField] private TextMeshProUGUI potionCountText;
+    [SerializeField] private TextMeshProUGUI grenadeCountText;
+    private int potionCount = 0;
+    private int grenadeCount = 0;
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
@@ -29,16 +36,60 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    //씬이 로드될 때 호출되는 초기화 메소드
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        ResetGameState();
+    }
+
+    private void ResetGameState()
+    {
+        //필요한 값을 초기화 (아래 내용을 게임 필요에 따라 설정)
+        potionCount = 0;
+        grenadeCount = 0;
+        curPrice = 10000f; //초기 골드 값으로 설정
+        currentHealth = maxHealth; //체력을 최대치로 설정
+
+        UpdateUI();
+        UpdatePriceText();
+        UpdateHealthUI();
+    }
+
     private void Start()
     {
         InitializeHealth();
         UpdatePriceText();
+        UpdateUI();
     }
 
     private void InitializeHealth()
     {
         currentHealth = maxHealth;
         UpdateHealthUI();
+    }
+
+    private void Update()
+    {
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateHealthUI();
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (UIManager.Instance.IsUIActive("Status Window Canvas"))
+            {
+                UIManager.Instance.HideUI("Status Window Canvas");
+            }
+            else
+            {
+                UIManager.Instance.ShowUI("Status Window Canvas");
+            }
+            Time.timeScale = UIManager.Instance.IsUIActive("Status Window Canvas") ? 0 : 1;
+        }
     }
 
     /// <summary>
@@ -84,12 +135,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateHealthUI();
-    }
-
     private void UpdateHealthUI()
     {
         float healthRatio = currentHealth / maxHealth;
@@ -102,6 +147,44 @@ public class GameManager : MonoBehaviour
         {
             hpText.text = $"{(int)currentHealth} / {maxHealth}";
         }
+    }
+
+    // 아이템 수집 기능 (플레이어.cs에 붙여 사용할 때 지우고 사용)
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Potion"))
+        {
+            potionCount++;
+            UpdateUI();
+            Destroy(collider.gameObject);
+        }
+        else if (collider.CompareTag("Grenade"))
+        {
+            grenadeCount++;
+            UpdateUI();
+            Destroy(collider.gameObject);
+        }
+    }
+
+    private void UpdateUI()
+    {
+        if (potionCountText != null)
+            potionCountText.text = $"{potionCount}";
+
+        if (grenadeCountText != null)
+            grenadeCountText.text = $"{grenadeCount}";
+    }
+
+    public void IncrementPotionCount()
+    {
+        potionCount++;
+        UpdateUI();
+    }
+
+    public void IncrementGrenadeCount()
+    {
+        grenadeCount++;
+        UpdateUI();
     }
 
     /// <summary>

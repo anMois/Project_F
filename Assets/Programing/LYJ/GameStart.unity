@@ -1124,6 +1124,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &200687892 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7219439293725491364, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
+  m_PrefabInstance: {fileID: 1906013724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &220756310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,6 +2886,8 @@ MonoBehaviour:
   hpText: {fileID: 563746040}
   currentHealth: 0
   maxHealth: 100
+  potionCountText: {fileID: 1733332034}
+  grenadeCountText: {fileID: 200687892}
 --- !u!4 &1532505914
 Transform:
   m_ObjectHideFlags: 0
@@ -3039,6 +3052,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2228250984753163129, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
   m_PrefabInstance: {fileID: 1648650089}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1733332034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7219439293434471680, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
+  m_PrefabInstance: {fileID: 1906013724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1749229702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3317,7 +3341,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7219439293618975898, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
 --- !u!224 &1906013725 stripped
 RectTransform:
