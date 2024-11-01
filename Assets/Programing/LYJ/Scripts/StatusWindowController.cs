@@ -59,16 +59,7 @@ public class StatusWindowController : MonoBehaviour
         foreach (var relicUIImage in relicUIImages)
         {
             relicUIImage.gameObject.SetActive(false);
-
             relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas());
-        }
-    }
-
-    private void Update()
-    {
-        if (UIManager.Instance.IsUIActive("Status Window Explanation Canvas") && Input.GetMouseButtonDown(0))
-        {
-            UIManager.Instance.HideUI("Status Window Explanation Canvas");
         }
     }
 
@@ -77,11 +68,12 @@ public class StatusWindowController : MonoBehaviour
         UIManager.Instance.ShowUI("Status Window Explanation Canvas");
     }
 
-    public void SetExplanation(ItemData itemData)
+    private void Update()
     {
-        itemNameText.text = itemData.itemName;
-        itemDescriptionText.text = itemData.description;
-        itemImage.sprite = itemData.itemImage;
+        if (UIManager.Instance.IsUIActive("Status Window Explanation Canvas") && Input.GetMouseButtonDown(0))
+        {
+            UIManager.Instance.HideUI("Status Window Explanation Canvas");
+        }
     }
 
     private void OnEnable()
@@ -236,5 +228,18 @@ public class StatusWindowController : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void UpdateStatusWindow(string itemName, string itemDescription, Sprite itemSprite)
+    {
+        // 텍스트와 이미지를 업데이트합니다.
+        itemNameText.text = itemName;
+        itemDescriptionText.text = itemDescription;
+        itemImage.sprite = itemSprite; // itemImage는 Image 컴포넌트입니다.
+
+        // 캔버스를 활성화합니다.
+        // 만약 캔버스가 비활성화되어 있다면, 활성화하는 코드를 추가하세요.
+        // 예를 들어:
+        // explanationCanvas.SetActive(true);
     }
 }

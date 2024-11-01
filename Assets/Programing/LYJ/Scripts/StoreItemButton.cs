@@ -60,6 +60,8 @@ public class StoreItemButton : MonoBehaviour
             if (statusWindowController != null)
             {
                 statusWindowController.AddItemToInventory(itemData.itemImage); //itemImage를 relicUIImages에 추가
+
+                statusWindowController.UpdateStatusWindow(itemData.itemName, itemData.description, itemData.itemImage);
             }
         }
     }

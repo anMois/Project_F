@@ -54,6 +54,12 @@ public class GameClearItemButton : MonoBehaviour
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+
+            // StatusWindowController에 아이템 추가
+            StatusWindowController.Instance.AddItemToInventory(itemData.itemImage);
+
+            // 설명 창 UI 업데이트
+            StatusWindowController.Instance.UpdateStatusWindow(itemData.itemName, itemData.description, itemData.itemImage);
         }
     }
 
