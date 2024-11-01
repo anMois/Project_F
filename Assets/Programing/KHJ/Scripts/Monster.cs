@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class Monster : MonoBehaviour, IDamageable
 {
     public UnityAction OnAlarm;
+    public UnityAction<Monster> OnDead;
 
     public enum State
     {
@@ -51,6 +52,7 @@ public class Monster : MonoBehaviour, IDamageable
         agent = GetComponent<NavMeshAgent>();
 
         curHp = maxHp;
+        OnAlarm += Trace;
 
         curState = State.Idle;
         states[(int)curState].StateEnter();
@@ -238,6 +240,10 @@ public class Monster : MonoBehaviour, IDamageable
 
         protected void Die()
         {
+            monster.OnDead?.Invoke(monster);
+
+            monster.OnAlarm -= monster.Trace;
+
             Destroy(monster.gameObject);
         }
     }
