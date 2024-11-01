@@ -14,6 +14,7 @@ public class BossDragon : MonoBehaviour
     [SerializeField] float moveSpeed;
 
     private const int PatternAttackPeriod = 3;
+    private float attackJudgeTime = 0.1f;    // time of attack range collider remains set as true
     private bool isTargetBehind;
 
     public bool IsTargetBehind { set { isTargetBehind = value; } }
@@ -52,13 +53,13 @@ public class BossDragon : MonoBehaviour
             
             if (isTargetBehind)
             {
-                Attack(attacks[2]);
+                StartCoroutine(AttackRoutine(attacks[2]));
             }
             else
             {
                 int n = Random.Range(1, 101);
                 int type = -1;
-
+                
                 // Decide attack type
                 for (int i = 0; i < attackRates.Length; i++)
                 {
@@ -70,7 +71,7 @@ public class BossDragon : MonoBehaviour
                 }
 
                 // Attack
-                Attack(attacks[type]);
+                StartCoroutine(AttackRoutine(attacks[type]));
             }
         }
     }
@@ -80,9 +81,10 @@ public class BossDragon : MonoBehaviour
         behindCheck.gameObject.SetActive(true);
     }
 
-    private void Attack(BossAttack bossAttack)
+    IEnumerator AttackRoutine(BossAttack bossAttack)
     {
         bossAttack.gameObject.SetActive(true);
+        yield return new WaitForSeconds(attackJudgeTime);
         bossAttack.gameObject.SetActive(false);
     }
 }

@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class BossAttack : MonoBehaviour
 {
+    [SerializeField] List<BossAttackRange> ranges = new();
+
     [SerializeField] int damage;
 
-    private void OnTriggerEnter(Collider other)
+    private void Start()
     {
-        if (other.gameObject.CompareTag("Player") == false)
-            return;
+        // Pull ranges
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            BossAttackRange range = transform.GetChild(i).GetComponent<BossAttackRange>();
+            range.OnDetected += Attack;
+            ranges.Add(range);
+        }
 
-        Debug.Log($"[Dragon] {gameObject.name}!");
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        gameObject.SetActive(false);
+    }
+
+    private void Attack(IDamageable damageable)
+    {
         damageable.TakeHit(damage);
     }
 }
