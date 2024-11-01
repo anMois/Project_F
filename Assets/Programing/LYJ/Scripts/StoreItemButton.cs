@@ -7,6 +7,7 @@ public class StoreItemButton : MonoBehaviour
 {
     public ItemData itemData;
     private InGameController inGameController;
+    private StatusWindowController statusWindowController;
     [SerializeField] Button button; //이름 쓰여져 있는 (설명창 활성화)
     [SerializeField] Button itemBuyButton;
     [SerializeField] Button potionButton;
@@ -17,6 +18,7 @@ public class StoreItemButton : MonoBehaviour
     private void Start()
     {
         inGameController = FindObjectOfType<InGameController>();
+        statusWindowController = StatusWindowController.Instance;
         button = GetComponent<Button>();
         itemBuyButton = transform.Find("Item Buy Button")?.GetComponent<Button>();
         potionButton = GameObject.Find("Potion Buy Button").GetComponent<Button>();
@@ -53,6 +55,12 @@ public class StoreItemButton : MonoBehaviour
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+
+            //StatusWindowController에 아이템 추가
+            if (statusWindowController != null)
+            {
+                statusWindowController.AddItemToInventory(itemData.itemImage); //itemImage를 relicUIImages에 추가
+            }
         }
     }
 
@@ -74,6 +82,8 @@ public class StoreItemButton : MonoBehaviour
             Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
             isPurchased = true;
             UpdateButtonState();
+
+            statusWindowController.AddRelicImageToList(itemData.itemImage);
         }
         else
         {

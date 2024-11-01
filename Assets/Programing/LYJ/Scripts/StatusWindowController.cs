@@ -32,6 +32,8 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private List<Image> relicUIImages;
     private List<Sprite> relicSprites = new List<Sprite>();
 
+    [SerializeField] private List<ItemData> itemDataList;
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +57,8 @@ public class StatusWindowController : MonoBehaviour
         foreach (var relicUIImage in relicUIImages)
         {
             relicUIImage.gameObject.SetActive(false);
+
+            relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas());
         }
     }
 
@@ -64,6 +68,11 @@ public class StatusWindowController : MonoBehaviour
         {
             UIManager.Instance.HideUI("Status Window Explanation Canvas");
         }
+    }
+
+    private void ShowExplanationCanvas()
+    {
+        UIManager.Instance.ShowUI("Status Window Explanation Canvas");
     }
 
     private void OnEnable()
@@ -240,6 +249,20 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
+
+    public void AddRelicImageToList(Sprite itemSprite)
+    {
+        foreach (var relicUIImage in relicUIImages)
+        {
+            if (!relicUIImage.gameObject.activeSelf)
+            {
+                relicUIImage.sprite = itemSprite;
+                relicUIImage.gameObject.SetActive(true);
+                break;
+            }
+        }
+    }
+
 
 
 }
