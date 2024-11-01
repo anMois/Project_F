@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour
+public partial class PlayerMover : MonoBehaviour
 {
     [SerializeField] Transform player;
 
@@ -55,9 +55,9 @@ public class PlayerMover : MonoBehaviour
     {
         if (players.curHp > 0)
         {
-            Move();
             ViewRotate();
             Dash();
+            Jump();
         }
         AnimaitorPlay();
     }
@@ -68,11 +68,14 @@ public class PlayerMover : MonoBehaviour
         {
             Vector3 moveOffset = moveDir * (moveSpeed * Time.fixedDeltaTime);
             Vector3 runOffset = moveDir * (runSpeed * Time.fixedDeltaTime);
-            rigid.MovePosition(rigid.position + moveOffset);
 
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 rigid.MovePosition(rigid.position + runOffset);
+            }
+            else
+            {
+                rigid.MovePosition(rigid.position + moveOffset);
             }
         }
 
@@ -85,14 +88,41 @@ public class PlayerMover : MonoBehaviour
 
     private void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float z = Input.GetAxisRaw("Vertical");
         if (isMove)
         {
-            moveDir = transform.forward * z + transform.right * x;
-            moveDir.Normalize();
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
+            if (isMove)
+            {
+                moveDir = transform.forward * z + transform.right * x;
+                moveDir.Normalize();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
+            {
+                isJump = true;
+                jumpCount--;
+                if (jumpCount < 0)
+                {
+                    isJump = false;
+                }
+            }
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                isMove = false;
+            }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                isMove = true;
+            }
         }
 
+
+    }
+
+    private void Jump()
+    {
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
         {
             isJump = true;
@@ -101,15 +131,12 @@ public class PlayerMover : MonoBehaviour
             {
                 isJump = false;
             }
-        }
 
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            isMove = false;
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            isMove = true;
+            if (isJump && jumpCount >= 0)
+            {
+                rigid.AddForce(new Vector3(0f, jumpPower, 0f), ForceMode.VelocityChange);
+                isJump = false;
+            }
         }
     }
 
@@ -119,7 +146,7 @@ public class PlayerMover : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rigid.position = rigid.position + new Vector3(0f,  0f, dashSpeed);
+                rigid.position = rigid.position + new Vector3(0f, 0f, dashSpeed);
             }
             else if (Input.GetKey(KeyCode.S))
             {
@@ -135,6 +162,7 @@ public class PlayerMover : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Ground")
@@ -142,15 +170,21 @@ public class PlayerMover : MonoBehaviour
             isGround = true;
             jumpCount = maxJump;
         }
-        
+
         if (collision.transform.tag == "Monster")
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
         }
-        
+
+        //if (collision.transform.tag == "Wall")
+        //{
+        //    rigid.velocity = Vector3.zero;
+        //    rigid.angularVelocity = Vector3.zero;
+        //}
+
     }
-        
+
 
     private void OnCollisionExit(Collision collision)
     {
@@ -159,13 +193,13 @@ public class PlayerMover : MonoBehaviour
         {
             isGround = false;
         }
-        
+
         if (collision.transform.tag == "Monster")
         {
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
         }
-        
+
     }
 
     private void ViewRotate()
@@ -222,7 +256,7 @@ public class PlayerMover : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
-            attack.AnimatorPlay();
+            //attack.AnimatorPlay();
         }
         else
         {
