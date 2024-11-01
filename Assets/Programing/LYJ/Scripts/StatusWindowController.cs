@@ -32,7 +32,9 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private List<Image> relicUIImages;
     private List<Sprite> relicSprites = new List<Sprite>();
 
-    [SerializeField] private List<ItemData> itemDataList;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+    [SerializeField] private Image itemImage;
 
     private void Awake()
     {
@@ -75,6 +77,13 @@ public class StatusWindowController : MonoBehaviour
         UIManager.Instance.ShowUI("Status Window Explanation Canvas");
     }
 
+    public void SetExplanation(ItemData itemData)
+    {
+        itemNameText.text = itemData.itemName;
+        itemDescriptionText.text = itemData.description;
+        itemImage.sprite = itemData.itemImage;
+    }
+
     private void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -88,40 +97,6 @@ public class StatusWindowController : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetData();
-    }
-
-    public void CollectItem(InGameItemData item)
-    {
-        item.ApplyEffect(this);
-
-        switch (item.elemental)
-        {
-            case ElementalType.Flame:
-                flameCount++;
-                break;
-            case ElementalType.Ice:
-                iceCount++;
-                break;
-            case ElementalType.Electricity:
-                electricityCount++;
-                break;
-            case ElementalType.Earth:
-                earthCount++;
-                break;
-        }
-
-        UpdateUI();
-        UpdateDisplayImage();
-    }
-
-    private void UpdateStatUI(InGameItemData item)
-    {
-        atkText.text = $"{item.ATK}";
-        atsText.text = $"{item.ATS}";
-        defText.text = $"{item.DEF}";
-        hpText.text = $"{item.HP}";
-        ranText.text = $"{item.RAN}";
-        spdText.text = $"{item.SPD}";
     }
 
     public void UpdateStartStatUI(StartItemData item)
@@ -262,7 +237,4 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
-
-
-
 }
