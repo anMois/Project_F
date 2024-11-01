@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
         HideUI("In Game Menu Canvas");
         HideUI("Player HP Canvas");
         HideUI("Player Item Canvas");
+        HideUI("Next Stage Canvas");
+        HideUI("Stage Clear Canvas");
+        HideUI("Boss Stage Canvas");
 
         //if (SceneManager.GetActiveScene().name == "StageNext")
         //{

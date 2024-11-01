@@ -92,7 +92,11 @@ public class GameController : MonoBehaviour
         {
             if (!UIManager.Instance.IsUIActive("Main Canvas") && 
                 !UIManager.Instance.IsUIActive("In Game Manual Canvas") &&
-                !UIManager.Instance.IsUIActive("Start Item Canvas"))
+                !UIManager.Instance.IsUIActive("Start Item Canvas") &&
+                !UIManager.Instance.IsUIActive("Manual Canvas") &&
+                !UIManager.Instance.IsUIActive("Book Canvas") &&
+                !UIManager.Instance.IsUIActive("Book Canvas 2") &&
+                !UIManager.Instance.IsUIActive("Status Window Canvas"))
             {
                 ToggleInGameMenu();
             }
@@ -115,6 +119,12 @@ public class GameController : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Stage1")
         {
             ShowInGameUI();
+        }
+
+        if (UIManager.Instance.IsUIActive("Stage Clear Canvas"))
+        {
+            UIManager.Instance.HideUI("In Game Menu Canvas");
+            UIManager.Instance.HideUI("Status Window Canvas");
         }
     }
 
