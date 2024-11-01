@@ -8277,8 +8277,12 @@ MonoBehaviour:
   - {fileID: 902251560392061624}
   - {fileID: 2210110902153870547}
   attackRates: 280000005000000000000000640000003200000064000000
-  attackDelay: 2
+  landAttackDelay: 2
+  flyAttackDelay: 4
   attackCount: 0
+  isFlying: 0
+  maxHp: 500
+  curHp: 0
   moveSpeed: 10
 --- !u!1 &9214023582376947043
 GameObject:
