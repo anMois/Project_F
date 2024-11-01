@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
             if (UIManager.Instance.IsUIActive("Status Window Canvas"))
             {
                 UIManager.Instance.HideUI("Status Window Canvas");
+                UIManager.Instance.HideUI("Status Window Explanation Canvas");
             }
             else
             {

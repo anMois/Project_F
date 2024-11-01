@@ -218,6 +218,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028353941948140
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +437,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028353984169889
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,6 +771,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354049558930
 GameObject:
   m_ObjectHideFlags: 0
@@ -911,6 +914,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354077217082
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,7 +991,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1264,6 +1268,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354175085285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1377,7 +1382,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1666,7 +1671,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1905,6 +1910,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354343733967
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,7 +2024,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2935,7 +2941,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3336,6 +3342,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354587789320
 GameObject:
   m_ObjectHideFlags: 0
@@ -3487,7 +3494,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3622,7 +3629,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3757,7 +3764,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4193,6 +4200,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354749114701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,7 +5029,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5222,6 +5230,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028354992324225
 GameObject:
   m_ObjectHideFlags: 0
@@ -5949,7 +5958,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6289,6 +6298,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028355358878327
 GameObject:
   m_ObjectHideFlags: 0
@@ -7064,6 +7074,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &803028355643918063
 GameObject:
   m_ObjectHideFlags: 0
@@ -7523,7 +7534,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7810,7 +7821,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8201,6 +8212,7 @@ MonoBehaviour:
     description: 
     itemImage: {fileID: 0}
     price: 0
+    elemental: 0
 --- !u!1 &997058764494361243
 GameObject:
   m_ObjectHideFlags: 0
