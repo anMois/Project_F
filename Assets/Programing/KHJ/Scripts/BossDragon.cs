@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class BossDragon : MonoBehaviour
 {
+    public enum BossAttackType
+    {
+        Land1, Land2, Land3, Land4, LandPattern1, LandPattern2, FlyPattern1, FlyPattern2, FlyPattern3, FlyPattern4, SIZE
+    }
+
     [SerializeField] Transform target;
     [SerializeField] BossCheck behindCheck;
     [SerializeField] BossAttack[] attacks;
@@ -53,7 +58,7 @@ public class BossDragon : MonoBehaviour
             
             if (isTargetBehind)
             {
-                StartCoroutine(AttackRoutine(attacks[2]));
+                StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.Land3]));
             }
             else
             {
