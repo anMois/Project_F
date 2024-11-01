@@ -67,6 +67,12 @@ public class GameClearItemButton : MonoBehaviour
             StatusWindowController.Instance.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
             isPurchased = true;
             UpdateButtonState();
+
+            if (inGameController != null)
+            {
+                inGameController.ActivateContinueButton();
+            }
+
             Debug.Log($"{itemData.itemName}이(가) 인벤토리에 추가되었습니다.");
         }
     }

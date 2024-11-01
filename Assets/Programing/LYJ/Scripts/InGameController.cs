@@ -74,6 +74,11 @@ public class InGameController : MonoBehaviour
         {
             bossStageMoveButton.onClick.AddListener(() => StageMove(4));
         }
+
+        if (continueButton != null)
+        {
+            continueButton.interactable = false;
+        }
     }
 
     private void Update()
@@ -160,6 +165,14 @@ public class InGameController : MonoBehaviour
                 UIManager.Instance.ShowUI("Boss Stage HP Canvas");
                 Debug.Log("보스 스테이지로 이동합니다.");
                 break;
+        }
+    }
+
+    public void ActivateContinueButton()
+    {
+        if (continueButton != null)
+        {
+            continueButton.interactable = true;
         }
     }
 }
