@@ -8,7 +8,7 @@ public class BossAttack : MonoBehaviour
 
     [SerializeField] int damage;
 
-    private void Start()
+    protected void Start()
     {
         // Pull ranges
         for (int i = 0; i < transform.childCount; i++)

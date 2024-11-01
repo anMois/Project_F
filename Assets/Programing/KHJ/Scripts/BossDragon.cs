@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossDragon : MonoBehaviour
+public class BossDragon : MonoBehaviour, IDamageable
 {
     public enum BossAttackType
     {
@@ -16,6 +16,9 @@ public class BossDragon : MonoBehaviour
     [SerializeField] int attackDelay;
     [SerializeField] int attackCount;
 
+    [SerializeField] bool isFlying = false;
+    [SerializeField] int maxHp;
+    [SerializeField] int curHp;
     [SerializeField] float moveSpeed;
 
     private const int PatternAttackPeriod = 3;
@@ -23,6 +26,11 @@ public class BossDragon : MonoBehaviour
     private bool isTargetBehind;
 
     public bool IsTargetBehind { set { isTargetBehind = value; } }
+
+    private void Awake()
+    {
+        curHp = maxHp;
+    }
 
     private void Start()
     {
@@ -36,7 +44,7 @@ public class BossDragon : MonoBehaviour
     {
         WaitForSeconds delay = new WaitForSeconds(attackDelay);
 
-        while (true)
+        while (!isFlying)
         {
             isTargetBehind = false;
             LandAttack();
@@ -49,7 +57,10 @@ public class BossDragon : MonoBehaviour
         // Pattern Attack
         if (++attackCount % PatternAttackPeriod == 0)
         {
-            Debug.Log("[Dragon] Pattern Attack!");
+            BossAttackType type = NextAttackType(BossAttackType.LandPattern1, BossAttackType.LandPattern2);
+
+            // Attack
+            StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
         // Attack
         else
@@ -62,23 +73,32 @@ public class BossDragon : MonoBehaviour
             }
             else
             {
-                int n = Random.Range(1, 101);
-                int type = -1;
-                
-                // Decide attack type
-                for (int i = 0; i < attackRates.Length; i++)
-                {
-                    if (n <= attackRates[i])
-                    {
-                        type = i;
-                        break;
-                    }
-                }
+                BossAttackType type = NextAttackType(BossAttackType.Land1, BossAttackType.Land4);
 
                 // Attack
-                StartCoroutine(AttackRoutine(attacks[type]));
+                StartCoroutine(AttackRoutine(attacks[(int)type]));
             }
         }
+    }
+
+    private void FlyAttack()
+    {
+
+    }
+
+    private BossAttackType NextAttackType(BossAttackType startType, BossAttackType endType)
+    {
+        int n = Random.Range(1, 101);
+
+        // Decide attack type
+        for (int i = (int)startType; i <= (int)endType; i++)
+        {
+            if (n <= attackRates[i])
+                return (BossAttackType)i;
+        }
+
+        Debug.LogError("Error: Boss attack selection");
+        return endType;
     }
 
     private void CheckBehind()
@@ -91,5 +111,24 @@ public class BossDragon : MonoBehaviour
         bossAttack.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackJudgeTime);
         bossAttack.gameObject.SetActive(false);
+    }
+
+    public void TakeHit(int dmg)
+    {
+        curHp -= dmg;
+        if (!isFlying && curHp <= maxHp / 2)
+        {
+            Fly();
+        }    
+    }
+
+    private void Fly()
+    {
+        isFlying = true;
+        if (LandAttackCoroutine != null)
+        {
+            StopCoroutine(LandAttackCoroutine);
+            LandAttackCoroutine = null;
+        }
     }
 }
