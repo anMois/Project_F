@@ -2674,6 +2674,10 @@ PrefabInstance:
       propertyPath: startZone
       value: 
       objectReference: {fileID: 1829653054}
+    - target: {fileID: 4586136353675937607, guid: 42213a1ca48df9f499a70b8f9de8d991, type: 3}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 1843838978}
     - target: {fileID: 4586136353675937624, guid: 42213a1ca48df9f499a70b8f9de8d991, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -3304,6 +3308,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1130925877, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 802104006142403329, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_RootOrder
       value: 6
