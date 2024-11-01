@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 423134436802161142}
   - component: {fileID: 6692091862872385166}
   - component: {fileID: 3305335564468234554}
+  - component: {fileID: -1795032943762026639}
   m_Layer: 0
   m_Name: SmallGolem_normal
   m_TagString: Untagged
@@ -97,3 +98,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1795032943762026639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 659958090201148201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de9c67f03d8952c4f85b3e4e663800bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curState: 0
+  target: {fileID: 0}
+  visualization: 0
+  attackMaxRange: 0
+  guardRange: 0
+  monsterID: 0
+  maxHp: 0
+  curHp: 0
+  moveSpeed: 0
+  guardSpeed: 0
+  attackDamage: 0
+  attackCoolDown: 0
+  dropRate: 0
