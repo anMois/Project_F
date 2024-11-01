@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public float curPrice = 10000f;
     [SerializeField] TextMeshProUGUI priceText;
 
+    [SerializeField] TextMeshProUGUI gainPriceText;
+
     [SerializeField] Image hpBar;
     [SerializeField] TextMeshProUGUI hpText;
     [SerializeField] public float currentHealth;
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
         InitializeHealth();
         UpdatePriceText();
         UpdateUI();
+        UpdateGainedGoldText();
     }
 
     private void InitializeHealth()
@@ -212,5 +215,13 @@ public class GameManager : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
         Debug.Log($"체력이 {percentage * 100}%로 회복되었습니다.");
+    }
+
+    private void UpdateGainedGoldText()
+    {
+        if (gainPriceText != null)
+        {
+            gainPriceText.text = $"{gainPriceText} G";
+        }
     }
 }

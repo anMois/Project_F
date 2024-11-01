@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8868971612302831567}
   - component: {fileID: 8868971612302831560}
   - component: {fileID: 8868971612302831561}
-  - component: {fileID: 8868971612302831566}
   m_Layer: 5
   m_Name: Status Window Explanation Canvas
   m_TagString: UICanvas
@@ -107,21 +106,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &8868971612302831566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8868971612302831563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95c40fbb098a50346be23d12bdb78443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemNameText: {fileID: 8868971613479427750}
-  itemDescriptionText: {fileID: 8868971612328680291}
-  itemImage: {fileID: 8868971612473455109}
 --- !u!1 &8868971612328680285
 GameObject:
   m_ObjectHideFlags: 0

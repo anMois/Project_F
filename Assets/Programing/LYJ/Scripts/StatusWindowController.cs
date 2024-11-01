@@ -32,6 +32,12 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private List<Image> relicUIImages;
     private List<Sprite> relicSprites = new List<Sprite>();
 
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+    [SerializeField] private Image itemImage;
+
+    private Dictionary<Sprite, (string itemName, string itemDescription)> itemInfoDict = new Dictionary<Sprite, (string, string)>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +61,8 @@ public class StatusWindowController : MonoBehaviour
         foreach (var relicUIImage in relicUIImages)
         {
             relicUIImage.gameObject.SetActive(false);
+
+            relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas());
         }
     }
 
@@ -64,6 +72,11 @@ public class StatusWindowController : MonoBehaviour
         {
             UIManager.Instance.HideUI("Status Window Explanation Canvas");
         }
+    }
+
+    private void ShowExplanationCanvas()
+    {
+        UIManager.Instance.ShowUI("Status Window Explanation Canvas");
     }
 
     private void OnEnable()
@@ -79,40 +92,6 @@ public class StatusWindowController : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetData();
-    }
-
-    public void CollectItem(InGameItemData item)
-    {
-        item.ApplyEffect(this);
-
-        switch (item.elemental)
-        {
-            case ElementalType.Flame:
-                flameCount++;
-                break;
-            case ElementalType.Ice:
-                iceCount++;
-                break;
-            case ElementalType.Electricity:
-                electricityCount++;
-                break;
-            case ElementalType.Earth:
-                earthCount++;
-                break;
-        }
-
-        UpdateUI();
-        UpdateDisplayImage();
-    }
-
-    private void UpdateStatUI(InGameItemData item)
-    {
-        atkText.text = $"{item.ATK}";
-        atsText.text = $"{item.ATS}";
-        defText.text = $"{item.DEF}";
-        hpText.text = $"{item.HP}";
-        ranText.text = $"{item.RAN}";
-        spdText.text = $"{item.SPD}";
     }
 
     public void UpdateStartStatUI(StartItemData item)
@@ -228,7 +207,47 @@ public class StatusWindowController : MonoBehaviour
         }
     }
 
-    public void AddItemToInventory(Sprite itemSprite)
+    private Dictionary<Image, (string itemName, string itemDescription, Sprite itemSprite)> relicInfoDict
+     = new Dictionary<Image, (string, string, Sprite)>();
+
+    public void AddItemToInventory(Sprite itemSprite, string itemName, string itemDescription)
+    {
+        if (!itemInfoDict.ContainsKey(itemSprite))
+        {
+            itemInfoDict[itemSprite] = (itemName, itemDescription);
+        }
+
+        foreach (var relicUIImage in relicUIImages)
+        {
+            if (!relicUIImage.gameObject.activeSelf)
+            {
+                relicUIImage.sprite = itemSprite;
+                relicUIImage.gameObject.SetActive(true);
+
+                //relicUIImage와 아이템 데이터를 함께 저장
+                relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite);
+
+                relicUIImage.GetComponent<Button>().onClick.RemoveAllListeners();
+                relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas(relicUIImage));
+
+                break;
+            }
+        }
+    }
+
+    private void ShowExplanationCanvas(Image relicUIImage)
+    {
+        if (relicInfoDict.TryGetValue(relicUIImage, out var itemInfo))
+        {
+            itemNameText.text = itemInfo.itemName;
+            itemDescriptionText.text = itemInfo.itemDescription;
+            itemImage.sprite = itemInfo.itemSprite;
+
+            UIManager.Instance.ShowUI("Status Window Explanation Canvas");
+        }
+    }
+
+    public void AddRelicImageToList(Sprite itemSprite)
     {
         foreach (var relicUIImage in relicUIImages)
         {
@@ -240,6 +259,4 @@ public class StatusWindowController : MonoBehaviour
             }
         }
     }
-
-
 }

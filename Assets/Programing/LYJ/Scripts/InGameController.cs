@@ -133,7 +133,6 @@ public class InGameController : MonoBehaviour
     public void NextStageCanvasActive()
     {
         gameClearCanvas.SetActive(false);
-        nextStageCanvas.SetActive(true);
     }
 
     /// <summary>
@@ -145,15 +144,20 @@ public class InGameController : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
+                UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("첫 번째 스테이지로 이동합니다.");
                 break;
             case 2:
+                UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("두 번째 스테이지로 이동합니다.");
                 break;
             case 3:
+                UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("세 번째 스테이지로 이동합니다.");
                 break;
             case 4:
+                UIManager.Instance.HideUI("Boss Stage Canvas");
+                UIManager.Instance.ShowUI("Boss Stage HP Canvas");
                 Debug.Log("보스 스테이지로 이동합니다.");
                 break;
         }

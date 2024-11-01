@@ -69,13 +69,14 @@ public class CSVDownload : MonoBehaviour
 
             //각 줄을 ,로 나누어서 배열로 만듦
             string[] columns = line.Split(',');
-            if (columns.Length >= 4)
+            if (columns.Length >= 13)
             {
                 ItemData itemData = new ItemData();
                 itemData.itemName = columns[0];
                 itemData.description = columns[1];
                 itemData.price = float.Parse(columns[3]);
                 itemData.itemImage = Resources.Load<Sprite>(columns[2]);
+                itemData.elemental = int.Parse(columns[12]);
 
                 itemDataList.Add(itemData); //필요한 정보가 모두 있으면 아이템 데이터 리스트에 아이템 추가
             }
