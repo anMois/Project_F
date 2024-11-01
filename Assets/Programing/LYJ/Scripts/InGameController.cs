@@ -158,6 +158,7 @@ public class InGameController : MonoBehaviour
                 break;
             case 4:
                 UIManager.Instance.HideUI("Boss Stage Canvas");
+                UIManager.Instance.ShowUI("Boss Stage HP Canvas");
                 Debug.Log("보스 스테이지로 이동합니다.");
                 break;
         }
