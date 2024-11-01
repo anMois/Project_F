@@ -2054,13 +2054,13 @@ MonoBehaviour:
   curState: 0
   target: {fileID: 0}
   visualization: 1
-  visualRange: 20
-  attackMaxRange: 1
-  guardRange: 1
-  monsterID: 2004
+  attackMaxRange: 2
+  guardRange: 1.5
+  monsterID: 2005
   maxHp: 500
   curHp: 0
   moveSpeed: 10
+  guardSpeed: 5
   attackDamage: 30
   attackCoolDown: 2
   dropRate: 1

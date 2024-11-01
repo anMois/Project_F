@@ -1856,7 +1856,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5393436641504885445}
-  m_LocalRotation: {x: -0, y: 0.99737036, z: -0, w: -0.07247368}
+  m_LocalRotation: {x: 0, y: 0.9973705, z: -0, w: -0.07247206}
   m_LocalPosition: {x: 30.93, y: 0, z: 25.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1947,13 +1947,13 @@ MonoBehaviour:
   curState: 0
   target: {fileID: 0}
   visualization: 1
-  visualRange: 20
-  attackMaxRange: 1
-  guardRange: 1
+  attackMaxRange: 2
+  guardRange: 1.5
   monsterID: 2002
   maxHp: 50
   curHp: 0
   moveSpeed: 8
+  guardSpeed: 5
   attackDamage: 15
   attackCoolDown: 2
   dropRate: 1

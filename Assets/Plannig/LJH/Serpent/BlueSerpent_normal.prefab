@@ -481,13 +481,13 @@ MonoBehaviour:
   curState: 0
   target: {fileID: 0}
   visualization: 1
-  visualRange: 20
   attackMaxRange: 4
   guardRange: 3
   monsterID: 2012
   maxHp: 50
   curHp: 0
   moveSpeed: 8
+  guardSpeed: 5
   attackDamage: 10
   attackCoolDown: 2
   dropRate: 2
