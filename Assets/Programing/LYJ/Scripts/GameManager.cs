@@ -104,12 +104,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 피해를 받는 메서드
+    /// </summary>
+    /// <param name="damageAmount"></param>
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
         UpdateHealthUI();
         if (currentHealth <= 0)
         {
+            //사망했을 때 사망처리
             Debug.Log("플레이어가 사망했습니다.");
         }
     }

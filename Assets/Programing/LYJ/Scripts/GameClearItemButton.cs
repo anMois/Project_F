@@ -46,6 +46,9 @@ public class GameClearItemButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 버튼 클릭시 설명창 활성화
+    /// </summary>
     public void OnButtonClick()
     {
         if (inGameController != null && itemBuyButton != null && itemData != null)
@@ -54,6 +57,9 @@ public class GameClearItemButton : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 버튼 클릭시 아이템 구매 후 인벤토리 저장
+    /// </summary>
     public void ItemBuyButtonClick()
     {
         if (!isPurchased && itemData != null)

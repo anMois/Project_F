@@ -127,12 +127,19 @@ public class InGameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 스테이지 클리어 (유물 선택 후) 다음 스테이지 선택 UI 활성화
+    /// </summary>
     public void NextStageCanvasActive()
     {
         gameClearCanvas.SetActive(false);
         nextStageCanvas.SetActive(true);
     }
 
+    /// <summary>
+    /// 선택한 스테이지로 이동
+    /// </summary>
+    /// <param name="stageNumber">이동할 스테이지 번호</param>
     public void StageMove(int stageNumber)
     {
         switch (stageNumber)

@@ -29,10 +29,11 @@ public class CSVDownload : MonoBehaviour
             Destroy(gameObject);
         }
 
-        itemDataList = new List<ItemData>();
+        itemDataList = new List<ItemData>(); //아이템데이터 저장 리스트
         StartCoroutine(DownloadRoutine());
     }
 
+    //CSV 파일 다운로드
     public IEnumerator DownloadRoutine()
     {
         UnityWebRequest request = UnityWebRequest.Get(urlPath);
@@ -59,7 +60,7 @@ public class CSVDownload : MonoBehaviour
         {
             string line = reader.ReadLine();
 
-            //첫번째 줄을 헤더이므로 건너뜀
+            //첫번째 줄 헤더로 건너뜀
             if (!headerSkipped)
             {
                 headerSkipped = true;
@@ -82,6 +83,7 @@ public class CSVDownload : MonoBehaviour
         return itemDataList;
     }
 
+    //아이템 데이터를 버튼에 설정
     public void SetItemData(List<ItemData> itemDataList)
     {
         this.itemDataList = itemDataList;

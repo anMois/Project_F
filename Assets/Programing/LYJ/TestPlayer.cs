@@ -12,7 +12,6 @@ public class TestPlayer : MonoBehaviour
             // 아이템을 수집
             StatusWindowController.Instance.CollectItem(itemReference.item);
 
-            // 오브젝트 삭제
             Destroy(other.gameObject);
 
         }
