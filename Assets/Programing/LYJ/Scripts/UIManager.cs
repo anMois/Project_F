@@ -40,10 +40,15 @@ public class UIManager : MonoBehaviour
         HideUI("Player HP Canvas");
         HideUI("Player Item Canvas");
 
-        if (SceneManager.GetActiveScene().name == "StageNext")
+        //if (SceneManager.GetActiveScene().name == "StageNext")
+        //{
+        //    ShowUI("Start Item Canvas");
+        //} 
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
         {
             ShowUI("Start Item Canvas");
-        } 
+        }
     }
     private void OnDestroy()
     {
