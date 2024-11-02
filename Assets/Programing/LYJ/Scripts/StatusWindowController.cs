@@ -271,4 +271,27 @@ public class StatusWindowController : MonoBehaviour
         return activeRelicImages;
     }
 
+    public void AddElementalCount(int elemental)
+    {
+        switch (elemental)
+        {
+            case 1:
+                flameCount++;
+                break;
+            case 2:
+                iceCount++;
+                break;
+            case 3:
+                electricityCount++;
+                break;
+            case 4:
+                earthCount++;
+                break;
+        }
+
+        UpdateUI();
+        UpdateDisplayImage();
+    }
+
+
 }

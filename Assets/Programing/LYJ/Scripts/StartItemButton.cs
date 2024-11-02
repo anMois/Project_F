@@ -106,6 +106,9 @@ public class StartItemButton : MonoBehaviour
         //선택한 유물이 가지고 있는 스테이터스 수치가 인벤토리에 반영됨
         StatusWindowController.Instance.UpdateStartStatUI(startItemData);
 
+        //처음 선택한 유물에 대한 속성값 전달
+        StatusWindowController.Instance.AddElementalCount(startItemData.elemental);
+
         Debug.Log($"{startItemData.itemName}을 선택하셨습니다.");
     }
 }
