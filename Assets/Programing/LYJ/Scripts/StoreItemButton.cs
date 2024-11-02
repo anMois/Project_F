@@ -56,13 +56,6 @@ public class StoreItemButton : MonoBehaviour
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
-
-            // StatusWindowController에 아이템 추가
-            if (statusWindowController != null)
-            {
-                // 아이템의 이미지, 이름, 설명을 함께 전달
-                statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
-            }
         }
     }
 
@@ -80,12 +73,17 @@ public class StoreItemButton : MonoBehaviour
         bool success = GameManager.Instance.PurchaseItem(itemData.price);
         if (success)
         {
+            // StatusWindowController에 아이템 추가
+            if (statusWindowController != null)
+            {
+                // 아이템의 이미지, 이름, 설명을 함께 전달
+                statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
+            }
+
             Debug.Log($"{itemData.itemName}을(를) 구매했습니다.");
             Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
             isPurchased = true;
             UpdateButtonState();
-
-            statusWindowController.AddRelicImageToList(itemData.itemImage);
         }
         else
         {

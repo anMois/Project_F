@@ -83,9 +83,15 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
+            if (UIManager.Instance.IsUIActive("Main Canvas"))
+            {
+                return;
+            }
+
             if (UIManager.Instance.IsUIActive("Status Window Canvas"))
             {
                 UIManager.Instance.HideUI("Status Window Canvas");
+                UIManager.Instance.HideUI("Status Window Explanation Canvas");
             }
             else
             {

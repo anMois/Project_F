@@ -43,6 +43,8 @@ public class UIManager : MonoBehaviour
         HideUI("Stage Clear Canvas");
         HideUI("Boss Stage Canvas");
         HideUI("Boss Stage HP Canvas");
+        HideUI("Game Clear Canvas");
+        HideUI("Game Over Canvas");
 
         //if (SceneManager.GetActiveScene().name == "StageNext")
         //{
@@ -69,6 +71,15 @@ public class UIManager : MonoBehaviour
         {
             GameObject canvas = uiCanvases[uiName];
             canvas.SetActive(true);
+
+            if (uiName == "Game Over Canvas")
+            {
+                Transform backgroundPanel = canvas.transform.Find("BackgroundPanel");
+                if (backgroundPanel != null)
+                {
+                    backgroundPanel.gameObject.SetActive(true);
+                }
+            }
         }
         else
         {
@@ -85,7 +96,17 @@ public class UIManager : MonoBehaviour
     {
         if (uiCanvases.ContainsKey(uiName))
         {
+            GameObject canvas = uiCanvases[uiName];
             uiCanvases[uiName].SetActive(false);
+
+            if (uiName == "Game Over Canvas")
+            {
+                Transform backgroundPanel = canvas.transform.Find("BackgroundPanel");
+                if (backgroundPanel != null)
+                {
+                    backgroundPanel.gameObject.SetActive(false);
+                }
+            }
         }
         else
         {
