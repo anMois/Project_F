@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         if (priceText != null)
         {
-            priceText.text = $"Possession Gold: {curPrice} G";
+            priceText.text = $"º¸À¯ °ñµå: {curPrice} G";
         }
     }
 
