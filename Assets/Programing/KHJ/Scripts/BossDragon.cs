@@ -116,7 +116,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             //BossAttackType type = NextAttackType(BossAttackType.FlyPattern1, BossAttackType.FlyPattern2);
 
             //// Attack
-            //StartCoroutine(AttackRoutine(attacks[(int)type]));
+            StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.FlyPattern2]));
         }
         // Attack
         else
@@ -165,6 +165,17 @@ public class BossDragon : MonoBehaviour, IDamageable
         }    
     }
 
+    IEnumerator FlyRoutine()
+    {
+        float height = 3f;
+
+        while (transform.position.y < height)
+        {
+            transform.position += moveSpeed * Time.deltaTime * Vector3.up;
+            yield return null;
+        }
+    }
+
     private void Fly()
     {
         isFlying = true;
@@ -174,5 +185,8 @@ public class BossDragon : MonoBehaviour, IDamageable
             StopCoroutine(LandAttackCoroutine);
             LandAttackCoroutine = null;
         }
+
+        StartCoroutine(FlyRoutine());
+        StartCoroutine(FlyAttackRoutine());
     }
 }
