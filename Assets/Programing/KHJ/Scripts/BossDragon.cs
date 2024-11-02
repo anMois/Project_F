@@ -162,7 +162,17 @@ public class BossDragon : MonoBehaviour, IDamageable
         if (!isFlying && curHp <= maxHp / 2)
         {
             Fly();
-        }    
+        }
+
+        if(curHp <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 
     IEnumerator FlyRoutine()
