@@ -6,7 +6,6 @@ public class BossThrowAttack : BossAttack
 {
     [SerializeField] Projectile projectilePrefab;
     [SerializeField] Transform muzzlePoint;
-    [SerializeField] Transform target;
 
     private int friendlyLayer;
 
@@ -17,6 +16,9 @@ public class BossThrowAttack : BossAttack
 
     private void OnEnable()
     {
+        if (target == null)
+            return;
+
         Throw();
     }
 
