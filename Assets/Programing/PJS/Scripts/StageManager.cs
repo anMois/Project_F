@@ -58,9 +58,4 @@ public class StageManager : MonoBehaviour
             }
         }
     }
-
-    private void Update()
-    {
-        
-    }
 }
