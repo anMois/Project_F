@@ -1,13 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class DoT : MonoBehaviour
 {
-    [SerializeField] int lifeTime;
     [SerializeField] int dmg;
     [SerializeField] string name;
     Coroutine damageCoroutine;
-
+    Dictionary<IDamageable, Coroutine> _damageCoroutine = new Dictionary<IDamageable, Coroutine>();
+        
     IDamageable damageable;
 
     private Rigidbody rb;
@@ -15,7 +18,6 @@ public class DoT : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,8 +32,14 @@ public class DoT : MonoBehaviour
         damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            StartDamage();
-            
+            //StartDamage(damageable);
+            Coroutine coroutine = StartCoroutine(InflictdamageOverTime(damageable));
+            _damageCoroutine.Add(damageable, coroutine);
+            Debug.Log(coroutine);
+            foreach (KeyValuePair<IDamageable, Coroutine> item in _damageCoroutine)
+            {
+                Debug.Log($"{item.Key} / {item.Value}");
+            }
         }
     }
 
@@ -45,16 +53,26 @@ public class DoT : MonoBehaviour
         if (!valid)
             return;
 
+
         damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            EndDamage();
+            //Debug.Log(_damageCoroutine.Contains(damageable));
+            Debug.Log(_damageCoroutine.ContainsKey(damageable));
+            Debug.Log(_damageCoroutine[damageable]);
+            Coroutine coroutine = _damageCoroutine[damageable];
+            StopCoroutine(coroutine);
+            _damageCoroutine.Remove(damageable);
+            Debug.Log(_damageCoroutine.ContainsKey(damageable));
+
+
+            Debug.Log("----");
         }
     }
 
-    private void StartDamage()      //피해 입히는 코루틴
+    private void StartDamage(IDamageable damageable)      //피해 입히는 코루틴
     {
-        damageCoroutine = StartCoroutine(InflictdamageOverTime());
+        damageCoroutine = StartCoroutine(InflictdamageOverTime(damageable));
 
     }
 
@@ -63,14 +81,14 @@ public class DoT : MonoBehaviour
         StopCoroutine(damageCoroutine);
     }
 
-    private IEnumerator InflictdamageOverTime()
+    private IEnumerator InflictdamageOverTime(IDamageable damageable)
     {
-        while (lifeTime > 0)
+        Debug.Log(damageable);
+        while (true)
         {
             damageable.TakeHit(dmg);        // 피해 입히는 부분
+            Debug.Log(dmg);
             yield return new WaitForSeconds(1f);        // 대기시간
-
-            lifeTime -= 1;
         }
     }
 
@@ -80,11 +98,9 @@ public class DoT : MonoBehaviour
     /// </summary>
     /// <param name="name">Tag name of the attack target</param>
     /// <param name="attackDamage">attackDamage</param>
-    /// <param name="time">duration of attack</param>
-    public void Damage(string name, int attackDamage, int time)       // 실제로 피해 입히는 부분
+    public void Damage(string name, int attackDamage)       // 실제로 피해 입히는 부분
     {
         this.name = name;
         dmg = attackDamage;
-        lifeTime = time;
     }
 }

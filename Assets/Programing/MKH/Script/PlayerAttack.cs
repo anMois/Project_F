@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform shellTarget;
     [SerializeField] GameObject lazer;
     [SerializeField] int maxtime;
-    [SerializeField] int damagetime;
     [SerializeField] int time;
     Player player;
 
@@ -34,7 +33,7 @@ public class PlayerAttack : MonoBehaviour
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
 
-        lazer.GetComponent<Lazer>().Damage("Monster", 1, damagetime);
+        lazer.GetComponent<Lazer>().Damage("Monster", 1);
     }
 
     private void Update()
@@ -126,12 +125,7 @@ public class PlayerAttack : MonoBehaviour
             if(Input.GetKey(KeyCode.Mouse0))
             {
                 lazer.SetActive(true);
-                time -= (int)Time.deltaTime;
-
-                if (time <= 0)
-                {
-                    lazer.SetActive(false);
-                }
+               
             }
             else if(Input.GetKeyUp(KeyCode.Mouse0))
             {
@@ -152,7 +146,6 @@ public class PlayerAttack : MonoBehaviour
     private void TimeOffset()
     {
         time = maxtime;
-        damagetime = maxtime;
     }
    
 }
