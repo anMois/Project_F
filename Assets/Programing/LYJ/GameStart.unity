@@ -430,6 +430,56 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6625926389895446823, guid: 825e0e43e9f73834abf6e516b5d4fd95, type: 3}
   m_PrefabInstance: {fileID: 5766980}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6482529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982104466882477, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6482534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6482529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &41710765
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,6 +1602,117 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &438408364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982102700694631, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &438408369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438408364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 512796239}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 512796239}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!1 &512796237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982103825317142, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &512796239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8520982103825317139, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512796237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df873a75fe33f034c94ebe92493a1fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &512796243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512796237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 512796239}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 512796239}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &563746038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1705,6 +1866,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &603017119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2900098099937088037, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+  m_PrefabInstance: {fileID: 1648650089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &605336410 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 803028355784567299, guid: f2f6dbfad550b4b41a205b4582511e2a, type: 3}
@@ -1716,6 +1888,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &630910454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982104453676901, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &630910456 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8520982104453676910, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630910454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df873a75fe33f034c94ebe92493a1fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &630910460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630910454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 630910456}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 630910456}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &633028035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1822,6 +2055,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3725122555185708122, guid: f1d8adca3aef85a42b5f49d985b06069, type: 3}
   m_PrefabInstance: {fileID: 633028035}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &652759838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8236811083074367400, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &685678789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2157,6 +2401,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1018631497 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982103204957503, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1018631502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018631497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 630910456}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 630910456}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1046638423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2708,6 +3002,56 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!1 &1414795824 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6127019679315590181, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1414795828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414795824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowHoverTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideHoverTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1461097989
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3188,6 +3532,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1543790186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982103292272722, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1543790188 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8520982103292272735, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543790186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df873a75fe33f034c94ebe92493a1fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1543790192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543790186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1543790188}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1543790188}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1576435892 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7219439295396328573, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
@@ -3199,6 +3604,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1593174524 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982104172166213, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1593174529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593174524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1543790188}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1543790188}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1598834392
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3313,6 +3768,67 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7086196011203109319, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
   m_PrefabInstance: {fileID: 1598834392}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1632848893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8520982103937746285, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1632848895 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8520982103937746294, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+  m_PrefabInstance: {fileID: 2036223243}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632848893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df873a75fe33f034c94ebe92493a1fdf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1632848899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632848893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1632848895}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1648650089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3422,8 +3938,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2228250985043517916, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2228250985822033134, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+      propertyPath: hoverTextButton
+      value: 
+      objectReference: {fileID: 1875456142}
+    - target: {fileID: 2228250985822033134, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+      propertyPath: hoverTextItemNameButton
+      value: 
+      objectReference: {fileID: 603017119}
+    - target: {fileID: 2228250986304844831, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+      propertyPath: hoverTextButton
+      value: 
+      objectReference: {fileID: 1875456142}
+    - target: {fileID: 2228250986304844831, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+      propertyPath: hoverTextItemNameButton
+      value: 
+      objectReference: {fileID: 603017119}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
 --- !u!224 &1648650090 stripped
@@ -3618,6 +4150,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1875456142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 804504782136379890, guid: 0b3959fc191ea634295e230d7d8f617e, type: 3}
+  m_PrefabInstance: {fileID: 1648650089}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1906013724
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3776,6 +4319,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712020986}
     m_Modifications:
+    - target: {fileID: 2498812887619174842, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -137.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8520982103623457482, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
       propertyPath: m_Name
       value: Start Item Canvas
@@ -3867,6 +4414,38 @@ PrefabInstance:
     - target: {fileID: 8520982103623457494, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520982103937746294, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: hoverTextItemNameButton
+      value: 
+      objectReference: {fileID: 652759838}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1632848893}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1632848893}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8520982104466882475, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab5e34ad3cd0814a8ac38077a9d488d, type: 3}
