@@ -14,7 +14,6 @@ public partial class PlayerMover : MonoBehaviour
     [SerializeField] Rigidbody rigid;
     [SerializeField] public int maxJump;
     [SerializeField] public bool isGround = false;
-    [SerializeField] bool isMove = false;
     [SerializeField] bool isJump = false;
     public int jumpCount;
     Vector3 moveDir;
@@ -47,7 +46,6 @@ public partial class PlayerMover : MonoBehaviour
 
         jumpCount = maxJump;
         Cursor.lockState = CursorLockMode.Locked;
-        isMove = true;
         isJump = false;
     }
 
@@ -64,20 +62,18 @@ public partial class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isMove)
-        {
-            Vector3 moveOffset = moveDir * (moveSpeed * Time.fixedDeltaTime);
-            Vector3 runOffset = moveDir * (runSpeed * Time.fixedDeltaTime);
+        Vector3 moveOffset = moveDir * (moveSpeed * Time.fixedDeltaTime);
+        Vector3 runOffset = moveDir * (runSpeed * Time.fixedDeltaTime);
 
-            if (Input.GetKey(KeyCode.LeftControl))
-            {
-                rigid.MovePosition(rigid.position + runOffset);
-            }
-            else
-            {
-                rigid.MovePosition(rigid.position + moveOffset);
-            }
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            rigid.MovePosition(rigid.position + runOffset);
         }
+        else
+        {
+            rigid.MovePosition(rigid.position + moveOffset);
+        }
+
 
         if (isJump && jumpCount >= 0)
         {
@@ -90,10 +86,8 @@ public partial class PlayerMover : MonoBehaviour
     {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
-        if (isMove)
-        {
-            moveDir = transform.forward * z + transform.right * x;
-        }
+
+        moveDir = transform.forward * z + transform.right * x;
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpCount >= 0)
         {
@@ -105,20 +99,12 @@ public partial class PlayerMover : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Mouse0))
-        {
-            isMove = false;
-        }
-        else if (Input.GetKeyUp(KeyCode.Mouse0))
-        {
-            isMove = true;
-        }
     }
 
 
     private void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround && isMove)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isGround)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -194,7 +180,7 @@ public partial class PlayerMover : MonoBehaviour
         int checkAniHash = 0;
 
 
-        if (Input.GetKey(KeyCode.W) && isMove)
+        if (Input.GetKey(KeyCode.W))
         {
             checkAniHash = walkForwardHash;
             if (Input.GetKey(KeyCode.LeftControl))
@@ -202,7 +188,7 @@ public partial class PlayerMover : MonoBehaviour
                 checkAniHash = runForwardHash;
             }
         }
-        else if (Input.GetKey(KeyCode.S) && isMove)
+        else if (Input.GetKey(KeyCode.S))
         {
             checkAniHash = walkBackHash;
             if (Input.GetKey(KeyCode.LeftControl))
@@ -210,7 +196,7 @@ public partial class PlayerMover : MonoBehaviour
                 checkAniHash = runForwardHash;
             }
         }
-        else if (Input.GetKey(KeyCode.A) && isMove)
+        else if (Input.GetKey(KeyCode.A))
         {
             checkAniHash = walkLeftHash;
             if (Input.GetKey(KeyCode.LeftControl))
@@ -218,7 +204,7 @@ public partial class PlayerMover : MonoBehaviour
                 checkAniHash = runForwardHash;
             }
         }
-        else if (Input.GetKey(KeyCode.D) && isMove)
+        else if (Input.GetKey(KeyCode.D))
         {
             checkAniHash = walkRightHash;
             if (Input.GetKey(KeyCode.LeftControl))
@@ -228,7 +214,7 @@ public partial class PlayerMover : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Mouse0))
         {
-            //attack.AnimatorPlay();
+            checkAniHash = GetComponent<PlayerAttack>().curAniHash;
         }
         else
         {
@@ -248,7 +234,6 @@ public partial class PlayerMover : MonoBehaviour
         if (players.curHp <= 0)
         {
             checkAniHash = dieHash;
-            isMove = false;
         }
 
         if (curAniHash != checkAniHash)
