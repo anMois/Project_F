@@ -105,6 +105,9 @@ public class GameController : MonoBehaviour
                 !UIManager.Instance.IsUIActive("Book Canvas") &&
                 !UIManager.Instance.IsUIActive("Book Canvas 2") &&
                 !UIManager.Instance.IsUIActive("Status Window Canvas") &&
+                !UIManager.Instance.IsUIActive("Stage Clear Canvas") &&
+                !UIManager.Instance.IsUIActive("Boss Stage Canvas") &&
+                !UIManager.Instance.IsUIActive("Game Clear Canvas") &&
                 !UIManager.Instance.IsUIActive("Game Over Canvas"))
             {
                 ToggleInGameMenu();
