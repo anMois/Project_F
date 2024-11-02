@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -10,15 +11,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] Transform shellTarget;
     [SerializeField] GameObject lazer;
-    [SerializeField]int timer;
-    int time;
+    [SerializeField] int maxtime;
+    [SerializeField] int damagetime;
+    [SerializeField] int time;
     Player player;
 
 
     private Coroutine delayAttackCoroutine;
 
     private static int idleHash = Animator.StringToHash("Idle03");
-    private static int lazerHash = Animator.StringToHash("Lazer");
+    public static int lazerHash = Animator.StringToHash("Lazer");
     private static int attackHash = Animator.StringToHash("Attack");
     public int curAniHash { get; private set; }
 
@@ -27,13 +29,12 @@ public class PlayerAttack : MonoBehaviour
 
     private void Awake()
     {
-        time = timer;
         curBullet = bulletPrefab[0];
         ani = GetComponentInChildren<Animator>();
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
 
-        lazer.GetComponent<Lazer>().Damage("Monster", 1, time);
+        lazer.GetComponent<Lazer>().Damage("Monster", 1, damagetime);
     }
 
     private void Update()
@@ -62,6 +63,11 @@ public class PlayerAttack : MonoBehaviour
         {
             SwapBullet(2);
         }
+
+        //if(Input.GetKeyUp(KeyCode.Mouse0) && time < 0)
+        //{
+        //    TimeOffset();
+        //}
     }
 
     public void SwapBullet(int index)
@@ -104,6 +110,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Bullet()
     {
+        
         if (curBullet == bulletPrefab[0])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
@@ -119,18 +126,17 @@ public class PlayerAttack : MonoBehaviour
             if(Input.GetKey(KeyCode.Mouse0))
             {
                 lazer.SetActive(true);
-                if(time <= 0)
+                time -= (int)Time.deltaTime;
+
+                if (time <= 0)
                 {
                     lazer.SetActive(false);
-                    TimeOffset();
                 }
             }
             else if(Input.GetKeyUp(KeyCode.Mouse0))
             {
                 lazer.SetActive(false);
-                TimeOffset();
             }
-
         }
     }
 
@@ -143,10 +149,10 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-
     private void TimeOffset()
     {
-        time = timer;
+        time = maxtime;
+        damagetime = maxtime;
     }
-
+   
 }

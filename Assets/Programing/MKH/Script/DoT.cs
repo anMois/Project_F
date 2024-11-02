@@ -72,7 +72,6 @@ public class DoT : MonoBehaviour
 
             lifeTime -= 1;
         }
-        yield return null;
     }
 
 
