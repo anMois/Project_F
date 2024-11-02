@@ -24,7 +24,17 @@ public class Projectile : MonoBehaviour
         if (!valid)
             return;
 
-        IDamageable damageable = other.GetComponent<IDamageable>();
+        IDamageable damageable = null;
+        Transform curTransform = other.transform;
+        // Find IDamageable through parents
+        while (curTransform != null)
+        {
+            damageable = curTransform.GetComponent<IDamageable>();
+            if (damageable != null)
+                break;
+            curTransform = curTransform.parent;
+        }
+
         if (damageable != null)
         {
             damageable.TakeHit(dmg);
