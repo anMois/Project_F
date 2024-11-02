@@ -160,32 +160,23 @@ public class StatusWindowController : MonoBehaviour
             displayImage.gameObject.SetActive(true);
         }
 
-        ElementalType manyElement = ElementalType.Flame;
-
         if (maxCount == flameCount)
-            manyElement = ElementalType.Flame;
-        else if (maxCount == iceCount)
-            manyElement = ElementalType.Ice;
-        else if (maxCount == electricityCount)
-            manyElement = ElementalType.Electricity;
-        else if (maxCount == earthCount)
-            manyElement = ElementalType.Earth;
-
-        switch (manyElement)
         {
-            case ElementalType.Flame:
-                displayImage.sprite = elementalImages[0];
-                break;
-            case ElementalType.Ice:
-                displayImage.sprite = elementalImages[1];
-                break;
-            case ElementalType.Electricity:
-                displayImage.sprite = elementalImages[2];
-                break;
-            case ElementalType.Earth:
-                displayImage.sprite = elementalImages[3];
-                break;
+            displayImage.sprite = elementalImages[0];
         }
+        else if (maxCount == iceCount)
+        {
+            displayImage.sprite = elementalImages[1];
+        }
+        else if (maxCount == electricityCount)
+        {
+            displayImage.sprite = elementalImages[2];
+        }
+        else if (maxCount == earthCount)
+        {
+            displayImage.sprite = elementalImages[3];
+        }
+
     }
 
     public void ResetData()
@@ -207,10 +198,10 @@ public class StatusWindowController : MonoBehaviour
         }
     }
 
-    private Dictionary<Image, (string itemName, string itemDescription, Sprite itemSprite)> relicInfoDict
-     = new Dictionary<Image, (string, string, Sprite)>();
+    private Dictionary<Image, (string itemName, string itemDescription, Sprite itemSprite, int elemental)> relicInfoDict
+     = new Dictionary<Image, (string, string, Sprite, int)>();
 
-    public void AddItemToInventory(Sprite itemSprite, string itemName, string itemDescription)
+    public void AddItemToInventory(Sprite itemSprite, string itemName, string itemDescription, int elemental)
     {
         if (!itemInfoDict.ContainsKey(itemSprite))
         {
@@ -225,11 +216,29 @@ public class StatusWindowController : MonoBehaviour
                 relicUIImage.gameObject.SetActive(true);
 
                 //relicUIImage와 아이템 데이터를 함께 저장
-                relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite);
+                relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite, elemental);
 
                 relicUIImage.GetComponent<Button>().onClick.RemoveAllListeners();
                 relicUIImage.GetComponent<Button>().onClick.AddListener(() => ShowExplanationCanvas(relicUIImage));
 
+                switch (elemental)
+                {
+                    case 1:
+                        flameCount++;
+                        break;
+                    case 2:
+                        iceCount++;
+                        break;
+                    case 3:
+                        electricityCount++;
+                        break;
+                    case 4:
+                        earthCount++;
+                        break;
+                }
+
+                UpdateUI();
+                UpdateDisplayImage();
                 break;
             }
         }
@@ -244,19 +253,6 @@ public class StatusWindowController : MonoBehaviour
             itemImage.sprite = itemInfo.itemSprite;
 
             UIManager.Instance.ShowUI("Status Window Explanation Canvas");
-        }
-    }
-
-    public void AddRelicImageToList(Sprite itemSprite)
-    {
-        foreach (var relicUIImage in relicUIImages)
-        {
-            if (!relicUIImage.gameObject.activeSelf)
-            {
-                relicUIImage.sprite = itemSprite;
-                relicUIImage.gameObject.SetActive(true);
-                break;
-            }
         }
     }
 
