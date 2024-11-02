@@ -14,6 +14,18 @@ public class GameClearItemButton : MonoBehaviour
 
     private bool isPurchased = false;
 
+    private static List<GameClearItemButton> allButtons = new List<GameClearItemButton>();
+
+    private void Awake()
+    {
+        allButtons.Add(this);
+    }
+
+    private void OnDestroy()
+    {
+        allButtons.Remove(this);
+    }
+
     private void Start()
     {
         inGameController = FindObjectOfType<InGameController>();
@@ -66,7 +78,6 @@ public class GameClearItemButton : MonoBehaviour
         {
             StatusWindowController.Instance.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
             isPurchased = true;
-            UpdateButtonState();
 
             if (inGameController != null)
             {
@@ -74,12 +85,20 @@ public class GameClearItemButton : MonoBehaviour
             }
 
             Debug.Log($"{itemData.itemName}이(가) 인벤토리에 추가되었습니다.");
+
+            DisableOtherButtons();
         }
     }
 
-
-    private void UpdateButtonState()
+    //선택되지 않은 버튼 비활성화
+    private void DisableOtherButtons()
     {
-        itemBuyButton.interactable = false; //버튼 비활성화
+        foreach (var button in allButtons)
+        {
+            if (button != this && button.itemBuyButton != null)
+            {
+                button.itemBuyButton.interactable = false;
+            }
+        }
     }
 }
