@@ -12,11 +12,11 @@ public class TestPlayer : MonoBehaviour
 
             Destroy(other.gameObject);
 
-            //StartCoroutine(ShowStageClearUI());
+            StartCoroutine(ShowStageClearUI());
 
             //GameController.Instance.ShowGameClearCanvas();
 
-            UIManager.Instance.ShowUI("Game Over Canvas");
+            //UIManager.Instance.ShowUI("Game Over Canvas");
 
         }
     }

@@ -83,7 +83,10 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.I))
         {
-            if (UIManager.Instance.IsUIActive("Main Canvas"))
+            if (UIManager.Instance.IsUIActive("Main Canvas") ||
+                UIManager.Instance.IsUIActive("Game Over Canvas") ||
+                UIManager.Instance.IsUIActive("Game Clear Canvas") ||
+                UIManager.Instance.IsUIActive("Stage Clear Canvas"))
             {
                 return;
             }
@@ -140,7 +143,7 @@ public class GameManager : MonoBehaviour
     {
         if (priceText != null)
         {
-            priceText.text = $"Possession Gold: {curPrice} G";
+            priceText.text = $"º¸À¯ °ñµå: {curPrice} G";
         }
     }
 

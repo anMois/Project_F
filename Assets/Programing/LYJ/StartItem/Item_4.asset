@@ -23,7 +23,7 @@ MonoBehaviour:
   specialEffectsFigure1: 
   specialEffectsFigure2: 
   specialEffectsFigure3: 
-  elemental: 3
+  elemental: 4
   ATK: 0
   ATS: 0
   DEF: 0

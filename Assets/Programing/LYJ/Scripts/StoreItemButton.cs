@@ -77,7 +77,7 @@ public class StoreItemButton : MonoBehaviour
             if (statusWindowController != null)
             {
                 // 아이템의 이미지, 이름, 설명을 함께 전달
-                statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description);
+                statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description, itemData.elemental);
             }
 
             Debug.Log($"{itemData.itemName}을(를) 구매했습니다.");

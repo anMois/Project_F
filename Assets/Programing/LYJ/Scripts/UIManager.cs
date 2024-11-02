@@ -72,6 +72,18 @@ public class UIManager : MonoBehaviour
             GameObject canvas = uiCanvases[uiName];
             canvas.SetActive(true);
 
+            if (IsUIActive("Status Window Canvas") ||
+                IsUIActive("In Game Menu Canvas") ||
+                IsUIActive("Start Item Canvas") ||
+                IsUIActive("Next Stage Canvas") ||
+                IsUIActive("Boss Stage Canvas") ||
+                IsUIActive("Stage Clear Canvas") ||
+                IsUIActive("Store Canvas") ||
+                IsUIActive("Main Canvas"))
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+
             if (uiName == "Game Over Canvas")
             {
                 Transform backgroundPanel = canvas.transform.Find("BackgroundPanel");
@@ -98,6 +110,8 @@ public class UIManager : MonoBehaviour
         {
             GameObject canvas = uiCanvases[uiName];
             uiCanvases[uiName].SetActive(false);
+
+            Cursor.lockState = CursorLockMode.Locked;
 
             if (uiName == "Game Over Canvas")
             {
