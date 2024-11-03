@@ -22,5 +22,7 @@ public class RangedMonster : Monster
 
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, muzzlePoint.rotation);
         newProjectile.Launch(friendlyLayer, target.transform.GetChild(0), attackDamage);
+
+        animator.SetInteger("Attack Motion", 0);
     }
 }

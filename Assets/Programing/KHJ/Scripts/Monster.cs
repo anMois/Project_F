@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     [Header("Enemy")]
     [SerializeField] protected Transform target;
+    [SerializeField] protected LayerMask targetLayerMask;
 
     [Header("Range")]
     [Tooltip("Guard Range: yellow\n" +
@@ -40,8 +41,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected Rigidbody rb;
     protected NavMeshAgent agent;
-    
-    private Animator animator;
+    protected Animator animator;
 
     protected void Awake()
     {
@@ -88,7 +88,7 @@ public class Monster : MonoBehaviour, IDamageable
         Vector3 direction = (target.position - transform.position).normalized;
         Ray vision = new Ray(transform.position, direction);
 
-        Physics.Raycast(vision, out RaycastHit hit, guardRange);
+        Physics.Raycast(vision, out RaycastHit hit, guardRange, targetLayerMask);
 
         return (hit.transform != null) ? hit.transform.CompareTag("Player") : false;
     }
@@ -119,6 +119,7 @@ public class Monster : MonoBehaviour, IDamageable
     protected virtual void Attack()
     {
         animator.SetTrigger("Attack");
+        animator.SetInteger("Attack Motion", UnityEngine.Random.Range(0, 2));
     }
 
     #region MonsterState
@@ -192,6 +193,7 @@ public class Monster : MonoBehaviour, IDamageable
             sign = (UnityEngine.Random.Range(0, 2) == 0) ? -1 : 1;
             attackCoroutine = CoroutineHelper.StartCoroutine(AttackRoutine());
 
+            monster.animator.SetBool("Guard", true);
             monster.animator.SetInteger("Guard Direction", sign);
             monster.animator.SetTrigger("Draw");
         }
@@ -219,6 +221,8 @@ public class Monster : MonoBehaviour, IDamageable
                 CoroutineHelper.StopCoroutine(attackCoroutine);
                 attackCoroutine = null;
             }
+
+            monster.animator.SetBool("Guard", false);
         }
 
         protected void Guard()

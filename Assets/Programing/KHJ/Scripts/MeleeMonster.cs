@@ -9,5 +9,7 @@ public class MeleeMonster : Monster
         base.Attack();
 
         target.GetComponent<IDamageable>().TakeHit(attackDamage);
+
+        animator.SetInteger("Attack Motion", 0);
     }
 }

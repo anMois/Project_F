@@ -779,6 +779,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   visualization: 0
   attackMaxRange: 15
   guardRange: 12

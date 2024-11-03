@@ -778,9 +778,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   visualization: 1
   attackMaxRange: 2
-  guardRange: 1.5
+  guardRange: 3
   monsterID: 2022
   maxHp: 150
   curHp: 0
