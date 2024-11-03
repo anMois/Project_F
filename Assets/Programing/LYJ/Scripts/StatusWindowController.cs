@@ -53,8 +53,6 @@ public class StatusWindowController : MonoBehaviour
 
     private void Start()
     {
-        UIManager.Instance.HideUI("Status Window Explanation Canvas");
-
         UpdateUI();
         UpdateDisplayImage();
 
