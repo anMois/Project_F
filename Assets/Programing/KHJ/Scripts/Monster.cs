@@ -87,7 +87,7 @@ public class Monster : MonoBehaviour, IDamageable
 
         Physics.Raycast(vision, out RaycastHit hit, guardRange);
 
-        return hit.transform.CompareTag("Player");
+        return (hit.transform != null) ? hit.transform.CompareTag("Player") : false;
     }
 
     public void Trace()
@@ -158,6 +158,7 @@ public class Monster : MonoBehaviour, IDamageable
         {
             // Trace
             // Move to traceRange with gazing target
+            monster.agent.speed = monster.moveSpeed;
             monster.agent.destination = monster.target.position;
 
             // Transition
