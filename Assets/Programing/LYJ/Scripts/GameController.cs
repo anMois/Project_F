@@ -133,11 +133,11 @@ public class GameController : MonoBehaviour
             ShowInGameUI();
         }
 
-        if (UIManager.Instance.IsUIActive("Stage Clear Canvas"))
-        {
-            UIManager.Instance.HideUI("In Game Menu Canvas");
-            UIManager.Instance.HideUI("Status Window Canvas");
-        }
+        //if (UIManager.Instance.IsUIActive("Stage Clear Canvas"))
+        //{
+        //    UIManager.Instance.HideUI("In Game Menu Canvas");
+        //    UIManager.Instance.HideUI("Status Window Canvas");
+        //}
     }
 
     public void ShowInGameUI()
