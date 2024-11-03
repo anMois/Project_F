@@ -46,15 +46,15 @@ public class UIManager : MonoBehaviour
         HideUI("Game Clear Canvas");
         HideUI("Game Over Canvas");
 
-        //if (SceneManager.GetActiveScene().name == "StageNext")
-        //{
-        //    ShowUI("Start Item Canvas");
-        //} 
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        if (SceneManager.GetActiveScene().name == "StageWord")
         {
             ShowUI("Start Item Canvas");
-        }
+        } 
+
+        //if (SceneManager.GetActiveScene().name == "Stage1")
+        //{
+        //    ShowUI("Start Item Canvas");
+        //}
     }
     private void OnDestroy()
     {
