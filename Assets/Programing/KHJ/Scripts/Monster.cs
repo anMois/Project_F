@@ -118,8 +118,10 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected virtual void Attack()
     {
+        int attackMotion = UnityEngine.Random.Range(1, 3);
+
         animator.SetTrigger("Attack");
-        animator.SetInteger("Attack Motion", UnityEngine.Random.Range(0, 2));
+        animator.SetInteger("Attack Motion", attackMotion);
     }
 
     #region MonsterState
