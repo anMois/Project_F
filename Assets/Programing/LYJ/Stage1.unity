@@ -2920,6 +2920,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cf2db4edbf1e04081019479e3a258c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  elementalImages:
+  - {fileID: 21300000, guid: 506e7e2d66fa81e409c5c001bc7ce384, type: 3}
+  - {fileID: 21300000, guid: a9c35914066425349b5467af8edddafe, type: 3}
+  - {fileID: 21300000, guid: b2280796a1d090249a93582f38ff364b, type: 3}
+  - {fileID: 21300000, guid: 01c584987e756514eadec60ed654e899, type: 3}
 --- !u!1 &1739477398
 GameObject:
   m_ObjectHideFlags: 0
