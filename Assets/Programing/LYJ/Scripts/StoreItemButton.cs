@@ -55,7 +55,7 @@ public class StoreItemButton : MonoBehaviour
     {
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
-            inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);
+            inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage, itemData.elemental);
         }
     }
 

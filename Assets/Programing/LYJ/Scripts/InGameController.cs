@@ -23,6 +23,9 @@ public class InGameController : MonoBehaviour
     private GameObject bossStageCanvas;
     private Button bossStageMoveButton;
 
+    [Header("Elemental Images")]
+    [SerializeField] public Sprite[] elementalImages;
+
 
     private void Start()
     {
@@ -92,17 +95,27 @@ public class InGameController : MonoBehaviour
     /// <summary>
     /// 설명창에서 아이템 정보를 출력
     /// </summary>
-    public void ShowExplanation(string itemName, string description, Sprite itemImage)
+    public void ShowExplanation(string itemName, string description, Sprite itemImage, int elemental)
     {
         explanationCanvas.SetActive(true);
 
         TextMeshProUGUI itemNameText = explanationCanvas.transform.Find("Item Name").GetComponent<TextMeshProUGUI>();
         TextMeshProUGUI descriptionText = explanationCanvas.transform.Find("Description").GetComponent<TextMeshProUGUI>();
         Image itemImageComponent = explanationCanvas.transform.Find("Description Image").GetComponent<Image>();
+        Image itemElementalComponent = explanationCanvas.transform.Find("Item Elemental Image").GetComponent<Image>();
 
         itemNameText.text = itemName;
         descriptionText.text = description;
         itemImageComponent.sprite = itemImage;
+
+        if (elemental >= 1 && elemental <= elementalImages.Length)
+        {
+            itemElementalComponent.sprite = elementalImages[elemental - 1];
+        }
+        else
+        {
+            itemElementalComponent.sprite = null;
+        }
     }
 
     /// <summary>
@@ -137,7 +150,7 @@ public class InGameController : MonoBehaviour
     /// </summary>
     public void NextStageCanvasActive()
     {
-        gameClearCanvas.SetActive(false);
+        UIManager.Instance.HideUI("Stage Clear Canvas");
     }
 
     /// <summary>

@@ -46,15 +46,15 @@ public class UIManager : MonoBehaviour
         HideUI("Game Clear Canvas");
         HideUI("Game Over Canvas");
 
-        //if (SceneManager.GetActiveScene().name == "StageNext")
-        //{
-        //    ShowUI("Start Item Canvas");
-        //} 
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        if (SceneManager.GetActiveScene().name == "StageWord")
         {
             ShowUI("Start Item Canvas");
-        }
+        } 
+
+        //if (SceneManager.GetActiveScene().name == "Stage1")
+        //{
+        //    ShowUI("Start Item Canvas");
+        //}
     }
     private void OnDestroy()
     {
@@ -81,6 +81,7 @@ public class UIManager : MonoBehaviour
                 IsUIActive("Store Canvas") ||
                 IsUIActive("Main Canvas"))
             {
+                Debug.Log($"{uiName} º¸¿©Áü");
                 Cursor.lockState = CursorLockMode.None;
             }
 
@@ -111,6 +112,7 @@ public class UIManager : MonoBehaviour
             GameObject canvas = uiCanvases[uiName];
             uiCanvases[uiName].SetActive(false);
 
+            Debug.Log($"{uiName} ¼û°ÜÁü");
             Cursor.lockState = CursorLockMode.Locked;
 
             if (uiName == "Game Over Canvas")

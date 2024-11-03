@@ -3233,12 +3233,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4456195604912779737}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: f80ec895d41dc4c78961788f69ba22e3, type: 3}
-  m_Controller: {fileID: 9100000, guid: 0c7e479c0cda54b8290c23268e777632, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6a7ebfe33f7d21645ad91ee5fa8ae5bd, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -3628,9 +3628,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   visualization: 1
   attackMaxRange: 1
-  guardRange: 0.8
+  guardRange: 3
   monsterID: 2011
   maxHp: 50
   curHp: 0

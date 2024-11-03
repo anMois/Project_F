@@ -1,6 +1,7 @@
 using System.Xml.Serialization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -34,6 +35,9 @@ public class StartItemButton : MonoBehaviour
     [SerializeField] Button button;
     [SerializeField] Button itemNameButton;
 
+    [SerializeField] TextMeshProUGUI hoverTextButton;
+    [SerializeField] TextMeshProUGUI hoverTextItemNameButton;
+
     private void Start()
     {
         startItemCanvas = GameObject.Find("Start Item Canvas");
@@ -48,6 +52,9 @@ public class StartItemButton : MonoBehaviour
 
         button.onClick.AddListener(OnClickButton);
         itemNameButton.onClick.AddListener(GameStartButton);
+
+        hoverTextButton.gameObject.SetActive(false);
+        hoverTextItemNameButton.gameObject.SetActive(false);
     }
 
     private void Update()
@@ -108,9 +115,32 @@ public class StartItemButton : MonoBehaviour
         //선택한 유물이 가지고 있는 스테이터스 수치가 인벤토리에 반영됨
         StatusWindowController.Instance.UpdateStartStatUI(startItemData);
 
-        //처음 선택한 유물에 대한 속성값 전달
-        StatusWindowController.Instance.AddElementalCount(startItemData.elemental);
+        //선택한 정보 인벤토리에 반영
+        StatusWindowController.Instance.AddItemToInventory(startItemData.itemImage, startItemData.itemName, startItemData.specialEffectsDescription, startItemData.elemental);
 
         Debug.Log($"{startItemData.itemName}을 선택하셨습니다.");
+    }
+    public void ShowTextButton()
+    {
+        hoverTextButton.text = "상세보기";
+        hoverTextButton.transform.position = button.transform.position + new Vector3(-100, 50, 0);
+        hoverTextButton.gameObject.SetActive(true);
+    }
+
+    public void HideTextButton()
+    {
+        hoverTextButton.gameObject.SetActive(false);
+    }
+
+    public void ShowTextItemNameButton()
+    {
+        hoverTextItemNameButton.text = "선택하기";
+        hoverTextItemNameButton.transform.position = itemNameButton.transform.position + new Vector3(-100, 50, 0);
+        hoverTextItemNameButton.gameObject.SetActive(true);
+    }
+
+    public void HideTextItemNameButton()
+    {
+        hoverTextItemNameButton.gameObject.SetActive(false);
     }
 }

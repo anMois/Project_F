@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        InitializeButtons(); //πˆ∆∞ √ ±‚»≠
+        InitializeButtons(); //Î≤ÑÌäº Ï¥àÍ∏∞Ìôî
     }
 
 
@@ -123,21 +123,15 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        //if (SceneManager.GetActiveScene().name == "StageNext")
-        //{
-        //    ShowInGameUI();
-        //}
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        if (SceneManager.GetActiveScene().name == "StageWord")
         {
             ShowInGameUI();
         }
 
-        if (UIManager.Instance.IsUIActive("Stage Clear Canvas"))
-        {
-            UIManager.Instance.HideUI("In Game Menu Canvas");
-            UIManager.Instance.HideUI("Status Window Canvas");
-        }
+        //if (SceneManager.GetActiveScene().name == "Stage1")
+        //{
+        //    ShowInGameUI();
+        //}
     }
 
     public void ShowInGameUI()
@@ -175,8 +169,8 @@ public class GameController : MonoBehaviour
 
     private void ChangeStage1Scene()
     {
-        //SceneManager.LoadScene("StageNext");
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("StageWord");
+        //SceneManager.LoadScene("Stage1");
     }
 
     private void ClickBookButton()
@@ -288,16 +282,16 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                gameClearItemImage[i].gameObject.SetActive(false); // ¿ÃπÃ¡ˆ∏¶ ∫Ò»∞º∫»≠ «ÿµ“
+                gameClearItemImage[i].gameObject.SetActive(false); // Ïù¥ÎØ∏ÏßÄÎ•º ÎπÑÌôúÏÑ±Ìôî Ìï¥Îë†
             }
         }
     }
 
-    //∞‘¿” ≈¨∏ÆæÓ ∫Œ∫–ø° ªÁøÎ
-    //GameController.Instance.ShowGameClearCanvas(); <- ¿Ã ƒ⁄µÂ∑Œ ªÁøÎ«œ∏È µ 
+    //Í≤åÏûÑ ÌÅ¥Î¶¨Ïñ¥ Î∂ÄÎ∂ÑÏóê ÏÇ¨Ïö©
+    //GameController.Instance.ShowGameClearCanvas(); <- Ïù¥ ÏΩîÎìúÎ°ú ÏÇ¨Ïö©ÌïòÎ©¥ Îê®
     public void ShowGameClearCanvas()
     {
-        //StatusWindowControllerø°º≠ »∞º∫»≠µ» ¿Øπ∞ ¿ÃπÃ¡ˆ∏¶ ∞°¡Æø»
+        //StatusWindowControllerÏóêÏÑú ÌôúÏÑ±ÌôîÎêú Ïú†Î¨º Ïù¥ÎØ∏ÏßÄÎ•º Í∞ÄÏ†∏Ïò¥
         List<Sprite> relicImages = StatusWindowController.Instance.GetActiveRelicImages();
 
         FillGameClearImages(relicImages);
