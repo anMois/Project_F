@@ -12,7 +12,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform shellTarget;
     [SerializeField] GameObject lazer;
     [SerializeField] int maxtime;
-    [SerializeField] int time;
+    [SerializeField] float time;
+    [SerializeField] GameObject bombFactory;
     [SerializeField] int attackDmg;
     Player player;
 
@@ -41,14 +42,16 @@ public class PlayerAttack : MonoBehaviour
     {
         if (mover.isGround && player.curHp > 0)
         {
-            AnimatorPlay();
-
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (mover.isGround)
             {
-                Bullet();
-                Shell();
+                AnimatorPlay();
+
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    Delay();
+                }
+                Lazer();
             }
-            Lazer();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -63,11 +66,6 @@ public class PlayerAttack : MonoBehaviour
         {
             SwapBullet(2);
         }
-
-        //if(Input.GetKeyUp(KeyCode.Mouse0) && time < 0)
-        //{
-        //    TimeOffset();
-        //}
     }
 
     public void SwapBullet(int index)
@@ -92,6 +90,10 @@ public class PlayerAttack : MonoBehaviour
             {
                 checkAniHash = lazerHash;
             }
+            else if (Input.GetKeyUp(KeyCode.Mouse0))
+            {
+                checkAniHash = idleHash;
+            }
         }
         else if (curBullet == bulletPrefab[2])
         {
@@ -100,6 +102,7 @@ public class PlayerAttack : MonoBehaviour
                 checkAniHash = attackHash;
             }
         }
+        
 
         if (curAniHash != checkAniHash)
         {
@@ -125,12 +128,14 @@ public class PlayerAttack : MonoBehaviour
         {
             if(Input.GetKey(KeyCode.Mouse0))
             {
-                lazer.SetActive(true);
-               
+                StartCoroutine(AttackLazer());
+                gameObject.GetComponent<PlayerMover>().enabled = false;
+                
             }
             else if(Input.GetKeyUp(KeyCode.Mouse0))
             {
                 lazer.SetActive(false);
+                gameObject.GetComponent<PlayerMover>().enabled = true;
             }
         }
     }
@@ -140,13 +145,38 @@ public class PlayerAttack : MonoBehaviour
         if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Shell>().Launch(6, shellTarget, 1);
         }
     }
 
-    private void TimeOffset()
+    private void Delay()
     {
-        time = maxtime;
+        StartCoroutine(DelayAttack());
     }
-   
+
+    IEnumerator DelayAttack()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        if(curBullet == bulletPrefab[0])
+        {
+            GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
+            obj.GetComponent<Bullet>().Launch(6, target, 1);
+        }
+        else if(curBullet == bulletPrefab[2])
+        {
+            GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
+        }
+    }
+
+    IEnumerator AttackLazer()
+    {
+        lazer.SetActive(true);
+
+        yield return new WaitForSeconds(time);
+
+        lazer.SetActive(false);
+
+        yield return null;
+    }
+    
 }
