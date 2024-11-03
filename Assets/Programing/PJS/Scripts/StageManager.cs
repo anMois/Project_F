@@ -14,13 +14,20 @@ public class StageManager : MonoBehaviour
     [SerializeField] MonsterManager monsterManager;
     [Header("몬스터 생성 오브젝트")]
     [SerializeField] CreateStageMonster stageMonster;
+    [Header("스테이지 클리어 보상 상자")]
     [SerializeField] GameObject clearBox;
     [SerializeField] Transform createPoint;
 
     private int curWave;
+    [SerializeField] CreateStageMonster[] createStageMonsters;
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
+
+    private void Awake()
+    {
+        createStageMonsters = FindObjectsOfType<CreateStageMonster>();
+    }
 
     private void Start()
     {
