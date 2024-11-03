@@ -24,7 +24,7 @@ public class InGameController : MonoBehaviour
     private Button bossStageMoveButton;
 
     [Header("Elemental Images")]
-    [SerializeField] private Sprite[] elementalImages;
+    [SerializeField] public Sprite[] elementalImages;
 
 
     private void Start()
