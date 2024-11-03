@@ -11,6 +11,7 @@ public class InGameController : MonoBehaviour
     private bool isStoreInitialized = false; //상점 초기화 여부
 
     [Header("Stage Clear")]
+    [SerializeField] ClearBox clearBox;
     private GameObject gameClearCanvas;
     private GameObject nextStageCanvas;
     private Button continueButton;
@@ -25,6 +26,8 @@ public class InGameController : MonoBehaviour
 
     [Header("Elemental Images")]
     [SerializeField] public Sprite[] elementalImages;
+
+
 
 
     private void Start()
@@ -150,6 +153,7 @@ public class InGameController : MonoBehaviour
     /// </summary>
     public void NextStageCanvasActive()
     {
+        clearBox.IsOpen = true;
         UIManager.Instance.HideUI("Stage Clear Canvas");
     }
 

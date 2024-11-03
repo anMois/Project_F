@@ -14,6 +14,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
 
     private int stageNum;
+
+    public Transform CurPlayerPoint { get { return playerPoints[stageNum]; } }
     public int StageNum { get { return stageNum; } }
 
     private void Awake()

@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour
                 IsUIActive("Store Canvas") ||
                 IsUIActive("Main Canvas"))
             {
-                Debug.Log($"{uiName} º¸¿©Áü");
+                //Debug.Log($"{uiName} º¸¿©Áü");
                 Cursor.lockState = CursorLockMode.None;
             }
 

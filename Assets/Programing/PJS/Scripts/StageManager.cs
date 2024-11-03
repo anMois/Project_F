@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum StageState { Battle, NonBattle, Clear }
+    public enum StageState { Battle, NonBattle, Clear, Choice }
     [SerializeField] StageState curState;
     [SerializeField] int stageNum;
 
@@ -16,9 +16,9 @@ public class StageManager : MonoBehaviour
     [Header("몬스터 생성 오브젝트 (드래드 인 드롭 X)")]
     [SerializeField] CreateStageMonster curStageMonster;
     [Header("스테이지 클리어 보상 상자")]
-    [SerializeField] GameObject clearBox;
-    [SerializeField] Transform createPoint;
-
+    [SerializeField] ClearBox clearBox;
+    [SerializeField] Teleport nextPotal;
+    [SerializeField] InGameManager inGame;
 
     private int curWave;
     [SerializeField] CreateStageMonster[] createStageMonsters;
@@ -48,9 +48,12 @@ public class StageManager : MonoBehaviour
 
     IEnumerator MonsterSpawnRoutine()
     {
+        WaitForSeconds delay = new WaitForSeconds(1.5f);
+
         while (curState != StageState.NonBattle)
         {
-            yield return new WaitForSeconds(1.5f);
+            yield return delay;
+            //스테이지 전투 상황
             if (monsterManager.MonsterCount == 0 && curState == StageState.Battle)
             {
                 // 해당 스테이지의 모든 웨이브를 진행 중일시
@@ -69,12 +72,20 @@ public class StageManager : MonoBehaviour
                     curWave = 0;
                 }
             }
+        }
+    }
 
-            if (curState == StageState.Clear)
-            {
-                Instantiate(clearBox, createPoint.position, Quaternion.identity);
-                yield break;
-            }
+    private void Update()
+    {
+        if(curState == StageState.Clear)
+        {
+            clearBox.transform.position = inGame.CurPlayerPoint.position;
+            curState = StageState.Choice;
+        }
+        else if (curState == StageState.Choice && clearBox.IsOpen)
+        {
+            clearBox.gameObject.SetActive(false);
+            nextPotal.transform.position = inGame.CurPlayerPoint.position;
         }
     }
 }
