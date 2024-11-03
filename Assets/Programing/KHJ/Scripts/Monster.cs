@@ -88,7 +88,7 @@ public class Monster : MonoBehaviour, IDamageable
         Vector3 direction = (target.position - transform.position).normalized;
         Ray vision = new Ray(transform.position, direction);
 
-        Physics.Raycast(vision, out RaycastHit hit, guardRange, targetLayerMask);
+        Physics.Raycast(vision, out RaycastHit hit, 1.5f * guardRange, targetLayerMask);
 
         return (hit.transform != null) ? hit.transform.CompareTag("Player") : false;
     }
@@ -167,8 +167,19 @@ public class Monster : MonoBehaviour, IDamageable
         {
             // Trace
             // Move to traceRange with gazing target
-            monster.agent.speed = monster.moveSpeed;
             monster.agent.destination = monster.target.position;
+            if (monster.agent.hasPath)
+            {
+                float remainingDistance = monster.agent.remainingDistance;
+                float slowDownDistance = 5 * monster.guardRange;
+                float minSpeed = monster.moveSpeed / 5;
+
+                // Slow down
+                if (remainingDistance < slowDownDistance)
+                    monster.agent.speed = Mathf.Lerp(minSpeed, monster.moveSpeed, remainingDistance / slowDownDistance);
+                else
+                    monster.agent.speed = monster.moveSpeed;
+            }
 
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
