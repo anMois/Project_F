@@ -35,6 +35,9 @@ public class StatusWindowController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemNameText;
     [SerializeField] private TextMeshProUGUI itemDescriptionText;
     [SerializeField] private Image itemImage;
+    [SerializeField] private Image itemElementImage;
+
+    [SerializeField] private Sprite[] itemElementalImage;
 
     private Dictionary<Sprite, (string itemName, string itemDescription)> itemInfoDict = new Dictionary<Sprite, (string, string)>();
 
@@ -250,6 +253,16 @@ public class StatusWindowController : MonoBehaviour
             itemDescriptionText.text = itemInfo.itemDescription;
             itemImage.sprite = itemInfo.itemSprite;
 
+            int elemental = itemInfo.elemental;
+            if (elemental >= 1 && elemental <= itemElementalImage.Length)
+            {
+                itemElementImage.sprite = itemElementalImage[elemental - 1];
+                itemElementImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                itemElementImage.gameObject.SetActive(false);
+            }
             UIManager.Instance.ShowUI("Status Window Explanation Canvas");
         }
     }
@@ -268,28 +281,4 @@ public class StatusWindowController : MonoBehaviour
 
         return activeRelicImages;
     }
-
-    public void AddElementalCount(int elemental)
-    {
-        switch (elemental)
-        {
-            case 1:
-                flameCount++;
-                break;
-            case 2:
-                iceCount++;
-                break;
-            case 3:
-                electricityCount++;
-                break;
-            case 4:
-                earthCount++;
-                break;
-        }
-
-        UpdateUI();
-        UpdateDisplayImage();
-    }
-
-
 }
