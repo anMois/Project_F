@@ -24,5 +24,6 @@ public class RangedMonster : Monster
         newProjectile.Launch(friendlyLayer, target.transform.GetChild(0), attackDamage);
 
         animator.SetInteger("Attack Motion", 0);
+        animator.SetTrigger("Draw");
     }
 }
