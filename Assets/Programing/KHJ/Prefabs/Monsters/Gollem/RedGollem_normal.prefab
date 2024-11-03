@@ -297,12 +297,12 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471594640711535826}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: d1b8eaad9702d43cd92499c36ae0f19a, type: 3}
-  m_Controller: {fileID: 9100000, guid: 484c82eb178494f42b96519ca817dac1, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0db04d64834d4a949b5e91e297c9dff5, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -779,6 +779,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   visualization: 0
   attackMaxRange: 15
   guardRange: 12

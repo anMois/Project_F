@@ -6,7 +6,10 @@ public class MeleeMonster : Monster
 {
     protected override void Attack()
     {
-        Debug.Log($"Monster Attack!");
-        target.GetComponent<Test_Player>().TakeHit(attackDamage);
+        base.Attack();
+
+        target.GetComponent<IDamageable>().TakeHit(attackDamage);
+
+        animator.SetInteger("Attack Motion", 0);
     }
 }

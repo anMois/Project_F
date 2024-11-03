@@ -1890,7 +1890,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5393436641504885445}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b69174d668ba02d44b14a084b217670a, type: 3}
   m_Controller: {fileID: 9100000, guid: 19f00acbf11d9b94aa66b6f42ceb7439, type: 2}
   m_CullingMode: 1
@@ -1947,9 +1947,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   visualization: 1
   attackMaxRange: 1
-  guardRange: 0.8
+  guardRange: 3
   monsterID: 2002
   maxHp: 50
   curHp: 0

@@ -20,6 +20,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     [Header("Enemy")]
     [SerializeField] protected Transform target;
+    [SerializeField] protected LayerMask targetLayerMask;
 
     [Header("Range")]
     [Tooltip("Guard Range: yellow\n" +
@@ -40,6 +41,7 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected Rigidbody rb;
     protected NavMeshAgent agent;
+    protected Animator animator;
 
     protected void Awake()
     {
@@ -50,6 +52,7 @@ public class Monster : MonoBehaviour, IDamageable
 
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         curHp = maxHp;
         OnAlarm += Trace;
@@ -85,9 +88,9 @@ public class Monster : MonoBehaviour, IDamageable
         Vector3 direction = (target.position - transform.position).normalized;
         Ray vision = new Ray(transform.position, direction);
 
-        Physics.Raycast(vision, out RaycastHit hit, guardRange);
+        Physics.Raycast(vision, out RaycastHit hit, 1.5f * guardRange, targetLayerMask);
 
-        return hit.transform.CompareTag("Player");
+        return (hit.transform != null) ? hit.transform.CompareTag("Player") : false;
     }
 
     public void Trace()
@@ -109,11 +112,16 @@ public class Monster : MonoBehaviour, IDamageable
         {
             ChangeState(State.Dead);
         }
+
+        animator.SetTrigger("Impact");
     }
 
     protected virtual void Attack()
     {
-        throw new NotImplementedException();
+        int attackMotion = UnityEngine.Random.Range(1, 3);
+
+        animator.SetTrigger("Attack");
+        animator.SetInteger("Attack Motion", attackMotion);
     }
 
     #region MonsterState
@@ -152,6 +160,9 @@ public class Monster : MonoBehaviour, IDamageable
         public override void StateEnter()
         {
             monster.agent.isStopped = false;
+
+            monster.animator.SetTrigger("Trace");
+            monster.animator.SetInteger("Guard Direction", 0);
         }
 
         public override void StateUpdate()
@@ -159,6 +170,20 @@ public class Monster : MonoBehaviour, IDamageable
             // Trace
             // Move to traceRange with gazing target
             monster.agent.destination = monster.target.position;
+            if (monster.agent.hasPath)
+            {
+                float remainingDistance = monster.agent.remainingDistance;
+                float slowDownDistance = 5 * monster.guardRange;
+                float minSpeed = monster.moveSpeed / 5;
+
+                // Slow down
+                if (remainingDistance < slowDownDistance)
+                    monster.agent.speed = Mathf.Lerp(minSpeed, monster.moveSpeed, remainingDistance / slowDownDistance);
+                else if (remainingDistance < monster.guardRange)
+                    monster.agent.speed = 0f;
+                else
+                    monster.agent.speed = monster.moveSpeed;
+            }
 
             // Transition
             float distance = Vector3.Distance(monster.transform.position, monster.target.position);
@@ -182,6 +207,10 @@ public class Monster : MonoBehaviour, IDamageable
         {
             sign = (UnityEngine.Random.Range(0, 2) == 0) ? -1 : 1;
             attackCoroutine = CoroutineHelper.StartCoroutine(AttackRoutine());
+
+            monster.animator.SetBool("Guard", true);
+            monster.animator.SetInteger("Guard Direction", sign);
+            monster.animator.SetTrigger("Draw");
         }
 
         public override void StateUpdate()
@@ -207,6 +236,8 @@ public class Monster : MonoBehaviour, IDamageable
                 CoroutineHelper.StopCoroutine(attackCoroutine);
                 attackCoroutine = null;
             }
+
+            monster.animator.SetBool("Guard", false);
         }
 
         protected void Guard()
@@ -232,6 +263,11 @@ public class Monster : MonoBehaviour, IDamageable
     {
         public DeadState(Monster monster) : base(monster) { }
 
+        public override void StateEnter()
+        {
+            monster.animator.SetTrigger("Death");
+        }
+
         public override void StateUpdate()
         {
             // Dead
@@ -244,7 +280,7 @@ public class Monster : MonoBehaviour, IDamageable
 
             monster.OnAlarm -= monster.Trace;
 
-            Destroy(monster.gameObject);
+            Destroy(monster.gameObject, 1f);
         }
     }
     #endregion
