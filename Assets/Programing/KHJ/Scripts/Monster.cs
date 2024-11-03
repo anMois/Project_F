@@ -40,6 +40,8 @@ public class Monster : MonoBehaviour, IDamageable
 
     protected Rigidbody rb;
     protected NavMeshAgent agent;
+    
+    private Animator animator;
 
     protected void Awake()
     {
@@ -50,6 +52,7 @@ public class Monster : MonoBehaviour, IDamageable
 
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
 
         curHp = maxHp;
         OnAlarm += Trace;
@@ -109,11 +112,13 @@ public class Monster : MonoBehaviour, IDamageable
         {
             ChangeState(State.Dead);
         }
+
+        animator.SetTrigger("Impact");
     }
 
     protected virtual void Attack()
     {
-        throw new NotImplementedException();
+        animator.SetTrigger("Attack");
     }
 
     #region MonsterState
@@ -152,6 +157,9 @@ public class Monster : MonoBehaviour, IDamageable
         public override void StateEnter()
         {
             monster.agent.isStopped = false;
+
+            monster.animator.SetTrigger("Trace");
+            monster.animator.SetInteger("Guard Direction", 0);
         }
 
         public override void StateUpdate()
@@ -183,6 +191,9 @@ public class Monster : MonoBehaviour, IDamageable
         {
             sign = (UnityEngine.Random.Range(0, 2) == 0) ? -1 : 1;
             attackCoroutine = CoroutineHelper.StartCoroutine(AttackRoutine());
+
+            monster.animator.SetInteger("Guard Direction", sign);
+            monster.animator.SetTrigger("Draw");
         }
 
         public override void StateUpdate()
@@ -233,6 +244,11 @@ public class Monster : MonoBehaviour, IDamageable
     {
         public DeadState(Monster monster) : base(monster) { }
 
+        public override void StateEnter()
+        {
+            monster.animator.SetTrigger("Death");
+        }
+
         public override void StateUpdate()
         {
             // Dead
@@ -245,7 +261,7 @@ public class Monster : MonoBehaviour, IDamageable
 
             monster.OnAlarm -= monster.Trace;
 
-            Destroy(monster.gameObject);
+            Destroy(monster.gameObject, 1f);
         }
     }
     #endregion
