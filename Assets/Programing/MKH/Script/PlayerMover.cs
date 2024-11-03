@@ -8,7 +8,6 @@ public partial class PlayerMover : MonoBehaviour
     [SerializeField] float runSpeed;
     [SerializeField] float jumpPower;
     [SerializeField] float dashSpeed;
-    [SerializeField] float yAngle;
     [SerializeField] float mouserotateSpeed;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody rigid;
@@ -54,7 +53,6 @@ public partial class PlayerMover : MonoBehaviour
         if (players.curHp > 0)
         {
             Move();
-            ViewRotate();
             Dash();
         }
         AnimaitorPlay();
@@ -138,13 +136,6 @@ public partial class PlayerMover : MonoBehaviour
             rigid.velocity = Vector3.zero;
             rigid.angularVelocity = Vector3.zero;
         }
-
-        //if (collision.transform.tag == "Wall")
-        //{
-        //    rigid.velocity = Vector3.zero;
-        //    rigid.angularVelocity = Vector3.zero;
-        //}
-
     }
 
 
@@ -163,16 +154,6 @@ public partial class PlayerMover : MonoBehaviour
         }
 
     }
-
-    private void ViewRotate()
-    {
-
-        yAngle += Input.GetAxis("Mouse X") * mouserotateSpeed;
-
-        player.transform.rotation = Quaternion.Euler(0, yAngle, 0);
-    }
-
-
 
     #region 애니메이션
     public void AnimaitorPlay()
