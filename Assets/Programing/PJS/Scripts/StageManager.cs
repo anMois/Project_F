@@ -13,12 +13,11 @@ public class StageManager : MonoBehaviour
     [SerializeField] List<int> maxWave;
     [Header("몬스터 매니저")]
     [SerializeField] MonsterManager monsterManager;
-    [Header("몬스터 생성 오브젝트")]
+    [Header("몬스터 생성 오브젝트 (드래드 인 드롭 X)")]
     [SerializeField] CreateStageMonster curStageMonster;
     [Header("스테이지 클리어 보상 상자")]
     [SerializeField] GameObject clearBox;
     [SerializeField] Transform createPoint;
-    [SerializeField] InGameManager inGame;
 
 
     private int curWave;
@@ -26,6 +25,7 @@ public class StageManager : MonoBehaviour
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
+    
 
     private void Awake()
     {
@@ -34,14 +34,15 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        //스테이지들 중 현재 진행 중인 스테이지에 해당한 CreateStageMonster 찾기
         for (int i = 0; i < createStageMonsters.Length; i++)
         {
-            Debug.Log(createStageMonsters[i].transform.parent + " 부모");
             if (createStageMonsters[i].transform.parent.gameObject.activeSelf)
             {
                 curStageMonster = createStageMonsters[i];
             }
         }
+
         StartCoroutine(MonsterSpawnRoutine());
     }
 

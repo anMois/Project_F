@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
-    [SerializeField] List<Transform> playerPoints;  //플레이어 생성 위치
+    [Header("플레이어 시작 위치")]
+    [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
+    [Header("전투 스테이지")]
     [SerializeField] List<GameObject> stages;       //생성되는 스테이지
 
-    [SerializeField] GameObject curStage;           //현제 스테이지
+    [Header("씬에 존재하는 플레이어, 시작 존")]
     [SerializeField] GameObject player;             //플레이어
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
 
@@ -38,7 +40,6 @@ public class InGameManager : MonoBehaviour
 
     private void StageMovePosition(Transform player, Transform lifeZone, int num)
     {
-        curStage = stages[stageNum];
         player.position = playerPoints[num].position;
         lifeZone.position = playerPoints[num].position;
     }
