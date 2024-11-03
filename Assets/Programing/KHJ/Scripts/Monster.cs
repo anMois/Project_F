@@ -179,6 +179,8 @@ public class Monster : MonoBehaviour, IDamageable
                 // Slow down
                 if (remainingDistance < slowDownDistance)
                     monster.agent.speed = Mathf.Lerp(minSpeed, monster.moveSpeed, remainingDistance / slowDownDistance);
+                else if (remainingDistance < monster.guardRange)
+                    monster.agent.speed = 0f;
                 else
                     monster.agent.speed = monster.moveSpeed;
             }
