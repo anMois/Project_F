@@ -56,7 +56,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        InitializeButtons(); //¹öÆ° ÃÊ±âÈ­
+        InitializeButtons(); //ë²„íŠ¼ ì´ˆê¸°í™”
     }
 
 
@@ -131,12 +131,6 @@ public class GameController : MonoBehaviour
         //if (SceneManager.GetActiveScene().name == "Stage1")
         //{
         //    ShowInGameUI();
-        //}
-
-        //if (UIManager.Instance.IsUIActive("Stage Clear Canvas"))
-        //{
-        //    UIManager.Instance.HideUI("In Game Menu Canvas");
-        //    UIManager.Instance.HideUI("Status Window Canvas");
         //}
     }
 
@@ -288,16 +282,16 @@ public class GameController : MonoBehaviour
             }
             else
             {
-                gameClearItemImage[i].gameObject.SetActive(false); // ÀÌ¹ÌÁö¸¦ ºñÈ°¼ºÈ­ ÇØµÒ
+                gameClearItemImage[i].gameObject.SetActive(false); // ì´ë¯¸ì§€ë¥¼ ë¹„í™œì„±í™” í•´ë‘ 
             }
         }
     }
 
-    //°ÔÀÓ Å¬¸®¾î ºÎºĞ¿¡ »ç¿ë
-    //GameController.Instance.ShowGameClearCanvas(); <- ÀÌ ÄÚµå·Î »ç¿ëÇÏ¸é µÊ
+    //ê²Œì„ í´ë¦¬ì–´ ë¶€ë¶„ì— ì‚¬ìš©
+    //GameController.Instance.ShowGameClearCanvas(); <- ì´ ì½”ë“œë¡œ ì‚¬ìš©í•˜ë©´ ë¨
     public void ShowGameClearCanvas()
     {
-        //StatusWindowController¿¡¼­ È°¼ºÈ­µÈ À¯¹° ÀÌ¹ÌÁö¸¦ °¡Á®¿È
+        //StatusWindowControllerì—ì„œ í™œì„±í™”ëœ ìœ ë¬¼ ì´ë¯¸ì§€ë¥¼ ê°€ì ¸ì˜´
         List<Sprite> relicImages = StatusWindowController.Instance.GetActiveRelicImages();
 
         FillGameClearImages(relicImages);
