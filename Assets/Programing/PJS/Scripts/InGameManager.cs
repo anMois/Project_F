@@ -11,20 +11,35 @@ public class InGameManager : MonoBehaviour
     [SerializeField] GameObject player;             //플레이어
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
 
+    private int stageNum;
+    public int StageNum { get { return stageNum; } }
+
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         RandomPoint();
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < stages.Count; i++)
+        {
+            if (i != stageNum)
+                stages[i].SetActive(false);
+        }
+    }
+
     private void RandomPoint()
     {
-        int num = Random.Range(0, stages.Count);
-        stages[num].SetActive(true);
-        curStage = stages[num];
-        //Instantiate(playerPrefab, playerPoints[num].position, Quaternion.identity);
-        //Instantiate(startZone, playerPoints[num].position, Quaternion.identity);
-        player.transform.position = playerPoints[num].position;
-        startZone.transform.position = playerPoints[num].position;
+        stageNum = Random.Range(0, stages.Count);
+        
+        StageMovePosition(player.transform, startZone.transform, stageNum);
+    }
+
+    private void StageMovePosition(Transform player, Transform lifeZone, int num)
+    {
+        curStage = stages[stageNum];
+        player.position = playerPoints[num].position;
+        lifeZone.position = playerPoints[num].position;
     }
 }

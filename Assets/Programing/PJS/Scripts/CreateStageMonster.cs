@@ -45,7 +45,8 @@ public class CreateStageMonster : MonoBehaviour
     {
         int num = Random.Range(0, monsterData.MonsterList.Count);
 
-        if (!monsterData.MonsterListActive[num])
+        Debug.Log(monsterData.MonsterListActive[num]);
+        if (monsterData.MonsterListActive[num] == false)
         {
             monsterData.MonsterListActive[num] = true;
             return num;
