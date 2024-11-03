@@ -137,7 +137,7 @@ public class InGameController : MonoBehaviour
     /// </summary>
     public void NextStageCanvasActive()
     {
-        gameClearCanvas.SetActive(false);
+        UIManager.Instance.HideUI("Stage Clear Canvas");
     }
 
     /// <summary>
