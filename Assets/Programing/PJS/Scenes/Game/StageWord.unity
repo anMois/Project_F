@@ -990,8 +990,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8cf2db4edbf1e04081019479e3a258c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearBox: {fileID: 897487862}
   elementalImages: []
+  clearBox: {fileID: 897487862}
+  potal: {fileID: 5165360358336979730}
+  stageManager: {fileID: 1649827382}
+  inGame: {fileID: 0}
 --- !u!4 &1137213914
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,8 +1027,8 @@ MonoBehaviour:
   - {fileID: 1164446242}
   - {fileID: 6057323}
   - {fileID: 980270568}
-  - {fileID: 705429629}
-  - {fileID: 1480828503}
+  store: {fileID: 705429629}
+  bonfire: {fileID: 1480828503}
   stages:
   - {fileID: 1139747985}
   - {fileID: 1585037573}
@@ -1307,6 +1310,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
+      propertyPath: potal
+      value: 
+      objectReference: {fileID: 5165360358336979730}
     - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
       propertyPath: inGame
       value: 

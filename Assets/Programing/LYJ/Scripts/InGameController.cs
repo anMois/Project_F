@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static StageManager;
 
 public class InGameController : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class InGameController : MonoBehaviour
     private bool isStoreInitialized = false; //상점 초기화 여부
 
     [Header("Stage Clear")]
-    [SerializeField] ClearBox clearBox;
     private GameObject gameClearCanvas;
     private GameObject nextStageCanvas;
     private Button continueButton;
@@ -27,7 +27,11 @@ public class InGameController : MonoBehaviour
     [Header("Elemental Images")]
     [SerializeField] public Sprite[] elementalImages;
 
-
+    [Header("Stage")]
+    [SerializeField] ClearBox clearBox;
+    [SerializeField] Teleport potal;
+    [SerializeField] StageManager stageManager;
+    [SerializeField] InGameManager inGame;
 
 
     private void Start()
@@ -85,6 +89,8 @@ public class InGameController : MonoBehaviour
         {
             continueButton.interactable = false;
         }
+
+        inGame = GetComponent<InGameManager>();
     }
 
     private void Update()
@@ -166,14 +172,20 @@ public class InGameController : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
+                stageManager.NextStage(StageState.Battle);
+                inGame.RandomStagePoint();
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("첫 번째 스테이지로 이동합니다.");
                 break;
             case 2:
+                stageManager.NextStage(StageState.Battle);
+                inGame.RandomStagePoint();
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("두 번째 스테이지로 이동합니다.");
                 break;
             case 3:
+                stageManager.NextStage(StageState.NonBattle);
+                inGame.StoreOrBonfirePosition(inGame.Player.transform, true);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("세 번째 스테이지로 이동합니다.");
                 break;
