@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static StageManager;
 
 public class CreateStageMonster : MonoBehaviour
 {
-    private MonsterData monsterData;
-
+    const int ELITECOUNT = 3;
+    [SerializeField] MonsterData monsterData;
     [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] MonsterManager monsterManager;
     [Header("생성되는 몬스터의 위치")]
@@ -19,9 +20,9 @@ public class CreateStageMonster : MonoBehaviour
     /// <summary>
     /// 배치되어 있는 리스트 중 랜덤으로 하나를 골라 지정된 위치에 몬스터 스폰
     /// </summary>
-    public void MonsterSpawn()
+    public void MonsterSpawn(StageState state, int curWave, int fullWave)
     {
-        int num = RandomNum();
+        int num = RandomNum(state, curWave, fullWave);
         Debug.Log(num);
         string[] point = monsterData.MonsterList[num].Split(',');
 
@@ -40,17 +41,22 @@ public class CreateStageMonster : MonoBehaviour
         }
     }
 
-    private int RandomNum()
+    private int RandomNum(StageState _state, int _curWave, int _fullWave)
     {
-        Debug.Log(monsterData.MonsterList.Count);
-        int num = Random.Range(0, monsterData.MonsterList.Count);
-        //return num;
-        if (monsterData.MonsterListActive[num] == false)
+        int num;
+        int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
+
+        if (_state == StageState.Elite && _curWave == _fullWave)
         {
-            monsterData.MonsterListActive[num] = true;
-            return num;
+            num = Random.Range(normalMosterCount, monsterData.MonsterList.Count);
         }
         else
-            return RandomNum();
+        {
+            num = Random.Range(0, normalMosterCount);
+        }
+
+        if (num < 0)    num = 0;
+
+        return num;
     }
 }

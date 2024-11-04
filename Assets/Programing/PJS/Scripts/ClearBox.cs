@@ -6,6 +6,7 @@ public class ClearBox : MonoBehaviour, IInteractable
 {
     [SerializeField] bool isOpen;
     public bool IsOpen { get { return isOpen; } set { isOpen = value; } }
+
     public void Interact()
     {
         StartCoroutine(ShowStageClearUI());

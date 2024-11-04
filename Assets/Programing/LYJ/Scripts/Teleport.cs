@@ -3,6 +3,19 @@ using UnityEngine;
 public class Teleport : MonoBehaviour, IInteractable
 {
     [SerializeField] StageManager stageManager;
+    [SerializeField] Transform imageF;
+
+    private Transform player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("player").transform;
+    }
+
+    private void Update()
+    {
+        imageF.LookAt(player.position);
+    }
 
     public void Interact()
     {
