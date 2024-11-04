@@ -219,6 +219,7 @@ public class BossDragon : MonoBehaviour, IDamageable
         while (Vector3.Distance(transform.position, center) < radius)
         {
             transform.position += moveSpeed * Time.deltaTime * transform.forward;
+            yield return null;
         }
 
         // Glide circle
