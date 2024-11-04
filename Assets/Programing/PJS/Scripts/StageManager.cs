@@ -20,13 +20,14 @@ public class StageManager : MonoBehaviour
     [SerializeField] List<int> maxWave;
     [Header("몬스터 매니저")]
     [SerializeField] MonsterManager monsterManager;
+
     [Header("몬스터 생성 오브젝트")]
     [SerializeField] CreateStageMonster[] createStageMonsters;
     [SerializeField] CreateStageMonster curStageMonster;
+
     [Header("스테이지 클리어")]
     [SerializeField] ClearBox clearBox;
     [SerializeField] Teleport potal;
-
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
@@ -84,10 +85,16 @@ public class StageManager : MonoBehaviour
         }
         else if (curState == StageState.Choice && clearBox.IsOpen)
         {
-            //if(preState == StageState.Elite)
-            //    GameManager.Instance.AddGold(2400);
-            //else
-            //    GameManager.Instance.AddGold(1500);
+            if(preState == StageState.Elite)
+            {
+                Debug.Log("2400골드 획득");
+                //GameManager.Instance.AddGold(2400);
+            }
+            else
+            {
+                Debug.Log("1500골드 획득");
+                //GameManager.Instance.AddGold(1500);
+            }
 
             clearBox.transform.position = Vector3.zero;
             potal.transform.position = inGame.CurPlayerPoint.position;

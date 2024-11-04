@@ -7,8 +7,8 @@ public class InGameManager : MonoBehaviour
     [Header("플레이어 시작 위치(마지막은 보스스테이지)")]
     [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
     [Header("상점, 모닥불 스테이지")]
-    [SerializeField] Transform store;
-    [SerializeField] Transform bonfire;
+    [SerializeField] Transform store;               //상점
+    [SerializeField] Transform bonfire;             //모닥불
     [Header("전투 스테이지")]
     [SerializeField] List<GameObject> stages;       //생성되는 스테이지
 
