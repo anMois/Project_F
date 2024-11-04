@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1258066f6c5514f9197dfc5b831260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionDistance: 3
+  interactionDistance: 5
   interactionUI: {fileID: 449215090744058045}
 --- !u!114 &2846975163382384680
 MonoBehaviour:

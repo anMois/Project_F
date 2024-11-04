@@ -39,12 +39,9 @@ public class PlayerInteraction : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(player.position, interactionDistance);
         foreach (var hitCollider in hitColliders)
         {
-            Debug.Log(hitCollider + " /");
             IInteractable interactable = hitCollider.GetComponent<IInteractable>();
-            Debug.Log(interactable + " |");
             if (interactable != null)
             {
-                Debug.Log("foreach if ¾È");
                 interactable.Interact();
                 break;
             }
