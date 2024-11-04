@@ -44,9 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a5a0f48029637e4bbb1450c4ab44539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  curState: 0
   stageNum: 0
-  curWave: 0
   maxWave: 010000000100000002000000020000000300000003000000
-  monsterPlace: []
   monsterManager: {fileID: 0}
-  monsterTable: {fileID: 0}
+  curStageMonster: {fileID: 0}
+  clearBox: {fileID: 0}
+  potal: {fileID: 0}
+  inGame: {fileID: 0}
+  createStageMonsters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

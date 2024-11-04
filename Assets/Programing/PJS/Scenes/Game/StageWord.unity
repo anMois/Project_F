@@ -230,10 +230,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1130925876, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
-      propertyPath: m_Name
-      value: ClearBoxPoint
-      objectReference: {fileID: 0}
     - target: {fileID: 802104006142403329, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -281,10 +277,6 @@ PrefabInstance:
     - target: {fileID: 802104006142403390, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
       propertyPath: m_Name
       value: ProtectedArea
-      objectReference: {fileID: 0}
-    - target: {fileID: 802104006142403390, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
