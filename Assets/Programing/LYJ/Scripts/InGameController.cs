@@ -123,6 +123,7 @@ public class InGameController : MonoBehaviour
     /// </summary>
     public void StoreExitButtonClick()
     {
+        SoundManager.Instance.ButtonClickSound();
         storeCanvas.SetActive(false);
     }
 

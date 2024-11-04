@@ -66,6 +66,7 @@ public class GameClearItemButton : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
+        SoundManager.Instance.ButtonClickSound();
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage, itemData.elemental);

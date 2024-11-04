@@ -19,6 +19,7 @@ public class SoundManager : MonoBehaviour
     [Header("라운드 관련")]
     [SerializeField] private AudioSource roundStartSound;
     [SerializeField] private AudioSource coinSound;
+    [SerializeField] private AudioSource buyItemSound;
 
     [Header("버튼")]
     [SerializeField] private AudioSource buttonClickSound;
@@ -116,6 +117,14 @@ public class SoundManager : MonoBehaviour
     public void CoinSound()
     {
         coinSound.PlayOneShot(coinSound.clip);
+    }
+
+    /// <summary>
+    /// 아이템 구매 소리 - 상점에서 이용
+    /// </summary>
+    public void BuyItemSound()
+    {
+        buyItemSound.PlayOneShot(buyItemSound.clip);
     }
 
     /// <summary>

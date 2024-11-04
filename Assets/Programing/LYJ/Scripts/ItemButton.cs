@@ -36,6 +36,7 @@ public class ItemButton : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
+        SoundManager.Instance.ButtonClickSound();
         if (gameController != null && itemData != null)
         {
             gameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage);

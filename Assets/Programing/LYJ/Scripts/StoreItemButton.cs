@@ -55,6 +55,7 @@ public class StoreItemButton : MonoBehaviour
     {
         if (inGameController != null && itemBuyButton != null && itemData != null)
         {
+            SoundManager.Instance.ButtonClickSound();
             inGameController.ShowExplanation(itemData.itemName, itemData.description, itemData.itemImage, itemData.elemental);
         }
     }
@@ -79,7 +80,7 @@ public class StoreItemButton : MonoBehaviour
                 // 아이템의 이미지, 이름, 설명을 함께 전달
                 statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description, itemData.elemental);
             }
-
+            SoundManager.Instance.BuyItemSound();
             Debug.Log($"{itemData.itemName}을(를) 구매했습니다.");
             Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
             isPurchased = true;
@@ -110,6 +111,7 @@ public class StoreItemButton : MonoBehaviour
         {
             if (GameManager.Instance.PotionGrenadeItem(1000))
             {
+                SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementPotionCount();
                 Debug.Log($"포션 구매 완료");
                 Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
@@ -125,6 +127,7 @@ public class StoreItemButton : MonoBehaviour
         {
             if (GameManager.Instance.PotionGrenadeItem(1000))
             {
+                SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementGrenadeCount();
                 Debug.Log($"수류탄 구매 완료");
                 Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");

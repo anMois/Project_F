@@ -70,6 +70,7 @@ public class StartItemButton : MonoBehaviour
 
     public void OnClickButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         if (startItemExplanationCanvas != null)
             startItemExplanationCanvas.SetActive(true);
 
@@ -107,6 +108,7 @@ public class StartItemButton : MonoBehaviour
 
     public void GameStartButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         startItemCanvas.SetActive(false);
         startItemExplanationCanvas.SetActive(false);
 

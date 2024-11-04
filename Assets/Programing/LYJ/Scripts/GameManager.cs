@@ -80,28 +80,6 @@ public class GameManager : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (UIManager.Instance.IsUIActive("Main Canvas") ||
-                UIManager.Instance.IsUIActive("Game Over Canvas") ||
-                UIManager.Instance.IsUIActive("Game Clear Canvas") ||
-                UIManager.Instance.IsUIActive("Stage Clear Canvas"))
-            {
-                return;
-            }
-
-            if (UIManager.Instance.IsUIActive("Status Window Canvas"))
-            {
-                UIManager.Instance.HideUI("Status Window Canvas");
-                UIManager.Instance.HideUI("Status Window Explanation Canvas");
-            }
-            else
-            {
-                UIManager.Instance.ShowUI("Status Window Canvas");
-            }
-            Time.timeScale = UIManager.Instance.IsUIActive("Status Window Canvas") ? 0 : 1;
-        }
     }
 
     /// <summary>
