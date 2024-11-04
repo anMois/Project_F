@@ -117,30 +117,31 @@ public class StartItemButton : MonoBehaviour
 
         UIManager.Instance.HideUI("Start Item Canvas");
 
-        //¼±ÅÃÇÑ À¯¹°ÀÌ °¡Áö°í ÀÖ´Â ½ºÅ×ÀÌÅÍ½º ¼öÄ¡°¡ ÀÎº¥Åä¸®¿¡ ¹İ¿µµÊ
+        //ì„ íƒí•œ ìœ ë¬¼ì´ ê°€ì§€ê³  ìˆëŠ” ìŠ¤í…Œì´í„°ìŠ¤ ìˆ˜ì¹˜ê°€ ì¸ë²¤í† ë¦¬ì— ë°˜ì˜ë¨
         StatusWindowController.Instance.UpdateStartStatUI(startItemData);
 
-        //¼±ÅÃÇÑ Á¤º¸ ÀÎº¥Åä¸®¿¡ ¹İ¿µ
+        //ì„ íƒí•œ ì •ë³´ ì¸ë²¤í† ë¦¬ì— ë°˜ì˜
         StatusWindowController.Instance.AddItemToInventory(startItemData.itemImage, startItemData.itemName, startItemData.specialEffectsDescription, startItemData.elemental);
 
-        if (startItemData.itemName == "Æ÷°İÀÇ ±ú´ŞÀ½")
+        //ì•„ì´í…œ ì´ë¦„ì— ë”°ë¼ ì´ì•Œ íƒ€ì… ë³€ê²½
+        if (startItemData.itemName == "í¬ê²©ì˜ ê¹¨ë‹¬ìŒ")
         {
             playerAttack.SwapBullet(0);
         }
-        else if (startItemData.itemName == "Èå¸§ÀÇ ±ú´ŞÀ½")
+        else if (startItemData.itemName == "íë¦„ì˜ ê¹¨ë‹¬ìŒ")
         {
             playerAttack.SwapBullet(1);
         }
-        else if (startItemData.itemName == "¹ß»çÀÇ ±ú´ŞÀ½")
+        else if (startItemData.itemName == "ë°œì‚¬ì˜ ê¹¨ë‹¬ìŒ")
         {
             playerAttack.SwapBullet(2);
         }
 
-        Debug.Log($"{startItemData.itemName}À» ¼±ÅÃÇÏ¼Ì½À´Ï´Ù.");
+        Debug.Log($"{startItemData.itemName}ì„ ì„ íƒí•˜ì…¨ìŠµë‹ˆë‹¤.");
     }
     public void ShowTextButton()
     {
-        hoverTextButton.text = "»ó¼¼º¸±â";
+        hoverTextButton.text = "ìƒì„¸ë³´ê¸°";
         hoverTextButton.transform.position = button.transform.position + new Vector3(-100, 50, 0);
         hoverTextButton.gameObject.SetActive(true);
     }
@@ -152,7 +153,7 @@ public class StartItemButton : MonoBehaviour
 
     public void ShowTextItemNameButton()
     {
-        hoverTextItemNameButton.text = "¼±ÅÃÇÏ±â";
+        hoverTextItemNameButton.text = "ì„ íƒí•˜ê¸°";
         hoverTextItemNameButton.transform.position = itemNameButton.transform.position + new Vector3(-100, 50, 0);
         hoverTextItemNameButton.gameObject.SetActive(true);
     }

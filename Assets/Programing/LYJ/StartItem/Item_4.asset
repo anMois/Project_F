@@ -27,6 +27,6 @@ MonoBehaviour:
   ATK: 0
   ATS: 0
   DEF: 0
-  HP: 0
+  HP: 100
   RAN: 0
   SPD: 0
