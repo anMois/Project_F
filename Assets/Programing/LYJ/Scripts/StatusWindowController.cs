@@ -263,6 +263,7 @@ public class StatusWindowController : MonoBehaviour
             {
                 itemElementImage.gameObject.SetActive(false);
             }
+            SoundManager.Instance.ButtonClickSound();
             UIManager.Instance.ShowUI("Status Window Explanation Canvas");
         }
     }

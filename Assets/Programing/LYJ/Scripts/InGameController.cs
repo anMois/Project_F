@@ -9,7 +9,7 @@ public class InGameController : MonoBehaviour
     private GameObject storeCanvas;
     private GameObject explanationCanvas;
     private Button storeExitButton;
-    private bool isStoreInitialized = false; //»óÁ¡ ÃÊ±âÈ­ ¿©ºÎ
+    private bool isStoreInitialized = false; //ìƒì  ì´ˆê¸°í™” ì—¬ë¶€
 
     [Header("Stage Clear")]
     private GameObject gameClearCanvas;
@@ -102,7 +102,7 @@ public class InGameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¼³¸íÃ¢¿¡¼­ ¾ÆÀÌÅÛ Á¤º¸¸¦ Ãâ·Â
+    /// ì„¤ëª…ì°½ì—ì„œ ì•„ì´í…œ ì •ë³´ë¥¼ ì¶œë ¥
     /// </summary>
     public void ShowExplanation(string itemName, string description, Sprite itemImage, int elemental)
     {
@@ -128,21 +128,22 @@ public class InGameController : MonoBehaviour
     }
 
     /// <summary>
-    /// »óÁ¡ Exit ¹öÆ° Å¬¸¯½Ã
+    /// ìƒì  Exit ë²„íŠ¼ í´ë¦­ì‹œ
     /// </summary>
     public void StoreExitButtonClick()
     {
+        SoundManager.Instance.ButtonClickSound();
         storeCanvas.SetActive(false);
     }
 
     /// <summary>
-    /// »óÁ¡ Canvas È°¼ºÈ­
+    /// ìƒì  Canvas í™œì„±í™”
     /// </summary>
     public void ShowStoreCanvas()
     {
         storeCanvas.SetActive(true);
 
-        //ÇÑ ¹ø¸¸ CSV ´Ù¿î·Îµå ½ÃÀÛ
+        //í•œ ë²ˆë§Œ CSV ë‹¤ìš´ë¡œë“œ ì‹œì‘
         if (!isStoreInitialized)
         {
             CSVDownload csvDownload = FindObjectOfType<CSVDownload>();
@@ -155,7 +156,7 @@ public class InGameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ½ºÅ×ÀÌÁö Å¬¸®¾î (À¯¹° ¼±ÅÃ ÈÄ) ´ÙÀ½ ½ºÅ×ÀÌÁö ¼±ÅÃ UI È°¼ºÈ­
+    /// ìŠ¤í…Œì´ì§€ í´ë¦¬ì–´ (ìœ ë¬¼ ì„ íƒ í›„) ë‹¤ìŒ ìŠ¤í…Œì´ì§€ ì„ íƒ UI í™œì„±í™”
     /// </summary>
     public void NextStageCanvasActive()
     {
@@ -164,9 +165,9 @@ public class InGameController : MonoBehaviour
     }
 
     /// <summary>
-    /// ¼±ÅÃÇÑ ½ºÅ×ÀÌÁö·Î ÀÌµ¿
+    /// ì„ íƒí•œ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™
     /// </summary>
-    /// <param name="stageNumber">ÀÌµ¿ÇÒ ½ºÅ×ÀÌÁö ¹øÈ£</param>
+    /// <param name="stageNumber">ì´ë™í•  ìŠ¤í…Œì´ì§€ ë²ˆí˜¸</param>
     public void StageMove(int stageNumber)
     {
         switch (stageNumber)
@@ -175,25 +176,25 @@ public class InGameController : MonoBehaviour
                 inGame.RandomStagePoint();
                 stageManager.NextStage(StageState.Battle);
                 UIManager.Instance.HideUI("Next Stage Canvas");
-                Debug.Log("Ã¹ ¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+                Debug.Log("ì²« ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
                 break;
             case 2:
                 inGame.RandomStagePoint();
                 stageManager.NextStage(StageState.Battle);
                 UIManager.Instance.HideUI("Next Stage Canvas");
-                Debug.Log("µÎ ¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+                Debug.Log("ë‘ ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
                 break;
             case 3:
                 stageManager.NextStage(StageState.NonBattle);
                 inGame.StoreOrBonfirePosition(inGame.Player.transform, true);
                 UIManager.Instance.HideUI("Next Stage Canvas");
-                Debug.Log("¼¼ ¹øÂ° ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+                Debug.Log("ì„¸ ë²ˆì§¸ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
                 break;
             case 4:
                 inGame.BossStagePosition(inGame.Player.transform);
                 UIManager.Instance.HideUI("Boss Stage Canvas");
                 UIManager.Instance.ShowUI("Boss Stage HP Canvas");
-                Debug.Log("º¸½º ½ºÅ×ÀÌÁö·Î ÀÌµ¿ÇÕ´Ï´Ù.");
+                Debug.Log("ë³´ìŠ¤ ìŠ¤í…Œì´ì§€ë¡œ ì´ë™í•©ë‹ˆë‹¤.");
                 break;
         }
     }

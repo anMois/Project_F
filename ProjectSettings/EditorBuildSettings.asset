@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Programing/LYJ/GameStart.unity
     guid: 94f48455f44af1d4ca8e0a1b926ed798
-  - enabled: 0
+  - enabled: 1
     path: Assets/Programing/LYJ/Stage1.unity
     guid: 9143807b620ae644da1644fb0fb53a34
-  - enabled: 1
+  - enabled: 0
     path: Assets/Programing/PJS/Scenes/Game/GameStart.unity
     guid: 0e92c32f82703a64f96c2125946f72da
   - enabled: 0
     path: Assets/Programing/PJS/Scenes/Game/StageNext.unity
     guid: 6d0958fc2fa643f4dac302ab19828b7f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Programing/PJS/Scenes/Game/StageWord.unity
     guid: e48d78b6984b7e9408cb15399ec16e01
   m_configObjects: {}

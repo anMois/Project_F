@@ -94,6 +94,15 @@ public class GameController : MonoBehaviour
         if (UIManager.Instance.IsUIActive("Main Explanation Canvas") && Input.GetMouseButtonDown(0))
         {
             Explanation();
+
+            if (UIManager.Instance.IsUIActive("Book Canvas"))
+            {
+                UIManager.Instance.ShowUI("Book Canvas");
+            }
+            else if (UIManager.Instance.IsUIActive("Book Canvas 2"))
+            {
+                UIManager.Instance.ShowUI("Book Canvas 2");
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -123,15 +132,40 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (SceneManager.GetActiveScene().name == "StageWord")
+        //if (SceneManager.GetActiveScene().name == "StageWord")
+        //{
+        //    ShowInGameUI();
+        //}
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
         {
             ShowInGameUI();
         }
 
-        //if (SceneManager.GetActiveScene().name == "Stage1")
-        //{
-        //    ShowInGameUI();
-        //}
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (UIManager.Instance.IsUIActive("Main Canvas") ||
+                UIManager.Instance.IsUIActive("Game Over Canvas") ||
+                UIManager.Instance.IsUIActive("Game Clear Canvas") ||
+                UIManager.Instance.IsUIActive("Stage Clear Canvas") ||
+                UIManager.Instance.IsUIActive("In Game Menu Canvas"))
+            {
+                return;
+            }
+
+            if (UIManager.Instance.IsUIActive("Status Window Canvas"))
+            {
+                SoundManager.Instance.InventorySound();
+                UIManager.Instance.HideUI("Status Window Canvas");
+                UIManager.Instance.HideUI("Status Window Explanation Canvas");
+            }
+            else
+            {
+                SoundManager.Instance.InventorySound();
+                UIManager.Instance.ShowUI("Status Window Canvas");
+            }
+            Time.timeScale = UIManager.Instance.IsUIActive("Status Window Canvas") ? 0 : 1;
+        }
     }
 
     public void ShowInGameUI()
@@ -169,24 +203,27 @@ public class GameController : MonoBehaviour
 
     private void ChangeStage1Scene()
     {
-        SceneManager.LoadScene("StageWord");
-        //SceneManager.LoadScene("Stage1");
+        SoundManager.Instance.ButtonClickSound();
+        //SceneManager.LoadScene("StageWord");
+        SceneManager.LoadScene("Stage1");
     }
 
     private void ClickBookButton()
     {
-        UIManager.Instance.HideUI("Main Canvas");
+        SoundManager.Instance.BookOpenSound();
         UIManager.Instance.ShowUI("Book Canvas");
     }
 
     private void BookChangeButton()
     {
+        SoundManager.Instance.BookOpenSound();
         UIManager.Instance.HideUI("Book Canvas");
         UIManager.Instance.ShowUI("Book Canvas 2");
     }
 
     private void BookExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.HideUI("Book Canvas");
         UIManager.Instance.HideUI("Book Canvas 2");
         UIManager.Instance.ShowUI("Main Canvas");
@@ -194,46 +231,52 @@ public class GameController : MonoBehaviour
 
     private void BookPageReturnButton()
     {
+        SoundManager.Instance.BookOpenSound();
         UIManager.Instance.HideUI("Book Canvas 2");
         UIManager.Instance.ShowUI("Book Canvas");
     }
 
     private void ClickManualButton()
     {
-        UIManager.Instance.HideUI("Main Canvas");
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.ShowUI("Manual Canvas");
     }
 
     private void ClickInGameManualButton()
     {
-        UIManager.Instance.HideUI("In Game Menu Canvas");
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.ShowUI("In Game Manual Canvas");
     }
 
     private void ClickInGameManualExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.HideUI("In Game Manual Canvas");
         UIManager.Instance.ShowUI("In Game Menu Canvas");
     }
 
     private void ManualExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.HideUI("Manual Canvas");
         UIManager.Instance.ShowUI("Main Canvas");
     }
 
     private void ClickReturnGameButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.HideUI("In Game Menu Canvas");
     }
 
     private void ClickGiveUpButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         SceneManager.LoadScene("GameStart");
     }
 
     private void ClickLeaveGame()
     {
+        SoundManager.Instance.ButtonClickSound();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -243,17 +286,20 @@ public class GameController : MonoBehaviour
 
     private void ClickRestartButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         //SceneManager.LoadScene("StageNext");
         SceneManager.LoadScene("GameStart");
     }
 
     private void ClickExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         SceneManager.LoadScene("GameStart");
     }
 
     private void ExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -263,11 +309,13 @@ public class GameController : MonoBehaviour
 
     private void ClickStatusWindowCloseButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         UIManager.Instance.HideUI("Status Window Canvas");
     }
 
     public void ClickGameClearExitButton()
     {
+        SoundManager.Instance.ButtonClickSound();
         SceneManager.LoadScene("GameStart");
     }
 
