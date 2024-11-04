@@ -3145,10 +3145,10 @@ MonoBehaviour:
   itemImage: {fileID: 0}
   itemElementImage: {fileID: 0}
   itemElementalImage:
-  - {fileID: 21300000, guid: ca50178e257acc349a2b47f7a9db06d8, type: 3}
-  - {fileID: 21300000, guid: d077e168f0edb5e4eb034646524fefb0, type: 3}
-  - {fileID: 21300000, guid: c578790532e0ef848bd380b7c8d1dcfd, type: 3}
-  - {fileID: 21300000, guid: 01c584987e756514eadec60ed654e899, type: 3}
+  - {fileID: 21300000, guid: 506e7e2d66fa81e409c5c001bc7ce384, type: 3}
+  - {fileID: 21300000, guid: 147aee4ab0395294b924c26bb9730149, type: 3}
+  - {fileID: 21300000, guid: b2280796a1d090249a93582f38ff364b, type: 3}
+  - {fileID: 21300000, guid: 46a75488fd503324a8d560ba838112aa, type: 3}
 --- !u!4 &1347985254
 Transform:
   m_ObjectHideFlags: 0

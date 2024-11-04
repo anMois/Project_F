@@ -16,8 +16,9 @@ public class InGameManager : MonoBehaviour
     [Header("씬에 존재하는 플레이어, 시작 존")]
     [SerializeField] GameObject player;             //플레이어
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
+    [SerializeField] GameObject boss;               //보스 드래곤
 
-    [SerializeField] int stageNum;
+    private int stageNum;
 
     public Transform CurPlayerPoint { get { return playerPoints[stageNum]; } }
     public GameObject CurStage { get { return stages[StageNum]; } }
@@ -27,6 +28,7 @@ public class InGameManager : MonoBehaviour
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        boss.SetActive(false);
         RandomStagePoint();
     }
 
@@ -67,5 +69,6 @@ public class InGameManager : MonoBehaviour
     public void BossStagePosition(Transform player)
     {
         player.position = playerPoints[playerPoints.Count - 1].position;
+        boss.SetActive(true);
     }
 }

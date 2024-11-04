@@ -174,13 +174,13 @@ public class InGameController : MonoBehaviour
         {
             case 1:
                 inGame.RandomStagePoint();
-                stageManager.NextStage(StageState.Battle);
+                stageManager.NextStage(StageState.Normal);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("첫 번째 스테이지로 이동합니다.");
                 break;
             case 2:
                 inGame.RandomStagePoint();
-                stageManager.NextStage(StageState.Battle);
+                stageManager.NextStage(StageState.Elite);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("두 번째 스테이지로 이동합니다.");
                 break;
