@@ -8,20 +8,20 @@ public class StageManager : MonoBehaviour
     public enum StageState { Battle, NonBattle, Clear, Choice }
     [SerializeField] StageState curState;
     [SerializeField] int stageNum;
+    [SerializeField] InGameManager inGame;
 
     [Header("스테이지별 웨이브 수")]
     [SerializeField] List<int> maxWave;
     [Header("몬스터 매니저")]
     [SerializeField] MonsterManager monsterManager;
-    [Header("몬스터 생성 오브젝트 (드래드 인 드롭 X)")]
+    [Header("몬스터 생성 오브젝트")]
+    [SerializeField] CreateStageMonster[] createStageMonsters;
     [SerializeField] CreateStageMonster curStageMonster;
-    [Header("스테이지 클리어 보상 상자")]
+    [Header("스테이지 클리어")]
     [SerializeField] ClearBox clearBox;
     [SerializeField] Teleport potal;
-    [SerializeField] InGameManager inGame;
 
     private int curWave;
-    [SerializeField] CreateStageMonster[] createStageMonsters;
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
@@ -88,7 +88,7 @@ public class StageManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 스테이지 이동
+    /// 다음 스테이지 이동
     /// </summary>
     /// <param name="changeStage">이동할 스테이지</param>
     public void NextStage(StageState changeStage)
@@ -108,6 +108,11 @@ public class StageManager : MonoBehaviour
             if (createStageMonsters[i].transform.parent.gameObject == inGame.CurStage && curState == StageState.Battle)
             {
                 curStageMonster = createStageMonsters[i];
+                createStageMonsters[i].transform.parent.gameObject.SetActive(true);
+            }
+            else
+            {
+                createStageMonsters[i].transform.parent.gameObject.SetActive(false);
             }
         }
     }

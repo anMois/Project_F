@@ -27,7 +27,7 @@ public class BossDragon : MonoBehaviour, IDamageable
     private Animator animator;
 
     private const int PatternAttackPeriod = 3;
-    private float attackJudgeTime = 0.1f;    // time of attack range collider remains set as true
+    private const float attackJudgeTime = 0.1f;    // time of attack range collider remains set as true
     private bool isTargetBehind;
 
     public bool IsTargetBehind { set { isTargetBehind = value; } }
@@ -87,7 +87,19 @@ public class BossDragon : MonoBehaviour, IDamageable
                 // Move & Attack
                 animator.SetInteger("Attack", (int)type + 1);
                 StartCoroutine(MoveRoutine());
-                StartCoroutine(AttackRoutine(attacks[(int)type]));
+                switch (type)
+                {
+                    case BossAttackType.Land1:
+                    case BossAttackType.Land2:
+                    case BossAttackType.Land3:
+                        StartCoroutine(AttackRoutine(attacks[(int)type]));
+                        break;
+                    case BossAttackType.Land4:
+                        StartCoroutine(AttackRoutine(attacks[(int)type], 1f));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -122,11 +134,21 @@ public class BossDragon : MonoBehaviour, IDamageable
         // Pattern Attack
         if (++attackCount % PatternAttackPeriod == 0)
         {
-            //BossAttackType type = NextAttackType(BossAttackType.FlyPattern1, BossAttackType.FlyPattern2);
+            BossAttackType type = NextAttackType(BossAttackType.FlyPattern1, BossAttackType.FlyPattern2);
 
-            //// Attack
-            animator.SetInteger("Attack", (int)BossAttackType.FlyPattern2 + 1);
-            StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.FlyPattern2]));
+            // Attack
+            animator.SetInteger("Attack", (int)type + 1);
+            switch (type)
+            {
+                case BossAttackType.FlyPattern1:
+                    StartCoroutine(AttackRoutine(attacks[(int)type], 2f));
+                    break;
+                case BossAttackType.FlyPattern2:
+                    StartCoroutine(AttackRoutine(attacks[(int)type]));
+                    break;
+                default:
+                    break;
+            }
         }
         // Attack
         else
@@ -159,12 +181,12 @@ public class BossDragon : MonoBehaviour, IDamageable
         behindCheck.gameObject.SetActive(true);
     }
 
-    IEnumerator AttackRoutine(BossAttack bossAttack)
+    IEnumerator AttackRoutine(BossAttack bossAttack, float judgeTime = attackJudgeTime)
     {
         Debug.Log($"[Dragon] {bossAttack.gameObject.name}!");
         bossAttack.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(attackJudgeTime);
+        yield return new WaitForSeconds(judgeTime);
 
         animator.SetInteger("Attack", 0);
         bossAttack.gameObject.SetActive(false);
@@ -209,6 +231,7 @@ public class BossDragon : MonoBehaviour, IDamageable
         while (Vector3.Distance(transform.position, center) < radius)
         {
             transform.position += moveSpeed * Time.deltaTime * transform.forward;
+            yield return null;
         }
 
         // Glide circle

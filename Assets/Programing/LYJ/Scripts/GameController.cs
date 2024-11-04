@@ -132,15 +132,15 @@ public class GameController : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        //if (SceneManager.GetActiveScene().name == "StageWord")
-        //{
-        //    ShowInGameUI();
-        //}
-
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        if (SceneManager.GetActiveScene().name == "StageWord")
         {
             ShowInGameUI();
         }
+
+        //if (SceneManager.GetActiveScene().name == "Stage1")
+        //{
+        //    ShowInGameUI();
+        //}
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -204,8 +204,8 @@ public class GameController : MonoBehaviour
     private void ChangeStage1Scene()
     {
         SoundManager.Instance.ButtonClickSound();
-        //SceneManager.LoadScene("StageWord");
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("StageWord");
+        //SceneManager.LoadScene("Stage1");
     }
 
     private void ClickBookButton()
