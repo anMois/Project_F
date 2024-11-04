@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum StageState { Normal, Elite, NonBattle, Clear, Choice }
+    public enum StageState { Normal, Elite, NonBattle, Clear, Choice, Potal }
     [SerializeField] InGameManager inGame;
 
     [Header("현재 상태, 이전 상태")]
@@ -96,6 +96,7 @@ public class StageManager : MonoBehaviour
                 //GameManager.Instance.AddGold(1500);
             }
 
+            curState = StageState.Potal;
             clearBox.transform.position = Vector3.zero;
             potal.transform.position = inGame.CurPlayerPoint.position;
         }
