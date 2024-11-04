@@ -16,7 +16,6 @@ public class Bomb : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,14 +24,34 @@ public class Bomb : MonoBehaviour
         exp.transform.position = transform.position;
         Destroy(exp, 1);
 
+        Transform curTransform = other.transform;
+        // Find IDamageable through parents
+        while (curTransform != null)
+        {
+            damageable = curTransform.GetComponent<IDamageable>();
+            if (damageable != null)
+                break;
+            curTransform = curTransform.parent;
+        }
+
         if (other.CompareTag(naming))
         {
             Collider[] cols = Physics.OverlapSphere(exp.transform.position, exp.transform.localScale.z / 2);
             for (int i = 0; i < cols.Length; i++)
             {
+                Debug.Log(cols[i].name + "monster");
                 if (cols[i].gameObject.tag == naming)
                 {
-                    damageable = cols[i].GetComponent<IDamageable>();
+                    curTransform = cols[i].transform;
+                    // Find IDamageable through parents
+                    while (curTransform != null)
+                    {
+                        damageable = curTransform.GetComponent<IDamageable>();
+                        if (damageable != null)
+                            break;
+                        curTransform = curTransform.parent;
+                    }
+
                     if (damageable != null)
                     {
                         damageable.TakeHit(dmg);
@@ -51,9 +70,18 @@ public class Bomb : MonoBehaviour
             Collider[] cols = Physics.OverlapSphere(exp.transform.position, exp.transform.localScale.z / 2);
             for (int i = 0; i < cols.Length; i++)
             {
+                Debug.Log(cols[i].name);
                 if (cols[i].CompareTag(naming))
                 {
-                    damageable = cols[i].GetComponent<IDamageable>();
+                    curTransform = cols[i].transform;
+                    while (curTransform != null)
+                    {
+                        damageable = curTransform.GetComponent<IDamageable>();
+                        if (damageable != null)
+                            break;
+                        curTransform = curTransform.parent;
+                    }
+
                     damageable.TakeHit(dmg);
                 }
 
@@ -73,5 +101,8 @@ public class Bomb : MonoBehaviour
     {
         naming = name;
         dmg = attackDamage;
+
+        
+        rb.velocity = transform.forward * speed;
     }
 }
