@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,32 +5,46 @@ public class Player : MonoBehaviour, IDamageable
 {
     public UnityAction OnAlarm;
 
-    [SerializeField] PlayerMover playerMover;
-
-
     [Header("Attributes")]
     [SerializeField] int maxHp;
     [SerializeField] public int curHp;
+    [SerializeField] float dmg;
+    [SerializeField] float time;
 
-    private int friendlyLayer;
+
+    Animator ani;
+    PlayerMover mover;
+    PlayerAttack attack;
+
+
+
+    private static int idleHash = Animator.StringToHash("Idle03");
+    private static int DieHash = Animator.StringToHash("Die");
+
+    public int curAniHash { get; private set; }
 
     private void Awake()
     {
-        playerMover = GetComponent<PlayerMover>();
-        friendlyLayer = LayerMask.GetMask("Player");
+        ani = GetComponent<Animator>();
+        mover = GetComponent<PlayerMover>();
+        attack = GetComponent<PlayerAttack>();
 
         curHp = maxHp;
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             curHp--;
 
-            if (curHp <= 0)
-                return;
         }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            curHp++;
+        }
+
+        AnimationPlay();
 
     }
 
@@ -43,7 +55,40 @@ public class Player : MonoBehaviour, IDamageable
         curHp -= dmg;
         if (curHp <= 0)
         {
-            playerMover.AnimaitorPlay();
+            ani.Play("Die");
+            mover.GetComponent<PlayerMover>().enabled = false;
+            attack.GetComponent<PlayerAttack>().enabled = false;
+        }
+        else if (curHp > 0)
+        {
+            mover.GetComponent<PlayerMover>().enabled = true;
+            attack.GetComponent<PlayerAttack>().enabled = true;
         }
     }
+
+
+    private void AnimationPlay()
+    {
+        int checkAniHash = 0;
+
+        if (curHp <= 0)
+        {
+            checkAniHash = DieHash;
+            gameObject.GetComponent<PlayerMover>().enabled = false;
+            gameObject.GetComponent<PlayerAttack>().enabled = false;
+        }
+        else if (curHp > 0)
+        {
+            checkAniHash = idleHash;
+            gameObject.GetComponent<PlayerMover>().enabled = true;
+            gameObject.GetComponent<PlayerAttack>().enabled = true;
+        }
+
+        if (curAniHash != checkAniHash)
+        {
+            curAniHash = checkAniHash;
+            ani.Play(curAniHash);
+        }
+    }
+
 }
