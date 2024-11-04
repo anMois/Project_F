@@ -20,13 +20,13 @@ MonoBehaviour:
   specialEffectsImage1: {fileID: 21300000, guid: ac1dd1e29c13d7b4b93ea5c46d20a922, type: 3}
   specialEffectsImage2: {fileID: 21300000, guid: 64cc8fa180414ec47b9638c54b41da1d, type: 3}
   specialEffectsImage3: {fileID: 21300000, guid: 0cd82ef3b3e01df49a572d6b2634fb69, type: 3}
-  specialEffectsFigure1: 100
-  specialEffectsFigure2: '- 20%'
-  specialEffectsFigure3: + 5
+  specialEffectsFigure1: 75
+  specialEffectsFigure2: 5
+  specialEffectsFigure3: 0.75
   elemental: 1
-  ATK: 100
-  ATS: 20
-  DEF: 60
-  HP: 80
+  ATK: 75
+  ATS: 0.75
+  DEF: 0
+  HP: 100
   RAN: 5
-  SPD: 0
+  SPD: 3

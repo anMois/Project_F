@@ -17,16 +17,16 @@ MonoBehaviour:
   specialEffectsDescription: 
   itemImage: {fileID: 21300000, guid: 2ba6948b9d527c841a0cdae00c5c3a9d, type: 3}
   itemAttributesImage: {fileID: 21300000, guid: a9c35914066425349b5467af8edddafe, type: 3}
-  specialEffectsImage1: {fileID: 0}
-  specialEffectsImage2: {fileID: 0}
-  specialEffectsImage3: {fileID: 0}
-  specialEffectsFigure1: 
-  specialEffectsFigure2: 
-  specialEffectsFigure3: 
+  specialEffectsImage1: {fileID: 21300000, guid: 890479ac48450cb41ae00ffdffe9e967, type: 3}
+  specialEffectsImage2: {fileID: 21300000, guid: 54f46bd0e20b8db4a994a87ee8645800, type: 3}
+  specialEffectsImage3: {fileID: 21300000, guid: 99b5df83d12896d4ebf5b8c39724bc4a, type: 3}
+  specialEffectsFigure1: 40
+  specialEffectsFigure2: 7
+  specialEffectsFigure3: 1.0
   elemental: 2
-  ATK: 0
-  ATS: 0
+  ATK: 40
+  ATS: 1
   DEF: 0
-  HP: 0
-  RAN: 0
-  SPD: 0
+  HP: 100
+  RAN: 7
+  SPD: 3

@@ -21,10 +21,10 @@ public class StartItemData : ScriptableObject
 
     public int elemental;
 
-    public int ATK;
-    public int ATS;
-    public int DEF;
-    public int HP;
-    public int RAN;
-    public int SPD;
+    public float ATK;
+    public float ATS;
+    public float DEF;
+    public float HP;
+    public float RAN;
+    public float SPD;
 }

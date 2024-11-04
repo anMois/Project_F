@@ -2732,6 +2732,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Status Window Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4117900265110608923, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4117900265110608927, guid: 3806660cf64e43346a608faaee3f7723, type: 3}
       propertyPath: m_Pivot.x
       value: 0
