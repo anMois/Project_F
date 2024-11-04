@@ -2844,6 +2844,7 @@ GameObject:
   - component: {fileID: 521799635802031582}
   - component: {fileID: 4371427034670007712}
   - component: {fileID: 7077635931406918108}
+  - component: {fileID: -9094478090645067720}
   m_Layer: 7
   m_Name: BlueSerpent_normal
   m_TagString: Monster
@@ -3257,9 +3258,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   visualization: 1
   attackMaxRange: 4
   guardRange: 3
@@ -3293,6 +3291,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-9094478090645067720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4230854372846555045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6578ec28de5434043a9681563a2201a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagString: Monster
 --- !u!1 &4230854372846555047
 GameObject:
   m_ObjectHideFlags: 0

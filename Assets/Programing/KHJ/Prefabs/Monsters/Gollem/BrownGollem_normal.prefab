@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 1099196030426107169}
   - component: {fileID: 6813045742893627343}
   - component: {fileID: 8161931190687553896}
+  - component: {fileID: 8469232246336522433}
   m_Layer: 7
   m_Name: BrownGollem_normal
   m_TagString: Monster
@@ -763,9 +764,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   visualization: 1
   attackMaxRange: 2
   guardRange: 3
@@ -799,6 +797,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8469232246336522433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125739104437509208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6578ec28de5434043a9681563a2201a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagString: Monster
 --- !u!1 &1125739104437509212
 GameObject:
   m_ObjectHideFlags: 0
