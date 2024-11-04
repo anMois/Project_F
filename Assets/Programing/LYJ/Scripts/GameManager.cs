@@ -9,8 +9,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] public float curPrice = 10000f;
+    [SerializeField] public float curPrice = 0f;
     [SerializeField] TextMeshProUGUI priceText;
+    [SerializeField] TextMeshProUGUI goldText;
 
     [SerializeField] TextMeshProUGUI gainPriceText;
 
@@ -54,7 +55,7 @@ public class GameManager : MonoBehaviour
         //필요한 값을 초기화 (아래 내용을 게임 필요에 따라 설정)
         potionCount = 0;
         grenadeCount = 0;
-        curPrice = 10000f; //초기 골드 값으로 설정
+        curPrice = 0; //초기 골드 값으로 설정
         currentHealth = maxHealth; //체력을 최대치로 설정
 
         UpdateUI();
@@ -67,7 +68,6 @@ public class GameManager : MonoBehaviour
         InitializeHealth();
         UpdatePriceText();
         UpdateUI();
-        UpdateGainedGoldText();
     }
 
     private void InitializeHealth()
@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
             UpdatePriceText();
             return true;
         }
+        Debug.Log("돈이 부족하여 구매할 수 없습니다.");
         return false;
     }
     /// <summary>
@@ -119,9 +120,10 @@ public class GameManager : MonoBehaviour
 
     private void UpdatePriceText()
     {
-        if (priceText != null)
+        if (priceText != null && goldText != null)
         {
             priceText.text = $"보유 골드: {curPrice} G";
+            goldText.text = $"보유 골드: {curPrice} G";
         }
     }
 
@@ -204,11 +206,22 @@ public class GameManager : MonoBehaviour
         Debug.Log($"체력이 {percentage * 100}%로 회복되었습니다.");
     }
 
-    private void UpdateGainedGoldText()
+    private void UpdateGainedGoldText(float amount)
     {
         if (gainPriceText != null)
         {
-            gainPriceText.text = $"{gainPriceText} G";
+            gainPriceText.text = $"{amount} G";
         }
+    }
+
+    /// <summary>
+    /// 골드를 추가
+    /// </summary>
+    /// <param name="amount">골드 양</param>
+    public void AddGold(float amount)
+    {
+        curPrice += amount;
+        UpdatePriceText();
+        UpdateGainedGoldText(amount);
     }
 }

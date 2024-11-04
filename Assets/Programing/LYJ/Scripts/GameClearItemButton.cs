@@ -25,6 +25,12 @@ public class GameClearItemButton : MonoBehaviour
 
     private void OnEnable()
     {
+        if (button == null)
+            button = GetComponent<Button>();
+
+        if (itemBuyButton == null)
+            itemBuyButton = transform.Find("Item Buy Button")?.GetComponent<Button>();
+
         SetRandomItemData();
 
         isPurchased = false;
@@ -43,6 +49,7 @@ public class GameClearItemButton : MonoBehaviour
             itemBuyButtonText.gameObject.SetActive(false);
         }
     }
+
 
 
     private void OnDestroy()
