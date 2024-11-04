@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 2815165234167851826}
   - component: {fileID: 2281934120106743545}
   - component: {fileID: 6466331292792124722}
+  - component: {fileID: 1414795828}
   m_Layer: 5
   m_Name: HoverTextItemNameButton (1)
   m_TagString: Untagged
@@ -540,6 +541,51 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &1414795828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6127019679315590181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowHoverTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideHoverTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6599571817803598222
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222, y: -3}
+  m_AnchoredPosition: {x: -137.5, y: -3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5113484509825993659
@@ -1266,6 +1312,7 @@ GameObject:
   - component: {fileID: 8520982102700694627}
   - component: {fileID: 8520982102700694626}
   - component: {fileID: 8520982102700694629}
+  - component: {fileID: 438408369}
   m_Layer: 5
   m_Name: Item_2 Button
   m_TagString: Untagged
@@ -1376,6 +1423,51 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &438408369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982102700694631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103825317139}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103825317139}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982102704287123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2427,6 +2519,7 @@ GameObject:
   - component: {fileID: 8520982103204957499}
   - component: {fileID: 8520982103204957498}
   - component: {fileID: 8520982103204957501}
+  - component: {fileID: 1018631502}
   m_Layer: 5
   m_Name: Item_4 Button
   m_TagString: Untagged
@@ -2537,6 +2630,51 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1018631502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982103204957503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982104453676910}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982104453676910}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982103209137424
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,6 +2764,7 @@ GameObject:
   - component: {fileID: 8520982103292272721}
   - component: {fileID: 8520982103292272720}
   - component: {fileID: 8520982103292272735}
+  - component: {fileID: 1543790192}
   m_Layer: 5
   m_Name: Item Image
   m_TagString: Untagged
@@ -2770,6 +2909,51 @@ MonoBehaviour:
   itemNameButton: {fileID: 8520982104172166211}
   hoverTextButton: {fileID: 2679659996888788187}
   hoverTextItemNameButton: {fileID: 8812226909418450984}
+--- !u!114 &1543790192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982103292272722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103292272735}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103292272735}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982103316941893
 GameObject:
   m_ObjectHideFlags: 0
@@ -3459,7 +3643,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8520982103623457494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3735,6 +3919,7 @@ GameObject:
   - component: {fileID: 8520982103825317141}
   - component: {fileID: 8520982103825317140}
   - component: {fileID: 8520982103825317139}
+  - component: {fileID: 512796243}
   m_Layer: 5
   m_Name: Item Image
   m_TagString: Untagged
@@ -3879,6 +4064,51 @@ MonoBehaviour:
   itemNameButton: {fileID: 8520982102700694629}
   hoverTextButton: {fileID: 5898979966526817281}
   hoverTextItemNameButton: {fileID: 6466331292792124722}
+--- !u!114 &512796243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982103825317142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103825317139}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103825317139}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982103828152942
 GameObject:
   m_ObjectHideFlags: 0
@@ -4198,6 +4428,7 @@ GameObject:
   - component: {fileID: 8520982103937746280}
   - component: {fileID: 8520982103937746283}
   - component: {fileID: 8520982103937746294}
+  - component: {fileID: 1632848899}
   m_Layer: 5
   m_Name: Item Image
   m_TagString: Untagged
@@ -4342,6 +4573,51 @@ MonoBehaviour:
   itemNameButton: {fileID: 8520982104466882475}
   hoverTextButton: {fileID: 6634918155784324446}
   hoverTextItemNameButton: {fileID: 8236811083074367400}
+--- !u!114 &1632848899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982103937746285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982103982331855
 GameObject:
   m_ObjectHideFlags: 0
@@ -4777,6 +5053,7 @@ GameObject:
   - component: {fileID: 8520982104172166209}
   - component: {fileID: 8520982104172166208}
   - component: {fileID: 8520982104172166211}
+  - component: {fileID: 1593174529}
   m_Layer: 5
   m_Name: Item_3 Button
   m_TagString: Untagged
@@ -4887,6 +5164,51 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1593174529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982104172166213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103292272735}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103292272735}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982104333671606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5188,6 +5510,7 @@ GameObject:
   - component: {fileID: 8520982104453676896}
   - component: {fileID: 8520982104453676899}
   - component: {fileID: 8520982104453676910}
+  - component: {fileID: 630910460}
   m_Layer: 5
   m_Name: Item Image
   m_TagString: Untagged
@@ -5332,6 +5655,51 @@ MonoBehaviour:
   itemNameButton: {fileID: 8520982103204957501}
   hoverTextButton: {fileID: 79465366746120911}
   hoverTextItemNameButton: {fileID: 2403592851015855808}
+--- !u!114 &630910460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982104453676901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982104453676910}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982104453676910}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982104466882477
 GameObject:
   m_ObjectHideFlags: 0
@@ -5344,6 +5712,7 @@ GameObject:
   - component: {fileID: 8520982104466882473}
   - component: {fileID: 8520982104466882472}
   - component: {fileID: 8520982104466882475}
+  - component: {fileID: 6482534}
   m_Layer: 5
   m_Name: Item_1 Button
   m_TagString: Untagged
@@ -5454,6 +5823,51 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6482534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520982104466882477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: ShowTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8520982103937746294}
+          m_TargetAssemblyTypeName: StartItemButton, Assembly-CSharp
+          m_MethodName: HideTextItemNameButton
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8520982104547303026
 GameObject:
   m_ObjectHideFlags: 0
