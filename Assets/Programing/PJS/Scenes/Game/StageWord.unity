@@ -303,6 +303,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1000904285}
     m_Modifications:
+    - target: {fileID: 2095024545660267282, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.625
+      objectReference: {fileID: 0}
+    - target: {fileID: 2095024545660267282, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5999999
+      objectReference: {fileID: 0}
     - target: {fileID: 2562128255893433602, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
       propertyPath: m_Name
       value: Store
@@ -351,13 +359,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6652290154859099667, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
-      propertyPath: m_TagString
-      value: Ground
+    - target: {fileID: 7602161093663448332, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8642090508546846304, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
-      propertyPath: interactionDistance
-      value: 3
+    - target: {fileID: 7602161093663493194, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.020000458
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602161093670939308, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7602161094507720278, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_Constraints
+      value: 126
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
@@ -523,10 +539,6 @@ PrefabInstance:
       propertyPath: monsterManager
       value: 
       objectReference: {fileID: 1034068907}
-    - target: {fileID: 2069567772056782709, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
-      propertyPath: interactionDistance
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3204846396905855031, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
       propertyPath: m_Name
       value: Stage3
@@ -574,14 +586,6 @@ PrefabInstance:
     - target: {fileID: 4020868992988079655, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497729281850769639, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 51.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 5497729281915075003, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -22.310001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
@@ -996,10 +1000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1801441515}
     m_Modifications:
-    - target: {fileID: 597041872670647424, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -6
-      objectReference: {fileID: 0}
     - target: {fileID: 1441260838285334492, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
       propertyPath: monsterManager
       value: 
@@ -1051,14 +1051,6 @@ PrefabInstance:
     - target: {fileID: 2933111780654985636, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
       propertyPath: m_Name
       value: Stage1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5285816197692371550, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
-      propertyPath: interactionDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7863698626520967487, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.600006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
@@ -1193,10 +1185,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage2
       objectReference: {fileID: 0}
-    - target: {fileID: 1731095236045221399, guid: 964532c8a6f55074da140281159768f2, type: 3}
-      propertyPath: interactionDistance
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6265948327462084036, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1240,10 +1228,6 @@ PrefabInstance:
     - target: {fileID: 6265948327462084036, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6419307641628817609, guid: 964532c8a6f55074da140281159768f2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8814235010339807798, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: monsterManager
@@ -1577,7 +1561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785064289823818646, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.0000042909537
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3785064289823818646, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1585,7 +1569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3785064289823818646, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9133034
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3785064289823818646, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: m_LocalRotation.w

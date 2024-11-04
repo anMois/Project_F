@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
-    [Header("플레이어 시작 위치")]
+    [Header("플레이어 시작 위치(마지막은 보스스테이지)")]
     [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
     [Header("상점")]
     [SerializeField] Transform store;
@@ -30,6 +30,9 @@ public class InGameManager : MonoBehaviour
         RandomStagePoint();
     }
 
+    /// <summary>
+    /// 랜덤한 전투 스테이지 이동
+    /// </summary>
     public void RandomStagePoint()
     {
         stageNum = Random.Range(0, stages.Count);
@@ -44,6 +47,11 @@ public class InGameManager : MonoBehaviour
         lifeZone.GetComponent<SphereCollider>().enabled = true;
     }
 
+    /// <summary>
+    /// 상점 또는 모닥불 스테이지 이동
+    /// </summary>
+    /// <param name="player">플레이어</param>
+    /// <param name="choice">상점or모닥불</param>
     public void StoreOrBonfirePosition(Transform player, bool choice)
     {
         if (choice)
@@ -52,6 +60,10 @@ public class InGameManager : MonoBehaviour
             player.position = bonfire.position;
     }
 
+    /// <summary>
+    /// 보스 스테이지 이동
+    /// </summary>
+    /// <param name="player">플에이어</param>
     public void BossStagePosition(Transform player)
     {
         player.position = playerPoints[playerPoints.Count - 1].position;

@@ -133,7 +133,7 @@ public class InGameController : MonoBehaviour
     public void StoreExitButtonClick()
     {
         SoundManager.Instance.ButtonClickSound();
-        storeCanvas.SetActive(false);
+        UIManager.Instance.HideUI("Store Canvas");
     }
 
     /// <summary>

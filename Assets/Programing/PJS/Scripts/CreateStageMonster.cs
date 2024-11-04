@@ -21,7 +21,7 @@ public class CreateStageMonster : MonoBehaviour
     /// </summary>
     public void MonsterSpawn()
     {
-        int num = 1;//RandomNum();
+        int num = RandomNum();
         Debug.Log(num);
         string[] point = monsterData.MonsterList[num].Split(',');
 
@@ -35,7 +35,6 @@ public class CreateStageMonster : MonoBehaviour
                     Monster newMonster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation).GetComponent<Monster>();
                     newMonster.transform.parent = monsterManager.transform;
                     monsterManager.AddMonster(newMonster);
-                    Debug.Log($"오브젝트 생성 {id}");
                 }
             }
         }
@@ -43,7 +42,7 @@ public class CreateStageMonster : MonoBehaviour
 
     private int RandomNum()
     {
-        Debug.Log(monsterData.MonsterList);
+        Debug.Log(monsterData.MonsterList.Count);
         int num = Random.Range(0, monsterData.MonsterList.Count);
         //return num;
         if (monsterData.MonsterListActive[num] == false)
