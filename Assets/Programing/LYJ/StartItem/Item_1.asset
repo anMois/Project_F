@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Item_1
   m_EditorClassIdentifier: 
   itemName: "\uD3EC\uACA9\uC758 \uAE68\uB2EC\uC74C"
-  specialEffects: "\uB300\uD3EC\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
-  specialEffectsDescription: 
+  specialEffects: 
+  specialEffectsDescription: "\uB300\uD3EC\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
   itemImage: {fileID: 21300000, guid: 507b64447d80e6447b0cc02c5abc5b6a, type: 3}
   itemAttributesImage: {fileID: 21300000, guid: 506e7e2d66fa81e409c5c001bc7ce384, type: 3}
   specialEffectsImage1: {fileID: 21300000, guid: ac1dd1e29c13d7b4b93ea5c46d20a922, type: 3}
   specialEffectsImage2: {fileID: 21300000, guid: 64cc8fa180414ec47b9638c54b41da1d, type: 3}
   specialEffectsImage3: {fileID: 21300000, guid: 0cd82ef3b3e01df49a572d6b2634fb69, type: 3}
   specialEffectsFigure1: 75
-  specialEffectsFigure2: 5
-  specialEffectsFigure3: 0.75
+  specialEffectsFigure2: 0.75
+  specialEffectsFigure3: 5
   elemental: 1
   ATK: 75
   ATS: 0.75
