@@ -23,6 +23,28 @@ public class GameClearItemButton : MonoBehaviour
         allButtons.Add(this);
     }
 
+    private void OnEnable()
+    {
+        SetRandomItemData();
+
+        isPurchased = false;
+        if (itemBuyButton != null)
+        {
+            itemBuyButton.interactable = true;
+        }
+
+        if (buttonText != null)
+        {
+            buttonText.gameObject.SetActive(false);
+        }
+
+        if (itemBuyButtonText != null)
+        {
+            itemBuyButtonText.gameObject.SetActive(false);
+        }
+    }
+
+
     private void OnDestroy()
     {
         allButtons.Remove(this);
@@ -143,4 +165,6 @@ public class GameClearItemButton : MonoBehaviour
     {
         itemBuyButtonText.gameObject.SetActive(false);
     }
+
+
 }

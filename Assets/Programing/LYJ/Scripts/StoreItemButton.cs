@@ -15,10 +15,20 @@ public class StoreItemButton : MonoBehaviour
 
     private bool isPurchased = false; //구매가 되었는지 확인
 
+    private void OnEnable()
+    {
+        InitializeButtons();
+        ResetButtonStates();
+    }
+
     private void Start()
     {
         inGameController = FindObjectOfType<InGameController>();
         statusWindowController = StatusWindowController.Instance;
+    }
+
+    private void InitializeButtons()
+    {
         button = GetComponent<Button>();
         itemBuyButton = transform.Find("Item Buy Button")?.GetComponent<Button>();
         potionButton = GameObject.Find("Potion Buy Button").GetComponent<Button>();
@@ -44,6 +54,23 @@ public class StoreItemButton : MonoBehaviour
         {
             grenadeButton.onClick.RemoveAllListeners(); //버튼 리스너 중복 방지 (여러번 호출되는 오류 해결)
             grenadeButton.onClick.AddListener(() => PotionGrenadeBuyButtonClick(grenadeButton));
+        }
+    }
+
+    private void ResetButtonStates()
+    {
+        isPurchased = false;
+        if (itemBuyButton != null)
+        {
+            itemBuyButton.interactable = true;
+        }
+        if (potionButton != null)
+        {
+            potionButton.interactable = true;
+        }
+        if (grenadeButton != null)
+        {
+            grenadeButton.interactable = true;
         }
     }
 
@@ -74,10 +101,8 @@ public class StoreItemButton : MonoBehaviour
         bool success = GameManager.Instance.PurchaseItem(itemData.price);
         if (success)
         {
-            // StatusWindowController에 아이템 추가
             if (statusWindowController != null)
             {
-                // 아이템의 이미지, 이름, 설명을 함께 전달
                 statusWindowController.AddItemToInventory(itemData.itemImage, itemData.itemName, itemData.description, itemData.elemental);
             }
             SoundManager.Instance.BuyItemSound();
