@@ -87,7 +87,19 @@ public class BossDragon : MonoBehaviour, IDamageable
                 // Move & Attack
                 animator.SetInteger("Attack", (int)type + 1);
                 StartCoroutine(MoveRoutine());
-                StartCoroutine(AttackRoutine(attacks[(int)type]));
+                switch (type)
+                {
+                    case BossAttackType.Land1:
+                    case BossAttackType.Land2:
+                    case BossAttackType.Land3:
+                        StartCoroutine(AttackRoutine(attacks[(int)type]));
+                        break;
+                    case BossAttackType.Land4:
+                        StartCoroutine(AttackRoutine(attacks[(int)type], 1f));
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

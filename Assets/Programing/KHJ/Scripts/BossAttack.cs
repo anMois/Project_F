@@ -9,6 +9,7 @@ public class BossAttack : MonoBehaviour
     [SerializeField] protected Transform target;
     [SerializeField] protected bool isTargeting = false;
     [SerializeField] protected int damage;
+    [SerializeField] ParticleSystem[] particles;
 
     protected void Start()
     {
@@ -38,6 +39,14 @@ public class BossAttack : MonoBehaviour
         foreach (Transform child in transform)
         {
             child.gameObject.SetActive(true);
+        }
+
+        if (particles != null)
+        {
+            foreach (ParticleSystem particle in particles)
+            {
+                particle.Play();
+            }
         }
     }
 
