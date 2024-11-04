@@ -160,7 +160,7 @@ public class PlayerAttack : MonoBehaviour
         if(curBullet == bulletPrefab[0])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Bullet>().Launch(6, target, 1);
+            obj.GetComponent<Bullet>().Launch(6, target, attackDmg);
         }
         else if(curBullet == bulletPrefab[2])
         {

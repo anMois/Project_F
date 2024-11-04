@@ -6,9 +6,9 @@ public class Teleport : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        //if (stageManager.StageNum == stageManager.LastStage)
-        //    UIManager.Instance.ShowUI("Boss Stage Canvas");
-        //else
-        //    UIManager.Instance.ShowUI("Next Stage Canvas");
+        if (stageManager.StageNum == stageManager.LastStage)
+            UIManager.Instance.ShowUI("Boss Stage Canvas");
+        else
+            UIManager.Instance.ShowUI("Next Stage Canvas");
     }
 }
