@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform attackPos;
     [SerializeField] Transform lazerPos;
     [SerializeField] GameObject[] bulletPrefab;
-    [SerializeField] GameObject[] Effect;
+    [SerializeField] string naming;
     private GameObject curBullet;
     [SerializeField] Animator ani;
     [SerializeField] Transform target;
@@ -17,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float attackDmg;
     Player player;
 
-    [SerializeField] GameObject hitEffect;
     Coroutine lazers;
 
 
@@ -38,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
 
-        lazer.GetComponent<Lazer>().Damage("Monster", (int)attackDmg, time);
+        lazer.GetComponent<Lazer>().Damage(naming, (int)attackDmg);
     }
 
     private void Update()
@@ -120,15 +119,14 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 lazers = StartCoroutine(AttackLazer());
-                gameObject.GetComponent<PlayerMover>().enabled = false;
-                //StopCoroutine(lazers);
 
+                mover.GetComponent<PlayerMover>().enabled = false;
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 StopCoroutine(lazers);
                 lazer.SetActive(false);
-                gameObject.GetComponent<PlayerMover>().enabled = true;
+                mover.GetComponent<PlayerMover>().enabled = true;
             }
         }
     }
@@ -144,7 +142,7 @@ public class PlayerAttack : MonoBehaviour
         else if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Bomb>().Fire("Monster", (int)1.5f * (int)attackDmg);
+            obj.GetComponent<Bomb>().Fire(naming, (int)1.5f * (int)attackDmg);
 
 
         }
