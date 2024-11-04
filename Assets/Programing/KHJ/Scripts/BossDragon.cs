@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossDragon : MonoBehaviour, IDamageable
 {
+    public UnityEvent<int> OnHpChanged;
+
     public enum BossAttackType
     {
         Land1, Land2, Land3, Land4, LandPattern1, LandPattern2, Fly1, Fly2, FlyPattern1, FlyPattern2, SIZE
@@ -31,12 +35,13 @@ public class BossDragon : MonoBehaviour, IDamageable
     private bool isTargetBehind;
 
     public bool IsTargetBehind { set { isTargetBehind = value; } }
+    public int CurHp { get { return curHp; } set { curHp = value; OnHpChanged?.Invoke(curHp); } }
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
 
-        curHp = maxHp;
+        CurHp = maxHp;
     }
 
     private void Start()
@@ -163,7 +168,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
     private BossAttackType NextAttackType(BossAttackType startType, BossAttackType endType)
     {
-        int n = Random.Range(1, 101);
+        int n = UnityEngine.Random.Range(1, 101);
 
         // Decide attack type
         for (int i = (int)startType; i <= (int)endType; i++)
@@ -194,13 +199,13 @@ public class BossDragon : MonoBehaviour, IDamageable
 
     public void TakeHit(int dmg)
     {
-        curHp -= dmg;
-        if (!isFlying && curHp <= maxHp / 2)
+        CurHp -= dmg;
+        if (!isFlying && CurHp <= maxHp / 2)
         {
             Fly();
         }
 
-        if(curHp <= 0)
+        if(CurHp <= 0)
         {
             Die();
         }
@@ -237,7 +242,7 @@ public class BossDragon : MonoBehaviour, IDamageable
         // Glide circle
         float angle = moveSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
-        while (curHp > 0)
+        while (CurHp > 0)
         {
             transform.RotateAround(center, transform.up, angle);
             yield return null;
