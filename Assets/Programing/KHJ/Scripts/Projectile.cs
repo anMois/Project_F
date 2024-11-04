@@ -51,12 +51,14 @@ public class Projectile : MonoBehaviour
     /// </summary>
     /// <param name="friendlyLayer">layer of shooter's friendly</param>
     /// <param name="target">target to set projectile direction</param>
-    public void Launch(int friendlyLayer, Transform target, int attackaDamage)
+    public void Launch(int friendlyLayer, Transform target, int attackaDamage, float launchSpeed = 0)
     {
         // Ignore friendly layer
         layerMask &= ~friendlyLayer;
 
         dmg = attackaDamage;
+        if (launchSpeed > 0)
+            speed = launchSpeed;
 
         // Fire
         gameObject.SetActive(true);
