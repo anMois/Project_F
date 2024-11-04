@@ -38,11 +38,14 @@ public class StartItemButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI hoverTextButton;
     [SerializeField] TextMeshProUGUI hoverTextItemNameButton;
 
+    private PlayerAttack playerAttack;
+
     private void Start()
     {
         startItemCanvas = GameObject.Find("Start Item Canvas");
 
         button = gameObject.GetComponent<Button>();
+        playerAttack = FindObjectOfType<PlayerAttack>();
 
         if (startItemCanvas != null && startItemExplanationCanvas != null)
         {
@@ -119,6 +122,20 @@ public class StartItemButton : MonoBehaviour
 
         //선택한 정보 인벤토리에 반영
         StatusWindowController.Instance.AddItemToInventory(startItemData.itemImage, startItemData.itemName, startItemData.specialEffectsDescription, startItemData.elemental);
+
+        //아이템 이름에 따라 총알 타입 변경
+        if (startItemData.itemName == "포격의 깨달음")
+        {
+            playerAttack.SwapBullet(0);
+        }
+        else if (startItemData.itemName == "흐름의 깨달음")
+        {
+            playerAttack.SwapBullet(1);
+        }
+        else if (startItemData.itemName == "발사의 깨달음")
+        {
+            playerAttack.SwapBullet(2);
+        }
 
         Debug.Log($"{startItemData.itemName}을 선택하셨습니다.");
     }
