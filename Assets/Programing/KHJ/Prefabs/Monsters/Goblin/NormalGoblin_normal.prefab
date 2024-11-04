@@ -1583,6 +1583,7 @@ GameObject:
   - component: {fileID: 4997549319748072163}
   - component: {fileID: 4997549319748072162}
   - component: {fileID: -3515198405480311412}
+  - component: {fileID: -7322230062351264021}
   m_Layer: 7
   m_Name: NormalGoblin_normal
   m_TagString: Monster
@@ -1673,9 +1674,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   visualization: 1
   attackMaxRange: 1
   guardRange: 3
@@ -1709,6 +1707,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7322230062351264021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5711436575792790268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6578ec28de5434043a9681563a2201a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagString: Monster
 --- !u!1 &5711436575792791034
 GameObject:
   m_ObjectHideFlags: 0

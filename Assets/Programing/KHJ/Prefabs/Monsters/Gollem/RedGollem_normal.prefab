@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 3805829494499253275}
   - component: {fileID: 3805829494499253477}
   - component: {fileID: 8516816198101801694}
+  - component: {fileID: -7285293932802146861}
   m_Layer: 7
   m_Name: RedGollem_normal
   m_TagString: Monster
@@ -764,9 +765,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   visualization: 0
   attackMaxRange: 15
   guardRange: 12
@@ -802,6 +800,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &-7285293932802146861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471594640711535826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6578ec28de5434043a9681563a2201a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagString: Monster
 --- !u!1 &471594640711535828
 GameObject:
   m_ObjectHideFlags: 0
