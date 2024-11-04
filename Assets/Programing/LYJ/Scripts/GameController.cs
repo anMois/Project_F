@@ -137,11 +137,6 @@ public class GameController : MonoBehaviour
             ShowInGameUI();
         }
 
-        //if (SceneManager.GetActiveScene().name == "Stage1")
-        //{
-        //    ShowInGameUI();
-        //}
-
         if (Input.GetKeyDown(KeyCode.I))
         {
             if (UIManager.Instance.IsUIActive("Main Canvas") ||
@@ -205,7 +200,6 @@ public class GameController : MonoBehaviour
     {
         SoundManager.Instance.ButtonClickSound();
         SceneManager.LoadScene("StageWord");
-        //SceneManager.LoadScene("Stage1");
     }
 
     private void ClickBookButton()

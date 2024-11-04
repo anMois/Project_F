@@ -50,11 +50,6 @@ public class UIManager : MonoBehaviour
         {
             ShowUI("Start Item Canvas");
         }
-
-        //if (SceneManager.GetActiveScene().name == "Stage1")
-        //{
-        //    ShowUI("Start Item Canvas");
-        //}
     }
     private void OnDestroy()
     {

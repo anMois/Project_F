@@ -134,7 +134,7 @@ public class StoreItemButton : MonoBehaviour
         //버튼 클릭 시 포션과 수류탄 가격에 따라 구매 여부를 결정
         if (clickedButton == potionButton)
         {
-            if (GameManager.Instance.PotionGrenadeItem(1000))
+            if (GameManager.Instance.PotionGrenadeItem(1500))
             {
                 SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementPotionCount();
@@ -150,7 +150,7 @@ public class StoreItemButton : MonoBehaviour
         }
         else if (clickedButton == grenadeButton)
         {
-            if (GameManager.Instance.PotionGrenadeItem(1000))
+            if (GameManager.Instance.PotionGrenadeItem(1500))
             {
                 SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementGrenadeCount();
