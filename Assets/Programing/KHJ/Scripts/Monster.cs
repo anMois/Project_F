@@ -20,7 +20,6 @@ public class Monster : MonoBehaviour, IDamageable
 
     [Header("Enemy")]
     [SerializeField] protected Transform target;
-    [SerializeField] protected LayerMask targetLayerMask;
 
     [Header("Range")]
     [Tooltip("Guard Range: yellow\n" +
@@ -85,12 +84,14 @@ public class Monster : MonoBehaviour, IDamageable
 
     public bool GazePlayer()
     {
+        Vector3 offset = new Vector3(0, 0.3f, 0);
+
         Vector3 direction = (target.position - transform.position).normalized;
-        Ray vision = new Ray(transform.position, direction);
+        Ray vision = new Ray(transform.position + offset, direction);
 
-        Physics.Raycast(vision, out RaycastHit hit, 1.5f * guardRange, targetLayerMask);
-
-        return (hit.transform != null) ? hit.transform.CompareTag("Player") : false;
+        Physics.Raycast(vision, out RaycastHit hit, 1.5f * guardRange);
+        
+        return (hit.transform != null) ? hit.transform.CompareTag("Player") : true;
     }
 
     public void Trace()
