@@ -291,11 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79c93e55d68ac4540a4d7f186e4e68da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &146420762 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1130925877, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
-  m_PrefabInstance: {fileID: 146420760}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &146420763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 802104006142403390, guid: 85ab5be0c6dd5c84fb60b7ea5a218597, type: 3}
@@ -1358,25 +1353,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 897487862}
     - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
-      propertyPath: nextPotal
-      value: 
-      objectReference: {fileID: 5165360358336979730}
-    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
-      propertyPath: createPoint
-      value: 
-      objectReference: {fileID: 146420762}
-    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
-      propertyPath: stageMonster
-      value: 
-      objectReference: {fileID: 1139747984}
-    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
       propertyPath: monsterManager
       value: 
       objectReference: {fileID: 1034068907}
-    - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
-      propertyPath: createStageMonsters.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 770561013968409328, guid: a5536887856e46f46841ad67182363ab, type: 3}
       propertyPath: createStageMonsters.Array.data[0]
       value: 
@@ -1588,6 +1567,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1639512922075923212, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 1649827382}
     - target: {fileID: 3785064289823818646, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: m_RootOrder
       value: 8

@@ -25,6 +25,7 @@ public class StageManager : MonoBehaviour
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
+    public int LastStage { get { return maxWave.Count - 1; } }
     public StageState CurState { set { curState = value; } }
 
     private void Start()
@@ -95,6 +96,7 @@ public class StageManager : MonoBehaviour
         stageNum++;
         curState = changeStage;
         curStageMonster = null;
+        potal.transform.position = Vector3.zero;
         SelectStage();
     }
 

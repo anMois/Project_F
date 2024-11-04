@@ -190,6 +190,7 @@ public class InGameController : MonoBehaviour
                 Debug.Log("세 번째 스테이지로 이동합니다.");
                 break;
             case 4:
+                inGame.BossStagePosition(inGame.Player.transform);
                 UIManager.Instance.HideUI("Boss Stage Canvas");
                 UIManager.Instance.ShowUI("Boss Stage HP Canvas");
                 Debug.Log("보스 스테이지로 이동합니다.");

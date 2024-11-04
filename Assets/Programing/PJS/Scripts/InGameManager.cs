@@ -51,4 +51,9 @@ public class InGameManager : MonoBehaviour
         else
             player.position = bonfire.position;
     }
+
+    public void BossStagePosition(Transform player)
+    {
+        player.position = playerPoints[playerPoints.Count - 1].position;
+    }
 }

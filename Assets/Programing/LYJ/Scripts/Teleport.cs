@@ -2,8 +2,13 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour, IInteractable
 {
+    [SerializeField] StageManager stageManager;
+
     public void Interact()
     {
-        UIManager.Instance.ShowUI("Next Stage Canvas");
+        if (stageManager.StageNum == stageManager.LastStage)
+            UIManager.Instance.ShowUI("Boss Stage Canvas");
+        else
+            UIManager.Instance.ShowUI("Next Stage Canvas");
     }
 }
