@@ -371,10 +371,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterManager: {fileID: 1689335786}
   monsterPrefabs:
-  - {fileID: 3812234308610029933, guid: 72beeadbab9bc9845bc2f54a16faa403, type: 3}
-  - {fileID: 1125739104437509208, guid: 3e7a8b0f75680314398f04ea0039a5d6, type: 3}
-  - {fileID: 253511833134940362, guid: e5cc715f2042b5349abf3dec1817ec31, type: 3}
   - {fileID: 471594640711535826, guid: e0acf828815f12943aee9b4528b051f9, type: 3}
+  - {fileID: 2382564013722392273, guid: 1c7c16e248bc436438756ee821ca7af6, type: 3}
   spawnPoint: {fileID: 49040674}
 --- !u!4 &546862642
 Transform:
