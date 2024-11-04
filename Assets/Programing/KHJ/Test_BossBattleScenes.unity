@@ -43919,6 +43919,10 @@ PrefabInstance:
       propertyPath: stageOrigin
       value: 
       objectReference: {fileID: 331568439}
+    - target: {fileID: 7571090104795482347, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: origin
+      value: 
+      objectReference: {fileID: 331568439}
     - target: {fileID: 8794235227383829233, guid: 3608345598879de4292b35ec7a024626, type: 3}
       propertyPath: origin
       value: 

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 3510127295272804016}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -104,7 +104,6 @@ MonoBehaviour:
   target: {fileID: 0}
   isTargeting: 0
   damage: 11
-  stageOrigin: {fileID: 0}
 --- !u!114 &1015043755597139826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -499,7 +498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 2407789656087660818}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -549,7 +548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 5701568190963321822}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -771,7 +770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 9151858020369784901}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -821,7 +820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 1305098831221623326}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -1189,7 +1188,6 @@ MonoBehaviour:
   target: {fileID: 0}
   isTargeting: 0
   damage: 12
-  stageOrigin: {fileID: 0}
 --- !u!114 &8794235227383829233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1738,6 +1736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6118150892704205742}
   - component: {fileID: 1316598721510877945}
+  - component: {fileID: 7571090104795482347}
   m_Layer: 0
   m_Name: Target Origin
   m_TagString: Untagged
@@ -1787,7 +1786,19 @@ MonoBehaviour:
   target: {fileID: 0}
   isTargeting: 0
   damage: 0
-  stageOrigin: {fileID: 0}
+--- !u!114 &7571090104795482347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5017237847660810270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93eb64af5381fb9429b1af660c855002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  origin: {fileID: 0}
 --- !u!1 &5075785767493575578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,7 +2060,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 5491852728818323162}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -2650,7 +2661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 772492776884466550}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -2700,7 +2711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 6696168276333207272}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -2808,7 +2819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 8809821789738882742}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -2904,7 +2915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 1645692890963121952}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
@@ -3444,7 +3455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 0}
+  target: {fileID: 4863429816819646802}
   isTargeting: 0
   damage: 7
   projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
