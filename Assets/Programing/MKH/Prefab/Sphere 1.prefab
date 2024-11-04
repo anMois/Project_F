@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30bf16602c6f92d4f96bd98708ee1cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFactiory: {fileID: 8095007250526380284, guid: 0c0f0c0d4545c9845ac2ef092c9d4c5a, type: 3}
+  explosionFactory: {fileID: 1339124478685776, guid: afec951aabf53424687e910e9a6f9e4f, type: 3}
   target: {fileID: 0}
+  naming: Monster
   speed: 30
   dmg: 10

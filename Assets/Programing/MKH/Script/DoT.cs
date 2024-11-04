@@ -7,9 +7,11 @@ using UnityEngine;
 public class DoT : MonoBehaviour
 {
     [SerializeField] int dmg;
-    [SerializeField] string name;
+    [SerializeField] string naming;
+    [SerializeField] float time;
     Coroutine damageCoroutine;
     Dictionary<IDamageable, Coroutine> _damageCoroutine = new Dictionary<IDamageable, Coroutine>();
+
         
     IDamageable damageable;
 
@@ -25,14 +27,13 @@ public class DoT : MonoBehaviour
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag(name);
+        bool valid = other.CompareTag(naming);
         if (!valid)
             return;
 
         damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            //StartDamage(damageable);
             Coroutine coroutine = StartCoroutine(InflictdamageOverTime(damageable));
             _damageCoroutine.Add(damageable, coroutine);
             Debug.Log(coroutine);
@@ -49,7 +50,7 @@ public class DoT : MonoBehaviour
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag(name);
+        bool valid = other.CompareTag(naming);
         if (!valid)
             return;
 
@@ -57,7 +58,6 @@ public class DoT : MonoBehaviour
         damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            //Debug.Log(_damageCoroutine.Contains(damageable));
             Debug.Log(_damageCoroutine.ContainsKey(damageable));
             Debug.Log(_damageCoroutine[damageable]);
             Coroutine coroutine = _damageCoroutine[damageable];
@@ -98,9 +98,10 @@ public class DoT : MonoBehaviour
     /// </summary>
     /// <param name="name">Tag name of the attack target</param>
     /// <param name="attackDamage">attackDamage</param>
-    public void Damage(string name, int attackDamage)       // 실제로 피해 입히는 부분
+    public void Damage(string name, int attackDamage, float time)       // 실제로 피해 입히는 부분
     {
-        this.name = name;
+        this.naming = name;
         dmg = attackDamage;
+        this.time = time;
     }
 }
