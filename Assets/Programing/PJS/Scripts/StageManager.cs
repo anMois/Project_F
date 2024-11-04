@@ -6,11 +6,15 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     public enum StageState { Normal, Elite, NonBattle, Clear, Choice }
+    [SerializeField] InGameManager inGame;
+
+    [Header("현재 상태, 이전 상태")]
     [SerializeField] StageState curState = StageState.Normal;
     [SerializeField] StageState preState;
+    
+    [Header("현재 스테이지, 현재 웨이브 (0 부터 시작)")]
     [SerializeField] int stageNum;
     [SerializeField] int curWave;
-    [SerializeField] InGameManager inGame;
 
     [Header("스테이지별 웨이브 수")]
     [SerializeField] List<int> maxWave;

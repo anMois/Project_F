@@ -6,14 +6,13 @@ public class InGameManager : MonoBehaviour
 {
     [Header("플레이어 시작 위치(마지막은 보스스테이지)")]
     [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
-    [Header("상점")]
+    [Header("상점, 모닥불 스테이지")]
     [SerializeField] Transform store;
-    [Header("모닥불")]
     [SerializeField] Transform bonfire;
     [Header("전투 스테이지")]
     [SerializeField] List<GameObject> stages;       //생성되는 스테이지
 
-    [Header("씬에 존재하는 플레이어, 시작 존")]
+    [Header("씬에 존재하는 플레이어, 시작 안전구역, 보스 드래곤")]
     [SerializeField] GameObject player;             //플레이어
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
     [SerializeField] GameObject boss;               //보스 드래곤

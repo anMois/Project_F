@@ -45,7 +45,7 @@ public class CreateStageMonster : MonoBehaviour
     {
         int num;
         int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
-        Debug.Log($"{_state} | {_curWave} / {_fullWave} = {_curWave == _fullWave}");
+
         if (_state == StageState.Elite && _curWave == _fullWave)
         {
             num = Random.Range(normalMosterCount, monsterData.MonsterList.Count);
@@ -55,8 +55,7 @@ public class CreateStageMonster : MonoBehaviour
             num = Random.Range(0, normalMosterCount);
         }
 
-        if (num < 0)
-            num = 0;
+        if (num < 0)    num = 0;
 
         return num;
     }
