@@ -337,7 +337,7 @@ GameObject:
   - component: {fileID: 2404695273896318960}
   m_Layer: 7
   m_Name: FlyingEye_normal
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

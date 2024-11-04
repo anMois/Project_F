@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 8161931190687553896}
   m_Layer: 7
   m_Name: BrownGollem_normal
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
