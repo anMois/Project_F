@@ -625,7 +625,7 @@ MonoBehaviour:
   attackDamage: 10
   attackCoolDown: 4
   dropRate: 2
-  projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
+  projectilePrefab: {fileID: 1034287154425625196, guid: 1b950784d55f32a41bcc815120e8d086, type: 3}
   muzzlePoint: {fileID: 3418092063502884500}
 --- !u!195 &2404695273896318960
 NavMeshAgent:

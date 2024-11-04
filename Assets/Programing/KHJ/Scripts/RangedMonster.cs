@@ -20,8 +20,10 @@ public class RangedMonster : Monster
     {
         base.Attack();
 
+        Vector3 offset = new Vector3(0, 2f, 0);
+
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, muzzlePoint.rotation);
-        newProjectile.Launch(friendlyLayer, target.transform.GetChild(0), attackDamage);
+        newProjectile.Launch(friendlyLayer, target.transform.position + offset, attackDamage);
 
         animator.SetInteger("Attack Motion", 0);
         animator.SetTrigger("Draw");

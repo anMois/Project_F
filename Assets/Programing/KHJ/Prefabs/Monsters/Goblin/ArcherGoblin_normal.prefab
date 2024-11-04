@@ -1049,9 +1049,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curState: 0
   target: {fileID: 0}
-  targetLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
   visualization: 1
   attackMaxRange: 15
   guardRange: 12
@@ -1063,7 +1060,7 @@ MonoBehaviour:
   attackDamage: 7
   attackCoolDown: 4
   dropRate: 1
-  projectilePrefab: {fileID: 3019771919931792588, guid: 820f9126c8927124f8cb7084715b218d, type: 3}
+  projectilePrefab: {fileID: 8747082728905532503, guid: 58a84b6189222424d8d283d81b9b4418, type: 3}
   muzzlePoint: {fileID: 876950937531453564}
 --- !u!195 &3604814864744334998
 NavMeshAgent:
