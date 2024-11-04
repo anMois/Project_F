@@ -17,7 +17,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] CreateStageMonster curStageMonster;
     [Header("스테이지 클리어 보상 상자")]
     [SerializeField] ClearBox clearBox;
-    [SerializeField] Teleport potal;
+    [SerializeField] Teleport nextPotal;
     [SerializeField] InGameManager inGame;
 
     private int curWave;
@@ -25,7 +25,7 @@ public class StageManager : MonoBehaviour
 
     public int StageNum { get { return stageNum; } set { stageNum = value; } }
     public int CurWave { get { return curWave; } set { curWave = value; } }
-    public StageState CurState { set { curState = value; } }
+    
 
     private void Awake()
     {
@@ -34,7 +34,14 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
-        SelectCreateStage();
+        //스테이지들 중 현재 진행 중인 스테이지에 해당한 CreateStageMonster 찾기
+        for (int i = 0; i < createStageMonsters.Length; i++)
+        {
+            if (createStageMonsters[i].transform.parent.gameObject.activeSelf)
+            {
+                curStageMonster = createStageMonsters[i];
+            }
+        }
 
         StartCoroutine(MonsterSpawnRoutine());
     }
@@ -43,7 +50,7 @@ public class StageManager : MonoBehaviour
     {
         WaitForSeconds delay = new WaitForSeconds(1.5f);
 
-        while (true)
+        while (curState != StageState.NonBattle)
         {
             yield return delay;
             //스테이지 전투 상황
@@ -65,11 +72,6 @@ public class StageManager : MonoBehaviour
                     curWave = 0;
                 }
             }
-            //스테이지 비전투 상황
-            else
-            {
-                yield return null;
-            }
         }
     }
 
@@ -82,35 +84,8 @@ public class StageManager : MonoBehaviour
         }
         else if (curState == StageState.Choice && clearBox.IsOpen)
         {
-            clearBox.transform.position = Vector3.zero;
-            potal.transform.position = inGame.CurPlayerPoint.position;
-        }
-    }
-
-   /// <summary>
-   /// 스테이지 이동
-   /// </summary>
-   /// <param name="changeStage">이동한 스테이지</param>
-    public void NextStage(StageState changeStage)
-    {
-        stageNum++;
-        curState = changeStage;
-        SelectCreateStage();
-    }
-
-    private void SelectCreateStage()
-    {
-        //스테이지들 중 현재 진행 중인 스테이지에 해당한 CreateStageMonster 찾기
-        for (int i = 0; i < createStageMonsters.Length; i++)
-        {
-            if (createStageMonsters[i].transform.parent.gameObject == inGame.CurStage)
-            {
-                curStageMonster = createStageMonsters[i];
-            }
-            else
-            {
-                createStageMonsters[i].transform.parent.gameObject.SetActive(false);
-            }
+            clearBox.gameObject.SetActive(false);
+            nextPotal.transform.position = inGame.CurPlayerPoint.position;
         }
     }
 }

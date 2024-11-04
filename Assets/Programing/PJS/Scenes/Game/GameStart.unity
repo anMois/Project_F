@@ -1109,8 +1109,6 @@ MonoBehaviour:
   descriptionText: {fileID: 1012187875}
   itemImageComponent: {fileID: 122713120}
   statusWindowCloseButton: {fileID: 409460660}
-  gameClearExitButton: {fileID: 0}
-  gameClearItemImage: []
 --- !u!4 &169073241
 Transform:
   m_ObjectHideFlags: 0
@@ -2151,11 +2149,6 @@ MonoBehaviour:
   - {fileID: 1461097993}
   - {fileID: 1461097992}
   - {fileID: 1461097991}
-  itemNameText: {fileID: 0}
-  itemDescriptionText: {fileID: 0}
-  itemImage: {fileID: 0}
-  itemElementImage: {fileID: 0}
-  itemElementalImage: []
 --- !u!4 &1347985254
 Transform:
   m_ObjectHideFlags: 0
@@ -2889,7 +2882,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curPrice: 10000
   priceText: {fileID: 1220010995}
-  gainPriceText: {fileID: 0}
   hpBar: {fileID: 563746041}
   hpText: {fileID: 563746040}
   currentHealth: 0

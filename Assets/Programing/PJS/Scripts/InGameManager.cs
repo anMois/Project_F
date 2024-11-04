@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
-    [Header("플레이어 전투 시작 위치(마지막이 보스 스테이지)")]
+    [Header("플레이어 시작 위치")]
     [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
-    [Header("상점")]
-    [SerializeField] Transform store;
-    [Header("모닥불")]
-    [SerializeField] Transform bonfire;
     [Header("전투 스테이지")]
     [SerializeField] List<GameObject> stages;       //생성되는 스테이지
-    
 
     [Header("씬에 존재하는 플레이어, 시작 존")]
     [SerializeField] GameObject player;             //플레이어
@@ -21,20 +16,24 @@ public class InGameManager : MonoBehaviour
     private int stageNum;
 
     public Transform CurPlayerPoint { get { return playerPoints[stageNum]; } }
-    public GameObject CurStage { get { return stages[StageNum]; } }
     public int StageNum { get { return stageNum; } }
-    public GameObject Player { get { return player; } }
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        RandomStagePoint();
+        RandomPoint();
     }
 
-    /// <summary>
-    /// 랜덤한 전투 스테이지 이동
-    /// </summary>
-    public void RandomStagePoint()
+    private void Start()
+    {
+        for (int i = 0; i < stages.Count; i++)
+        {
+            if (i != stageNum)
+                stages[i].SetActive(false);
+        }
+    }
+
+    private void RandomPoint()
     {
         stageNum = Random.Range(0, stages.Count);
         
@@ -45,18 +44,5 @@ public class InGameManager : MonoBehaviour
     {
         player.position = playerPoints[num].position;
         lifeZone.position = playerPoints[num].position;
-    }
-
-    /// <summary>
-    /// 상점 또는 모닥불로 이동
-    /// </summary>
-    /// <param name="player">플레이어</param>
-    /// <param name="choice">선택권</param>
-    public void StoreOrBonfirePosition(Transform player, bool choice)
-    {
-        if(choice)
-            player.position = store.position;
-        else
-            player.position = bonfire.position;
     }
 }
