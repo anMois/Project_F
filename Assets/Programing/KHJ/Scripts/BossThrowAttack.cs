@@ -24,7 +24,9 @@ public class BossThrowAttack : BossAttack
 
     private void Throw()
     {
+        Vector3 offset = new Vector3(0, 3f, 0);
+
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, Quaternion.identity);
-        newProjectile.Launch(friendlyLayer, target, damage);
+        newProjectile.Launch(friendlyLayer, target.position + offset, damage);
     }
 }

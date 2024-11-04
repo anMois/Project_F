@@ -48,7 +48,7 @@ MonoBehaviour:
   target: {fileID: 3510127295272804016}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &36423039824695260
 GameObject:
@@ -347,7 +347,7 @@ MonoBehaviour:
   target: {fileID: 0}
   isTargeting: 0
   damage: 15
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &877362889799735347
 GameObject:
@@ -501,7 +501,7 @@ MonoBehaviour:
   target: {fileID: 2407789656087660818}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &1137416678888121550
 GameObject:
@@ -609,7 +609,7 @@ MonoBehaviour:
   target: {fileID: 5701568190963321822}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &1495844806552495334
 GameObject:
@@ -947,7 +947,7 @@ MonoBehaviour:
   target: {fileID: 9151858020369784901}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &2170193543559880044
 GameObject:
@@ -997,7 +997,7 @@ MonoBehaviour:
   target: {fileID: 1305098831221623326}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &2289392515021386589
 GameObject:
@@ -2469,7 +2469,7 @@ MonoBehaviour:
   target: {fileID: 5491852728818323162}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &6008634386772365901
 GameObject:
@@ -3070,7 +3070,7 @@ MonoBehaviour:
   target: {fileID: 772492776884466550}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &7203210489119279586
 GameObject:
@@ -3178,7 +3178,7 @@ MonoBehaviour:
   target: {fileID: 6696168276333207272}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &7339744504116536530
 GameObject:
@@ -3357,7 +3357,7 @@ MonoBehaviour:
   target: {fileID: 8809821789738882742}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &7693249931991928405
 GameObject:
@@ -3453,7 +3453,7 @@ MonoBehaviour:
   target: {fileID: 1645692890963121952}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &7758480704344018921
 GameObject:
@@ -4052,7 +4052,7 @@ MonoBehaviour:
   target: {fileID: 4863429816819646802}
   isTargeting: 0
   damage: 7
-  projectilePrefab: {fileID: 8503357622313916358, guid: 90fd462c492824d4db4f31e45bbeca63, type: 3}
+  projectilePrefab: {fileID: 3118461998578259867, guid: d82c2d9278b024f4f9c965019dccfb52, type: 3}
   muzzlePoint: {fileID: 54025886530143381}
 --- !u!1 &8625612794194369511
 GameObject:
