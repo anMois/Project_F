@@ -17,7 +17,6 @@ public partial class PlayerMover : MonoBehaviour
     public int jumpCount;
     Vector3 moveDir;
 
-    Player players;
     PlayerAttack attack;
 
 
@@ -41,7 +40,6 @@ public partial class PlayerMover : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GetComponent<Transform>();
         rigid = GetComponent<Rigidbody>();
-        players = GetComponent<Player>();
 
         jumpCount = maxJump;
         Cursor.lockState = CursorLockMode.Locked;
@@ -50,11 +48,7 @@ public partial class PlayerMover : MonoBehaviour
 
     private void Update()
     {
-        if (players.curHp > 0)
-        {
-            Move();
-            Dash();
-        }
+        Move();
         AnimaitorPlay();
     }
 
@@ -99,7 +93,8 @@ public partial class PlayerMover : MonoBehaviour
 
     }
 
-
+    #region 대쉬 (현재 사용 X)
+    /*
     private void Dash()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isGround)
@@ -122,6 +117,8 @@ public partial class PlayerMover : MonoBehaviour
             }
         }
     }
+    */
+    #endregion
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -209,12 +206,6 @@ public partial class PlayerMover : MonoBehaviour
         else if (rigid.velocity.y < -2f)
         {
             checkAniHash = jumpDownHash;
-        }
-
-
-        if (players.curHp <= 0)
-        {
-            checkAniHash = dieHash;
         }
 
         if (curAniHash != checkAniHash)
