@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1821498568329644837}
   - component: {fileID: 1821498568329644836}
   - component: {fileID: 1821498568329644839}
-  - component: {fileID: 1821498568329644838}
   - component: {fileID: 8187323273026344485}
+  - component: {fileID: 1821498568329644838}
   - component: {fileID: -3423648399131083031}
   m_Layer: 0
   m_Name: Shell(F)
@@ -100,6 +100,23 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8187323273026344485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821498568329644833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0b77b725ec170f4e8cec0e7ba21d3b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionFactory: {fileID: 7512728781299941911, guid: bf046a0656305f4429731a1f2b07a7d1, type: 3}
+  target: {fileID: 0}
+  naming: Monster
+  speed: 30
+  dmg: 10
 --- !u!114 &1821498568329644838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,23 +134,6 @@ MonoBehaviour:
   m_timeToReduce: 9
   m_reduceFactor: 1
   m_upFactor: 0
---- !u!114 &8187323273026344485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1821498568329644833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0b77b725ec170f4e8cec0e7ba21d3b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosionFactory: {fileID: 7512728781299941911, guid: bf046a0656305f4429731a1f2b07a7d1, type: 3}
-  target: {fileID: 0}
-  naming: 
-  speed: 30
-  dmg: 10
 --- !u!54 &-3423648399131083031
 Rigidbody:
   m_ObjectHideFlags: 0
