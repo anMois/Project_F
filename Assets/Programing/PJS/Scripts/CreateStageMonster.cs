@@ -21,7 +21,7 @@ public class CreateStageMonster : MonoBehaviour
     /// </summary>
     public void MonsterSpawn()
     {
-        int num = RandomNum();
+        int num = 1;//RandomNum();
         Debug.Log(num);
         string[] point = monsterData.MonsterList[num].Split(',');
 
@@ -43,8 +43,9 @@ public class CreateStageMonster : MonoBehaviour
 
     private int RandomNum()
     {
+        Debug.Log(monsterData.MonsterList);
         int num = Random.Range(0, monsterData.MonsterList.Count);
-
+        //return num;
         if (monsterData.MonsterListActive[num] == false)
         {
             monsterData.MonsterListActive[num] = true;

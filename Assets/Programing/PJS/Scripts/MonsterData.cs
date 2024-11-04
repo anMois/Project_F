@@ -6,10 +6,10 @@ using UnityEngine.Networking;
 public class MonsterData : MonoBehaviour
 {
     //몬스터 테이블
-    const string monsterData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=0&format=csv";
+    const string monsterData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=0&format=csv";
 
     //몬스터 배치 테이블
-    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1cqURKknVtc4HjHlWKmOfNi0SYTNzrUZoZbPl3gMIWqw/export?gid=1240725374&format=csv";
+    const string monsterSpawnData = "https://docs.google.com/spreadsheets/d/1vNCS05iqUkSMKadTZCZYP3mbEUtViNJuxROduaBiYk0/export?gid=1049510758&format=csv";
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();    // 몬스터를 저장할 딕셔너리
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
@@ -42,7 +42,6 @@ public class MonsterData : MonoBehaviour
 
         string reciveText = requestMonsterSpawn.downloadHandler.text;
         ParserToMosterSpawnData(reciveText);
-        Debug.Log(reciveText);
         monsterListActive = new bool[monsterList.Count];
         yield break;
     }
@@ -52,10 +51,8 @@ public class MonsterData : MonoBehaviour
         string[] line = data.Split('\n');
         for (int i = 1; i < line.Length; i++)
         {
-            Debug.Log(line[i]);
             string[] datas = line[i].Split(',');
             int.TryParse(datas[0], out int id);
-            Debug.Log(datas[1]);
             if (i != line.Length - 1)
             {
                 datas[1] = datas[1].Remove(datas[1].IndexOf('\r'));
@@ -68,7 +65,6 @@ public class MonsterData : MonoBehaviour
         foreach (KeyValuePair<int, GameObject> item in monster)
         {
             monsterKey.Add(item.Key);
-            Debug.Log($"{item.Key} / {item.Value}");
         }
     }
 
@@ -78,7 +74,6 @@ public class MonsterData : MonoBehaviour
         {
             if (monsterPrefabs[i].name == name)
             {
-                Debug.Log(monsterPrefabs[i]);
                 return monsterPrefabs[i];
             }
         }
@@ -92,11 +87,6 @@ public class MonsterData : MonoBehaviour
         for (int i = 1; i < line.Length; i++)
         {
             monsterList.Add(line[i]);
-        }
-
-        for (int i = 0; i < monsterList.Count; i++)
-        {
-            Debug.Log(monsterList[i]);
         }
     }
 }

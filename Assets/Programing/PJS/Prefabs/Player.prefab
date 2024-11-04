@@ -1917,7 +1917,7 @@ GameObject:
   - component: {fileID: 963707572281769758}
   - component: {fileID: 963707572281769764}
   - component: {fileID: 1868223619}
-  - component: {fileID: 3248287302117460282}
+  - component: {fileID: 512076016}
   m_Layer: 1
   m_Name: Player
   m_TagString: Player
@@ -2039,15 +2039,14 @@ MonoBehaviour:
   bulletPrefab:
   - {fileID: 2172544902415000612, guid: 57da0dff28d808f42bdd2509bb5adbdf, type: 3}
   - {fileID: 6466556031725877471}
-  - {fileID: 3421872564084880493, guid: dbed3ec834f9e1d48854bbb54797d662, type: 3}
+  - {fileID: 8958758172547862307, guid: 1bd7daa5d0f0be3499b1c091295038d5, type: 3}
   ani: {fileID: 0}
   target: {fileID: 963707570923837875}
   shellTarget: {fileID: 2084033348}
   lazer: {fileID: 6466556031725877471}
   maxtime: 20
-  time: 20
-  bombFactory: {fileID: 0}
-  attackDmg: 999
+  time: 5
+  bombFactory: {fileID: 8958758172547862307, guid: 1bd7daa5d0f0be3499b1c091295038d5, type: 3}
 --- !u!114 &1868223619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2063,7 +2062,7 @@ MonoBehaviour:
   playerMover: {fileID: 0}
   maxHp: 10
   curHp: 0
---- !u!114 &3248287302117460282
+--- !u!114 &512076016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2076,7 +2075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   yAngle: 0
-  mouserotateSpeed: 5
+  mouserotateSpeed: 10
 --- !u!1 &962553429498723451
 GameObject:
   m_ObjectHideFlags: 0
