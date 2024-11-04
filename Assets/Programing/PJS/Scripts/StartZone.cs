@@ -7,11 +7,6 @@ public class StartZone : MonoBehaviour
 {
     public UnityAction OnAreaOut;
 
-    private void Start()
-    {
-        GetComponent<SphereCollider>().enabled = true;
-    }
-
     private void OnTriggerExit(Collider other)
     {
         if(other.transform.CompareTag("Player"))

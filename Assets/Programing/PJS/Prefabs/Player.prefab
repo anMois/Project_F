@@ -1917,6 +1917,7 @@ GameObject:
   - component: {fileID: 963707572281769758}
   - component: {fileID: 963707572281769764}
   - component: {fileID: 1868223619}
+  - component: {fileID: 3248287302117460282}
   m_Layer: 1
   m_Name: Player
   m_TagString: Player
@@ -2014,7 +2015,6 @@ MonoBehaviour:
   runSpeed: 10
   jumpPower: 5
   dashSpeed: 2
-  yAngle: 120
   mouserotateSpeed: 5
   animator: {fileID: 0}
   rigid: {fileID: 0}
@@ -2045,8 +2045,9 @@ MonoBehaviour:
   shellTarget: {fileID: 2084033348}
   lazer: {fileID: 6466556031725877471}
   maxtime: 20
-  damagetime: 20
   time: 20
+  bombFactory: {fileID: 0}
+  attackDmg: 999
 --- !u!114 &1868223619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2062,6 +2063,20 @@ MonoBehaviour:
   playerMover: {fileID: 0}
   maxHp: 10
   curHp: 0
+--- !u!114 &3248287302117460282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962548917782460245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c81738be37c2449a1318621c22f1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yAngle: 0
+  mouserotateSpeed: 5
 --- !u!1 &962553429498723451
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ public class InGameManager : MonoBehaviour
 {
     [Header("플레이어 시작 위치")]
     [SerializeField] List<Transform> playerPoints;  //플레이어 시작 위치
+    [Header("상점")]
+    [SerializeField] Transform store;
+    [Header("모닥불")]
+    [SerializeField] Transform bonfire;
     [Header("전투 스테이지")]
     [SerializeField] List<GameObject> stages;       //생성되는 스테이지
 
@@ -13,25 +17,20 @@ public class InGameManager : MonoBehaviour
     [SerializeField] GameObject player;             //플레이어
     [SerializeField] GameObject startZone;          //스테이지 플레이어 안전구역
 
-    private int stageNum;
+    [SerializeField] int stageNum;
+
+    public Transform CurPlayerPoint { get { return playerPoints[stageNum]; } }
+    public GameObject CurStage { get { return stages[StageNum]; } }
     public int StageNum { get { return stageNum; } }
+    public GameObject Player { get { return player; } }
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        RandomPoint();
+        RandomStagePoint();
     }
 
-    private void Start()
-    {
-        for (int i = 0; i < stages.Count; i++)
-        {
-            if (i != stageNum)
-                stages[i].SetActive(false);
-        }
-    }
-
-    private void RandomPoint()
+    public void RandomStagePoint()
     {
         stageNum = Random.Range(0, stages.Count);
         
@@ -42,5 +41,19 @@ public class InGameManager : MonoBehaviour
     {
         player.position = playerPoints[num].position;
         lifeZone.position = playerPoints[num].position;
+        lifeZone.GetComponent<SphereCollider>().enabled = true;
+    }
+
+    public void StoreOrBonfirePosition(Transform player, bool choice)
+    {
+        if (choice)
+            player.position = store.position;
+        else
+            player.position = bonfire.position;
+    }
+
+    public void BossStagePosition(Transform player)
+    {
+        player.position = playerPoints[playerPoints.Count - 1].position;
     }
 }

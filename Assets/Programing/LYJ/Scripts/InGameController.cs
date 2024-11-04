@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static StageManager;
 
 public class InGameController : MonoBehaviour
 {
@@ -25,6 +26,12 @@ public class InGameController : MonoBehaviour
 
     [Header("Elemental Images")]
     [SerializeField] public Sprite[] elementalImages;
+
+    [Header("Stage")]
+    [SerializeField] ClearBox clearBox;
+    [SerializeField] Teleport potal;
+    [SerializeField] StageManager stageManager;
+    [SerializeField] InGameManager inGame;
 
 
     private void Start()
@@ -82,6 +89,8 @@ public class InGameController : MonoBehaviour
         {
             continueButton.interactable = false;
         }
+
+        inGame = GetComponent<InGameManager>();
     }
 
     private void Update()
@@ -150,6 +159,7 @@ public class InGameController : MonoBehaviour
     /// </summary>
     public void NextStageCanvasActive()
     {
+        clearBox.IsOpen = true;
         UIManager.Instance.HideUI("Stage Clear Canvas");
     }
 
@@ -162,18 +172,25 @@ public class InGameController : MonoBehaviour
         switch (stageNumber)
         {
             case 1:
+                inGame.RandomStagePoint();
+                stageManager.NextStage(StageState.Battle);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("첫 번째 스테이지로 이동합니다.");
                 break;
             case 2:
+                inGame.RandomStagePoint();
+                stageManager.NextStage(StageState.Battle);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("두 번째 스테이지로 이동합니다.");
                 break;
             case 3:
+                stageManager.NextStage(StageState.NonBattle);
+                inGame.StoreOrBonfirePosition(inGame.Player.transform, true);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("세 번째 스테이지로 이동합니다.");
                 break;
             case 4:
+                inGame.BossStagePosition(inGame.Player.transform);
                 UIManager.Instance.HideUI("Boss Stage Canvas");
                 UIManager.Instance.ShowUI("Boss Stage HP Canvas");
                 Debug.Log("보스 스테이지로 이동합니다.");
