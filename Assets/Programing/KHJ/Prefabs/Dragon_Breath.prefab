@@ -28986,7 +28986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0.4
-  onLifeEnd: 2
+  onLifeEnd: 1
 --- !u!114 &8155160892482502402
 MonoBehaviour:
   m_ObjectHideFlags: 0

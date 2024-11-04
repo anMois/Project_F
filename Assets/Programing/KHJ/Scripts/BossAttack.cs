@@ -24,13 +24,14 @@ public class BossAttack : MonoBehaviour
             ranges.Add(range);
         }
 
-        if (target == null)
-            target = GameObject.FindGameObjectWithTag("Player").transform;
         gameObject.SetActive(false);
     }
 
     private void OnEnable()
     {
+        if (target == null)
+            target = GameObject.FindGameObjectWithTag("Player").transform;
+
         if (isTargeting)
         {
             transform.position = target.position;
