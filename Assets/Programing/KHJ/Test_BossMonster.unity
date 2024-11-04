@@ -1124,11 +1124,23 @@ PrefabInstance:
       propertyPath: stageOrigin
       value: 
       objectReference: {fileID: 1932521093}
+    - target: {fileID: 1316598721510877945, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: stageOrigin
+      value: 
+      objectReference: {fileID: 1932521093}
+    - target: {fileID: 1349967500762334248, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: stageOrigin
+      value: 
+      objectReference: {fileID: 1932521093}
     - target: {fileID: 2004776556208025063, guid: 3608345598879de4292b35ec7a024626, type: 3}
       propertyPath: stageOrigin
       value: 
       objectReference: {fileID: 1932521093}
     - target: {fileID: 2210110902153870547, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: stageOrigin
+      value: 
+      objectReference: {fileID: 1932521093}
+    - target: {fileID: 2637547526620615200, guid: 3608345598879de4292b35ec7a024626, type: 3}
       propertyPath: stageOrigin
       value: 
       objectReference: {fileID: 1932521093}

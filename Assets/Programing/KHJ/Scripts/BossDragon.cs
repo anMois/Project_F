@@ -10,6 +10,8 @@ public class BossDragon : MonoBehaviour, IDamageable
     }
 
     [SerializeField] Transform target;
+    [SerializeField] Transform origin;
+
     [SerializeField] BossCheck behindCheck;
     [SerializeField] BossAttack[] attacks;
     [SerializeField] int[] attackRates;
@@ -22,6 +24,8 @@ public class BossDragon : MonoBehaviour, IDamageable
     [SerializeField] int curHp;
     [SerializeField] float moveSpeed;
 
+    private Animator animator;
+
     private const int PatternAttackPeriod = 3;
     private float attackJudgeTime = 0.1f;    // time of attack range collider remains set as true
     private bool isTargetBehind;
@@ -30,6 +34,8 @@ public class BossDragon : MonoBehaviour, IDamageable
 
     private void Awake()
     {
+        animator = GetComponent<Animator>();
+
         curHp = maxHp;
     }
 
@@ -61,6 +67,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             BossAttackType type = NextAttackType(BossAttackType.LandPattern1, BossAttackType.LandPattern2);
 
             // Attack
+            animator.SetInteger("Attack", (int)type + 1);
             StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
         // Attack
@@ -70,6 +77,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             
             if (isTargetBehind)
             {
+                animator.SetInteger("Attack", (int)BossAttackType.Land3 + 1);
                 StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.Land3]));
             }
             else
@@ -77,6 +85,7 @@ public class BossDragon : MonoBehaviour, IDamageable
                 BossAttackType type = NextAttackType(BossAttackType.Land1, BossAttackType.Land4);
 
                 // Move & Attack
+                animator.SetInteger("Attack", (int)type + 1);
                 StartCoroutine(MoveRoutine());
                 StartCoroutine(AttackRoutine(attacks[(int)type]));
             }
@@ -116,6 +125,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             //BossAttackType type = NextAttackType(BossAttackType.FlyPattern1, BossAttackType.FlyPattern2);
 
             //// Attack
+            animator.SetInteger("Attack", (int)BossAttackType.FlyPattern2 + 1);
             StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.FlyPattern2]));
         }
         // Attack
@@ -124,6 +134,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             BossAttackType type = NextAttackType(BossAttackType.Fly1, BossAttackType.Fly2);
 
             // Attack
+            animator.SetInteger("Attack", (int)type + 1);
             StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
     }
@@ -152,7 +163,10 @@ public class BossDragon : MonoBehaviour, IDamageable
     {
         Debug.Log($"[Dragon] {bossAttack.gameObject.name}!");
         bossAttack.gameObject.SetActive(true);
+
         yield return new WaitForSeconds(attackJudgeTime);
+
+        animator.SetInteger("Attack", 0);
         bossAttack.gameObject.SetActive(false);
     }
 
@@ -172,16 +186,37 @@ public class BossDragon : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Destroy(gameObject);
+        animator.SetTrigger("Death");
+        Destroy(gameObject, 5f);
     }
 
     IEnumerator FlyRoutine()
     {
-        float height = 3f;
-
-        while (transform.position.y < height)
+        float height = 7f;
+        Vector3 offset = new Vector3(-19 * 5 / 2, height, 22 * 5 / 2);
+        Vector3 center = origin.position + offset;
+        
+        // Fly to center
+        transform.rotation = Quaternion.LookRotation(center - transform.position);
+        while (Vector3.Distance(transform.position, center) > 0.1f)
         {
-            transform.position += moveSpeed * Time.deltaTime * Vector3.up;
+            transform.position = Vector3.MoveTowards(transform.position, center, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Move as radius
+        float radius = 40f;
+        while (Vector3.Distance(transform.position, center) < radius)
+        {
+            transform.position += moveSpeed * Time.deltaTime * transform.forward;
+        }
+
+        // Glide circle
+        float angle = moveSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(new Vector3(0, transform.rotation.y, 0));
+        while (curHp > 0)
+        {
+            transform.RotateAround(center, transform.up, angle);
             yield return null;
         }
     }
@@ -190,12 +225,9 @@ public class BossDragon : MonoBehaviour, IDamageable
     {
         isFlying = true;
         attackCount = 0;
-        if (LandAttackCoroutine != null)
-        {
-            StopCoroutine(LandAttackCoroutine);
-            LandAttackCoroutine = null;
-        }
+        StopAllCoroutines();
 
+        animator.SetTrigger("Fly");
         StartCoroutine(FlyRoutine());
         StartCoroutine(FlyAttackRoutine());
     }

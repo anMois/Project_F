@@ -2846,7 +2846,7 @@ GameObject:
   - component: {fileID: 7077635931406918108}
   m_Layer: 7
   m_Name: BlueSerpent_normal
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
