@@ -33,6 +33,10 @@ public class InGameController : MonoBehaviour
     [SerializeField] StageManager stageManager;
     [SerializeField] InGameManager inGame;
 
+    private void OnEnable()
+    {
+        InitializeContinueButton();
+    }
 
     private void Start()
     {
@@ -204,6 +208,14 @@ public class InGameController : MonoBehaviour
         if (continueButton != null)
         {
             continueButton.interactable = true;
+        }
+    }
+
+    private void InitializeContinueButton()
+    {
+        if (continueButton != null)
+        {
+            continueButton.interactable = false;
         }
     }
 }
