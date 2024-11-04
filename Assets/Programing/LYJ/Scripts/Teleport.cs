@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour, IInteractable
 {
+    [SerializeField] StageManager stageManager;
+
     public void Interact()
     {
-        Debug.Log("텔레포트 ui 진입 전");
-        UIManager.Instance.ShowUI("Next Stage Canvas");
-        Debug.Log("텔레포트 ui 진입 후");
+        if (stageManager.StageNum == stageManager.LastStage)
+            UIManager.Instance.ShowUI("Boss Stage Canvas");
+        else
+            UIManager.Instance.ShowUI("Next Stage Canvas");
     }
 }

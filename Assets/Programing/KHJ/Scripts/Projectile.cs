@@ -51,6 +51,8 @@ public class Projectile : MonoBehaviour
     /// </summary>
     /// <param name="friendlyLayer">layer of shooter's friendly</param>
     /// <param name="target">target to set projectile direction</param>
+    /// <param name="attackaDamage">projectile damage when crashed with damageable</param>
+    /// <param name="launchSpeed">projectile speed, default: it's own speed</param>
     public void Launch(int friendlyLayer, Transform target, int attackaDamage, float launchSpeed = 0)
     {
         // Ignore friendly layer
@@ -63,6 +65,31 @@ public class Projectile : MonoBehaviour
         // Fire
         gameObject.SetActive(true);
         Vector3 direction = (target.position - transform.position).normalized;
+        //rb.velocity = direction * speed;
+        rb.AddForce(direction * speed, ForceMode.Impulse);
+
+        Destroy(gameObject, lifeTime);
+    }
+
+    /// <summary>
+    /// Launch projectile to target
+    /// </summary>
+    /// <param name="friendlyLayer">layer of shooter's friendly</param>
+    /// <param name="target">target to set projectile direction</param>
+    /// <param name="attackaDamage">projectile damage when crashed with damageable</param>
+    /// <param name="launchSpeed">projectile speed, default: it's own speed</param>
+    public void Launch(int friendlyLayer, Vector3 targetPos, int attackaDamage, float launchSpeed = 0)
+    {
+        // Ignore friendly layer
+        layerMask &= ~friendlyLayer;
+
+        dmg = attackaDamage;
+        if (launchSpeed > 0)
+            speed = launchSpeed;
+
+        // Fire
+        gameObject.SetActive(true);
+        Vector3 direction = (targetPos - transform.position).normalized;
         //rb.velocity = direction * speed;
         rb.AddForce(direction * speed, ForceMode.Impulse);
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ClearBox : MonoBehaviour, IInteractable
 {
+    [SerializeField] bool isOpen;
+    public bool IsOpen { get { return isOpen; } set { isOpen = value; } }
     public void Interact()
     {
         StartCoroutine(ShowStageClearUI());
@@ -18,7 +20,6 @@ public class ClearBox : MonoBehaviour, IInteractable
         UIManager.Instance.HideUI("Stage Clear Ani Canvas");
 
         UIManager.Instance.ShowUI("Stage Clear Canvas");
-
         yield break;
     }
 }

@@ -114,8 +114,8 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 193
-  lifeTime: 5
-  speed: 10
+  lifeTime: 15
+  speed: 20
   dmg: 1
 --- !u!54 &6637295052568052348
 Rigidbody:

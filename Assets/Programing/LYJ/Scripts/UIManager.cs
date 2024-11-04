@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "StageWord")
         {
             ShowUI("Start Item Canvas");
-        } 
+        }
 
         //if (SceneManager.GetActiveScene().name == "Stage1")
         //{
@@ -81,7 +81,6 @@ public class UIManager : MonoBehaviour
                 IsUIActive("Store Canvas") ||
                 IsUIActive("Main Canvas"))
             {
-                Debug.Log($"{uiName} º¸¿©Áü");
                 Cursor.lockState = CursorLockMode.None;
             }
 
@@ -112,7 +111,6 @@ public class UIManager : MonoBehaviour
             GameObject canvas = uiCanvases[uiName];
             uiCanvases[uiName].SetActive(false);
 
-            Debug.Log($"{uiName} ¼û°ÜÁü");
             Cursor.lockState = CursorLockMode.Locked;
 
             if (uiName == "Game Over Canvas")

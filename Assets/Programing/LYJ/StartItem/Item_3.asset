@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Item_3
   m_EditorClassIdentifier: 
   itemName: "\uBC1C\uC0AC\uC758 \uAE68\uB2EC\uC74C"
-  specialEffects: "\uD0C4\uD658\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
-  specialEffectsDescription: 
+  specialEffects: 
+  specialEffectsDescription: "\uD0C4\uD658\uD615 \uACF5\uACA9\uC774 \uC801\uC6A9\uB429\uB2C8\uB2E4."
   itemImage: {fileID: 21300000, guid: 160b102745ede7a43bfff25f1f568647, type: 3}
   itemAttributesImage: {fileID: 21300000, guid: b2280796a1d090249a93582f38ff364b, type: 3}
-  specialEffectsImage1: {fileID: 0}
-  specialEffectsImage2: {fileID: 0}
-  specialEffectsImage3: {fileID: 0}
-  specialEffectsFigure1: 
-  specialEffectsFigure2: 
-  specialEffectsFigure3: 
+  specialEffectsImage1: {fileID: 21300000, guid: 890479ac48450cb41ae00ffdffe9e967, type: 3}
+  specialEffectsImage2: {fileID: 21300000, guid: 54f46bd0e20b8db4a994a87ee8645800, type: 3}
+  specialEffectsImage3: {fileID: 21300000, guid: 99b5df83d12896d4ebf5b8c39724bc4a, type: 3}
+  specialEffectsFigure1: 50
+  specialEffectsFigure2: 1.0
+  specialEffectsFigure3: 7
   elemental: 3
-  ATK: 0
-  ATS: 0
+  ATK: 50
+  ATS: 1
   DEF: 0
-  HP: 0
-  RAN: 0
-  SPD: 0
+  HP: 100
+  RAN: 7
+  SPD: 3
