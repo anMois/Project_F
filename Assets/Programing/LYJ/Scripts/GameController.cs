@@ -155,11 +155,13 @@ public class GameController : MonoBehaviour
 
             if (UIManager.Instance.IsUIActive("Status Window Canvas"))
             {
+                SoundManager.Instance.InventorySound();
                 UIManager.Instance.HideUI("Status Window Canvas");
                 UIManager.Instance.HideUI("Status Window Explanation Canvas");
             }
             else
             {
+                SoundManager.Instance.InventorySound();
                 UIManager.Instance.ShowUI("Status Window Canvas");
             }
             Time.timeScale = UIManager.Instance.IsUIActive("Status Window Canvas") ? 0 : 1;
