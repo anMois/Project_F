@@ -3261,6 +3261,7 @@ MonoBehaviour:
   visualization: 1
   attackMaxRange: 4
   guardRange: 3
+  monsterType: 3
   monsterID: 2012
   maxHp: 50
   curHp: 0

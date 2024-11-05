@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -10,6 +9,11 @@ public class Monster : MonoBehaviour, IDamageable
 {
     public UnityAction OnAlarm;
     public UnityAction<Monster> OnDead;
+
+    public enum MonsterType
+    {
+        Goblin, Golem, FlyingEye, Serpent
+    }
 
     public enum State
     {
@@ -29,6 +33,7 @@ public class Monster : MonoBehaviour, IDamageable
     [SerializeField] protected float guardRange;
 
     [Header("Attributes")]
+    [SerializeField] private MonsterType monsterType;
     [SerializeField] protected int monsterID;
     [SerializeField] protected int maxHp;
     [SerializeField] protected int curHp;
@@ -115,6 +120,8 @@ public class Monster : MonoBehaviour, IDamageable
         }
 
         animator.SetTrigger("Impact");
+
+        PlayHitSound();
     }
 
     protected virtual void Attack()
@@ -123,6 +130,72 @@ public class Monster : MonoBehaviour, IDamageable
 
         animator.SetTrigger("Attack");
         animator.SetInteger("Attack Motion", attackMotion);
+
+        PlayAttackSound();
+    }
+
+    private void PlayAttackSound()
+    {
+        switch (monsterType)
+        {
+            case MonsterType.Goblin:
+                if (this is not RangedMonster)
+                    SoundManager.Instance.GoblinAttackSound();
+                break;
+            case MonsterType.Golem:
+                SoundManager.Instance.GolemAttackSound();
+                break;
+            case MonsterType.FlyingEye:
+                SoundManager.Instance.EyeMonsterAttackSound();
+                break;
+            case MonsterType.Serpent:
+                SoundManager.Instance.SnakeHumanAttackSound();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PlayHitSound()
+    {
+        switch (monsterType)
+        {
+            case MonsterType.Goblin:
+                SoundManager.Instance.GoblinHitSound();
+                break;
+            case MonsterType.Golem:
+                SoundManager.Instance.GolemHitSound();
+                break;
+            case MonsterType.FlyingEye:
+                SoundManager.Instance.EyeMonsterHitSound();
+                break;
+            case MonsterType.Serpent:
+                SoundManager.Instance.SnakeHumanHitSound();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PlayDieSound()
+    {
+        switch (monsterType)
+        {
+            case MonsterType.Goblin:
+                SoundManager.Instance.GoblinDieSound();
+                break;
+            case MonsterType.Golem:
+                SoundManager.Instance.GolemDieSound();
+                break;
+            case MonsterType.FlyingEye:
+                SoundManager.Instance.EyeMonsterDieSound();
+                break;
+            case MonsterType.Serpent:
+                SoundManager.Instance.SnakeHumanDieSound();
+                break;
+            default:
+                break;
+        }
     }
 
     #region MonsterState
@@ -280,6 +353,8 @@ public class Monster : MonoBehaviour, IDamageable
             monster.OnDead?.Invoke(monster);
 
             monster.OnAlarm -= monster.Trace;
+
+            monster.PlayDieSound();
 
             Destroy(monster.gameObject, 1f);
         }

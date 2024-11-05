@@ -519,6 +519,7 @@ MonoBehaviour:
   visualization: 1
   attackMaxRange: 2
   guardRange: 3
+  monsterType: 1
   monsterID: 2021
   maxHp: 100
   curHp: 0
