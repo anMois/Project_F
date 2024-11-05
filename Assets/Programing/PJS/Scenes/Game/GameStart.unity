@@ -4547,6 +4547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cdc7c89c3f6cc48a7d493b55e5ae71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAttack: {fileID: 0}
   flameCountText: {fileID: 1461098015}
   iceCountText: {fileID: 1461098014}
   electricityCountText: {fileID: 1461098013}

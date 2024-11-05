@@ -14,9 +14,9 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform attackPos;
     [SerializeField] Transform lazerPos;
     [SerializeField] GameObject[] bulletPrefab;
-    private GameObject curBullet;
+    [SerializeField] GameObject curBullet;
     [SerializeField] GameObject[] bulletProperty;
-    private GameObject curProperty;
+    [SerializeField] GameObject curProperty;
 
     [SerializeField] Transform target;
     [SerializeField] Transform shellTarget;
@@ -45,6 +45,11 @@ public class PlayerAttack : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
+    }
+
+    private void Start()
+    {
+        StatusWindowController.OnWeaponTypeChanged += WeaponTypes;
     }
 
     private void Update()
@@ -225,6 +230,18 @@ public class PlayerAttack : MonoBehaviour
                 bulletPrefab[2] = bulletProperty[11];
                 break;
         }
+
+        int idx = 0;
+        for (int i = 0; i < bulletPrefab.Length; i++)
+        {
+            if (curBullet.Equals(bulletPrefab[i]))
+            {
+                idx = i;
+            }
+        }
+
+        SwapPreperty(idx * 4 + (int)type);
+        SwapBullet(idx);
     }
 
     private void AddState()

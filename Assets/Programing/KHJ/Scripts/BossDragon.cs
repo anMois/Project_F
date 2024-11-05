@@ -230,7 +230,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
     IEnumerator FlyRoutine()
     {
-        float height = 7f;
+        float height = 1f;
         Vector3 offset = new Vector3(-19 * 5 / 2, height, 22 * 5 / 2);
         Vector3 center = origin.position + offset;
         
