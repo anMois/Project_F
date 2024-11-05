@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class DoT : MonoBehaviour
 {
     [SerializeField] int dmg;
     [SerializeField] string naming;
+    [SerializeField] float speed;
     Coroutine damageCoroutine;
     Dictionary<IDamageable, Coroutine> _damageCoroutine = new Dictionary<IDamageable, Coroutine>();
 
@@ -27,7 +29,7 @@ public class DoT : MonoBehaviour
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag("Monster");
+        bool valid = other.CompareTag(naming);
         Debug.Log(valid);
         if (!valid)
             return;
@@ -46,14 +48,8 @@ public class DoT : MonoBehaviour
 
         if (damageable != null)
         {
-            Debug.Log(damageable);
             Coroutine coroutine = StartCoroutine(InflictdamageOverTime(damageable));
             _damageCoroutine.Add(damageable, coroutine);
-            Debug.Log(coroutine);
-            foreach (KeyValuePair<IDamageable, Coroutine> item in _damageCoroutine)
-            {
-                Debug.Log($"{item.Key} / {item.Value}");
-            }
         }
     }
 
@@ -63,7 +59,7 @@ public class DoT : MonoBehaviour
         //bool valid = (layerMask & (1 << other.gameObject.layer)) != 0;
         //if (!valid)
         //    return;
-        bool valid = other.CompareTag("Monster");
+        bool valid = other.CompareTag(naming);
         if (!valid)
             return;
 
@@ -79,15 +75,9 @@ public class DoT : MonoBehaviour
 
         if (damageable != null)
         {
-            Debug.Log(_damageCoroutine.ContainsKey(damageable));
-            Debug.Log(_damageCoroutine[damageable]);
             Coroutine coroutine = _damageCoroutine[damageable];
             StopCoroutine(coroutine);
             _damageCoroutine.Remove(damageable);
-            Debug.Log(_damageCoroutine.ContainsKey(damageable));
-
-
-            Debug.Log("----");
         }
     }
 
@@ -104,12 +94,10 @@ public class DoT : MonoBehaviour
 
     private IEnumerator InflictdamageOverTime(IDamageable damageable)
     {
-        Debug.Log(damageable);
         while (true)
         {
             damageable.TakeHit(dmg);        // 피해 입히는 부분
-            Debug.Log(dmg);
-            yield return new WaitForSeconds(1f);        // 대기시간
+            yield return new WaitForSeconds(1f * (1f - (speed / 100)));        // 대기시간
         }
     }
 
@@ -123,5 +111,7 @@ public class DoT : MonoBehaviour
     {
         this.naming = name;
         dmg = attackDamage;
+
+
     }
 }

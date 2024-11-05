@@ -3,13 +3,17 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable
 {
-    public UnityAction OnAlarm;
+    //public UnityAction OnAlarm;
 
     [Header("Attributes")]
     [SerializeField] int maxHp;
     [SerializeField] public int curHp;
-    [SerializeField] float dmg;
-    [SerializeField] float time;
+    [SerializeField] public float moveSpeed;
+    [SerializeField] public int dmg;
+    [SerializeField] public float time;
+    [SerializeField] public float attackSpeed;
+    [SerializeField] public string naming;
+    
 
 
     Animator ani;
@@ -30,29 +34,22 @@ public class Player : MonoBehaviour, IDamageable
         attack = GetComponent<PlayerAttack>();
 
         curHp = maxHp;
+
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            curHp--;
-
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
-        {
-            curHp++;
-        }
-
         AnimationPlay();
+        State();
 
     }
 
     public void TakeHit(int dmg)
     {
-        OnAlarm?.Invoke();
+        //OnAlarm?.Invoke();
 
         curHp -= dmg;
+        GameManager.Instance.TakeDamage(dmg);
         if (curHp <= 0)
         {
             ani.Play("Die");
@@ -91,4 +88,11 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+
+    private void State()
+    {
+        attack.attackDmg = dmg;
+        mover.addSpeed = moveSpeed;
+        attack.speed = attackSpeed;
+    }
 }
