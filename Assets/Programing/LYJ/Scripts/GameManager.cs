@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour
     {
         currentHealth -= damageAmount;
         UpdateHealthUI();
-        if (currentHealth <= 100)
+        if (currentHealth <= 0)
         {
             UIManager.Instance.ShowUI("Game Over Canvas");
             Debug.Log("플레이어가 사망했습니다.");

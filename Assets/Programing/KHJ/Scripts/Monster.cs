@@ -361,6 +361,10 @@ public class Monster : MonoBehaviour, IDamageable
             Die();
         }
 
+        public override void StateUpdate()
+        {
+        }
+
         protected void Die()
         {
             monster.OnDead?.Invoke(monster);
