@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,7 +9,7 @@ using UnityEngine.UI;
 public class StatusWindowController : MonoBehaviour
 {
     public static StatusWindowController Instance { get; private set; }
-
+    public static Action<WeaponType> OnWeaponTypeChanged;
     public PlayerAttack playerAttack;
 
     [SerializeField] private TextMeshProUGUI flameCountText;
@@ -58,6 +59,8 @@ public class StatusWindowController : MonoBehaviour
 
     private void Start()
     {
+        playerAttack = FindObjectOfType<PlayerAttack>();
+
         UpdateUI();
         UpdateDisplayImage();
 
@@ -288,21 +291,23 @@ public class StatusWindowController : MonoBehaviour
 
     public void UpdateWeapon()
     {
-        if (flameCount > 0)
+        int maxCount = Mathf.Max(flameCount, iceCount, electricityCount, earthCount);
+
+        if (flameCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Flame);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Flame);
         }
-        else if (iceCount > 0)
+        else if (iceCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Ice);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Ice);
         }
-        else if (electricityCount > 0)
+        else if (electricityCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Electricity);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Electricity);
         }
-        else if (earthCount > 0)
+        else if (earthCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Earth);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Earth);
         }
     }
 }
