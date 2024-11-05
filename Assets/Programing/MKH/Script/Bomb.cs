@@ -39,8 +39,7 @@ public class Bomb : MonoBehaviour
             Collider[] cols = Physics.OverlapSphere(exp.transform.position, exp.transform.localScale.z / 2);
             for (int i = 0; i < cols.Length; i++)
             {
-                Debug.Log(cols[i].name + "monster");
-                if (cols[i].gameObject.tag == naming)
+                if (cols[i].CompareTag(naming))
                 {
                     curTransform = cols[i].transform;
                     // Find IDamageable through parents
@@ -65,12 +64,9 @@ public class Bomb : MonoBehaviour
         
         if (other.CompareTag("Ground"))
         {
-            Debug.Log(other + "Ground");
-
             Collider[] cols = Physics.OverlapSphere(exp.transform.position, exp.transform.localScale.z / 2);
             for (int i = 0; i < cols.Length; i++)
             {
-                Debug.Log(cols[i].name);
                 if (cols[i].CompareTag(naming))
                 {
                     curTransform = cols[i].transform;
@@ -97,11 +93,11 @@ public class Bomb : MonoBehaviour
     /// </summary>
     /// <param name="name">Tag name of the attack target</param>
     /// <param name="attackDamage">attackDamage</param>
-    public void Fire(string name, int attackDamage)
+    public void Fire(string name, int attackDamage, float attackSpeed)
     {
         naming = name;
         dmg = attackDamage;
-
+        speed = attackSpeed;
         
         rb.velocity = transform.forward * speed;
     }
