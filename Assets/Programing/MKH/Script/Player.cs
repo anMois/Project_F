@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] public float time;
     [SerializeField] public float attackSpeed;
     [SerializeField] public string naming;
-    
+
 
 
     Animator ani;
@@ -35,6 +35,11 @@ public class Player : MonoBehaviour, IDamageable
 
         curHp = maxHp;
 
+    }
+
+    private void Start()
+    {
+        StatusWindowController.ItemChanged += Test;
     }
 
     private void Update()
@@ -100,5 +105,108 @@ public class Player : MonoBehaviour, IDamageable
     {
         Debug.Log("공격력 증가");
         dmg += value;
+    }
+
+    private void Test(string itemName)
+    {
+        switch (itemName)
+        {
+            case "불같은 분노":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "오우거의 심장":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "증폭의 고서":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "파괴의 룬":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "빗발치는 불꽃":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "한줄기 태양":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "차가운 시선":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "날선 추위":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "몰아치는 눈폭풍":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "한파의 고서":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "얼어붙는 동파":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "얼음거울":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "천둥의 룬":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "전기 전도":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "무거운 벼락":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "플라즈마 방전":
+                IncreaseDamage(5);
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                break;
+            case "치명의 고서":
+                IncreaseDamage(5);
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                break;
+            case "올곶은 흐름":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "대지의 룬":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "가이아의 축복":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "굳은 심지":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "유연한 사고":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "철의 마음":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+            case "지진의 고서":
+                StatusWindowController.Instance.ChangeStat("ATK", 5);
+                IncreaseDamage(5);
+                break;
+        }
     }
 }

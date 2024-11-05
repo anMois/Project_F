@@ -58,7 +58,7 @@ public class CreateStageMonster : MonoBehaviour
             num = Random.Range(0, normalMosterCount);
         }
 
-        if (num < 0)
+        if (num <= 0)
         {
             num = 0;
         }
