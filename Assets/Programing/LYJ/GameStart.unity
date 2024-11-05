@@ -6160,6 +6160,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712020986}
     m_Modifications:
+    - target: {fileID: 7086196010163858892, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086196010163858892, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7086196011203109319, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -6247,6 +6255,10 @@ PrefabInstance:
     - target: {fileID: 7086196011203109323, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
       propertyPath: m_Name
       value: Boss Stage HP Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7086196011203109323, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd4ecb7ebb444c40b36397a594512d7, type: 3}
