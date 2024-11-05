@@ -226,6 +226,7 @@ public class BossDragon : MonoBehaviour, IDamageable
         animator.SetTrigger("Death");
         PlayDieSound();
         Destroy(gameObject, 5f);
+        UIManager.Instance.ShowUI("Game Clear Canvas");
     }
 
     IEnumerator FlyRoutine()

@@ -18,6 +18,11 @@ public class Bomb : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
+    private void Update()
+    {
+        rb.velocity = transform.forward * speed;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject exp = Instantiate(explosionFactory);
@@ -98,7 +103,5 @@ public class Bomb : MonoBehaviour
         naming = name;
         dmg = attackDamage;
         speed = attackSpeed;
-        
-        rb.velocity = transform.forward * speed;
     }
 }

@@ -14,7 +14,6 @@ public class CreateStageMonster : MonoBehaviour
     private void Awake()
     {
         monsterData = GetComponent<MonsterData>();
-        Debug.Log(monsterData);
     }
 
     /// <summary>
@@ -46,7 +45,6 @@ public class CreateStageMonster : MonoBehaviour
     private string[] RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
-        Debug.Log(monsterData.MonsterList + " 1");
         int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
 
         if (_state == StageState.Elite && (_curWave + 1) == _fullWave)
@@ -62,7 +60,7 @@ public class CreateStageMonster : MonoBehaviour
         {
             num = 0;
         }
-        Debug.Log(monsterData.MonsterList + " 2");
+
         return monsterData.MonsterList[num].Split(',');
     }
 }

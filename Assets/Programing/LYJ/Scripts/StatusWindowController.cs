@@ -118,30 +118,69 @@ public class StatusWindowController : MonoBehaviour
     public void ChangeStat(string statName, int value)
     {
         string logMessage = $"{statName}: {value} 변화";
-
         switch (statName)
         {
             case "ATK":
-                atkText.text = $"{int.Parse(atkText.text) + value}";
+                if (int.TryParse(atkText.text, out int currentAtk))
+                {
+                    atkText.text = $"{currentAtk + value}";
+                }
+                else
+                {
+                    atkText.text = $"{value}";
+                }
                 break;
             case "ATS":
-                int currentAts = int.Parse(atsText.text);
-                int atsChange = Mathf.RoundToInt(currentAts * (value / 100f));
-                atsText.text = $"{currentAts + atsChange}";
+                if (int.TryParse(atsText.text, out int currentAts))
+                {
+                    int atsChange = Mathf.RoundToInt(currentAts * (value / 100f));
+                    atsText.text = $"{currentAts + atsChange}";
+                }
+                else
+                {
+                    atsText.text = $"{value}";
+                }
                 break;
             case "DEF":
-                defText.text = $"{int.Parse(defText.text) + value}";
+                if (int.TryParse(defText.text, out int currentDef))
+                {
+                    defText.text = $"{currentDef + value}";
+                }
+                else
+                {
+                    defText.text = $"{value}";
+                }
                 break;
             case "HP":
-                hpText.text = $"{int.Parse(hpText.text) + value}";
+                if (int.TryParse(hpText.text, out int currentHp))
+                {
+                    hpText.text = $"{currentHp + value}";
+                }
+                else
+                {
+                    hpText.text = $"{value}";
+                }
                 break;
             case "RAN":
-                ranText.text = $"{int.Parse(ranText.text) + value}";
+                if (int.TryParse(ranText.text, out int currentRan))
+                {
+                    ranText.text = $"{currentRan + value}";
+                }
+                else
+                {
+                    ranText.text = $"{value}";
+                }
                 break;
             case "SPD":
-                int currentSpd = int.Parse(spdText.text);
-                int spdChange = Mathf.RoundToInt(currentSpd * (value / 100f));
-                spdText.text = $"{currentSpd + spdChange}";
+                if (int.TryParse(spdText.text, out int currentSpd))
+                {
+                    int spdChange = Mathf.RoundToInt(currentSpd * (value / 100f));
+                    spdText.text = $"{currentSpd + spdChange}";
+                }
+                else
+                {
+                    spdText.text = $"{value}";
+                }
                 break;
         }
         Debug.Log(logMessage);
