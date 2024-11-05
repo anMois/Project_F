@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class StatusWindowController : MonoBehaviour
 {
     public static StatusWindowController Instance { get; private set; }
+
+    public Player player;
     public static Action<WeaponType> OnWeaponTypeChanged;
     public PlayerAttack playerAttack;
 
@@ -59,6 +61,7 @@ public class StatusWindowController : MonoBehaviour
 
     private void Start()
     {
+        player = FindObjectOfType<Player>();
         playerAttack = FindObjectOfType<PlayerAttack>();
 
         UpdateUI();
@@ -113,7 +116,7 @@ public class StatusWindowController : MonoBehaviour
 
     public void ChangeStat(string statName, int value)
     {
-        string logMessage = $"{statName}: {value} ��ȭ";
+        string logMessage = $"{statName}: {value} 변화";
 
         switch (statName)
         {
@@ -221,7 +224,7 @@ public class StatusWindowController : MonoBehaviour
                 relicUIImage.sprite = itemSprite;
                 relicUIImage.gameObject.SetActive(true);
 
-                //relicUIImage�� ������ �����͸� �Բ� ����
+                //relicUIImage와 아이템 데이터를 함께 저장
                 relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite, elemental);
 
                 relicUIImage.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -240,6 +243,106 @@ public class StatusWindowController : MonoBehaviour
                         break;
                     case 4:
                         earthCount++;
+                        break;
+                }
+
+                switch (itemName)
+                {
+                    case "불같은 분노":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "오우거의 심장":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "증폭의 고서":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "파괴의 룬":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "빗발치는 불꽃":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "한줄기 태양":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "차가운 시선":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "날선 추위":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "몰아치는 눈폭풍":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "한파의 고서":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "얼어붙는 동파":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "얼음거울":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "천둥의 룬":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "전기 전도":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "무거운 벼락":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "플라즈마 방전":
+                        player.IncreaseDamage(5);
+                        ChangeStat("ATK", 5);
+                        break;
+                    case "치명의 고서":
+                        player.IncreaseDamage(5);
+                        ChangeStat("ATK", 5);
+                        break;
+                    case "올곶은 흐름":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "대지의 룬":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "가이아의 축복":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "굳은 심지":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "유연한 사고":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "철의 마음":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
+                        break;
+                    case "지진의 고서":
+                        ChangeStat("ATK", 5);
+                        player.IncreaseDamage(5);
                         break;
                 }
 
@@ -269,6 +372,7 @@ public class StatusWindowController : MonoBehaviour
             {
                 itemElementImage.gameObject.SetActive(false);
             }
+
             SoundManager.Instance.ButtonClickSound();
             UIManager.Instance.ShowUI("Status Window Explanation Canvas");
         }
