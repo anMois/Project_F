@@ -22,6 +22,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioSource buyItemSound;
     [SerializeField] private AudioSource inventorySound;
     [SerializeField] private AudioSource stageClearSound;
+    [SerializeField] private AudioSource storeOpenSound;
+    [SerializeField] private AudioSource teleportSound;
+    [SerializeField] private AudioSource clearBoxSound;
 
     [Header("버튼")]
     [SerializeField] private AudioSource buttonClickSound;
@@ -182,6 +185,30 @@ public class SoundManager : MonoBehaviour
     public void StageClearSound()
     {
         stageClearSound.PlayOneShot(stageClearSound.clip);
+    }
+
+    /// <summary>
+    /// 상점 열고 닫는 소리
+    /// </summary>
+    public void StoreOpenSound()
+    {
+        storeOpenSound.PlayOneShot(storeOpenSound.clip);
+    }
+
+    /// <summary>
+    /// 포탈 생성 소리
+    /// </summary>
+    public void TeleportSound()
+    {
+        teleportSound.PlayOneShot(teleportSound.clip);
+    }
+
+    /// <summary>
+    /// 클리어 박스 생성 소리
+    /// </summary>
+    public void ClearBoxSound()
+    {
+        clearBoxSound.PlayOneShot(clearBoxSound.clip);
     }
 
     /// <summary>
