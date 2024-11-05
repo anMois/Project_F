@@ -21,28 +21,37 @@ public class CreateStageMonster : MonoBehaviour
     /// </summary>
     public void MonsterSpawn(StageState state, int curWave, int fullWave)
     {
-        string[] point = RandomList(state, curWave, fullWave);
+        string[] point = RandomList(state, curWave, fullWave).Split(',');
 
         for (int i = 0; i < point.Length; i++)
         {
-            int.TryParse(point[i], out int id);
-            for (int j = 0; j < monsterData.MonsterKey.Count; j++)
+            bool isId = int.TryParse(point[i], out int id);
+            if (isId)
             {
-                if (monsterData.MonsterKey[j] == id)
+                Debug.Log($"{i + 1}. {point[i]}");
+                for (int j = 0; j < monsterData.MonsterKey.Count; j++)
                 {
-                    Monster newMonster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation).GetComponent<Monster>();
+                    if (monsterData.MonsterKey[j] == id)
+                    {
+                        Debug.Log(monsterData.Monster[id] + " 1");
+                        Debug.Log(monsterPoints[i].position + " 2");
+                        Debug.Log(monsterPoints[i].rotation + " 3");
+                        GameObject monster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation);
 
-                    if (newMonster == null)
-                        continue;
+                        if (monster == null)
+                            continue;
 
-                    newMonster.transform.parent = monsterManager.transform;
-                    monsterManager.AddMonster(newMonster);
+                        Monster newMonster = monster.GetComponent<Monster>();
+                        newMonster.transform.parent = monsterManager.transform;
+
+                        monsterManager.AddMonster(newMonster);
+                    }
                 }
             }
         }
     }
 
-    private string[] RandomList(StageState _state, int _curWave, int _fullWave)
+    private string RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
         int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
@@ -61,6 +70,6 @@ public class CreateStageMonster : MonoBehaviour
             num = 0;
         }
 
-        return monsterData.MonsterList[num].Split(',');
+        return monsterData.MonsterList[num];
     }
 }
