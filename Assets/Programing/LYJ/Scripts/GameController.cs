@@ -107,7 +107,7 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!UIManager.Instance.IsUIActive("Main Canvas") && 
+            if (!UIManager.Instance.IsUIActive("Main Canvas") &&
                 !UIManager.Instance.IsUIActive("In Game Manual Canvas") &&
                 !UIManager.Instance.IsUIActive("Start Item Canvas") &&
                 !UIManager.Instance.IsUIActive("Manual Canvas") &&
@@ -340,5 +340,4 @@ public class GameController : MonoBehaviour
 
         UIManager.Instance.ShowUI("Game Clear Canvas");
     }
-
 }

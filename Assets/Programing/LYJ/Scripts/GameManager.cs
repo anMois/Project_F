@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI grenadeCountText;
     private int potionCount = 0;
     private int grenadeCount = 0;
+    private const int maxItemCount = 3;
 
     [SerializeField] private TextMeshProUGUI stageNumberText;
     [SerializeField] private TextMeshProUGUI waveNumberText;
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    //¾ÀÀÌ ·ÎµåµÉ ¶§ È£ÃâµÇ´Â ÃÊ±âÈ­ ¸Ş¼Òµå
+    //ì”¬ì´ ë¡œë“œë  ë•Œ í˜¸ì¶œë˜ëŠ” ì´ˆê¸°í™” ë©”ì†Œë“œ
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetGameState();
@@ -55,11 +54,12 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameState()
     {
-        //ÇÊ¿äÇÑ °ªÀ» ÃÊ±âÈ­ (¾Æ·¡ ³»¿ëÀ» °ÔÀÓ ÇÊ¿ä¿¡ µû¶ó ¼³Á¤)
+        //í•„ìš”í•œ ê°’ì„ ì´ˆê¸°í™” (ì•„ë˜ ë‚´ìš©ì„ ê²Œì„ í•„ìš”ì— ë”°ë¼ ì„¤ì •)
         potionCount = 0;
         grenadeCount = 0;
-        curPrice = 0; //ÃÊ±â °ñµå °ªÀ¸·Î ¼³Á¤
-        currentHealth = maxHealth; //Ã¼·ÂÀ» ÃÖ´ëÄ¡·Î ¼³Á¤
+        curPrice = 0; //ì´ˆê¸° ê³¨ë“œ ê°’
+        curPrice = 20000;
+        currentHealth = maxHealth;
 
         UpdateUI();
         UpdatePriceText();
@@ -83,10 +83,20 @@ public class GameManager : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UsePotion();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UseGrenade();
+        }
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛ ±¸¸Å (µ· Â÷°¨) - CSV·Î ¹Ş¾Æ¿Â ¾ÆÀÌÅÛ¸¸ °¡´É
+    /// ì•„ì´í…œ êµ¬ë§¤ (ëˆ ì°¨ê°) - CSVë¡œ ë°›ì•„ì˜¨ ì•„ì´í…œë§Œ ê°€ëŠ¥
     /// </summary>
     /// <param name="itemPrice"></param>
     /// <returns></returns>
@@ -98,11 +108,11 @@ public class GameManager : MonoBehaviour
             UpdatePriceText();
             return true;
         }
-        Debug.Log("µ·ÀÌ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+        Debug.Log("ëˆì´ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         return false;
     }
     /// <summary>
-    /// ¾ÆÀÌÅÛ ±¸¸Å - Æ÷¼Ç, ¼ö·ùÅº Àü¿ë
+    /// ì•„ì´í…œ êµ¬ë§¤ - í¬ì…˜, ìˆ˜ë¥˜íƒ„ ì „ìš©
     /// </summary>
     /// <param name="price"></param>
     /// <returns></returns>
@@ -116,7 +126,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("µ·ÀÌ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            Debug.Log("ëˆì´ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         }
     }
@@ -125,8 +135,8 @@ public class GameManager : MonoBehaviour
     {
         if (priceText != null && goldText != null)
         {
-            priceText.text = $"º¸À¯ °ñµå: {curPrice} G";
-            goldText.text = $"º¸À¯ °ñµå: {curPrice} G";
+            priceText.text = $"ë³´ìœ  ê³¨ë“œ: {curPrice} G";
+            goldText.text = $"ë³´ìœ  ê³¨ë“œ: {curPrice} G";
         }
     }
 
@@ -144,22 +154,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ¾ÆÀÌÅÛ ¼öÁı ±â´É (ÇÃ·¹ÀÌ¾î.cs¿¡ ºÙ¿© »ç¿ëÇÒ ¶§ Áö¿ì°í »ç¿ë)
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Potion"))
-        {
-            potionCount++;
-            UpdateUI();
-            Destroy(collider.gameObject);
-        }
-        else if (collider.CompareTag("Grenade"))
-        {
-            grenadeCount++;
-            UpdateUI();
-            Destroy(collider.gameObject);
-        }
-    }
+    // ì•„ì´í…œ ìˆ˜ì§‘ ê¸°ëŠ¥ (í”Œë ˆì´ì–´.csì— ë¶™ì—¬ ì‚¬ìš©í•  ë•Œ ì§€ìš°ê³  ì‚¬ìš©)
+    //private void OnTriggerEnter(Collider collider)
+    //{
+    //    if (collider.CompareTag("Potion"))
+    //    {
+    //        potionCount++;
+    //        UpdateUI();
+    //        Destroy(collider.gameObject);
+    //    }
+    //    else if (collider.CompareTag("Grenade"))
+    //    {
+    //        grenadeCount++;
+    //        UpdateUI();
+    //        Destroy(collider.gameObject);
+    //    }
+    //}
 
     private void UpdateUI()
     {
@@ -172,18 +182,27 @@ public class GameManager : MonoBehaviour
 
     public void IncrementPotionCount()
     {
-        potionCount++;
-        UpdateUI();
+        if (potionCount <= maxItemCount)
+        {
+            potionCount++;
+            UpdateUI();
+        }
     }
 
     public void IncrementGrenadeCount()
     {
-        grenadeCount++;
-        UpdateUI();
+        if (grenadeCount <= maxItemCount)
+        {
+            grenadeCount++;
+            UpdateUI();
+        }
     }
 
+    public int GetPotionCount() => potionCount;
+    public int GetGrenadeCount() => grenadeCount;
+
     /// <summary>
-    /// ÇÇÇØ¸¦ ¹Ş´Â ¸Ş¼­µå
+    /// í”¼í•´ë¥¼ ë°›ëŠ” ë©”ì„œë“œ
     /// </summary>
     /// <param name="damageAmount"></param>
     public void TakeDamage(float damageAmount)
@@ -193,20 +212,20 @@ public class GameManager : MonoBehaviour
         if (currentHealth <= 100)
         {
             UIManager.Instance.ShowUI("Game Over Canvas");
-            Debug.Log("ÇÃ·¹ÀÌ¾î°¡ »ç¸ÁÇß½À´Ï´Ù.");
+            Debug.Log("í”Œë ˆì´ì–´ê°€ ì‚¬ë§í–ˆìŠµë‹ˆë‹¤.");
         }
     }
 
     /// <summary>
-    /// Ã¼·ÂÀ» È¸º¹ÇÏ´Â ¸Ş¼­µå
+    /// ì²´ë ¥ì„ íšŒë³µí•˜ëŠ” ë©”ì„œë“œ
     /// </summary>
-    /// <param name="percentage">È¸º¹ÇÒ ºñÀ² (0~1) 0.7 = 70% </param>
+    /// <param name="percentage">íšŒë³µí•  ë¹„ìœ¨ (0~1) 0.7 = 70% </param>
     public void Heal(float percentage)
     {
         currentHealth = maxHealth * percentage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
-        Debug.Log($"Ã¼·ÂÀÌ {percentage * 100}%·Î È¸º¹µÇ¾ú½À´Ï´Ù.");
+        Debug.Log($"ì²´ë ¥ì´ {percentage * 100}%ë¡œ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 
     private void UpdateGainedGoldText(float amount)
@@ -218,22 +237,71 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// °ñµå¸¦ Ãß°¡
+    /// ê³¨ë“œë¥¼ ì¶”ê°€
     /// </summary>
-    /// <param name="amount">°ñµå ¾ç</param>
+    /// <param name="amount">ê³¨ë“œ ì–‘</param>
     public void AddGold(float amount)
     {
         curPrice += amount;
         UpdatePriceText();
         UpdateGainedGoldText(amount);
     }
+    
+    public void UsePotion()
+    {
+        if (potionCount > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                float healthToRestore = maxHealth * 0.5f;
+                currentHealth += healthToRestore;
+                currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+                potionCount--;
+                UpdateUI();
+                UpdateHealthUI();
+                Debug.Log($"ì²´ë ¥ì´ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤. í˜„ì¬ ì²´ë ¥: {currentHealth}");
+            }
+            else
+            {
+                Debug.Log("ì²´ë ¥ì´ ì´ë¯¸ ìµœëŒ€ì…ë‹ˆë‹¤. í¬ì…˜ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
+            }
+        }
+        else
+        {
+            Debug.Log("í¬ì…˜ì´ ì—†ìŠµë‹ˆë‹¤.");
+        }
+    }
 
+    public void DecrementPotionCount()
+    {
+        if (potionCount > 0)
+        {
+            potionCount--;
+            UpdateUI();
+        }
+    }
+
+    public void UseGrenade()
+    {
+        if (grenadeCount > 0)
+        {
+            grenadeCount--;
+            UpdateUI();
+            // ìˆ˜ë¥˜íƒ„ ì‚¬ìš© ì½”ë“œ ì¶”ê°€
+            Debug.Log("ìˆ˜ë¥˜íƒ„ì„ ì‚¬ìš©í–ˆìŠµë‹ˆë‹¤.");
+        }
+        else
+        {
+            Debug.Log("ìˆ˜ë¥˜íƒ„ì´ ì—†ìŠµë‹ˆë‹¤.");
+        }
+    }
+        
     /// <summary>
-    /// ½ºÅ×ÀÌÁö Á¤º¸
+    /// ìŠ¤í…Œì´ì§€ ì •ë³´
     /// </summary>
-    /// <param name="stage">ÇöÀç ½ºÅ×ÀÌÁö</param>
-    /// <param name="curWave">ÇöÀç ¿şÀÌºê</param>
-    /// <param name="fullWave">ÇØ´ç ½ºÅ×ÀÌÁö ÀüÃ¼ ¿şÀÌºê</param>
+    /// <param name="stage">í˜„ì¬ ìŠ¤í…Œì´ì§€</param>
+    /// <param name="curWave">í˜„ì¬ ì›¨ì´ë¸Œ</param>
+    /// <param name="fullWave">í•´ë‹¹ ìŠ¤í…Œì´ì§€ ì „ì²´ ì›¨ì´ë¸Œ</param>
     public void StageWaveText(int stage, int curWave, int fullWave)
     {
         stageNumberText.text = $"{stage} Stage";
