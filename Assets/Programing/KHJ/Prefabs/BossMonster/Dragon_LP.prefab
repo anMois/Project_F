@@ -9730,7 +9730,7 @@ GameObject:
   - component: {fileID: 6072245797769308357}
   - component: {fileID: 6072245797769308358}
   - component: {fileID: 7542428872002132503}
-  - component: {fileID: 4012951630190404439}
+  - component: {fileID: 5618832212118375839}
   m_Layer: 7
   m_Name: Dragon_LP
   m_TagString: Monster
@@ -10340,7 +10340,7 @@ MonoBehaviour:
   maxHp: 500
   curHp: 0
   moveSpeed: 10
---- !u!114 &4012951630190404439
+--- !u!114 &5618832212118375839
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

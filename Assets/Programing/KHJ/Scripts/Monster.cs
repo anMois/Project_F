@@ -47,6 +47,8 @@ public class Monster : MonoBehaviour, IDamageable
     protected NavMeshAgent agent;
     protected Animator animator;
 
+    private bool isColliderReaction = false;
+
     protected void Awake()
     {
         states[(int)State.Idle] = new IdleState(this);
@@ -119,6 +121,10 @@ public class Monster : MonoBehaviour, IDamageable
             ChangeState(State.Dead);
         }
 
+        // Prevent overlapping
+        if (isColliderReaction)
+            return;
+
         animator.SetTrigger("Impact");
 
         PlayHitSound();
@@ -158,6 +164,8 @@ public class Monster : MonoBehaviour, IDamageable
 
     private void PlayHitSound()
     {
+        isColliderReaction = true;
+
         switch (monsterType)
         {
             case MonsterType.Goblin:
@@ -175,6 +183,8 @@ public class Monster : MonoBehaviour, IDamageable
             default:
                 break;
         }
+
+        StartCoroutine(TurnOffColliderReaction());
     }
 
     private void PlayDieSound()
@@ -196,6 +206,12 @@ public class Monster : MonoBehaviour, IDamageable
             default:
                 break;
         }
+    }
+
+    IEnumerator TurnOffColliderReaction()
+    {
+        yield return new WaitForSeconds(0.1f);
+        isColliderReaction = false;
     }
 
     #region MonsterState
@@ -340,10 +356,7 @@ public class Monster : MonoBehaviour, IDamageable
         public override void StateEnter()
         {
             monster.animator.SetTrigger("Death");
-        }
 
-        public override void StateUpdate()
-        {
             // Dead
             Die();
         }
