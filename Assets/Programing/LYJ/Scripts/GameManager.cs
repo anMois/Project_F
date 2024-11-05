@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -36,8 +34,6 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
-
-            curPrice = 20000f;
         }
         else
         {
@@ -61,9 +57,8 @@ public class GameManager : MonoBehaviour
         //필요한 값을 초기화 (아래 내용을 게임 필요에 따라 설정)
         potionCount = 0;
         grenadeCount = 0;
-        //curPrice = 0; //초기 골드 값으로 설정
-        curPrice = 20000f;
-        currentHealth = maxHealth; //체력을 최대치로 설정
+        curPrice = 0; //초기 골드 값
+        currentHealth = maxHealth;
 
         UpdateUI();
         UpdatePriceText();
@@ -87,6 +82,11 @@ public class GameManager : MonoBehaviour
     {
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UsePotion();
+        }
     }
 
     /// <summary>
@@ -239,5 +239,39 @@ public class GameManager : MonoBehaviour
         curPrice += amount;
         UpdatePriceText();
         UpdateGainedGoldText(amount);
+    }
+
+    public void UsePotion()
+    {
+        if (potionCount > 0)
+        {
+            if (currentHealth < maxHealth)
+            {
+                float healthToRestore = maxHealth * 0.5f;
+                currentHealth += healthToRestore;
+                currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+                potionCount--;
+                UpdateUI();
+                UpdateHealthUI();
+                Debug.Log($"체력이 회복되었습니다. 현재 체력: {currentHealth}");
+            }
+            else
+            {
+                Debug.Log("체력이 이미 최대입니다. 포션을 사용할 수 없습니다.");
+            }
+        }
+        else
+        {
+            Debug.Log("포션이 없습니다.");
+        }
+    }
+
+    public void DecrementPotionCount()
+    {
+        if (potionCount > 0)
+        {
+            potionCount--;
+            UpdateUI();
+        }
     }
 }
