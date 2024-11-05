@@ -2898,6 +2898,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3918445165757170754, guid: 6b50af56299782244a086bae32406c35, type: 3}
   m_PrefabInstance: {fileID: 685678789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &691166677 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 157080305214379972, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
+  m_PrefabInstance: {fileID: 1906013724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &700975518
 GameObject:
   m_ObjectHideFlags: 0
@@ -5487,6 +5498,8 @@ MonoBehaviour:
   maxHealth: 100
   potionCountText: {fileID: 1576435892}
   grenadeCountText: {fileID: 2009061616}
+  stageNumberText: {fileID: 691166677}
+  waveNumberText: {fileID: 1881030900}
 --- !u!4 &1532505914
 Transform:
   m_ObjectHideFlags: 0
@@ -7173,6 +7186,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1881030900 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3558274899854496112, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
+  m_PrefabInstance: {fileID: 1906013724}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1887362622
 GameObject:
   m_ObjectHideFlags: 0
@@ -7308,6 +7332,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 712020986}
     m_Modifications:
+    - target: {fileID: 5596708753108435066, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6189867962459595352, guid: 32b03db688b7cf44281e94beb8baa65b, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 630

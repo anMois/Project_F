@@ -35,7 +35,7 @@ public class ClearBox : MonoBehaviour, IInteractable
     IEnumerator ShowStageClearUI()
     {
         UIManager.Instance.ShowUI("Stage Clear Ani Canvas");
-
+        SoundManager.Instance.StageClearSound();
         yield return new WaitForSeconds(2f);
 
         UIManager.Instance.HideUI("Stage Clear Ani Canvas");
