@@ -74,7 +74,8 @@ public class UIManager : MonoBehaviour
                 IsUIActive("Boss Stage Canvas") ||
                 IsUIActive("Stage Clear Canvas") ||
                 IsUIActive("Store Canvas") ||
-                IsUIActive("Main Canvas"))
+                IsUIActive("Main Canvas") ||
+                IsUIActive("Game Over Canvas"))
             {
                 Cursor.lockState = CursorLockMode.None;
             }

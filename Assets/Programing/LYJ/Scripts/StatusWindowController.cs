@@ -9,6 +9,8 @@ public class StatusWindowController : MonoBehaviour
 {
     public static StatusWindowController Instance { get; private set; }
 
+    public PlayerAttack playerAttack;
+
     [SerializeField] private TextMeshProUGUI flameCountText;
     [SerializeField] private TextMeshProUGUI iceCountText;
     [SerializeField] private TextMeshProUGUI electricityCountText;
@@ -240,6 +242,7 @@ public class StatusWindowController : MonoBehaviour
 
                 UpdateUI();
                 UpdateDisplayImage();
+                UpdateWeapon();
                 break;
             }
         }
@@ -281,5 +284,25 @@ public class StatusWindowController : MonoBehaviour
         }
 
         return activeRelicImages;
+    }
+
+    public void UpdateWeapon()
+    {
+        if (flameCount > 0)
+        {
+            playerAttack.WeaponTypes(WeaponType.Flame);
+        }
+        else if (iceCount > 0)
+        {
+            playerAttack.WeaponTypes(WeaponType.Ice);
+        }
+        else if (electricityCount > 0)
+        {
+            playerAttack.WeaponTypes(WeaponType.Electricity);
+        }
+        else if (earthCount > 0)
+        {
+            playerAttack.WeaponTypes(WeaponType.Earth);
+        }
     }
 }

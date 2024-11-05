@@ -1,6 +1,14 @@
 using System.Collections;
 using UnityEngine;
 
+public enum WeaponType
+{
+    Flame,
+    Ice,
+    Electricity,
+    Earth
+}
+
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] Transform attackPos;
@@ -54,7 +62,6 @@ public class PlayerAttack : MonoBehaviour
 
         }
         BulletChange();
-        PropertyChange();
         AddState();
     }
 
@@ -145,7 +152,7 @@ public class PlayerAttack : MonoBehaviour
         else if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Bullet>().Launch(6, target, 50 + attackDmg, 10f * (1 + (speed/ 100)));
+            obj.GetComponent<Bullet>().Launch(6, target, 50 + attackDmg, 10f * (1 + (speed / 100)));
         }
     }
     private void Delay()
@@ -178,66 +185,47 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void PropertyChange()
+    public void WeaponTypes(WeaponType type)
     {
-        if (Input.GetKeyDown(KeyCode.F1))       // Fire
+        switch (type)
         {
-            // Shell
-            bulletPrefab[0] = bulletProperty[0];
+            case WeaponType.Flame:
+                bulletPrefab[0] = bulletProperty[0];
+                bulletProperty[4].SetActive(true);
+                bulletProperty[5].SetActive(false);
+                bulletProperty[6].SetActive(false);
+                bulletProperty[7].SetActive(false);
+                bulletPrefab[2] = bulletProperty[8];
+                break;
 
-            // Lazer
-            bulletProperty[4].SetActive(true);
-            bulletProperty[5].SetActive(false);
-            bulletProperty[6].SetActive(false);
-            bulletProperty[7].SetActive(false);
+            case WeaponType.Ice:
+                bulletPrefab[0] = bulletProperty[1];
+                bulletProperty[4].SetActive(false);
+                bulletProperty[5].SetActive(true);
+                bulletProperty[6].SetActive(false);
+                bulletProperty[7].SetActive(false);
+                bulletPrefab[2] = bulletProperty[9];
+                break;
 
-            // Bullet
-            bulletPrefab[2] = bulletProperty[8];
-        }
-        else if (Input.GetKeyDown(KeyCode.F2))      // Ice
-        {
-            // Shell
-            bulletPrefab[0] = bulletProperty[1];
+            case WeaponType.Electricity:
+                bulletPrefab[0] = bulletProperty[2];
+                bulletProperty[4].SetActive(false);
+                bulletProperty[5].SetActive(false);
+                bulletProperty[6].SetActive(true);
+                bulletProperty[7].SetActive(false);
+                bulletPrefab[2] = bulletProperty[10];
+                break;
 
-            // Lazer
-            bulletProperty[4].SetActive(false);
-            bulletProperty[5].SetActive(true);
-            bulletProperty[6].SetActive(false);
-            bulletProperty[7].SetActive(false);
-
-            // Bullet
-            bulletPrefab[2] = bulletProperty[9];
-        }
-        else if (Input.GetKeyDown(KeyCode.F3))      //Electronic
-        {
-            // Shell
-            bulletPrefab[0] = bulletProperty[2];
-
-            // Lazer
-            bulletProperty[4].SetActive(false);
-            bulletProperty[5].SetActive(false);
-            bulletProperty[6].SetActive(true);
-            bulletProperty[7].SetActive(false);
-
-            // Bullet
-            bulletPrefab[2] = bulletProperty[10];
-        }
-        else if (Input.GetKeyDown(KeyCode.F4))      // Earth
-        {
-            // Shell
-            bulletPrefab[0] = bulletProperty[3];
-
-            // Lazer
-            bulletProperty[4].SetActive(false);
-            bulletProperty[5].SetActive(false);
-            bulletProperty[6].SetActive(false);
-            bulletProperty[7].SetActive(true);
-
-            // Bullet
-            bulletPrefab[2] = bulletProperty[11];
+            case WeaponType.Earth:
+                bulletPrefab[0] = bulletProperty[3];
+                bulletProperty[4].SetActive(false);
+                bulletProperty[5].SetActive(false);
+                bulletProperty[6].SetActive(false);
+                bulletProperty[7].SetActive(true);
+                bulletPrefab[2] = bulletProperty[11];
+                break;
         }
     }
-
 
     private void AddState()
     {
