@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageManager: {fileID: 0}
+  imageF: {fileID: 0}
 --- !u!65 &6996696103432160088
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -370,7 +371,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6710797873787733381, guid: 49454b4076fcf7547b0cb859e3f18ef9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 49454b4076fcf7547b0cb859e3f18ef9, type: 3}
 --- !u!4 &6960805664903509555 stripped
 Transform:

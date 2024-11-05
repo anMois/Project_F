@@ -43,7 +43,7 @@ public class StageManager : MonoBehaviour
 
     IEnumerator MonsterSpawnRoutine()
     {
-        WaitForSeconds delay = new WaitForSeconds(3f);
+        WaitForSeconds delay = new WaitForSeconds(1.5f);
 
         while (true)
         {
@@ -88,12 +88,12 @@ public class StageManager : MonoBehaviour
             if(preState == StageState.Elite)
             {
                 Debug.Log("2400°ñµå È¹µæ");
-                //GameManager.Instance.AddGold(2400);
+                GameManager.Instance.AddGold(2400);
             }
             else
             {
                 Debug.Log("1500°ñµå È¹µæ");
-                //GameManager.Instance.AddGold(1500);
+                GameManager.Instance.AddGold(1500);
             }
 
             curState = StageState.Potal;
