@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         potionCount = 0;
         grenadeCount = 0;
         curPrice = 0; //초기 골드 값
+        curPrice = 20000;
         currentHealth = maxHealth;
 
         UpdateUI();
@@ -86,6 +87,11 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             UsePotion();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            UseGrenade();
         }
     }
 
@@ -272,6 +278,21 @@ public class GameManager : MonoBehaviour
         {
             potionCount--;
             UpdateUI();
+        }
+    }
+
+    public void UseGrenade()
+    {
+        if (grenadeCount > 0)
+        {
+            grenadeCount--;
+            UpdateUI();
+            // 수류탄 사용 코드 추가
+            Debug.Log("수류탄을 사용했습니다.");
+        }
+        else
+        {
+            Debug.Log("수류탄이 없습니다.");
         }
     }
 }
