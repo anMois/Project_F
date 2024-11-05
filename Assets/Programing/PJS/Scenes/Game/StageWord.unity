@@ -695,7 +695,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 963707572281769764, guid: 51636a819aa2e9647a937ba4a84a54fa, type: 3}
       propertyPath: attackDmg
-      value: 50
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51636a819aa2e9647a937ba4a84a54fa, type: 3}
@@ -1025,6 +1025,34 @@ PrefabInstance:
       propertyPath: origin
       value: 
       objectReference: {fileID: 1721742596}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6225955336364047112, guid: 6f6ef3098bfc91a4ab0c32f49b8b4f31, type: 3}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateHp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Test_DragonHpView, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
+      propertyPath: OnHpChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8794235227383829233, guid: 3608345598879de4292b35ec7a024626, type: 3}
       propertyPath: origin
       value: 
