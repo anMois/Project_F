@@ -217,6 +217,6 @@ public partial class PlayerMover : MonoBehaviour
 
     private void State()
     {
-        addSpeed = moveSpeed;
+        addSpeed = player.moveSpeed;
     }
 }

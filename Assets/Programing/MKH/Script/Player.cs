@@ -119,7 +119,7 @@ public class Player : MonoBehaviour, IDamageable
     public void IncreaseAttackSpeed(float percent)
     {
         Debug.Log("공격속도 증가");
-        attackSpeed += attackSpeed * (percent / 100);
+        attackSpeed += percent;
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public class Player : MonoBehaviour, IDamageable
     public void IncreaseMoveSpeed(float percent)
     {
         Debug.Log("이동속도 증가");
-        moveSpeed += moveSpeed * (percent / 100);
+        moveSpeed += percent;
     }
 
     /// <summary>
@@ -157,76 +157,76 @@ public class Player : MonoBehaviour, IDamageable
         switch (itemName)
         {
             case "불같은 분노":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 0, 10);
                 break;
             case "오우거의 심장":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 1, 0, 0);
                 break;
             case "증폭의 고서":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 3, 0, 0);
                 break;
             case "파괴의 룬":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 10, 10, 10);
                 break;
             case "빗발치는 불꽃":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 10, 0);
                 break;
             case "한줄기 태양":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 0, 0);
                 break;
             case "차가운 시선":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 0, 10);
                 break;
             case "날선 추위":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 15, 5, 10);
                 break;
             case "몰아치는 눈폭풍":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 5, 0);
                 break;
             case "한파의 고서":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 7, 0);
                 break;
             case "얼어붙는 동파":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 10, 0);
                 break;
             case "얼음거울":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 3, 0);
                 break;
             case "천둥의 룬":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 0, 10);
                 break;
             case "전기 전도":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 0, 5);
                 break;
             case "무거운 벼락":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 0, 7);
                 break;
             case "플라즈마 방전":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 0, 10);
                 break;
             case "치명의 고서":
                 ChangeStats(itemName, 10, 15, 5);
                 break;
             case "올곶은 흐름":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 10, 0);
                 break;
             case "대지의 룬":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 0, 10);
                 break;
             case "가이아의 축복":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 5, 10, 0);
                 break;
             case "굳은 심지":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, -1, 0, 5);
                 break;
             case "유연한 사고":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 10, 15, 15);
                 break;
             case "철의 마음":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, -1, 5, 0);
                 break;
             case "지진의 고서":
-                ChangeStats(itemName, 10, 15, 5);
+                ChangeStats(itemName, 0, 5, -3);
                 break;
         }
     }
