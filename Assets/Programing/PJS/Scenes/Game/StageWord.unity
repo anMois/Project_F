@@ -522,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 271215584924684786, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
       propertyPath: monsterPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 659958090201148201, guid: 4eb09e2e75f6e39478e67651e9205e47, type: 3}
+      objectReference: {fileID: 5671606212582460181, guid: b58c0e29243d14749a6e499bef580346, type: 3}
     - target: {fileID: 271215584924684786, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
       propertyPath: monsterPrefabs.Array.data[4]
       value: 
@@ -1182,7 +1182,7 @@ PrefabInstance:
     - target: {fileID: 1441260838285334491, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
       propertyPath: monsterPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 659958090201148201, guid: 4eb09e2e75f6e39478e67651e9205e47, type: 3}
+      objectReference: {fileID: 5671606212582460181, guid: b58c0e29243d14749a6e499bef580346, type: 3}
     - target: {fileID: 1441260838285334491, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
       propertyPath: monsterPrefabs.Array.data[4]
       value: 
@@ -1459,7 +1459,7 @@ PrefabInstance:
     - target: {fileID: 8814235010339807793, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: monsterPrefabs.Array.data[3]
       value: 
-      objectReference: {fileID: 659958090201148201, guid: 4eb09e2e75f6e39478e67651e9205e47, type: 3}
+      objectReference: {fileID: 5671606212582460181, guid: b58c0e29243d14749a6e499bef580346, type: 3}
     - target: {fileID: 8814235010339807793, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: monsterPrefabs.Array.data[4]
       value: 
