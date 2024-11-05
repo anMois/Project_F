@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -9,6 +11,7 @@ public class StatusWindowController : MonoBehaviour
     public static StatusWindowController Instance { get; private set; }
 
     public Player player;
+    public static Action<WeaponType> OnWeaponTypeChanged;
     public PlayerAttack playerAttack;
 
     [SerializeField] private TextMeshProUGUI flameCountText;
@@ -59,6 +62,8 @@ public class StatusWindowController : MonoBehaviour
     private void Start()
     {
         player = FindObjectOfType<Player>();
+        playerAttack = FindObjectOfType<PlayerAttack>();
+
         UpdateUI();
         UpdateDisplayImage();
 
@@ -111,7 +116,7 @@ public class StatusWindowController : MonoBehaviour
 
     public void ChangeStat(string statName, int value)
     {
-        string logMessage = $"{statName}: {value} ∫Ø»≠";
+        string logMessage = $"{statName}: {value} Î≥ÄÌôî";
 
         switch (statName)
         {
@@ -219,7 +224,7 @@ public class StatusWindowController : MonoBehaviour
                 relicUIImage.sprite = itemSprite;
                 relicUIImage.gameObject.SetActive(true);
 
-                //relicUIImageøÕ æ∆¿Ã≈€ µ•¿Ã≈Õ∏¶ «‘≤≤ ¿˙¿Â
+                //relicUIImageÏôÄ ÏïÑÏù¥ÌÖú Îç∞Ïù¥ÌÑ∞Î•º Ìï®Íªò Ï†ÄÏû•
                 relicInfoDict[relicUIImage] = (itemName, itemDescription, itemSprite, elemental);
 
                 relicUIImage.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -243,99 +248,99 @@ public class StatusWindowController : MonoBehaviour
 
                 switch (itemName)
                 {
-                    case "∫“∞∞¿∫ ∫–≥Î":
+                    case "Î∂àÍ∞ôÏùÄ Î∂ÑÎÖ∏":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "ø¿øÏ∞≈¿« Ω…¿Â":
+                    case "Ïò§Ïö∞Í±∞Ïùò Ïã¨Ïû•":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¡ı∆¯¿« ∞Ìº≠":
+                    case "Ï¶ùÌè≠Ïùò Í≥†ÏÑú":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "∆ƒ±´¿« ∑È":
+                    case "ÌååÍ¥¥Ïùò Î£¨":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "∫¯πﬂƒ°¥¬ ∫“≤…":
+                    case "ÎπóÎ∞úÏπòÎäî Î∂àÍΩÉ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "«—¡Ÿ±‚ ≈¬æÁ":
+                    case "ÌïúÏ§ÑÍ∏∞ ÌÉúÏñë":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¬˜∞°øÓ Ω√º±":
+                    case "Ï∞®Í∞ÄÏö¥ ÏãúÏÑ†":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "≥Øº± √ﬂ¿ß":
+                    case "ÎÇ†ÏÑ† Ï∂îÏúÑ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "∏Ùæ∆ƒ°¥¬ ¥´∆¯«≥":
+                    case "Î™∞ÏïÑÏπòÎäî ÎààÌè≠Ìíç":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "«—∆ƒ¿« ∞Ìº≠":
+                    case "ÌïúÌååÏùò Í≥†ÏÑú":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "æÛæÓ∫Ÿ¥¬ µø∆ƒ":
+                    case "ÏñºÏñ¥Î∂ôÎäî ÎèôÌåå":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "æÛ¿Ω∞≈øÔ":
+                    case "ÏñºÏùåÍ±∞Ïö∏":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "√µµ’¿« ∑È":
+                    case "Ï≤úÎë•Ïùò Î£¨":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¿¸±‚ ¿¸µµ":
+                    case "Ï†ÑÍ∏∞ Ï†ÑÎèÑ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "π´∞≈øÓ ∫≠∂Ù":
+                    case "Î¨¥Í±∞Ïö¥ Î≤ºÎùΩ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "«√∂Û¡Ó∏∂ πÊ¿¸":
+                    case "ÌîåÎùºÏ¶àÎßà Î∞©Ï†Ñ":
                         player.IncreaseDamage(5);
                         ChangeStat("ATK", 5);
                         break;
-                    case "ƒ°∏Ì¿« ∞Ìº≠":
+                    case "ÏπòÎ™ÖÏùò Í≥†ÏÑú":
                         player.IncreaseDamage(5);
                         ChangeStat("ATK", 5);
                         break;
-                    case "ø√∞˘¿∫ »Â∏ß":
+                    case "Ïò¨Í≥∂ÏùÄ ÌùêÎ¶Ñ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¥Î¡ˆ¿« ∑È":
+                    case "ÎåÄÏßÄÏùò Î£¨":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "∞°¿Ãæ∆¿« √‡∫π":
+                    case "Í∞ÄÏù¥ÏïÑÏùò Ï∂ïÎ≥µ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "±ª¿∫ Ω…¡ˆ":
+                    case "Íµ≥ÏùÄ Ïã¨ÏßÄ":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¿Øø¨«— ªÁ∞Ì":
+                    case "Ïú†Ïó∞Ìïú ÏÇ¨Í≥†":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "√∂¿« ∏∂¿Ω":
+                    case "Ï≤†Ïùò ÎßàÏùå":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
-                    case "¡ˆ¡¯¿« ∞Ìº≠":
+                    case "ÏßÄÏßÑÏùò Í≥†ÏÑú":
                         ChangeStat("ATK", 5);
                         player.IncreaseDamage(5);
                         break;
@@ -390,21 +395,23 @@ public class StatusWindowController : MonoBehaviour
 
     public void UpdateWeapon()
     {
-        if (flameCount > 0)
+        int maxCount = Mathf.Max(flameCount, iceCount, electricityCount, earthCount);
+
+        if (flameCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Flame);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Flame);
         }
-        else if (iceCount > 0)
+        else if (iceCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Ice);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Ice);
         }
-        else if (electricityCount > 0)
+        else if (electricityCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Electricity);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Electricity);
         }
-        else if (earthCount > 0)
+        else if (earthCount == maxCount)
         {
-            playerAttack.WeaponTypes(WeaponType.Earth);
+            OnWeaponTypeChanged?.Invoke(WeaponType.Earth);
         }
     }
 }
