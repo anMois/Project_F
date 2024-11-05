@@ -44,6 +44,11 @@ public class BossDragon : MonoBehaviour, IDamageable
         CurHp = maxHp;
     }
 
+    private void OnEnable()
+    {
+        PlayIntroSound();
+    }
+
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -73,6 +78,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
             // Attack
             animator.SetInteger("Attack", (int)type + 1);
+            PlayAttackSound(type);
             StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
         // Attack
@@ -83,6 +89,7 @@ public class BossDragon : MonoBehaviour, IDamageable
             if (isTargetBehind)
             {
                 animator.SetInteger("Attack", (int)BossAttackType.Land3 + 1);
+                PlayAttackSound(BossAttackType.Land3);
                 StartCoroutine(AttackRoutine(attacks[(int)BossAttackType.Land3]));
             }
             else
@@ -91,6 +98,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
                 // Move & Attack
                 animator.SetInteger("Attack", (int)type + 1);
+                PlayAttackSound(type);
                 StartCoroutine(MoveRoutine());
                 switch (type)
                 {
@@ -143,6 +151,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
             // Attack
             animator.SetInteger("Attack", (int)type + 1);
+            PlayAttackSound(type);
             switch (type)
             {
                 case BossAttackType.FlyPattern1:
@@ -162,6 +171,7 @@ public class BossDragon : MonoBehaviour, IDamageable
 
             // Attack
             animator.SetInteger("Attack", (int)type + 1);
+            PlayAttackSound(type);
             StartCoroutine(AttackRoutine(attacks[(int)type]));
         }
     }
@@ -214,6 +224,7 @@ public class BossDragon : MonoBehaviour, IDamageable
     private void Die()
     {
         animator.SetTrigger("Death");
+        PlayDieSound();
         Destroy(gameObject, 5f);
     }
 
@@ -258,5 +269,36 @@ public class BossDragon : MonoBehaviour, IDamageable
         animator.SetTrigger("Fly");
         StartCoroutine(FlyRoutine());
         StartCoroutine(FlyAttackRoutine());
+    }
+
+    private void PlayIntroSound() => SoundManager.Instance.BossAppearSound();
+    private void PlayDieSound() => SoundManager.Instance.BossDieSound();
+    private void PlayAttackSound(BossAttackType attackType)
+    {
+        switch (attackType)
+        {
+            case BossAttackType.Land1:
+                SoundManager.Instance.BossAttackSound1();
+                break;
+            case BossAttackType.Land2:
+                SoundManager.Instance.BossAttackSound2();
+                break;
+            case BossAttackType.Land3:
+                SoundManager.Instance.BossAttackSound3();
+                break;
+            case BossAttackType.Land4:
+                SoundManager.Instance.BossLandPatternSound1();
+                break;
+            case BossAttackType.LandPattern1:
+            case BossAttackType.LandPattern2:
+            case BossAttackType.Fly1:
+            case BossAttackType.Fly2:
+            case BossAttackType.FlyPattern1:
+            case BossAttackType.FlyPattern2:
+                SoundManager.Instance.BossLandPatternSound2();
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ranges: []
-  target: {fileID: 3510127295272804016}
+  target: {fileID: 7365100052128808244}
   isTargeting: 0
   damage: 7
   particles: []
@@ -10314,6 +10314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae64f226ed830c5489b302a070660735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHpChanged:
+    m_PersistentCalls:
+      m_Calls: []
   target: {fileID: 0}
   origin: {fileID: 0}
   behindCheck: {fileID: 230363677845258221}

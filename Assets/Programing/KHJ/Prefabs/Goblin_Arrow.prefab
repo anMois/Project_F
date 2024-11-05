@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3669159528766440621}
   - component: {fileID: 3669159528767283169}
   - component: {fileID: 3669159528768286281}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow00_mesh(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 8747082728905532503}
   - component: {fileID: -5746900613841614318}
   - component: {fileID: 7033416472320953291}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Goblin_Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3123024930572687355}
   - component: {fileID: 2991859302871839435}
   - component: {fileID: 2991628692944519181}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4763,7 +4763,7 @@ GameObject:
   - component: {fileID: 3123191135318364455}
   - component: {fileID: 2992209609589197949}
   - component: {fileID: 2991772508842926167}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SmokeTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9497,7 +9497,7 @@ GameObject:
   - component: {fileID: 3118776420080400619}
   - component: {fileID: 2992526334481145983}
   - component: {fileID: 2991153423735468259}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14291,7 +14291,7 @@ GameObject:
   - component: {fileID: 3118461998578259867}
   - component: {fileID: 1935052469651285085}
   - component: {fileID: 3853588589482229504}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dragon_Meteor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

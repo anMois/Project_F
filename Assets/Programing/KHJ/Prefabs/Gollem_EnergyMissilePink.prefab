@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3287612903553002525}
   - component: {fileID: 3400099810685680051}
   - component: {fileID: 3410989737443053245}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SparkTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4794,7 +4794,7 @@ GameObject:
   - component: {fileID: 4477354505628403619}
   - component: {fileID: 6059333932022360456}
   - component: {fileID: 3331201424086734073}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gollem_EnergyMissilePink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9701,7 +9701,7 @@ GameObject:
   - component: {fileID: 3287105584885311035}
   - component: {fileID: 3409764187446947709}
   - component: {fileID: 3410607902821090777}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
