@@ -7,7 +7,7 @@ public class MonsterManager : MonoBehaviour
     [Tooltip("Invoke OnAreaOut event when player moves to outside of start zone")]
     [SerializeField] StartZone startZone;
     [Tooltip("Serve stage & wave information")]
-    [SerializeField] Test_StageManager stageManager;
+    [SerializeField] StageManager stageManager;
 
     [SerializeField] List<Monster> monsters = new List<Monster>(10);
     public int MonsterCount { get { return monsters.Count; } }
