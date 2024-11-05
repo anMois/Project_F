@@ -132,7 +132,7 @@ MonoBehaviour:
   explosionFactory: {fileID: 33612245708549106, guid: fe009b8048081dd41b2fb56179525616, type: 3}
   target: {fileID: 0}
   naming: 
-  speed: 30
+  speed: 0
   dmg: 0
 --- !u!54 &-181735912404156169
 Rigidbody:

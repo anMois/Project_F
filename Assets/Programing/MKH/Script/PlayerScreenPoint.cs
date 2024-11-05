@@ -5,9 +5,14 @@ using UnityEngine;
 public class PlayerScreenPoint : MonoBehaviour
 {
     [SerializeField] float yAngle;
-    [SerializeField] float mouserotateSpeed;
+    [SerializeField] public float mouserotateSpeed;
 
-    private void Update()
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void LateUpdate()
     {
         ViewRotate();
     }

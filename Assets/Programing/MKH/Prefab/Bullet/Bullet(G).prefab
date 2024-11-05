@@ -5054,6 +5054,6 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 129
-  lifeTime: 0
+  lifeTime: 1
   speed: 0
   dmg: 0

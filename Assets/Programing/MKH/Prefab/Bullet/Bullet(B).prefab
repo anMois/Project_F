@@ -5056,8 +5056,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 129
   lifeTime: 1
-  speed: 10
-  dmg: 5
+  speed: 0
+  dmg: 0
 --- !u!1 &6878673957487979728
 GameObject:
   m_ObjectHideFlags: 0
