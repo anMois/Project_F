@@ -2,10 +2,9 @@ using UnityEngine;
 
 public partial class PlayerMover : MonoBehaviour
 {
-    [SerializeField] Transform player;
-
     [SerializeField] public float moveSpeed;
     [SerializeField] float runSpeed;
+    [SerializeField] public float addSpeed;
     [SerializeField] float jumpPower;
     [SerializeField] float dashSpeed;
     [SerializeField] float mouserotateSpeed;
@@ -17,8 +16,8 @@ public partial class PlayerMover : MonoBehaviour
     public int jumpCount;
     Vector3 moveDir;
 
+    Player player;
     PlayerAttack attack;
-
 
     private static int idleHash = Animator.StringToHash("Idle03");
     private static int walkForwardHash = Animator.StringToHash("BattleWalkForward");
@@ -38,11 +37,10 @@ public partial class PlayerMover : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-        player = GetComponent<Transform>();
+        player = GetComponent<Player>();
         rigid = GetComponent<Rigidbody>();
 
         jumpCount = maxJump;
-        Cursor.lockState = CursorLockMode.Locked;
         isJump = false;
     }
 
@@ -50,12 +48,13 @@ public partial class PlayerMover : MonoBehaviour
     {
         Move();
         AnimaitorPlay();
+        State();
     }
 
     private void FixedUpdate()
     {
-        Vector3 moveOffset = moveDir * (moveSpeed * Time.fixedDeltaTime);
-        Vector3 runOffset = moveDir * (runSpeed * Time.fixedDeltaTime);
+        Vector3 moveOffset = moveDir * (moveSpeed * (1 + addSpeed / 100) * Time.fixedDeltaTime);
+        Vector3 runOffset = moveDir * (runSpeed * (1 + addSpeed / 100) * Time.fixedDeltaTime);
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -215,4 +214,9 @@ public partial class PlayerMover : MonoBehaviour
         }
     }
     #endregion
+
+    private void State()
+    {
+        addSpeed = moveSpeed;
+    }
 }

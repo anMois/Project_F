@@ -6,19 +6,18 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform attackPos;
     [SerializeField] Transform lazerPos;
     [SerializeField] GameObject[] bulletPrefab;
-    [SerializeField] string naming;
     private GameObject curBullet;
-    [SerializeField] Animator ani;
+    [SerializeField] GameObject[] bulletProperty;
+    private GameObject curProperty;
+
     [SerializeField] Transform target;
     [SerializeField] Transform shellTarget;
-    [SerializeField] GameObject lazer;
-    [SerializeField] float time;
-    [SerializeField] GameObject bombFactory;
-    [SerializeField] float attackDmg;
-    Player player;
+
+    [SerializeField] string naming;
+    [SerializeField] public int attackDmg;
+    [SerializeField] public float speed;
 
     Coroutine lazers;
-
 
     private Coroutine delayAttackCoroutine;
 
@@ -28,6 +27,8 @@ public class PlayerAttack : MonoBehaviour
     public int curAniHash { get; private set; }
 
     PlayerMover mover;
+    Player player;
+    Animator ani;
 
 
     private void Awake()
@@ -36,8 +37,6 @@ public class PlayerAttack : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
         mover = GetComponent<PlayerMover>();
         player = GetComponent<Player>();
-
-        lazer.GetComponent<Lazer>().Damage(naming, (int)attackDmg);
     }
 
     private void Update()
@@ -54,24 +53,19 @@ public class PlayerAttack : MonoBehaviour
             Lazer();
 
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SwapBullet(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SwapBullet(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SwapBullet(2);
-        }
+        BulletChange();
+        PropertyChange();
+        AddState();
     }
 
     public void SwapBullet(int index)
     {
         curBullet = bulletPrefab[index];
+    }
+
+    public void SwapPreperty(int index)
+    {
+        curProperty = bulletProperty[index];
     }
 
 
@@ -116,16 +110,25 @@ public class PlayerAttack : MonoBehaviour
     {
         if (curBullet == bulletPrefab[1])
         {
+            bulletPrefab[1].GetComponent<Lazer>().Damage(naming, 10 + attackDmg);
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 lazers = StartCoroutine(AttackLazer());
 
-                mover.GetComponent<PlayerMover>().enabled = false;
             }
             else if (Input.GetKeyUp(KeyCode.Mouse0))
             {
                 StopCoroutine(lazers);
-                lazer.SetActive(false);
+                bulletPrefab[1].SetActive(false);
+            }
+
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                mover.GetComponent<PlayerMover>().enabled = false;
+            }
+            else if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
                 mover.GetComponent<PlayerMover>().enabled = true;
             }
         }
@@ -137,14 +140,12 @@ public class PlayerAttack : MonoBehaviour
         if (curBullet == bulletPrefab[0])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Bullet>().Launch(6, target, (int)attackDmg);
+            obj.GetComponent<Bomb>().Fire(naming, 12 + attackDmg, 30f * (1 + (speed / 100)));
         }
         else if (curBullet == bulletPrefab[2])
         {
             GameObject obj = Instantiate(curBullet, attackPos.position, attackPos.rotation);
-            obj.GetComponent<Bomb>().Fire(naming, (int)1.5f * (int)attackDmg);
-
-
+            obj.GetComponent<Bullet>().Launch(6, target, 50 + attackDmg, 10f * (1 + (speed/ 100)));
         }
     }
     private void Delay()
@@ -154,19 +155,94 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator AttackLazer()
     {
-        lazer.SetActive(true);
+        bulletPrefab[1].SetActive(true);
 
         yield return new WaitForSeconds(5f);
 
-        lazer.SetActive(false);
+        bulletPrefab[1].SetActive(false);
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.CompareTag("Monster"))
-    //    {
-    //        Destroy(hitEffect, 4f);
-    //    }
-    //}
+    private void BulletChange()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SwapBullet(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SwapBullet(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            SwapBullet(2);
+        }
+    }
 
+    private void PropertyChange()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))       // Fire
+        {
+            // Shell
+            bulletPrefab[0] = bulletProperty[0];
+
+            // Lazer
+            bulletProperty[4].SetActive(true);
+            bulletProperty[5].SetActive(false);
+            bulletProperty[6].SetActive(false);
+            bulletProperty[7].SetActive(false);
+
+            // Bullet
+            bulletPrefab[2] = bulletProperty[8];
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))      // Ice
+        {
+            // Shell
+            bulletPrefab[0] = bulletProperty[1];
+
+            // Lazer
+            bulletProperty[4].SetActive(false);
+            bulletProperty[5].SetActive(true);
+            bulletProperty[6].SetActive(false);
+            bulletProperty[7].SetActive(false);
+
+            // Bullet
+            bulletPrefab[2] = bulletProperty[9];
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))      //Electronic
+        {
+            // Shell
+            bulletPrefab[0] = bulletProperty[2];
+
+            // Lazer
+            bulletProperty[4].SetActive(false);
+            bulletProperty[5].SetActive(false);
+            bulletProperty[6].SetActive(true);
+            bulletProperty[7].SetActive(false);
+
+            // Bullet
+            bulletPrefab[2] = bulletProperty[10];
+        }
+        else if (Input.GetKeyDown(KeyCode.F4))      // Earth
+        {
+            // Shell
+            bulletPrefab[0] = bulletProperty[3];
+
+            // Lazer
+            bulletProperty[4].SetActive(false);
+            bulletProperty[5].SetActive(false);
+            bulletProperty[6].SetActive(false);
+            bulletProperty[7].SetActive(true);
+
+            // Bullet
+            bulletPrefab[2] = bulletProperty[11];
+        }
+    }
+
+
+    private void AddState()
+    {
+        naming = player.naming;
+        attackDmg = player.dmg;
+        speed = player.attackSpeed;
+    }
 }
