@@ -165,6 +165,7 @@ public class InGameController : MonoBehaviour
     public void NextStageCanvasActive()
     {
         clearBox.IsOpen = true;
+        clearBox.IsClick = false;
         UIManager.Instance.HideUI("Stage Clear Canvas");
     }
 

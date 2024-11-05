@@ -33,6 +33,7 @@ public class StageManager : MonoBehaviour
     public int CurWave { get { return curWave; } set { curWave = value; } }
     public int LastStage { get { return maxWave.Count - 1; } }
     public StageState CurState { set { curState = value; } }
+    public StageState PreState { get { return preState; } }
 
     private void Start()
     {
@@ -85,16 +86,7 @@ public class StageManager : MonoBehaviour
         }
         else if (curState == StageState.Choice && clearBox.IsOpen)
         {
-            if(preState == StageState.Elite)
-            {
-                Debug.Log("2400°ñµå È¹µæ");
-                GameManager.Instance.AddGold(2400);
-            }
-            else
-            {
-                Debug.Log("1500°ñµå È¹µæ");
-                GameManager.Instance.AddGold(1500);
-            }
+            
 
             curState = StageState.Potal;
             clearBox.transform.position = Vector3.zero;

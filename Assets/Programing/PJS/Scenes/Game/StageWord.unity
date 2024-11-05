@@ -351,6 +351,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7602161093663493194, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e54fd0b055d3e714f9d3ea8de2a45478, type: 3}
 --- !u!4 &153261374 stripped
@@ -849,6 +853,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2846975163382384680, guid: 0e5d406ceb3bbe145bee41583bfa4de0, type: 3}
+      propertyPath: stageManager
+      value: 
+      objectReference: {fileID: 1649827382}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e5d406ceb3bbe145bee41583bfa4de0, type: 3}
 --- !u!114 &897487862 stripped
@@ -3587,10 +3595,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1639512922075923212, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
-      propertyPath: imageF
-      value: 
-      objectReference: {fileID: 5165360358336979731}
-    - target: {fileID: 1639512922075923212, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
       propertyPath: stageManager
       value: 
       objectReference: {fileID: 1649827382}
@@ -3655,8 +3659,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34cffbafeb63f6346ab00f9c511abe86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &5165360358336979731 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5027982348569504644, guid: 7cdb57eae8baa9642943f0c070e37cbb, type: 3}
-  m_PrefabInstance: {fileID: 5165360358336979729}
-  m_PrefabAsset: {fileID: 0}
