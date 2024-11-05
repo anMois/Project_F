@@ -34,7 +34,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 3.800003, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -207,7 +207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7086196011203109319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -394,6 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da636c0586a7b704a9b2d86335235ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpModel: {fileID: 0}
+  hpModel: {fileID: 7542428872002132503, guid: 3608345598879de4292b35ec7a024626, type: 3}
   hpSlider: {fileID: 7086196011851438872}
   maxHp: 100

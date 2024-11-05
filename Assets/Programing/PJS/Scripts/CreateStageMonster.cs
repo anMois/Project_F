@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static StageManager;
@@ -34,6 +33,10 @@ public class CreateStageMonster : MonoBehaviour
                 if (monsterData.MonsterKey[j] == id)
                 {
                     Monster newMonster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation).GetComponent<Monster>();
+
+                    if (newMonster == null)
+                        continue;
+
                     newMonster.transform.parent = monsterManager.transform;
                     monsterManager.AddMonster(newMonster);
                 }
@@ -55,7 +58,10 @@ public class CreateStageMonster : MonoBehaviour
             num = Random.Range(0, normalMosterCount);
         }
 
-        if (num < 0)    num = 0;
+        if (num < 0)
+        {
+            num = 0;
+        }
 
         return num;
     }
