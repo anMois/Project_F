@@ -9,7 +9,7 @@ public class MonsterManager : MonoBehaviour
     [Tooltip("Serve stage & wave information")]
     [SerializeField] StageManager stageManager;
 
-    [SerializeField] List<Monster> monsters = new List<Monster>(10);
+    [SerializeField] List<Monster> monsters = new List<Monster>(15);
     public int MonsterCount { get { return monsters.Count; } }
 
     public void AddMonster(Monster newMonster)
