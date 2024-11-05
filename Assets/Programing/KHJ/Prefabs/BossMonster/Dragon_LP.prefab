@@ -9730,6 +9730,7 @@ GameObject:
   - component: {fileID: 6072245797769308357}
   - component: {fileID: 6072245797769308358}
   - component: {fileID: 7542428872002132503}
+  - component: {fileID: 4012951630190404439}
   m_Layer: 7
   m_Name: Dragon_LP
   m_TagString: Monster
@@ -10339,6 +10340,19 @@ MonoBehaviour:
   maxHp: 500
   curHp: 0
   moveSpeed: 10
+--- !u!114 &4012951630190404439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214023582376947041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6578ec28de5434043a9681563a2201a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagString: Monster
 --- !u!1 &9214023582376947043
 GameObject:
   m_ObjectHideFlags: 0
