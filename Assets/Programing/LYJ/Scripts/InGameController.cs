@@ -190,7 +190,7 @@ public class InGameController : MonoBehaviour
                 Debug.Log("두 번째 스테이지로 이동합니다.");
                 break;
             case 3:
-                stageManager.NextStage(StageState.NonBattle);
+                stageManager.NextStage(StageState.Store);
                 inGame.StoreOrBonfirePosition(inGame.Player.transform, true);
                 UIManager.Instance.HideUI("Next Stage Canvas");
                 Debug.Log("세 번째 스테이지로 이동합니다.");
