@@ -56,9 +56,14 @@ public class InGameManager : MonoBehaviour
     public void StoreOrBonfirePosition(Transform player, bool choice)
     {
         if (choice)
+        {
             player.position = store.position;
+            SoundManager.Instance.StoreOpenSound();
+        }
         else
+        {
             player.position = bonfire.position;
+        }
     }
 
     /// <summary>

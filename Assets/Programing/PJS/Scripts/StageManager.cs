@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum StageState { Normal, Elite, NonBattle, Clear, Choice, Potal }
+    public enum StageState { Normal, Elite, Store, Clear, Choice, Potal }
     [SerializeField] InGameManager inGame;
 
     [Header("현재 상태, 이전 상태")]
@@ -76,9 +76,10 @@ public class StageManager : MonoBehaviour
                     curWave = 0;
                 }
             }
-            else if(curState == StageState.NonBattle)
+            else if(curState == StageState.Store)
             {
                 potal.transform.position = inGame.Player.transform.position;
+                preState = curState;
                 curState = StageState.Choice;
             }
         }
@@ -88,7 +89,7 @@ public class StageManager : MonoBehaviour
     {
         if (curState == StageState.Clear)
         {
-            SoundManager.Instance.StageClearSound();
+            SoundManager.Instance.ClearBoxSound();
             clearBox.transform.position = inGame.CurPlayerPoint.position;
             curState = StageState.Choice;
         }
@@ -96,6 +97,7 @@ public class StageManager : MonoBehaviour
         {
             curState = StageState.Potal;
             clearBox.transform.position = Vector3.zero;
+            SoundManager.Instance.TeleportSound();
             potal.transform.position = inGame.CurPlayerPoint.position;
         }
         else
@@ -106,7 +108,7 @@ public class StageManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        GameManager.Instance.StageWaveText(stageNum + 1, curWave, maxWave[stageNum]);
+        GameManager.Instance.StageWaveText(stageNum + 1, curWave, maxWave[stageNum], curState, preState);
     }
 
     /// <summary>

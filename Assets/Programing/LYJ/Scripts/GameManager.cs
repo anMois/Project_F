@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static StageManager;
 
 public class GameManager : MonoBehaviour
 {
@@ -301,9 +302,12 @@ public class GameManager : MonoBehaviour
     /// <param name="stage">현재 스테이지</param>
     /// <param name="curWave">현재 웨이브</param>
     /// <param name="fullWave">해당 스테이지 전체 웨이브</param>
-    public void StageWaveText(int stage, int curWave, int fullWave)
+    public void StageWaveText(int stage, int curWave, int fullWave, StageState curState, StageState preState)
     {
         stageNumberText.text = $"{stage} Stage";
-        waveNumberText.text = $"{curWave} / {fullWave} Wave";
+        if (curState == StageState.Normal || curState == StageState.Elite)
+            waveNumberText.text = $"{curWave} / {fullWave} Wave";
+        else if(preState == StageState.Store)
+            waveNumberText.text = $"{curState} Wave";
     }
 }
