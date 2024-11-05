@@ -37,9 +37,15 @@ public class StageManager : MonoBehaviour
 
     private void Start()
     {
+        Init();
         SelectStage();
 
         StartCoroutine(MonsterSpawnRoutine());
+    }
+
+    private void Init()
+    {
+        curWave = 0;
     }
 
     IEnumerator MonsterSpawnRoutine()
@@ -56,8 +62,9 @@ public class StageManager : MonoBehaviour
                 //웨이브 확인 후 웨이브 증가 및 몬스터 생성
                 if (curWave != maxWave[stageNum])
                 {
-                    curStageMonster.MonsterSpawn(curState, curWave + 1, maxWave[stageNum]);
+                    curStageMonster.MonsterSpawn(curState, curWave, maxWave[stageNum]);
                     curWave++;
+                    SoundManager.Instance.RoundStartSound();
                 }
                 // 해당 스테이지의 모든 웨이브를 다 클리어 했을시
                 // 스테이지 클리어 웨이브 초기화 클리어 상자 생성
@@ -81,13 +88,12 @@ public class StageManager : MonoBehaviour
     {
         if (curState == StageState.Clear)
         {
+            SoundManager.Instance.StageClearSound();
             clearBox.transform.position = inGame.CurPlayerPoint.position;
             curState = StageState.Choice;
         }
         else if (curState == StageState.Choice && clearBox.IsOpen)
         {
-            
-
             curState = StageState.Potal;
             clearBox.transform.position = Vector3.zero;
             potal.transform.position = inGame.CurPlayerPoint.position;
@@ -96,6 +102,11 @@ public class StageManager : MonoBehaviour
         {
             clearBox.IsOpen = false;
         }
+    }
+
+    private void LateUpdate()
+    {
+        GameManager.Instance.StageWaveText(stageNum + 1, curWave, maxWave[stageNum]);
     }
 
     /// <summary>

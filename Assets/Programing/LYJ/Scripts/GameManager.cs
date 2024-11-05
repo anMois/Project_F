@@ -227,4 +227,16 @@ public class GameManager : MonoBehaviour
         UpdatePriceText();
         UpdateGainedGoldText(amount);
     }
+
+    /// <summary>
+    /// 스테이지 정보
+    /// </summary>
+    /// <param name="stage">현재 스테이지</param>
+    /// <param name="curWave">현재 웨이브</param>
+    /// <param name="fullWave">해당 스테이지 전체 웨이브</param>
+    public void StageWaveText(int stage, int curWave, int fullWave)
+    {
+        stageNumberText.text = $"{stage} Stage";
+        waveNumberText.text = $"{curWave} / {fullWave} Wave";
+    }
 }
