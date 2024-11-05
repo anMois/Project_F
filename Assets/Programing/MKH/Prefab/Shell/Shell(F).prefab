@@ -115,8 +115,8 @@ MonoBehaviour:
   explosionFactory: {fileID: 7512728781299941911, guid: bf046a0656305f4429731a1f2b07a7d1, type: 3}
   target: {fileID: 0}
   naming: Monster
-  speed: 30
-  dmg: 10
+  speed: 0
+  dmg: 0
 --- !u!114 &1821498568329644838
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -132,8 +132,8 @@ MonoBehaviour:
   explosionFactory: {fileID: 7318415874435753885, guid: 394ca7acdd822224bba8ad0333412326, type: 3}
   target: {fileID: 0}
   naming: 
-  speed: 30
-  dmg: 15
+  speed: 0
+  dmg: 0
 --- !u!54 &3284747968115216632
 Rigidbody:
   m_ObjectHideFlags: 0
