@@ -17,7 +17,7 @@ public class BossThrowAttack : BossAttack
     private void OnEnable()
     {
         if (target == null)
-            return;
+            target = GameObject.FindGameObjectWithTag("Player").transform;
 
         Throw();
     }
@@ -25,8 +25,9 @@ public class BossThrowAttack : BossAttack
     private void Throw()
     {
         Vector3 offset = new Vector3(0, 3f, 0);
-
+        Debug.Log($"[Throw] Throw to {target.gameObject.name}");
         Projectile newProjectile = Instantiate(projectilePrefab, muzzlePoint.position, Quaternion.identity);
+        Debug.Log($"meteor: {newProjectile}({newProjectile.GetInstanceID()})");
         newProjectile.Launch(friendlyLayer, target.position + offset, damage);
     }
 }

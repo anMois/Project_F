@@ -24,6 +24,8 @@ public class Projectile : MonoBehaviour
         if (!valid)
             return;
 
+        Debug.Log($"[Projectile OnTriggerEnter]: {gameObject}({gameObject.GetInstanceID()})");
+        Debug.Log($"other: {other.name}");
         IDamageable damageable = null;
         Transform curTransform = other.transform;
         // Find IDamageable through parents
@@ -38,12 +40,8 @@ public class Projectile : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeHit(dmg);
-            Destroy(gameObject);
         }
-        else
-        {
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     /// <summary>

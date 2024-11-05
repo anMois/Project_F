@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7672343667235043861}
   - component: {fileID: 1000022570017010733}
   - component: {fileID: 2454985382532002286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LaserMeshMissileBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4914,7 +4914,7 @@ GameObject:
   - component: {fileID: 1034287154425625196}
   - component: {fileID: 5835774984756087841}
   - component: {fileID: 8016401067426459925}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlyingEye_LaserMissileRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9802,7 +9802,7 @@ GameObject:
   - component: {fileID: 7198441157758146062}
   - component: {fileID: 7198441157772266526}
   - component: {fileID: 7198441157772155884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FireGlowTrail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
