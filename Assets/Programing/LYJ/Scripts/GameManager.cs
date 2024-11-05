@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    //¾ÀÀÌ ·ÎµåµÉ ¶§ È£ÃâµÇ´Â ÃÊ±âÈ­ ¸Ş¼Òµå
+    //ì”¬ì´ ë¡œë“œë  ë•Œ í˜¸ì¶œë˜ëŠ” ì´ˆê¸°í™” ë©”ì†Œë“œ
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         ResetGameState();
@@ -54,10 +54,10 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameState()
     {
-        //ÇÊ¿äÇÑ °ªÀ» ÃÊ±âÈ­ (¾Æ·¡ ³»¿ëÀ» °ÔÀÓ ÇÊ¿ä¿¡ µû¶ó ¼³Á¤)
+        //í•„ìš”í•œ ê°’ì„ ì´ˆê¸°í™” (ì•„ë˜ ë‚´ìš©ì„ ê²Œì„ í•„ìš”ì— ë”°ë¼ ì„¤ì •)
         potionCount = 0;
         grenadeCount = 0;
-        curPrice = 0; //ÃÊ±â °ñµå °ª
+        curPrice = 0; //ì´ˆê¸° ê³¨ë“œ ê°’
         curPrice = 20000;
         currentHealth = maxHealth;
 
@@ -96,7 +96,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ¾ÆÀÌÅÛ ±¸¸Å (µ· Â÷°¨) - CSV·Î ¹Ş¾Æ¿Â ¾ÆÀÌÅÛ¸¸ °¡´É
+    /// ì•„ì´í…œ êµ¬ë§¤ (ëˆ ì°¨ê°) - CSVë¡œ ë°›ì•„ì˜¨ ì•„ì´í…œë§Œ ê°€ëŠ¥
     /// </summary>
     /// <param name="itemPrice"></param>
     /// <returns></returns>
@@ -108,11 +108,11 @@ public class GameManager : MonoBehaviour
             UpdatePriceText();
             return true;
         }
-        Debug.Log("µ·ÀÌ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+        Debug.Log("ëˆì´ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
         return false;
     }
     /// <summary>
-    /// ¾ÆÀÌÅÛ ±¸¸Å - Æ÷¼Ç, ¼ö·ùÅº Àü¿ë
+    /// ì•„ì´í…œ êµ¬ë§¤ - í¬ì…˜, ìˆ˜ë¥˜íƒ„ ì „ìš©
     /// </summary>
     /// <param name="price"></param>
     /// <returns></returns>
@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("µ·ÀÌ ºÎÁ·ÇÏ¿© ±¸¸ÅÇÒ ¼ö ¾ø½À´Ï´Ù.");
+            Debug.Log("ëˆì´ ë¶€ì¡±í•˜ì—¬ êµ¬ë§¤í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             return false;
         }
     }
@@ -135,8 +135,8 @@ public class GameManager : MonoBehaviour
     {
         if (priceText != null && goldText != null)
         {
-            priceText.text = $"º¸À¯ °ñµå: {curPrice} G";
-            goldText.text = $"º¸À¯ °ñµå: {curPrice} G";
+            priceText.text = $"ë³´ìœ  ê³¨ë“œ: {curPrice} G";
+            goldText.text = $"ë³´ìœ  ê³¨ë“œ: {curPrice} G";
         }
     }
 
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // ¾ÆÀÌÅÛ ¼öÁı ±â´É (ÇÃ·¹ÀÌ¾î.cs¿¡ ºÙ¿© »ç¿ëÇÒ ¶§ Áö¿ì°í »ç¿ë)
+    // ì•„ì´í…œ ìˆ˜ì§‘ ê¸°ëŠ¥ (í”Œë ˆì´ì–´.csì— ë¶™ì—¬ ì‚¬ìš©í•  ë•Œ ì§€ìš°ê³  ì‚¬ìš©)
     //private void OnTriggerEnter(Collider collider)
     //{
     //    if (collider.CompareTag("Potion"))
@@ -202,7 +202,7 @@ public class GameManager : MonoBehaviour
     public int GetGrenadeCount() => grenadeCount;
 
     /// <summary>
-    /// ÇÇÇØ¸¦ ¹Ş´Â ¸Ş¼­µå
+    /// í”¼í•´ë¥¼ ë°›ëŠ” ë©”ì„œë“œ
     /// </summary>
     /// <param name="damageAmount"></param>
     public void TakeDamage(float damageAmount)
@@ -212,20 +212,20 @@ public class GameManager : MonoBehaviour
         if (currentHealth <= 100)
         {
             UIManager.Instance.ShowUI("Game Over Canvas");
-            Debug.Log("ÇÃ·¹ÀÌ¾î°¡ »ç¸ÁÇß½À´Ï´Ù.");
+            Debug.Log("í”Œë ˆì´ì–´ê°€ ì‚¬ë§í–ˆìŠµë‹ˆë‹¤.");
         }
     }
 
     /// <summary>
-    /// Ã¼·ÂÀ» È¸º¹ÇÏ´Â ¸Ş¼­µå
+    /// ì²´ë ¥ì„ íšŒë³µí•˜ëŠ” ë©”ì„œë“œ
     /// </summary>
-    /// <param name="percentage">È¸º¹ÇÒ ºñÀ² (0~1) 0.7 = 70% </param>
+    /// <param name="percentage">íšŒë³µí•  ë¹„ìœ¨ (0~1) 0.7 = 70% </param>
     public void Heal(float percentage)
     {
         currentHealth = maxHealth * percentage;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         UpdateHealthUI();
-        Debug.Log($"Ã¼·ÂÀÌ {percentage * 100}%·Î È¸º¹µÇ¾ú½À´Ï´Ù.");
+        Debug.Log($"ì²´ë ¥ì´ {percentage * 100}%ë¡œ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤.");
     }
 
     private void UpdateGainedGoldText(float amount)
@@ -237,16 +237,16 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// °ñµå¸¦ Ãß°¡
+    /// ê³¨ë“œë¥¼ ì¶”ê°€
     /// </summary>
-    /// <param name="amount">°ñµå ¾ç</param>
+    /// <param name="amount">ê³¨ë“œ ì–‘</param>
     public void AddGold(float amount)
     {
         curPrice += amount;
         UpdatePriceText();
         UpdateGainedGoldText(amount);
     }
-
+    
     public void UsePotion()
     {
         if (potionCount > 0)
@@ -259,16 +259,16 @@ public class GameManager : MonoBehaviour
                 potionCount--;
                 UpdateUI();
                 UpdateHealthUI();
-                Debug.Log($"Ã¼·ÂÀÌ È¸º¹µÇ¾ú½À´Ï´Ù. ÇöÀç Ã¼·Â: {currentHealth}");
+                Debug.Log($"ì²´ë ¥ì´ íšŒë³µë˜ì—ˆìŠµë‹ˆë‹¤. í˜„ì¬ ì²´ë ¥: {currentHealth}");
             }
             else
             {
-                Debug.Log("Ã¼·ÂÀÌ ÀÌ¹Ì ÃÖ´ëÀÔ´Ï´Ù. Æ÷¼ÇÀ» »ç¿ëÇÒ ¼ö ¾ø½À´Ï´Ù.");
+                Debug.Log("ì²´ë ¥ì´ ì´ë¯¸ ìµœëŒ€ì…ë‹ˆë‹¤. í¬ì…˜ì„ ì‚¬ìš©í•  ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
             }
         }
         else
         {
-            Debug.Log("Æ÷¼ÇÀÌ ¾ø½À´Ï´Ù.");
+            Debug.Log("í¬ì…˜ì´ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
@@ -287,12 +287,24 @@ public class GameManager : MonoBehaviour
         {
             grenadeCount--;
             UpdateUI();
-            // ¼ö·ùÅº »ç¿ë ÄÚµå Ãß°¡
-            Debug.Log("¼ö·ùÅºÀ» »ç¿ëÇß½À´Ï´Ù.");
+            // ìˆ˜ë¥˜íƒ„ ì‚¬ìš© ì½”ë“œ ì¶”ê°€
+            Debug.Log("ìˆ˜ë¥˜íƒ„ì„ ì‚¬ìš©í–ˆìŠµë‹ˆë‹¤.");
         }
         else
         {
-            Debug.Log("¼ö·ùÅºÀÌ ¾ø½À´Ï´Ù.");
+            Debug.Log("ìˆ˜ë¥˜íƒ„ì´ ì—†ìŠµë‹ˆë‹¤.");
         }
+    }
+        
+    /// <summary>
+    /// ìŠ¤í…Œì´ì§€ ì •ë³´
+    /// </summary>
+    /// <param name="stage">í˜„ì¬ ìŠ¤í…Œì´ì§€</param>
+    /// <param name="curWave">í˜„ì¬ ì›¨ì´ë¸Œ</param>
+    /// <param name="fullWave">í•´ë‹¹ ìŠ¤í…Œì´ì§€ ì „ì²´ ì›¨ì´ë¸Œ</param>
+    public void StageWaveText(int stage, int curWave, int fullWave)
+    {
+        stageNumberText.text = $"{stage} Stage";
+        waveNumberText.text = $"{curWave} / {fullWave} Wave";
     }
 }

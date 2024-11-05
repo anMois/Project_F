@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Interact();
+                 Interact();
             }
         }
         else
