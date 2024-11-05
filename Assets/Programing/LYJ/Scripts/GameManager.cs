@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI grenadeCountText;
     private int potionCount = 0;
     private int grenadeCount = 0;
+    private const int maxItemCount = 3;
 
     [SerializeField] private TextMeshProUGUI stageNumberText;
     [SerializeField] private TextMeshProUGUI waveNumberText;
@@ -35,6 +36,8 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+            curPrice = 20000f;
         }
         else
         {
@@ -58,7 +61,8 @@ public class GameManager : MonoBehaviour
         //필요한 값을 초기화 (아래 내용을 게임 필요에 따라 설정)
         potionCount = 0;
         grenadeCount = 0;
-        curPrice = 0; //초기 골드 값으로 설정
+        //curPrice = 0; //초기 골드 값으로 설정
+        curPrice = 20000f;
         currentHealth = maxHealth; //체력을 최대치로 설정
 
         UpdateUI();
@@ -145,21 +149,21 @@ public class GameManager : MonoBehaviour
     }
 
     // 아이템 수집 기능 (플레이어.cs에 붙여 사용할 때 지우고 사용)
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.CompareTag("Potion"))
-        {
-            potionCount++;
-            UpdateUI();
-            Destroy(collider.gameObject);
-        }
-        else if (collider.CompareTag("Grenade"))
-        {
-            grenadeCount++;
-            UpdateUI();
-            Destroy(collider.gameObject);
-        }
-    }
+    //private void OnTriggerEnter(Collider collider)
+    //{
+    //    if (collider.CompareTag("Potion"))
+    //    {
+    //        potionCount++;
+    //        UpdateUI();
+    //        Destroy(collider.gameObject);
+    //    }
+    //    else if (collider.CompareTag("Grenade"))
+    //    {
+    //        grenadeCount++;
+    //        UpdateUI();
+    //        Destroy(collider.gameObject);
+    //    }
+    //}
 
     private void UpdateUI()
     {
@@ -172,15 +176,24 @@ public class GameManager : MonoBehaviour
 
     public void IncrementPotionCount()
     {
-        potionCount++;
-        UpdateUI();
+        if (potionCount <= maxItemCount)
+        {
+            potionCount++;
+            UpdateUI();
+        }
     }
 
     public void IncrementGrenadeCount()
     {
-        grenadeCount++;
-        UpdateUI();
+        if (grenadeCount <= maxItemCount)
+        {
+            grenadeCount++;
+            UpdateUI();
+        }
     }
+
+    public int GetPotionCount() => potionCount;
+    public int GetGrenadeCount() => grenadeCount;
 
     /// <summary>
     /// 피해를 받는 메서드

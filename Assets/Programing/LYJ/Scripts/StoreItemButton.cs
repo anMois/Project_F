@@ -19,6 +19,15 @@ public class StoreItemButton : MonoBehaviour
     {
         InitializeButtons();
         ResetButtonStates();
+
+        if (GameManager.Instance.GetPotionCount() >= 3 && potionButton != null)
+        {
+            potionButton.interactable = false;
+        }
+        if (GameManager.Instance.GetGrenadeCount() >= 3 && grenadeButton != null)
+        {
+            grenadeButton.interactable = false;
+        }
     }
 
     private void Start()
@@ -129,38 +138,57 @@ public class StoreItemButton : MonoBehaviour
     /// <param name="clickedButton"></param>
     public void PotionGrenadeBuyButtonClick(Button clickedButton)
     {
-        clickedButton.interactable = false;
-
-        //버튼 클릭 시 포션과 수류탄 가격에 따라 구매 여부를 결정
         if (clickedButton == potionButton)
         {
+            if (GameManager.Instance.GetPotionCount() == 3)
+            {
+                Debug.Log("포션은 최대 3개까지만 소지할 수 있습니다.");
+                clickedButton.interactable = false;
+                return;
+            }
+
             if (GameManager.Instance.PotionGrenadeItem(1500))
             {
                 SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementPotionCount();
-                Debug.Log($"포션 구매 완료");
+                Debug.Log("포션 구매 완료");
                 Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+
+                if (GameManager.Instance.GetPotionCount() >= 3)
+                {
+                    potionButton.interactable = false;
+                }
             }
             else
             {
                 Debug.Log("돈이 부족하여 포션을 구매할 수 없습니다.");
-                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
                 clickedButton.interactable = true;
             }
         }
         else if (clickedButton == grenadeButton)
         {
+            if (GameManager.Instance.GetGrenadeCount() == 3)
+            {
+                Debug.Log("수류탄은 최대 3개까지만 소지할 수 있습니다.");
+                clickedButton.interactable = false;
+                return;
+            }
+
             if (GameManager.Instance.PotionGrenadeItem(1500))
             {
                 SoundManager.Instance.BuyItemSound();
                 GameManager.Instance.IncrementGrenadeCount();
-                Debug.Log($"수류탄 구매 완료");
+                Debug.Log("수류탄 구매 완료");
                 Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
+
+                if (GameManager.Instance.GetGrenadeCount() >= 3)
+                {
+                    grenadeButton.interactable = false;
+                }
             }
             else
             {
                 Debug.Log("돈이 부족하여 수류탄을 구매할 수 없습니다.");
-                Debug.Log($"남은 돈: {GameManager.Instance.curPrice}");
                 clickedButton.interactable = true;
             }
         }
