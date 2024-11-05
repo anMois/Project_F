@@ -6,17 +6,18 @@ using UnityEngine.UI;
 public class Test_DragonHpView : MonoBehaviour
 {
     [SerializeField] BossDragon hpModel;
-    [SerializeField] Text hpText;
-    [SerializeField] int maxHp;
+    [SerializeField] Slider hpSlider;
+    [SerializeField] int maxHp = 100;
 
     private void Start()
     {
         maxHp = hpModel.CurHp;
+        hpSlider.maxValue = maxHp;
         UpdateHp(hpModel.CurHp);
     }
 
     public void UpdateHp(int hp)
     {
-        hpText.text = $"{hpModel.CurHp} / {maxHp}";
+        hpSlider.value = hp;
     }
 }

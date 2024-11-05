@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     private int potionCount = 0;
     private int grenadeCount = 0;
 
+    [SerializeField] private TextMeshProUGUI stageNumberText;
+    [SerializeField] private TextMeshProUGUI waveNumberText;
+
     private void Awake()
     {
         if (Instance == null)
@@ -187,9 +190,9 @@ public class GameManager : MonoBehaviour
     {
         currentHealth -= damageAmount;
         UpdateHealthUI();
-        if (currentHealth <= 0)
+        if (currentHealth <= 100)
         {
-            //사망했을 때 사망처리
+            UIManager.Instance.ShowUI("Game Over Canvas");
             Debug.Log("플레이어가 사망했습니다.");
         }
     }
