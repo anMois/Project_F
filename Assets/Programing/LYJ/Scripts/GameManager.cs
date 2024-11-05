@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         potionCount = 0;
         grenadeCount = 0;
         curPrice = 0; //초기 골드 값
+        curPrice = 20000;
         currentHealth = maxHealth;
 
         UpdateUI();

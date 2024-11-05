@@ -95,4 +95,10 @@ public class Player : MonoBehaviour, IDamageable
         mover.addSpeed = moveSpeed;
         attack.speed = attackSpeed;
     }
+
+    public void IncreaseDamage(int value)
+    {
+        Debug.Log("공격력 증가");
+        dmg += value;
+    }
 }
