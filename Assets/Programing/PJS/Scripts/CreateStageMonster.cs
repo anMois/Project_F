@@ -46,6 +46,10 @@ public class CreateStageMonster : MonoBehaviour
 
                         monsterManager.AddMonster(newMonster);
                     }
+                    else
+                    {
+                        continue;
+                    }
                 }
             }
         }
