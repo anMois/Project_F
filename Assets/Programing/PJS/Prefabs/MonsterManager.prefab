@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4586136353675937624}
+  - component: {fileID: 2270578381815722283}
   - component: {fileID: 4586136353675937607}
   m_Layer: 0
   m_Name: MonsterManager
@@ -32,6 +33,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2270578381815722283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4586136353675937606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 273d31b7592c4fa4b9d15d2767355ff3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monsterList: []
+  monsterPrefabs:
+  - {fileID: 5711436575792790268, guid: a5c5879eb94dd9f49999e66e5841421e, type: 3}
+  - {fileID: 5393436641504885445, guid: 7c46a13ed352fa04bb24390824223cd0, type: 3}
+  - {fileID: 5388498765387936324, guid: 0bfbde73bbfa2ae4085273518f035f40, type: 3}
+  - {fileID: 5671606212582460181, guid: b58c0e29243d14749a6e499bef580346, type: 3}
+  - {fileID: 4456195604912779737, guid: a833f7184ba5c214f8fb8bd05a41b60d, type: 3}
+  - {fileID: 4230854372846555045, guid: b72c65b79cd6b75429728e7369e5305b, type: 3}
+  - {fileID: 2382564013722392273, guid: 1c7c16e248bc436438756ee821ca7af6, type: 3}
+  - {fileID: 3714864357625040918, guid: 682445e41f05b0d408f849cbadcf0bfb, type: 3}
+  - {fileID: 253511833134940362, guid: e5cc715f2042b5349abf3dec1817ec31, type: 3}
+  - {fileID: 1125739104437509208, guid: 3e7a8b0f75680314398f04ea0039a5d6, type: 3}
+  - {fileID: 471594640711535826, guid: e0acf828815f12943aee9b4528b051f9, type: 3}
+  - {fileID: 3812234308610029933, guid: 72beeadbab9bc9845bc2f54a16faa403, type: 3}
 --- !u!114 &4586136353675937607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44,4 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679dc93c90858bf43946a1ad414bca8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startZone: {fileID: 0}
+  stageManager: {fileID: 0}
   monsters: []

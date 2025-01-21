@@ -5,15 +5,21 @@ using static StageManager;
 public class CreateStageMonster : MonoBehaviour
 {
     const int ELITECOUNT = 3;
+
     [SerializeField] MonsterData monsterData;
     [Header("생성되는 몬스터의 부모가 되는 오브젝트")]
     [SerializeField] MonsterManager monsterManager;
     [Header("생성되는 몬스터의 위치")]
     [SerializeField] List<Transform> monsterPoints;
 
+    [SerializeField] List<string> pointsList = new List<string>();
+
     private void Awake()
     {
-        monsterData = GetComponent<MonsterData>();
+        foreach(string monsterPos in monsterData.MonsterList)
+        {
+            pointsList.Add(monsterPos);
+        }
     }
 
     /// <summary>
@@ -22,6 +28,8 @@ public class CreateStageMonster : MonoBehaviour
     public void MonsterSpawn(StageState state, int curWave, int fullWave)
     {
         string[] point = RandomList(state, curWave, fullWave);
+       
+        AddPointList();
 
         for (int i = 0; i < point.Length; i++)
         {
@@ -45,11 +53,11 @@ public class CreateStageMonster : MonoBehaviour
     private string[] RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
-        int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
+        int normalMosterCount = pointsList.Count - ELITECOUNT;
 
         if (_state == StageState.Elite && (_curWave + 1) == _fullWave)
         {
-            num = Random.Range(normalMosterCount, monsterData.MonsterList.Count);
+            num = Random.Range(normalMosterCount, pointsList.Count);
         }
         else
         {
@@ -62,5 +70,14 @@ public class CreateStageMonster : MonoBehaviour
         }
 
         return monsterData.MonsterList[num].Split(',');
+    }
+
+    private void AddPointList()
+    {
+        for (int i = 0; i < monsterData.MonsterList.Count; i++)
+        {
+            Debug.Log(monsterData.MonsterList[i]);
+            pointsList.Add(monsterData.MonsterList[i]);
+        }
     }
 }
