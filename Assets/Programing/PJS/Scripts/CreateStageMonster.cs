@@ -5,23 +5,31 @@ using static StageManager;
 public class CreateStageMonster : MonoBehaviour
 {
     const int ELITECOUNT = 3;
+
     [SerializeField] MonsterData monsterData;
-    [Header("»ı¼ºµÇ´Â ¸ó½ºÅÍÀÇ ºÎ¸ğ°¡ µÇ´Â ¿ÀºêÁ§Æ®")]
+    [Header("ìƒì„±ë˜ëŠ” ëª¬ìŠ¤í„°ì˜ ë¶€ëª¨ê°€ ë˜ëŠ” ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] MonsterManager monsterManager;
-    [Header("»ı¼ºµÇ´Â ¸ó½ºÅÍÀÇ À§Ä¡")]
+    [Header("ìƒì„±ë˜ëŠ” ëª¬ìŠ¤í„°ì˜ ìœ„ì¹˜")]
     [SerializeField] List<Transform> monsterPoints;
+
+    [SerializeField] List<string> pointsList = new List<string>();
 
     private void Awake()
     {
-        monsterData = GetComponent<MonsterData>();
+        foreach(string monsterPos in monsterData.MonsterList)
+        {
+            pointsList.Add(monsterPos);
+        }
     }
 
     /// <summary>
-    /// ¹èÄ¡µÇ¾î ÀÖ´Â ¸®½ºÆ® Áß ·£´ıÀ¸·Î ÇÏ³ª¸¦ °ñ¶ó ÁöÁ¤µÈ À§Ä¡¿¡ ¸ó½ºÅÍ ½ºÆù
+    /// ë°°ì¹˜ë˜ì–´ ìˆëŠ” ë¦¬ìŠ¤íŠ¸ ì¤‘ ëœë¤ìœ¼ë¡œ í•˜ë‚˜ë¥¼ ê³¨ë¼ ì§€ì •ëœ ìœ„ì¹˜ì— ëª¬ìŠ¤í„° ìŠ¤í°
     /// </summary>
     public void MonsterSpawn(StageState state, int curWave, int fullWave)
     {
-        string[] point = RandomList(state, curWave, fullWave).Split(',');
+        string[] point = RandomList(state, curWave, fullWave);
+       
+        AddPointList();
 
         for (int i = 0; i < point.Length; i++)
         {
@@ -58,11 +66,11 @@ public class CreateStageMonster : MonoBehaviour
     private string RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
-        int normalMosterCount = monsterData.MonsterList.Count - ELITECOUNT;
+        int normalMosterCount = pointsList.Count - ELITECOUNT;
 
         if (_state == StageState.Elite && (_curWave + 1) == _fullWave)
         {
-            num = Random.Range(normalMosterCount, monsterData.MonsterList.Count);
+            num = Random.Range(normalMosterCount, pointsList.Count);
         }
         else
         {
@@ -75,5 +83,14 @@ public class CreateStageMonster : MonoBehaviour
         }
 
         return monsterData.MonsterList[num];
+    }
+
+    private void AddPointList()
+    {
+        for (int i = 0; i < monsterData.MonsterList.Count; i++)
+        {
+            Debug.Log(monsterData.MonsterList[i]);
+            pointsList.Add(monsterData.MonsterList[i]);
+        }
     }
 }

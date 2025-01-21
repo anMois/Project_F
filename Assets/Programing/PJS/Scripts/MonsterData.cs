@@ -19,7 +19,6 @@ public class MonsterData : MonoBehaviour
     public Dictionary<int, GameObject> Monster { get { return monster; } }
     public List<int> MonsterKey { get { return monsterKey; } }
     public List<string> MonsterList { get { return monsterList; } }
-    public bool[] MonsterListActive { get { return monsterListActive; } }
 
     [Header("생성되는 몬스터")]
     [SerializeField] List<GameObject> monsterPrefabs;
@@ -42,7 +41,6 @@ public class MonsterData : MonoBehaviour
 
         string reciveText = requestMonsterSpawn.downloadHandler.text;
         ParserToMosterSpawnData(reciveText);
-        monsterListActive = new bool[monsterList.Count];
         yield break;
     }
 
@@ -89,4 +87,6 @@ public class MonsterData : MonoBehaviour
             monsterList.Add(line[i]);
         }
     }
+
+
 }
