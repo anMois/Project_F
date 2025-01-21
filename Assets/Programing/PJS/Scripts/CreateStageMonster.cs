@@ -16,6 +16,8 @@ public class CreateStageMonster : MonoBehaviour
 
     private void Awake()
     {
+        monsterData = monsterManager.transform.GetComponent<MonsterData>();
+
         foreach(string monsterPos in monsterData.MonsterList)
         {
             pointsList.Add(monsterPos);
@@ -36,14 +38,10 @@ public class CreateStageMonster : MonoBehaviour
             bool isId = int.TryParse(point[i], out int id);
             if (isId)
             {
-                Debug.Log($"{i + 1}. {point[i]}");
                 for (int j = 0; j < monsterData.MonsterKey.Count; j++)
                 {
                     if (monsterData.MonsterKey[j] == id)
                     {
-                        Debug.Log(monsterData.Monster[id] + " 1");
-                        Debug.Log(monsterPoints[i].position + " 2");
-                        Debug.Log(monsterPoints[i].rotation + " 3");
                         GameObject monster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation);
 
                         if (monster == null)
@@ -63,7 +61,7 @@ public class CreateStageMonster : MonoBehaviour
         }
     }
 
-    private string RandomList(StageState _state, int _curWave, int _fullWave)
+    private string[] RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
         int normalMosterCount = pointsList.Count - ELITECOUNT;
@@ -82,7 +80,7 @@ public class CreateStageMonster : MonoBehaviour
             num = 0;
         }
 
-        return monsterData.MonsterList[num];
+        return monsterData.MonsterList[num].Split(',');
     }
 
     private void AddPointList()
