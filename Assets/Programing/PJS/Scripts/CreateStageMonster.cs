@@ -7,9 +7,9 @@ public class CreateStageMonster : MonoBehaviour
     const int ELITECOUNT = 3;
 
     [SerializeField] MonsterData monsterData;
-    [Header("»ı¼ºµÇ´Â ¸ó½ºÅÍÀÇ ºÎ¸ğ°¡ µÇ´Â ¿ÀºêÁ§Æ®")]
+    [Header("ìƒì„±ë˜ëŠ” ëª¬ìŠ¤í„°ì˜ ë¶€ëª¨ê°€ ë˜ëŠ” ì˜¤ë¸Œì íŠ¸")]
     [SerializeField] MonsterManager monsterManager;
-    [Header("»ı¼ºµÇ´Â ¸ó½ºÅÍÀÇ À§Ä¡")]
+    [Header("ìƒì„±ë˜ëŠ” ëª¬ìŠ¤í„°ì˜ ìœ„ì¹˜")]
     [SerializeField] List<Transform> monsterPoints;
 
     [SerializeField] List<string> pointsList = new List<string>();
@@ -23,7 +23,7 @@ public class CreateStageMonster : MonoBehaviour
     }
 
     /// <summary>
-    /// ¹èÄ¡µÇ¾î ÀÖ´Â ¸®½ºÆ® Áß ·£´ıÀ¸·Î ÇÏ³ª¸¦ °ñ¶ó ÁöÁ¤µÈ À§Ä¡¿¡ ¸ó½ºÅÍ ½ºÆù
+    /// ë°°ì¹˜ë˜ì–´ ìˆëŠ” ë¦¬ìŠ¤íŠ¸ ì¤‘ ëœë¤ìœ¼ë¡œ í•˜ë‚˜ë¥¼ ê³¨ë¼ ì§€ì •ëœ ìœ„ì¹˜ì— ëª¬ìŠ¤í„° ìŠ¤í°
     /// </summary>
     public void MonsterSpawn(StageState state, int curWave, int fullWave)
     {
@@ -33,24 +33,37 @@ public class CreateStageMonster : MonoBehaviour
 
         for (int i = 0; i < point.Length; i++)
         {
-            int.TryParse(point[i], out int id);
-            for (int j = 0; j < monsterData.MonsterKey.Count; j++)
+            bool isId = int.TryParse(point[i], out int id);
+            if (isId)
             {
-                if (monsterData.MonsterKey[j] == id)
+                Debug.Log($"{i + 1}. {point[i]}");
+                for (int j = 0; j < monsterData.MonsterKey.Count; j++)
                 {
-                    Monster newMonster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation).GetComponent<Monster>();
+                    if (monsterData.MonsterKey[j] == id)
+                    {
+                        Debug.Log(monsterData.Monster[id] + " 1");
+                        Debug.Log(monsterPoints[i].position + " 2");
+                        Debug.Log(monsterPoints[i].rotation + " 3");
+                        GameObject monster = Instantiate(monsterData.Monster[id], monsterPoints[i].position, monsterPoints[i].rotation);
 
-                    if (newMonster == null)
+                        if (monster == null)
+                            continue;
+
+                        Monster newMonster = monster.GetComponent<Monster>();
+                        newMonster.transform.parent = monsterManager.transform;
+
+                        monsterManager.AddMonster(newMonster);
+                    }
+                    else
+                    {
                         continue;
-
-                    newMonster.transform.parent = monsterManager.transform;
-                    monsterManager.AddMonster(newMonster);
+                    }
                 }
             }
         }
     }
 
-    private string[] RandomList(StageState _state, int _curWave, int _fullWave)
+    private string RandomList(StageState _state, int _curWave, int _fullWave)
     {
         int num;
         int normalMosterCount = pointsList.Count - ELITECOUNT;
@@ -69,7 +82,7 @@ public class CreateStageMonster : MonoBehaviour
             num = 0;
         }
 
-        return monsterData.MonsterList[num].Split(',');
+        return monsterData.MonsterList[num];
     }
 
     private void AddPointList()

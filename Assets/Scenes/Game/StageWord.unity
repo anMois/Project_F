@@ -564,10 +564,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3812234308610029933, guid: 72beeadbab9bc9845bc2f54a16faa403, type: 3}
     - target: {fileID: 271215584924684789, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
-      propertyPath: monsterData
-      value: 
-      objectReference: {fileID: 1034068908}
-    - target: {fileID: 271215584924684789, guid: d0f2837df88b3924bbda2264a4c0d7bb, type: 3}
       propertyPath: monsterManager
       value: 
       objectReference: {fileID: 1034068907}
@@ -953,17 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 679dc93c90858bf43946a1ad414bca8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1034068908 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2270578381815722283, guid: 42213a1ca48df9f499a70b8f9de8d991, type: 3}
-  m_PrefabInstance: {fileID: 1034068906}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273d31b7592c4fa4b9d15d2767355ff3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1050728686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1205,10 +1190,6 @@ PrefabInstance:
       propertyPath: monsterPrefabs.Array.data[13]
       value: 
       objectReference: {fileID: 3812234308610029933, guid: 72beeadbab9bc9845bc2f54a16faa403, type: 3}
-    - target: {fileID: 1441260838285334492, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
-      propertyPath: monsterData
-      value: 
-      objectReference: {fileID: 1034068908}
     - target: {fileID: 1441260838285334492, guid: db85a4668ddaeb34a93fbddafdd234dd, type: 3}
       propertyPath: monsterManager
       value: 
@@ -1486,10 +1467,6 @@ PrefabInstance:
       propertyPath: monsterPrefabs.Array.data[13]
       value: 
       objectReference: {fileID: 3812234308610029933, guid: 72beeadbab9bc9845bc2f54a16faa403, type: 3}
-    - target: {fileID: 8814235010339807798, guid: 964532c8a6f55074da140281159768f2, type: 3}
-      propertyPath: monsterData
-      value: 
-      objectReference: {fileID: 1034068908}
     - target: {fileID: 8814235010339807798, guid: 964532c8a6f55074da140281159768f2, type: 3}
       propertyPath: monsterManager
       value: 

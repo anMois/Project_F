@@ -13,7 +13,7 @@ public class MonsterData : MonoBehaviour
 
     private Dictionary<int, GameObject> monster = new Dictionary<int, GameObject>();    // 몬스터를 저장할 딕셔너리
     private List<int> monsterKey = new List<int>();         // 저장된 몬스터들의 ID
-    private List<string> monsterList = new List<string>();  // 몬스터의 배치 리스트
+    [SerializeField] List<string> monsterList;              // 몬스터의 배치 리스트
     private bool[] monsterListActive;
 
     public Dictionary<int, GameObject> Monster { get { return monster; } }

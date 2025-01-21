@@ -307,7 +307,12 @@ public class GameManager : MonoBehaviour
         stageNumberText.text = $"{stage} Stage";
         if (curState == StageState.Normal || curState == StageState.Elite)
             waveNumberText.text = $"{curWave} / {fullWave} Wave";
-        else if(preState == StageState.Store)
+        else if(curState == StageState.Boss)
+        {
+            stageNumberText.text = $"{curState} Stage";
             waveNumberText.text = $"{curState} Wave";
+        }
+        else if(preState == StageState.Store)
+            waveNumberText.text = $"Store Wave";
     }
 }

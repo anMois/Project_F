@@ -1,17 +1,16 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
-    public enum StageState { Normal, Elite, Store, Clear, Choice, Potal }
+    public enum StageState { Normal, Elite, Boss, Store, Clear, Choice, Potal }
     [SerializeField] InGameManager inGame;
 
     [Header("현재 상태, 이전 상태")]
     [SerializeField] StageState curState = StageState.Normal;
     [SerializeField] StageState preState;
-    
+
     [Header("현재 스테이지, 현재 웨이브 (0 부터 시작)")]
     [SerializeField] int stageNum;
     [SerializeField] int curWave;
@@ -76,7 +75,7 @@ public class StageManager : MonoBehaviour
                     curWave = 0;
                 }
             }
-            else if(curState == StageState.Store)
+            else if (curState == StageState.Store)
             {
                 potal.transform.position = inGame.Player.transform.position;
                 preState = curState;
@@ -117,7 +116,9 @@ public class StageManager : MonoBehaviour
     /// <param name="changeStage">이동할 스테이지</param>
     public void NextStage(StageState changeStage)
     {
-        stageNum++;
+        if(changeStage != StageState.Boss)
+            stageNum++;
+
         curState = changeStage;
         curStageMonster = null;
         potal.transform.position = Vector3.zero;

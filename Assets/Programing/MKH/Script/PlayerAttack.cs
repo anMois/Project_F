@@ -66,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
             Lazer();
 
         }
-        BulletChange();
+
         AddState();
     }
 
@@ -172,22 +172,6 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(5f);
 
         bulletPrefab[1].SetActive(false);
-    }
-
-    private void BulletChange()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SwapBullet(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SwapBullet(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            SwapBullet(2);
-        }
     }
 
     public void WeaponTypes(WeaponType type)
